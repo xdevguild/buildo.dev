@@ -77,7 +77,11 @@ const About: NextPage = () => {
       </p>
       <p>
         The timeline is not defined. There is more detailed{' '}
-        <a href="" target="_blank" className="underline">
+        <a
+          href="https://github.com/orgs/xdevguild/projects/3"
+          target="_blank"
+          className="underline"
+        >
           Kanban
         </a>{' '}
         board. Where you can find more up-to-date development information.

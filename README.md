@@ -29,6 +29,7 @@ Please check the [About](https://www.buildo.dev/about) section to read more abou
 - Copy the `.env.example` to `.env.local` (modify if needed)
 - Run `npm run dev`
 - Please report [issues](https://github.com/xdevguild/buildo.dev/issues)
+- [Kanban board](https://github.com/orgs/xdevguild/projects/3)
 
 ### Also please check these tools
 - [Elven.js](https://www.elvenjs.com) - Compact MultiversX SDK for browsers (no build steps required)
