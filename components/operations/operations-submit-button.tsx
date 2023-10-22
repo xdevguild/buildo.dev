@@ -1,20 +1,33 @@
 import { Button } from '@/components/ui/button';
-import { Authenticated } from '../elven-ui/authenticated';
+import { Authenticated } from '@/components/elven-ui/authenticated';
+import { Spinner } from '@/components/ui/spinner';
 
 type OperationsSubmitButtonProps = {
   formId: string;
   label?: string;
   isPublic?: boolean;
+  pending?: boolean;
 };
 
 type ButtonComponent = {
   label: string;
   formId: string;
   disabled?: boolean;
+  pending?: boolean;
 };
 
-const ButtonComponent = ({ label, formId, disabled }: ButtonComponent) => (
-  <Button type="submit" size="sm" form={formId} disabled={disabled}>
+const ButtonComponent = ({
+  label,
+  formId,
+  disabled,
+  pending,
+}: ButtonComponent) => (
+  <Button type="submit" size="sm" form={formId} disabled={pending || disabled}>
+    {pending && (
+      <div className="mr-2">
+        <Spinner size="24" />
+      </div>
+    )}
     {label}
   </Button>
 );
@@ -23,8 +36,10 @@ export const OperationsSubmitButton = ({
   formId,
   label = 'Submit',
   isPublic = false,
+  pending = false,
 }: OperationsSubmitButtonProps) => {
-  if (isPublic) return <ButtonComponent formId={formId} label={label} />;
+  if (isPublic)
+    return <ButtonComponent formId={formId} label={label} pending={pending} />;
 
   return (
     <Authenticated

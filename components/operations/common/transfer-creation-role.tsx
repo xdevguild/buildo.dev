@@ -4,11 +4,10 @@ import {
   TypedValue,
   ContractCallPayloadBuilder,
   ContractFunction,
-  Address,
   AddressValue,
+  Address,
 } from '@multiversx/sdk-core';
 import { useForm } from 'react-hook-form';
-
 import { zodResolver } from '@hookform/resolvers/zod';
 import { Form } from '@/components/ui/form';
 import {
@@ -18,21 +17,22 @@ import {
   DialogTitle,
 } from '@/components/ui/dialog';
 import {
-  builtInSC,
   commonOpertationsGasLimit,
+  builtInSC,
 } from '@/components/operations/constants';
 import { OperationsInputField } from '@/components/operations/operations-input-field';
-import { OperationsSubmitButton } from '../operations-submit-button';
+import { OperationsSubmitButton } from '@/components/operations/operations-submit-button';
 import { useContext } from 'react';
 import { OperationsStateDialogContext } from '@/components/operations/operations-status-dialog';
 import { OperationContentProps } from '@/components/operations/operations-common-types';
 
 const formSchema = z.object({
-  tokenId: z.string().min(1, 'The field is required'),
-  address: z.string().min(1, 'The field is required'),
+  addressWithRole: z.string().min(1, 'The field is required'),
+  newAddressForRole: z.string().min(1, 'The field is required'),
+  tokenId: z.string().min(1, 'The field is required!'),
 });
 
-export const TransferOwnership = ({
+export const TransferCreationRole = ({
   triggerTx,
   close,
 }: OperationContentProps) => {
@@ -43,19 +43,25 @@ export const TransferOwnership = ({
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
+      addressWithRole: '',
+      newAddressForRole: '',
       tokenId: '',
-      address: '',
     },
   });
 
-  const onSubmit = ({ tokenId, address }: z.infer<typeof formSchema>) => {
+  const onSubmit = ({
+    tokenId,
+    addressWithRole,
+    newAddressForRole,
+  }: z.infer<typeof formSchema>) => {
     const args: TypedValue[] = [
       BytesValue.fromUTF8(tokenId.trim()),
-      new AddressValue(new Address(address.trim())),
+      new AddressValue(new Address(addressWithRole.trim())),
+      new AddressValue(new Address(newAddressForRole.trim())),
     ];
 
     const data = new ContractCallPayloadBuilder()
-      .setFunction(new ContractFunction('transferOwnership'))
+      .setFunction(new ContractFunction('transferNFTCreateRole'))
       .setArgs(args)
       .build();
 
@@ -74,21 +80,17 @@ export const TransferOwnership = ({
   return (
     <>
       <DialogHeader className="p-8 pb-0">
-        <DialogTitle>
-          Transfer ownersip and management rights for the fungible ESDT
-        </DialogTitle>
+        <DialogTitle>Transfer creation role</DialogTitle>
         <DialogDescription>
-          The manager of an ESDT token may transfer the management rights to
-          another Account. After this transaction is processed by the Metachain,
-          any subsequent management operations will only be permitted to the new
-          Account. This operation requires that the option canChangeOwner is set
-          to true.
+          The token manager can transfer the creation role from one address to
+          another. This role can be transferred only if the
+          canTransferNFTCreateRole property of the token is set to true.
         </DialogDescription>
       </DialogHeader>
       <div className="overflow-y-auto py-0 px-8">
         <Form {...form}>
           <form
-            id="transfer-ownership-form"
+            id="transfer-creation-role-form"
             onSubmit={form.handleSubmit(onSubmit)}
             className="space-y-8"
           >
@@ -100,17 +102,23 @@ export const TransferOwnership = ({
                 description="Please provide your token id"
               />
               <OperationsInputField
-                name="address"
-                label="Address"
+                name="addressWithRole"
+                label="Current address with create role"
                 placeholder="Example: erd1..."
-                description="Please provide the address of a new owner"
+                description="Please provide the address to transfer the role from"
+              />
+              <OperationsInputField
+                name="newAddressForRole"
+                label="New address for create role"
+                placeholder="Example: erd1..."
+                description="Please provide the address to transfer the role to"
               />
             </div>
           </form>
         </Form>
       </div>
       <DialogFooter className="py-4 px-8">
-        <OperationsSubmitButton formId="transfer-ownership-form" />
+        <OperationsSubmitButton formId="transfer-creation-role-form" />
       </DialogFooter>
     </>
   );

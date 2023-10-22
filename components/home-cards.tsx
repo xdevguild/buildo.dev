@@ -146,8 +146,9 @@ export const HomeCards = () => {
             {
               title: 'Check token data',
               description: 'Check the most important data of any token',
-              onClick: () => {},
-              disabled: true,
+              onClick: () => {
+                setDialogState('utilities', 'checkTokenData');
+              },
             },
             {
               title: 'Check address data',
@@ -274,6 +275,30 @@ export const HomeCards = () => {
               },
             },
             {
+              title: 'Transfer creation role',
+              description:
+                'The token manager can transfer the creation role from one address to another.',
+              onClick: () => {
+                setDialogState('nonFungibleEsdt', 'transferCreationRole');
+              },
+            },
+            {
+              title: 'Stop creation',
+              description:
+                'The ESDT manager can stop the creation of the token for the given ESDT forever by removing the only ESDTRoleNFTCreate role available.',
+              onClick: () => {
+                setDialogState('nonFungibleEsdt', 'stopCreation');
+              },
+            },
+            {
+              title: 'Transfer ownership',
+              description:
+                'The manager of an ESDT may transfer the management rights to another Account. This operation requires that the canChangeOwner property is set to true.',
+              onClick: () => {
+                setDialogState('nonFungibleEsdt', 'transferOwnership');
+              },
+            },
+            {
               title: 'Change properties',
               description:
                 'Change ESDT properties added when issuing the token, the canUpgrade property has to be previously assigned',
@@ -324,6 +349,30 @@ export const HomeCards = () => {
               },
             },
             {
+              title: 'Transfer creation role',
+              description:
+                'The token manager can transfer the creation role from one address to another.',
+              onClick: () => {
+                setDialogState('semiFungibleEsdt', 'transferCreationRole');
+              },
+            },
+            {
+              title: 'Stop creation',
+              description:
+                'The ESDT manager can stop the creation of the token for the given ESDT forever by removing the only ESDTRoleNFTCreate role available.',
+              onClick: () => {
+                setDialogState('semiFungibleEsdt', 'stopCreation');
+              },
+            },
+            {
+              title: 'Transfer ownership',
+              description:
+                'The manager of an ESDT may transfer the management rights to another Account. This operation requires that the canChangeOwner property is set to true.',
+              onClick: () => {
+                setDialogState('sftFungibleEsdt', 'transferOwnership');
+              },
+            },
+            {
               title: 'Change properties',
               description:
                 'Change ESDT properties added when issuing the token, the canUpgrade property has to be previously assigned',
@@ -370,6 +419,30 @@ export const HomeCards = () => {
               description: 'Create a new Meta ESDT',
               onClick: () => {
                 setDialogState('metaEsdt', 'create');
+              },
+            },
+            {
+              title: 'Transfer creation role',
+              description:
+                'The token manager can transfer the creation role from one address to another.',
+              onClick: () => {
+                setDialogState('metaEsdt', 'transferCreationRole');
+              },
+            },
+            {
+              title: 'Stop creation',
+              description:
+                'The ESDT manager can stop the creation of the token for the given ESDT forever by removing the only ESDTRoleNFTCreate role available.',
+              onClick: () => {
+                setDialogState('metaEsdt', 'stopCreation');
+              },
+            },
+            {
+              title: 'Transfer ownership',
+              description:
+                'The manager of an ESDT may transfer the management rights to another Account. This operation requires that the canChangeOwner property is set to true.',
+              onClick: () => {
+                setDialogState('metaEsdt', 'transferOwnership');
               },
             },
             {

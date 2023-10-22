@@ -82,7 +82,7 @@ export const DecodeTransaction = () => {
       <div className="overflow-y-auto py-0 px-8">
         <Form {...form}>
           <form
-            id="account-storage-form"
+            id="decode-transaction-form"
             onSubmit={form.handleSubmit(onSubmit)}
             className="space-y-8"
           >
@@ -124,7 +124,7 @@ export const DecodeTransaction = () => {
         )}
       </div>
       <DialogFooter className="py-4 px-8">
-        <OperationsSubmitButton formId="account-storage-form" />
+        <OperationsSubmitButton formId="decode-transaction-form" />
       </DialogFooter>
     </>
   );
