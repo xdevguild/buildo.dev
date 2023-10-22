@@ -119,7 +119,7 @@ export const DataConverters = () => {
       return;
     }
     const account = Address.fromBech32(inputValue);
-    console.log(`${account.hex()}`);
+    setResult(`${account.hex()}`);
   };
 
   const hexToBech32 = (inputValue: string) => {

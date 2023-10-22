@@ -138,6 +138,7 @@ export const CheckTokenData = () => {
         <OperationsSubmitButton
           formId="check-token-data-form"
           pending={pending}
+          isPublic
         />
       </DialogFooter>
     </>
