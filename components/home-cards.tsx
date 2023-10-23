@@ -91,11 +91,12 @@ export const HomeCards = () => {
               },
             },
             {
-              title: 'Set/Check Herotag (ready in the CLI)',
+              title: 'Set a herotag',
               description:
-                'Create a herotag and assign it to address or check addresses of existing ones (transaction fees applied)',
-              onClick: () => {},
-              disabled: true,
+                'Create a herotag and assign it to your address (transaction fees applied)',
+              onClick: () => {
+                setDialogState('general', 'herotag');
+              },
             },
             {
               title: 'Multi transfer (ready in the CLI)',
@@ -153,8 +154,9 @@ export const HomeCards = () => {
             {
               title: 'Check address data',
               description: 'Check the most important data of any address',
-              onClick: () => {},
-              disabled: true,
+              onClick: () => {
+                setDialogState('utilities', 'checkAddressData');
+              },
             },
             {
               title: 'Verify a signature',

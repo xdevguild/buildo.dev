@@ -26,6 +26,8 @@ import { ChangeOwnerAddress } from '@/components/operations/general/chang-owner-
 import { AccountStorage } from '@/components/operations/general/account-storage';
 import { DecodeTransaction } from '@/components/operations/utils-operations/decode-transaction';
 import { CheckTokenData } from '@/components/operations/utils-operations/check-token-data';
+import { CheckAddressData } from '@/components/operations/utils-operations/check-address-data';
+import { Herotag } from './general/herotag';
 
 export type OperationsContentMap = Record<
   string,
@@ -315,6 +317,9 @@ export const getOperationsContentsMap = ({
     checkTokenData: {
       component: <CheckTokenData />,
     },
+    checkAddressData: {
+      component: <CheckAddressData />,
+    },
   },
   general: {
     sendEgld: {
@@ -335,6 +340,10 @@ export const getOperationsContentsMap = ({
     accountStorage: {
       component: <AccountStorage triggerTx={triggerTx} close={closeDialog} />,
       additionalInfo: 'You have updated your account storage.',
+    },
+    herotag: {
+      component: <Herotag triggerTx={triggerTx} close={closeDialog} />,
+      additionalInfo: 'You have set a herotag for your account.',
     },
   },
 });
