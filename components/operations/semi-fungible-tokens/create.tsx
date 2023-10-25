@@ -101,8 +101,7 @@ export const Create = ({ triggerTx, close }: OperationContentProps) => {
       gasLimit:
         nftSftCreateOpertationsGasLimit +
         data.length() * 1500 +
-        (attributes?.length || 0) +
-        (hash?.length || 0) * 50000,
+        (attributes?.length || 0 + (hash?.length || 0)) * 50000,
       data,
       value: 0,
     });
@@ -168,7 +167,7 @@ export const Create = ({ triggerTx, close }: OperationContentProps) => {
                 name="attributes"
                 label="Attributes"
                 placeholder="Example: metadata:{ipfsCID_here}/metadata.json;tags:tag1,tag2,tag3"
-                description="Provide attributes. In most cases yoy'll need the metadata attribute which points to JSON file on IPFS. Separate with ';'"
+                description="Provide attributes. In most cases you'll need the metadata attribute which points to JSON file on IPFS. Separate with ';'"
               />
               <OperationsInputField
                 name="hash"

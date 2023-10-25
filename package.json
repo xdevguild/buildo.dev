@@ -1,6 +1,6 @@
 {
   "name": "buildo.dev",
-  "version": "0.3.0",
+  "version": "0.4.0",
   "author": "Julian Ćwirko <julian.io>",
   "license": "MIT",
   "homepage": "https://www.buildo.dev",
@@ -36,7 +36,7 @@
     "buffer": "6.0.3",
     "class-variance-authority": "0.7.0",
     "clsx": "2.0.0",
-    "keccak": "^3.0.4",
+    "keccak": "3.0.4",
     "lucide-react": "0.288.0",
     "next": "13.5.6",
     "next-themes": "0.2.1",

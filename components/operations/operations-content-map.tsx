@@ -27,7 +27,8 @@ import { AccountStorage } from '@/components/operations/general/account-storage'
 import { DecodeTransaction } from '@/components/operations/utils-operations/decode-transaction';
 import { CheckTokenData } from '@/components/operations/utils-operations/check-token-data';
 import { CheckAddressData } from '@/components/operations/utils-operations/check-address-data';
-import { Herotag } from './general/herotag';
+import { Herotag } from '@/components/operations/general/herotag';
+import { ChangeAttributes } from '@/components/operations/non-fungible-tokens/change-attributes';
 
 export type OperationsContentMap = Record<
   string,
@@ -183,6 +184,10 @@ export const getOperationsContentsMap = ({
       ),
       additionalInfo: 'You have changed the properties of a non-fungible ESDT.',
     },
+    changeAttributes: {
+      component: <ChangeAttributes triggerTx={triggerTx} close={closeDialog} />,
+      additionalInfo: 'You have changed the attributes of a non-fungible ESDT.',
+    },
     send: {
       component: <NftSend transfer={transfer} close={closeDialog} />,
       tokenTransfer: true,
@@ -304,7 +309,7 @@ export const getOperationsContentsMap = ({
     send: {
       component: <MetaSend transfer={transfer} close={closeDialog} />,
       tokenTransfer: true,
-      additionalInfo: 'You have sent the Meta ESDT amount.',
+      additionalInfo: 'You have sent the meta ESDT amount.',
     },
   },
   utilities: {

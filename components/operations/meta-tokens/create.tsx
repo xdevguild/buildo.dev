@@ -76,7 +76,10 @@ export const Create = ({ triggerTx, close }: OperationContentProps) => {
 
     triggerTx?.({
       address,
-      gasLimit: nftSftCreateOpertationsGasLimit + data.length() * 1500 + 50000,
+      gasLimit:
+        nftSftCreateOpertationsGasLimit +
+        data.length() * 1500 +
+        attributes.length * 50000,
       data,
       value: 0,
     });

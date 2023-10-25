@@ -309,6 +309,14 @@ export const HomeCards = () => {
               },
             },
             {
+              title: 'Change attributes',
+              description:
+                'An user that has the ESDTRoleNFTUpdateAttributes role set for a given ESDT, can change the attributes of a given NFT',
+              onClick: () => {
+                setDialogState('nonFungibleEsdt', 'changeAttributes');
+              },
+            },
+            {
               title: 'Send',
               description: 'Send NFT',
               onClick: () => {

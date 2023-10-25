@@ -1,3 +1,6 @@
+### [0.4.0](https://github.com/xdevguild/buildo.dev/releases/tag/v0.4.0) (2023-10-25)
+- add change NFT attributes functionality
+
 ### [0.3.0](https://github.com/xdevguild/buildo.dev/releases/tag/v0.3.0) (2023-10-23)
  - add herotag functionality
  - add check address (also by herotag) utility
