@@ -1,3 +1,7 @@
+### [0.5.0](https://github.com/xdevguild/buildo.dev/releases/tag/v0.5.0) (2023-10-28)
+- update useElven - add support for xAlias 
+- update Next.js v14
+
 ### [0.4.0](https://github.com/xdevguild/buildo.dev/releases/tag/v0.4.0) (2023-10-25)
 - add change NFT attributes functionality
 

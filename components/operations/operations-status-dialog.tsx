@@ -135,6 +135,9 @@ export const OperationsStateDialogWrapper = ({
             {!txError &&
               loginMethod === LoginMethodsEnum.wallet &&
               'Confirming using MultiversX Web Wallet!'}
+            {!txError &&
+              loginMethod === LoginMethodsEnum.xalias &&
+              'Confirming using xAlias service!'}
             {txError &&
               'Please try again. In case of transactions, always check the transaction status on the MultiversX Explorer.'}
           </DialogDescription>
@@ -177,6 +180,7 @@ export const OperationsStateDialogWrapper = ({
               !txPending &&
               additionalInfo &&
               loginMethod !== LoginMethodsEnum.wallet &&
+              loginMethod !== LoginMethodsEnum.xalias &&
               !activeGuardianAddress && (
                 <span className="text-sm mt-4 font-light">
                   {additionalInfo}
