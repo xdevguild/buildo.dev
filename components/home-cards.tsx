@@ -317,18 +317,35 @@ export const HomeCards = () => {
               },
             },
             {
+              title: 'Add URIs',
+              description:
+                'An user that has the ESDTRoleNFTAddURI role set for a given ESDT, can add uris to a given NFT/SFT. This is done by performing a transaction like this.',
+              onClick: () => {
+                setDialogState('nonFungibleEsdt', 'addUris');
+              },
+            },
+            {
+              title: 'Freeze/Unfreeze',
+              description:
+                'The manager of an ESDT token may freeze the NFT held by a specific Account. As a consequence, no NFT can be transferred to or from the frozen Account',
+              onClick: () => {
+                setDialogState('nonFungibleEsdt', 'freezeUnfreeze');
+              },
+            },
+            {
+              title: 'Wipe',
+              description:
+                'The manager of an ESDT token may wipe out a single NFT held by a frozen Account.',
+              onClick: () => {
+                setDialogState('nonFungibleEsdt', 'wipe');
+              },
+            },
+            {
               title: 'Send',
               description: 'Send NFT',
               onClick: () => {
                 setDialogState('nonFungibleEsdt', 'send');
               },
-            },
-            {
-              title: 'rest operations',
-              description:
-                'You will be able to wipe, freeze, transfer roles, etc.',
-              onClick: () => {},
-              disabled: true,
             },
           ]}
         />
@@ -379,7 +396,7 @@ export const HomeCards = () => {
               description:
                 'The manager of an ESDT may transfer the management rights to another Account. This operation requires that the canChangeOwner property is set to true.',
               onClick: () => {
-                setDialogState('sftFungibleEsdt', 'transferOwnership');
+                setDialogState('semiFungibleEsdt', 'transferOwnership');
               },
             },
             {
@@ -388,6 +405,14 @@ export const HomeCards = () => {
                 'Change ESDT properties added when issuing the token, the canUpgrade property has to be previously assigned',
               onClick: () => {
                 setDialogState('semiFungibleEsdt', 'changeProperties');
+              },
+            },
+            {
+              title: 'Add/Burn quantity',
+              description:
+                'A user that has the ESDTRoleNFTAddQuantity or ESDTRoleNFTBurn roles set for a given Semi-Fungible Token, can increase or decrease its quantity',
+              onClick: () => {
+                setDialogState('semiFungibleEsdt', 'addBurnQuantity');
               },
             },
             {
@@ -461,6 +486,14 @@ export const HomeCards = () => {
                 'Change ESDT properties added when issuing the token, the canUpgrade property has to be previously assigned',
               onClick: () => {
                 setDialogState('metaEsdt', 'changeProperties');
+              },
+            },
+            {
+              title: 'Add/Burn quantity',
+              description:
+                'A user that has the ESDTRoleNFTAddQuantity or ESDTRoleNFTBurn roles set for a given Meta Token, can increase or decrease its quantity',
+              onClick: () => {
+                setDialogState('metaEsdt', 'addBurnQuantity');
               },
             },
             {

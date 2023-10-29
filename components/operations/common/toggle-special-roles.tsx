@@ -67,7 +67,7 @@ export const ToggleSpecialRoles = ({
       tokenId: '',
       address: '',
       type: 'set',
-      roles: rolesMap[tokenType].map((role) => role.name),
+      roles: ['ESDTRoleNFTCreate', 'ESDTRoleNFTBurn'],
     },
   });
 

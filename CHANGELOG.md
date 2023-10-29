@@ -1,3 +1,10 @@
+### [0.6.0](https://github.com/xdevguild/buildo.dev/releases/tag/v0.6.0) (2023-10-29)
+- add NFT URIs functionality
+- add SFT/Meta Add/Burn quantity functionality
+- add Freeze/Unfreeze a single NFT functionality
+- add Wipe a single NFT functionality
+- adjust default setup for special roles for tokens
+
 ### [0.5.0](https://github.com/xdevguild/buildo.dev/releases/tag/v0.5.0) (2023-10-28)
 - update useElven - add support for xAlias 
 - update Next.js v14

@@ -29,6 +29,10 @@ import { CheckTokenData } from '@/components/operations/utils-operations/check-t
 import { CheckAddressData } from '@/components/operations/utils-operations/check-address-data';
 import { Herotag } from '@/components/operations/general/herotag';
 import { ChangeAttributes } from '@/components/operations/non-fungible-tokens/change-attributes';
+import { AddNftUris } from '@/components/operations/non-fungible-tokens/add-nft-uris';
+import { AddBurnQuantity } from '@/components/operations/common/add-burn-sft-meta-quantity';
+import { FreezeUnfreeze as FreezeUnfreezeNft } from '@/components/operations/non-fungible-tokens/freeze-unfreeze';
+import { Wipe as WipeNft } from '@/components/operations/non-fungible-tokens/wipe';
 
 export type OperationsContentMap = Record<
   string,
@@ -188,6 +192,22 @@ export const getOperationsContentsMap = ({
       component: <ChangeAttributes triggerTx={triggerTx} close={closeDialog} />,
       additionalInfo: 'You have changed the attributes of a non-fungible ESDT.',
     },
+    addUris: {
+      component: <AddNftUris triggerTx={triggerTx} close={closeDialog} />,
+      additionalInfo: 'You have added the uris to a semi-fungible ESDT.',
+    },
+    freezeUnfreeze: {
+      component: (
+        <FreezeUnfreezeNft triggerTx={triggerTx} close={closeDialog} />
+      ),
+      additionalInfo:
+        'You have frozen/unfrozen a single non-fungible ESDT token in a specific account.',
+    },
+    wipe: {
+      component: <WipeNft triggerTx={triggerTx} close={closeDialog} />,
+      additionalInfo:
+        'You have removed non-fungible ESDT (NFT) from a frozen account.',
+    },
     send: {
       component: <NftSend transfer={transfer} close={closeDialog} />,
       tokenTransfer: true,
@@ -252,6 +272,16 @@ export const getOperationsContentsMap = ({
       additionalInfo:
         'You have changed the properties of a semi-fungible ESDT.',
     },
+    addBurnQuantity: {
+      component: (
+        <AddBurnQuantity
+          triggerTx={triggerTx}
+          close={closeDialog}
+          tokenType="semi-fungible"
+        />
+      ),
+      additionalInfo: 'You have changed the quantity of a semi-fungible ESDT.',
+    },
     send: {
       component: <SftSend transfer={transfer} close={closeDialog} />,
       tokenTransfer: true,
@@ -305,6 +335,16 @@ export const getOperationsContentsMap = ({
         />
       ),
       additionalInfo: 'You have changed the properties of a meta ESDT.',
+    },
+    addBurnQuantity: {
+      component: (
+        <AddBurnQuantity
+          triggerTx={triggerTx}
+          close={closeDialog}
+          tokenType="meta"
+        />
+      ),
+      additionalInfo: 'You have changed the quantity of a meta ESDT.',
     },
     send: {
       component: <MetaSend transfer={transfer} close={closeDialog} />,
