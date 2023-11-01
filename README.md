@@ -3,6 +3,8 @@
 - [Mainnet - www.buildo.dev](https://www.buildo.dev)
 - [Devnet - www.devnet.buildo.dev](https://www.devnet.buildo.dev)
 
+Follow on X: [x.com/BuildoDev](https://x.com/BuildoDev)
+
 (**Please be careful on the Mainnet! First, test and understand everything on the Devnet.**)
 
 The buildo.dev app is a port of the [CLI](https://github.com/xdevguild/buildo-begins) functionality. So you can use both. In time, the functionality will probably differ a bit. Web app will have more possibilities.
@@ -34,8 +36,11 @@ Please check the [About](https://www.buildo.dev/about) section to read more abou
 ### Also please check these tools
 - [Elven.js](https://www.elvenjs.com) - Compact MultiversX SDK for browsers (no build steps required)
 - [Elven Tools](https://www.elven.tools) - All about NFTs and SFTs on the MutliversX blockchain
+- [useElven](https://www.useElven.com) - React hooks for MultiversX dApps
+- [xDevGuild Repositories](https://github.com/orgs/xdevguild/repositories)
 
 ### Contact
 
 - [julian.io](https://www.julian.io)
+- [@BuildoDev](https://x.com/BuildoDev)
 
