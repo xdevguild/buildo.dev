@@ -1,3 +1,7 @@
+### [0.6.1](https://github.com/xdevguild/buildo.dev/releases/tag/v0.6.1) (2023-11-01)
+- improve UI
+- update dependences
+
 ### [0.6.0](https://github.com/xdevguild/buildo.dev/releases/tag/v0.6.0) (2023-10-29)
 - add NFT URIs functionality
 - add SFT/Meta Add/Burn quantity functionality

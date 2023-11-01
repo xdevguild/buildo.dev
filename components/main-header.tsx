@@ -1,4 +1,4 @@
-import { Github } from 'lucide-react';
+import { Github, Twitter } from 'lucide-react';
 import { LoginModalButton } from '@/components/elven-ui/login-modal-button';
 import { ModeToggle } from '@/components/mode-toggle';
 import Link from 'next/link';
@@ -16,7 +16,7 @@ export const MainHeader = () => {
           <div className="flex flex-1 items-center justify-between gap-5">
             <Link href="/">
               <div className="cursor-pointer mb-0 text-4xl font-black text-center leading-none">
-                <Image src="/logo.svg" alt={''} width={50} height={50} />
+                <Image src="/logo.svg" alt={'Logo'} width={50} height={50} />
               </div>
             </Link>
             <Link href="/about" className="font-extrabold">
@@ -25,8 +25,15 @@ export const MainHeader = () => {
           </div>
           <div className="flex items-center gap-5">
             <div className="flex items-center gap-3">
-              <a href="https://github.com/xdevguild/buildo.dev" target="_blank">
+              <a
+                href="https://github.com/xdevguild/buildo.dev"
+                target="_blank"
+                title="GitHub"
+              >
                 <Github size={30} />
+              </a>
+              <a href="https://x.com/BuildoDev" target="_blank" title="Twitter">
+                <Twitter size={30} />
               </a>
             </div>
             <HeaderAddress />

@@ -41,7 +41,7 @@ export const HomeCard = ({ title, description, items }: HomeCardProps) => {
                 <div
                   className={`flex items-center text-sm font-medium leading-none ${
                     disabled
-                      ? 'cursor-default text-zinc-400 pt-1'
+                      ? 'cursor-default text-zinc-600 pt-1'
                       : 'cursor-pointer underline'
                   }`}
                   {...(!disabled && { onClick })}
@@ -53,7 +53,7 @@ export const HomeCard = ({ title, description, items }: HomeCardProps) => {
                 </div>
                 <TooltipProvider>
                   <Tooltip delayDuration={0}>
-                    <TooltipTrigger>
+                    <TooltipTrigger title="Help tooltip">
                       <HelpCircle size="18" />
                     </TooltipTrigger>
                     <TooltipContent className="max-w-xs" sideOffset={10}>

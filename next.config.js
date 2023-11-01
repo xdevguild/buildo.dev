@@ -12,6 +12,9 @@ const nextConfig = {
   eslint: {
     dirs: ['components', 'hooks', 'lib', 'app'],
   },
+  experimental: {
+    webpackBuildWorker: true,
+  },
 };
 
 module.exports = nextConfig;
