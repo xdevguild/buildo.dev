@@ -48,15 +48,14 @@ const About: NextPage = () => {
       </p>
       <Header label="Disclaimer" />
       <p className="mb-3">
-        The website and the tools which it provides are shared as they are.
-        There are no guarantees that everything works as it should. On the
-        mainnet use them at your own risk, only when you know what you are
-        doing!
+        The website and the tools it provides are shared as they are. There are
+        no guarantees that everything works as it should. On the mainnet, use
+        them at your own risk, only when you know what you are doing!
       </p>
       <p className="mb-3">
         I will not be liable to You or anyone else for any decision made or
         action taken in reliance on the information given by the Service or for
-        any consequential, special or similar damages, even if advised of the
+        any consequential, special, or similar damages, even if advised of the
         possibility of such damages.
       </p>
       <Header label="Privacy Policy" />
@@ -65,18 +64,18 @@ const About: NextPage = () => {
         {"don't"} use analytics tools and other tools that gather information
         about users. There are no cookies used.
       </p>
-      <Header label="High level Roadmap" />
+      <Header label="High-level Roadmap" />
       <p className="mb-3">
         Buildo.dev will get more functionalities related to smart contracts and
-        custom API interactions. It will get signed in account preview and other
-        statistics.
+        custom API interactions. It will get signed in the account preview and
+        other statistics.
       </p>
       <p className="mb-3">
-        The important part is to improve the UI/UX a lot, because some form can
+        The important part is to improve the UI/UX a lot because some forms can
         work better.
       </p>
       <p>
-        The timeline is not defined. There is more detailed{' '}
+        The timeline is not defined. There is a more detailed{' '}
         <a
           href="https://github.com/orgs/xdevguild/projects/3"
           target="_blank"
@@ -84,7 +83,7 @@ const About: NextPage = () => {
         >
           Kanban
         </a>{' '}
-        board. Where you can find more up-to-date development information.
+        board to find more up-to-date development information.
       </p>
       <Header label="Report issues and contribute" />
       <p className="mb-3">
@@ -99,10 +98,10 @@ const About: NextPage = () => {
         .
       </p>
       <p className="mb-3">
-        Please also let me know what operatins are missing here.
+        Please also let me know what operations need to be included here.
       </p>
       <p className="mb-3">
-        If you are interested, you can also join the{' '}
+        If you are interested, you can join the{' '}
         <a
           href="https://github.com/xdevguild"
           target="_blank"
