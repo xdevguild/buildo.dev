@@ -1,4 +1,8 @@
-import { ScTokenTransferArgs, TransactionParams } from '@useelven/core';
+import {
+  ScTokenTransferArgs,
+  TransactionParams,
+  MultiTokenTransferArgs,
+} from '@useelven/core';
 
 export type OperationContentProps = {
   close: () => void;
@@ -19,6 +23,7 @@ export type OperationContentProps = {
     endpointName,
     endpointArgs,
   }: ScTokenTransferArgs) => void;
+  multiTransfer?: ({ tokens, receiver }: MultiTokenTransferArgs) => void;
 };
 
 export interface CommonOpertationContentProps extends OperationContentProps {

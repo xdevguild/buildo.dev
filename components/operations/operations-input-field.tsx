@@ -13,7 +13,7 @@ import { Textarea } from '../ui/textarea';
 type OperationsInputFieldProps = {
   name: string;
   label: string;
-  description: string;
+  description?: string;
   placeholder?: string;
   type?: 'text' | 'number' | 'textarea';
 };

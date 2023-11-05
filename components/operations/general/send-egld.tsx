@@ -79,7 +79,7 @@ export const SendEgld = ({ triggerTx, close }: OperationContentProps) => {
                 name="address"
                 label="Address"
                 placeholder="Example: erd1..."
-                description="Please provide the address to where the EGLD will be sent"
+                description="Please provide the address to where the EGLD will be send"
               />
               <OperationsInputField
                 name="amount"

@@ -1,3 +1,7 @@
+### [0.7.0](https://github.com/xdevguild/buildo.dev/releases/tag/v0.7.0) (2023-11-05)
+- add multi token transfer operation (For now, one token of each type. It will be more dynamic in the following improvements)
+- update dependencies
+
 ### [0.6.1](https://github.com/xdevguild/buildo.dev/releases/tag/v0.6.1) (2023-11-01)
 - improve UI
 - update dependences

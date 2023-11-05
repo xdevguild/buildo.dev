@@ -124,7 +124,7 @@ export const Send = ({ transfer, close }: OperationContentProps) => {
                 name="address"
                 label="Address"
                 placeholder="Example: erd1..."
-                description="Please provide the address to where the amount will be sent"
+                description="Please provide the address to where the amount will be send"
               />
               <OperationsInputField
                 name="amount"

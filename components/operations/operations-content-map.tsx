@@ -1,5 +1,9 @@
 import { ReactElement } from 'react';
-import { ScTokenTransferArgs, TransactionParams } from '@useelven/core';
+import {
+  ScTokenTransferArgs,
+  TransactionParams,
+  MultiTokenTransferArgs,
+} from '@useelven/core';
 import { Issue } from '@/components/operations/fungible-tokens/issue';
 import { IssueNftSft } from '@/components/operations/common/issue-nft-sft';
 import { Issue as IssueMeta } from '@/components/operations/meta-tokens/issue';
@@ -33,6 +37,7 @@ import { AddNftUris } from '@/components/operations/non-fungible-tokens/add-nft-
 import { AddBurnQuantity } from '@/components/operations/common/add-burn-sft-meta-quantity';
 import { FreezeUnfreeze as FreezeUnfreezeNft } from '@/components/operations/non-fungible-tokens/freeze-unfreeze';
 import { Wipe as WipeNft } from '@/components/operations/non-fungible-tokens/wipe';
+import { MultiTransfer } from '@/components/operations/general/multi-transfer';
 
 export type OperationsContentMap = Record<
   string,
@@ -66,12 +71,14 @@ type OperationsContentMapProps = {
     endpointName,
     endpointArgs,
   }: ScTokenTransferArgs) => void;
+  multiTransfer?: ({ tokens, receiver }: MultiTokenTransferArgs) => void;
 };
 
 export const getOperationsContentsMap = ({
   triggerTx,
   transfer,
   closeDialog,
+  multiTransfer,
 }: OperationsContentMapProps): OperationsContentMap => ({
   fungibleEsdt: {
     issue: {
@@ -389,6 +396,13 @@ export const getOperationsContentsMap = ({
     herotag: {
       component: <Herotag triggerTx={triggerTx} close={closeDialog} />,
       additionalInfo: 'You have set a herotag for your account.',
+    },
+    multiTransfer: {
+      component: (
+        <MultiTransfer multiTransfer={multiTransfer} close={closeDialog} />
+      ),
+      additionalInfo: 'You have sent multiple ESDTs.',
+      tokenTransfer: true,
     },
   },
 });

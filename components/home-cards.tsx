@@ -8,7 +8,11 @@ import {
   OperationsStateDialogWrapper,
   DialogStateContentArgs,
 } from '@/components/operations/operations-status-dialog';
-import { useTokenTransfer, useTransaction } from '@useelven/core';
+import {
+  useMultiTokenTransfer,
+  useTokenTransfer,
+  useTransaction,
+} from '@useelven/core';
 import {
   getSmartContractTxError,
   getTokenIdAfterIssuingOrCreating,
@@ -24,6 +28,13 @@ export const HomeCards = () => {
     error: transferError,
     txResult: transferTxResult,
   } = useTokenTransfer();
+  const {
+    pending: multiTransferPending,
+    transfer: multiTransfer,
+    transaction: multiTransferTransaction,
+    error: multiTransferError,
+    txResult: multiTransferTxResult,
+  } = useMultiTokenTransfer();
 
   const [dialogOpen, setDialogOpen] = useState(false);
   const [dialogContentArgs, setDialogContentArgs] =
@@ -37,6 +48,7 @@ export const HomeCards = () => {
     triggerTx,
     closeDialog,
     transfer,
+    multiTransfer,
   });
 
   const setDialogState = (section: string, operation: string) => {
@@ -99,11 +111,12 @@ export const HomeCards = () => {
               },
             },
             {
-              title: 'Multi transfer (ready in the CLI)',
+              title: 'Multi transfer',
               description:
-                'You can transfer multiple ESDTs at once (FT, NFT, SFT, meta)',
-              onClick: () => {},
-              disabled: true,
+                'You can transfer multiple ESDTs at once (FT, NFT, SFT, Meta)',
+              onClick: () => {
+                setDialogState('general', 'multiTransfer');
+              },
             },
             {
               title: 'Deploy a custom smart contract',
@@ -518,15 +531,26 @@ export const HomeCards = () => {
       </OperationsDialog>
 
       <OperationsStateDialogWrapper
-        txPending={dialogContentArgs?.tokenTransfer ? transferPending : pending}
+        txPending={
+          dialogContentArgs?.tokenTransfer
+            ? transferPending || multiTransferPending
+            : pending
+        }
         txHash={
           dialogContentArgs?.tokenTransfer
-            ? transferTransaction?.getHash().toString()
+            ? transferTransaction?.getHash().toString() ||
+              multiTransferTransaction?.getHash().toString()
             : transaction?.getHash().toString()
         }
-        txError={dialogContentArgs?.tokenTransfer ? transferError : error}
+        txError={
+          dialogContentArgs?.tokenTransfer
+            ? transferError || multiTransferError
+            : error
+        }
         scError={getSmartContractTxError(
-          dialogContentArgs?.tokenTransfer ? transferTxResult : txResult
+          dialogContentArgs?.tokenTransfer
+            ? transferTxResult || multiTransferTxResult
+            : txResult
         )}
         operationsContentsMap={operationsContentsMap}
         setDialogContentArgs={setDialogContentArgs}
@@ -534,7 +558,9 @@ export const HomeCards = () => {
         tokenId={
           dialogContentArgs?.showTokenId &&
           getTokenIdAfterIssuingOrCreating(
-            dialogContentArgs?.tokenTransfer ? transferTxResult : txResult
+            dialogContentArgs?.tokenTransfer
+              ? transferTxResult || multiTransferTxResult
+              : txResult
           )
         }
       />
