@@ -31,6 +31,15 @@ const Home: NextPage = () => {
             Buildo Begins
           </a>{' '}
           CLI!
+          <br />
+          Check the{' '}
+          <a
+            href="https://chat.openai.com/g/g-GN0Zq0iZP-buildo-expert"
+            target="_blank"
+            className="underline"
+          >
+            Buildo Expert GPT Assistant
+          </a>
         </h3>
         <OperationsAuthCheck />
       </div>
