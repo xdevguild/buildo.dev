@@ -1,3 +1,9 @@
+### [0.8.0](https://github.com/xdevguild/buildo.dev/releases/tag/v0.8.0) (2023-11-18)
+- add burn for the NFTs (ESDTNFTBurn)
+- add freeze/unfreeze for SFTs and Meta tokens
+- add wipe for SFTs and Meta tokens
+- update dependencies
+
 ### [0.7.0](https://github.com/xdevguild/buildo.dev/releases/tag/v0.7.0) (2023-11-05)
 - add multi token transfer operation (For now, one token of each type. It will be more dynamic in the following improvements)
 - update dependencies

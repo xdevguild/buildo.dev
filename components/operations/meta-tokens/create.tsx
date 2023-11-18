@@ -125,7 +125,7 @@ export const Create = ({ triggerTx, close }: OperationContentProps) => {
                 name="initialQuantity"
                 label="Initial quantity"
                 placeholder="Example: 10000"
-                description="Please provide the initial quantity."
+                description="Please provide the initial quantity. Consider decimal places!"
               />
               <OperationsInputField
                 name="attributes"

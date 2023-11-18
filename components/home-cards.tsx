@@ -354,6 +354,13 @@ export const HomeCards = () => {
               },
             },
             {
+              title: 'Burn as owner',
+              description: 'The owner of an ESDT token may burn a single NFT.',
+              onClick: () => {
+                setDialogState('nonFungibleEsdt', 'burn');
+              },
+            },
+            {
               title: 'Send',
               description: 'Send NFT',
               onClick: () => {
@@ -421,9 +428,25 @@ export const HomeCards = () => {
               },
             },
             {
+              title: 'Freeze/Unfreeze',
+              description:
+                'The manager of an ESDT token may freeze the SFT held by a specific Account. As a consequence, no SFT can be transferred to or from the frozen Account',
+              onClick: () => {
+                setDialogState('semiFungibleEsdt', 'freezeUnfreeze');
+              },
+            },
+            {
+              title: 'Wipe',
+              description:
+                'The manager of an ESDT token may wipe out a single SFT held by a frozen Account.',
+              onClick: () => {
+                setDialogState('semiFungibleEsdt', 'wipe');
+              },
+            },
+            {
               title: 'Add/Burn quantity',
               description:
-                'A user that has the ESDTRoleNFTAddQuantity or ESDTRoleNFTBurn roles set for a given Semi-Fungible Token, can increase or decrease its quantity',
+                'A user that has the ESDTRoleNFTAddQuantity or ESDTRoleNFTBurn roles set for a given Semi-Fungible Token, can increase or decrease its quantity. The owner can also decrease the quantity.',
               onClick: () => {
                 setDialogState('semiFungibleEsdt', 'addBurnQuantity');
               },
@@ -434,13 +457,6 @@ export const HomeCards = () => {
               onClick: () => {
                 setDialogState('semiFungibleEsdt', 'send');
               },
-            },
-            {
-              title: 'rest operations',
-              description:
-                'You will be able to wipe, freeze, transfer roles, etc.',
-              onClick: () => {},
-              disabled: true,
             },
           ]}
         />
@@ -502,9 +518,25 @@ export const HomeCards = () => {
               },
             },
             {
+              title: 'Freeze/Unfreeze',
+              description:
+                'The manager of an ESDT token may freeze the meta ESDT held by a specific Account. As a consequence, no meta ESDT can be transferred to or from the frozen Account',
+              onClick: () => {
+                setDialogState('metaEsdt', 'freezeUnfreeze');
+              },
+            },
+            {
+              title: 'Wipe',
+              description:
+                'The manager of an ESDT token may wipe out a single meta ESDT held by a frozen Account.',
+              onClick: () => {
+                setDialogState('metaEsdt', 'wipe');
+              },
+            },
+            {
               title: 'Add/Burn quantity',
               description:
-                'A user that has the ESDTRoleNFTAddQuantity or ESDTRoleNFTBurn roles set for a given Meta Token, can increase or decrease its quantity',
+                'A user that has the ESDTRoleNFTAddQuantity or ESDTRoleNFTBurn roles set for a given Meta Token, can increase or decrease its quantity. The owner can also decrease the quantity.',
               onClick: () => {
                 setDialogState('metaEsdt', 'addBurnQuantity');
               },
@@ -515,13 +547,6 @@ export const HomeCards = () => {
               onClick: () => {
                 setDialogState('metaEsdt', 'send');
               },
-            },
-            {
-              title: 'rest operations',
-              description:
-                'You will be able to wipe, freeze, transfer roles, etc.',
-              onClick: () => {},
-              disabled: true,
             },
           ]}
         />

@@ -22,7 +22,7 @@ import { OperationsInputField } from '@/components/operations/operations-input-f
 import { OperationsSubmitButton } from '@/components/operations/operations-submit-button';
 import { useContext } from 'react';
 import { OperationsStateDialogContext } from '@/components/operations/operations-status-dialog';
-import { OperationContentProps } from '@/components/operations/operations-common-types';
+import { CommonOpertationContentProps } from '@/components/operations/operations-common-types';
 import { OperationsRadioGroup } from '@/components/operations/operations-radio-group';
 import BigNumber from 'bignumber.js';
 import { useConfig } from '@useelven/core';
@@ -40,7 +40,11 @@ const formSchema = z.object({
   accountAddressToFreeze: z.string().min(1, 'The field is required'),
 });
 
-export const FreezeUnfreeze = ({ triggerTx, close }: OperationContentProps) => {
+export const FreezeUnfreezeSingle = ({
+  triggerTx,
+  close,
+  tokenType,
+}: CommonOpertationContentProps) => {
   const { apiAddress } = useConfig();
   const { setOpen: setTxStatusDialogOpen } = useContext(
     OperationsStateDialogContext
@@ -119,20 +123,19 @@ export const FreezeUnfreeze = ({ triggerTx, close }: OperationContentProps) => {
   return (
     <>
       <DialogHeader className="p-8 pb-0">
-        <DialogTitle>
-          Freeze/Unfreeze a single non-fungible ESDT (NFT)
-        </DialogTitle>
+        <DialogTitle>Freeze/Unfreeze a single {tokenType} ESDT</DialogTitle>
         <DialogDescription>
-          The manager of an ESDT token may freeze the NFT held by a specific
-          Account. As a consequence, no NFT can be transferred to or from the
-          frozen Account. Freezing and unfreezing a single NFT of an Account are
-          operations designed to help token managers to comply with regulations.
+          The manager of an ESDT token may freeze the {tokenType} ESDT held by a
+          specific Account. As a consequence, no {tokenType} ESDT can be
+          transferred to or from the frozen Account. Freezing and unfreezing a
+          single {tokenType} ESDT of an Account are operations designed to help
+          token managers to comply with regulations.
         </DialogDescription>
       </DialogHeader>
       <div className="overflow-y-auto py-0 px-8">
         <Form {...form}>
           <form
-            id="freeze-unfreeze-form"
+            id="freeze-unfreeze-single-form"
             onSubmit={form.handleSubmit(onSubmit)}
             className="space-y-8"
           >
@@ -156,16 +159,14 @@ export const FreezeUnfreeze = ({ triggerTx, close }: OperationContentProps) => {
                 name="accountAddressToFreeze"
                 label="Account"
                 placeholder="Example: erd1..."
-                description={
-                  'Please provide the account that holds the NFT to freeze/unfreeze.'
-                }
+                description={`Please provide the account that holds the ${tokenType} ESDT to freeze/unfreeze.`}
               />
             </div>
           </form>
         </Form>
       </div>
       <DialogFooter className="py-4 px-8">
-        <OperationsSubmitButton formId="freeze-unfreeze-form" />
+        <OperationsSubmitButton formId="freeze-unfreeze-single-form" />
       </DialogFooter>
     </>
   );

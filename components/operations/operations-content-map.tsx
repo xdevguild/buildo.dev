@@ -12,6 +12,9 @@ import { ChangeProperties } from '@/components/operations/common/change-properti
 import { TransferCreationRole } from '@/components/operations/common/transfer-creation-role';
 import { StopCreation } from '@/components/operations/common/stop-creation';
 import { TransferOwnership } from '@/components/operations/common/transfer-ownership';
+import { FreezeUnfreezeSingle } from '@/components/operations/common/freeze-unfreeze-single';
+import { WipeSingle } from '@/components/operations/common/wipe-single';
+import { AddBurnQuantity } from '@/components/operations/common/add-burn-sft-meta-quantity';
 import { MintBurn } from '@/components/operations/fungible-tokens/mint-burn';
 import { PauseUnpause } from '@/components/operations/fungible-tokens/pause-unpause';
 import { FreezeUnfreeze } from '@/components/operations/fungible-tokens/freeze-unfreeze';
@@ -34,10 +37,8 @@ import { CheckAddressData } from '@/components/operations/utils-operations/check
 import { Herotag } from '@/components/operations/general/herotag';
 import { ChangeAttributes } from '@/components/operations/non-fungible-tokens/change-attributes';
 import { AddNftUris } from '@/components/operations/non-fungible-tokens/add-nft-uris';
-import { AddBurnQuantity } from '@/components/operations/common/add-burn-sft-meta-quantity';
-import { FreezeUnfreeze as FreezeUnfreezeNft } from '@/components/operations/non-fungible-tokens/freeze-unfreeze';
-import { Wipe as WipeNft } from '@/components/operations/non-fungible-tokens/wipe';
 import { MultiTransfer } from '@/components/operations/general/multi-transfer';
+import { BurnNft } from '@/components/operations/non-fungible-tokens/burn';
 
 export type OperationsContentMap = Record<
   string,
@@ -205,15 +206,29 @@ export const getOperationsContentsMap = ({
     },
     freezeUnfreeze: {
       component: (
-        <FreezeUnfreezeNft triggerTx={triggerTx} close={closeDialog} />
+        <FreezeUnfreezeSingle
+          triggerTx={triggerTx}
+          close={closeDialog}
+          tokenType="non-fungible"
+        />
       ),
       additionalInfo:
         'You have frozen/unfrozen a single non-fungible ESDT token in a specific account.',
     },
     wipe: {
-      component: <WipeNft triggerTx={triggerTx} close={closeDialog} />,
+      component: (
+        <WipeSingle
+          triggerTx={triggerTx}
+          close={closeDialog}
+          tokenType="non-fungible"
+        />
+      ),
       additionalInfo:
         'You have removed non-fungible ESDT (NFT) from a frozen account.',
+    },
+    burn: {
+      component: <BurnNft triggerTx={triggerTx} close={closeDialog} />,
+      additionalInfo: 'You have burned non-fungible ESDT (NFT).',
     },
     send: {
       component: <NftSend transfer={transfer} close={closeDialog} />,
@@ -279,6 +294,28 @@ export const getOperationsContentsMap = ({
       additionalInfo:
         'You have changed the properties of a semi-fungible ESDT.',
     },
+    freezeUnfreeze: {
+      component: (
+        <FreezeUnfreezeSingle
+          triggerTx={triggerTx}
+          close={closeDialog}
+          tokenType="semi-fungible"
+        />
+      ),
+      additionalInfo:
+        'You have frozen/unfrozen a single semi-fungible ESDT (SFT) token in a specific account.',
+    },
+    wipe: {
+      component: (
+        <WipeSingle
+          triggerTx={triggerTx}
+          close={closeDialog}
+          tokenType="semi-fungible"
+        />
+      ),
+      additionalInfo:
+        'You have removed semi-fungible ESDT (SFT) from a frozen account.',
+    },
     addBurnQuantity: {
       component: (
         <AddBurnQuantity
@@ -342,6 +379,27 @@ export const getOperationsContentsMap = ({
         />
       ),
       additionalInfo: 'You have changed the properties of a meta ESDT.',
+    },
+    freezeUnfreeze: {
+      component: (
+        <FreezeUnfreezeSingle
+          triggerTx={triggerTx}
+          close={closeDialog}
+          tokenType="meta"
+        />
+      ),
+      additionalInfo:
+        'You have frozen/unfrozen a single meta ESDT token in a specific account.',
+    },
+    wipe: {
+      component: (
+        <WipeSingle
+          triggerTx={triggerTx}
+          close={closeDialog}
+          tokenType="meta"
+        />
+      ),
+      additionalInfo: 'You have removed meta ESDT from a frozen account.',
     },
     addBurnQuantity: {
       component: (
