@@ -1,4 +1,4 @@
-### [0.9.0](https://github.com/xdevguild/buildo.dev/releases/tag/v0.9.0) (2023-11-18)
+### [0.9.0](https://github.com/xdevguild/buildo.dev/releases/tag/v0.9.0) (2023-11-29)
 - add verify signature operation
 - update dependencies
 

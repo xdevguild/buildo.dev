@@ -63,8 +63,9 @@ export const VerifySignature = () => {
       <DialogHeader className="p-8 pb-0">
         <DialogTitle>Verify signature</DialogTitle>
         <DialogDescription>
-          Verify signature of previously signed message. You need to provide the
-          message, signature and address with which you signed the message.
+          Verify the signature of a previously signed message. You need to
+          provide the message, signature, and address with which you signed the
+          message.
         </DialogDescription>
       </DialogHeader>
       <div className="overflow-y-auto py-0 px-8">
