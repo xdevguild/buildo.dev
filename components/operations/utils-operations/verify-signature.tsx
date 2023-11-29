@@ -116,7 +116,7 @@ export const VerifySignature = () => {
         )}
       </div>
       <DialogFooter className="py-4 px-8">
-        <OperationsSubmitButton formId="verify-signature-form" />
+        <OperationsSubmitButton formId="verify-signature-form" isPublic />
       </DialogFooter>
     </>
   );

@@ -124,7 +124,7 @@ export const DecodeTransaction = () => {
         )}
       </div>
       <DialogFooter className="py-4 px-8">
-        <OperationsSubmitButton formId="decode-transaction-form" />
+        <OperationsSubmitButton formId="decode-transaction-form" isPublic />
       </DialogFooter>
     </>
   );
