@@ -174,8 +174,9 @@ export const HomeCards = () => {
             {
               title: 'Verify a signature',
               description: 'Verify previously signed message',
-              onClick: () => {},
-              disabled: true,
+              onClick: () => {
+                setDialogState('utilities', 'verifySignature');
+              },
             },
             {
               title: 'Read account storage',

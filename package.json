@@ -1,6 +1,6 @@
 {
   "name": "buildo.dev",
-  "version": "0.8.0",
+  "version": "0.9.0",
   "author": "Julian Ćwirko <julian.io>",
   "license": "MIT",
   "homepage": "https://www.buildo.dev",
@@ -18,8 +18,9 @@
   },
   "dependencies": {
     "@hookform/resolvers": "3.3.2",
-    "@multiversx/sdk-core": "12.14.0",
+    "@multiversx/sdk-core": "12.15.0",
     "@multiversx/sdk-transaction-decoder": "1.0.2",
+    "@multiversx/sdk-wallet": "4.2.0",
     "@radix-ui/react-checkbox": "1.0.4",
     "@radix-ui/react-dialog": "1.0.5",
     "@radix-ui/react-dropdown-menu": "2.0.6",
@@ -37,7 +38,7 @@
     "class-variance-authority": "0.7.0",
     "clsx": "2.0.0",
     "keccak": "3.0.4",
-    "lucide-react": "0.292.0",
+    "lucide-react": "0.294.0",
     "next": "14.0.3",
     "next-themes": "0.2.1",
     "qrcode": "1.5.3",
@@ -51,18 +52,18 @@
   },
   "devDependencies": {
     "@types/keccak": "3.0.4",
-    "@types/node": "20.9.1",
+    "@types/node": "20.10.0",
     "@types/qrcode": "1.5.5",
-    "@types/react": "18.2.37",
-    "@types/react-dom": "18.2.15",
-    "@typescript-eslint/eslint-plugin": "6.11.0",
-    "@typescript-eslint/parser": "6.11.0",
+    "@types/react": "18.2.39",
+    "@types/react-dom": "18.2.17",
+    "@typescript-eslint/eslint-plugin": "6.13.1",
+    "@typescript-eslint/parser": "6.13.1",
     "autoprefixer": "10.4.16",
     "eslint": "8.54.0",
     "eslint-config-next": "14.0.3",
     "eslint-config-prettier": "9.0.0",
     "postcss": "8.4.31",
     "prettier": "3.1.0",
-    "typescript": "5.2.2"
+    "typescript": "5.3.2"
   }
 }

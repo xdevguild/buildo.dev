@@ -1,6 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   webpack: (config) => {
+    config.resolve.fallback = { fs: false };
     config.externals.push(
       'pino-pretty',
       'lokijs',

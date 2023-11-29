@@ -39,6 +39,7 @@ import { ChangeAttributes } from '@/components/operations/non-fungible-tokens/ch
 import { AddNftUris } from '@/components/operations/non-fungible-tokens/add-nft-uris';
 import { MultiTransfer } from '@/components/operations/general/multi-transfer';
 import { BurnNft } from '@/components/operations/non-fungible-tokens/burn';
+import { VerifySignature } from '@/components/operations/utils-operations/verify-signature';
 
 export type OperationsContentMap = Record<
   string,
@@ -429,6 +430,9 @@ export const getOperationsContentsMap = ({
     },
     checkAddressData: {
       component: <CheckAddressData />,
+    },
+    verifySignature: {
+      component: <VerifySignature />,
     },
   },
   general: {

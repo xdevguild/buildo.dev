@@ -1,3 +1,7 @@
+### [0.9.0](https://github.com/xdevguild/buildo.dev/releases/tag/v0.9.0) (2023-11-18)
+- add verify signature operation
+- update dependencies
+
 ### [0.8.0](https://github.com/xdevguild/buildo.dev/releases/tag/v0.8.0) (2023-11-18)
 - add burn for the NFTs (ESDTNFTBurn)
 - add freeze/unfreeze for SFTs and Meta tokens
