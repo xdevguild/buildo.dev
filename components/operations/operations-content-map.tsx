@@ -40,6 +40,7 @@ import { AddNftUris } from '@/components/operations/non-fungible-tokens/add-nft-
 import { MultiTransfer } from '@/components/operations/general/multi-transfer';
 import { BurnNft } from '@/components/operations/non-fungible-tokens/burn';
 import { VerifySignature } from '@/components/operations/utils-operations/verify-signature';
+import { SignMessage } from '@/components/operations/general/sign-message';
 
 export type OperationsContentMap = Record<
   string,
@@ -465,6 +466,9 @@ export const getOperationsContentsMap = ({
       ),
       additionalInfo: 'You have sent multiple ESDTs.',
       tokenTransfer: true,
+    },
+    signMessage: {
+      component: <SignMessage />,
     },
   },
 });

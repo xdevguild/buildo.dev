@@ -1,3 +1,6 @@
+### [0.10.0](https://github.com/xdevguild/buildo.dev/releases/tag/v0.10.0) (2023-12-01)
+- add sign a message operation
+
 ### [0.9.0](https://github.com/xdevguild/buildo.dev/releases/tag/v0.9.0) (2023-11-29)
 - add verify signature operation
 - update dependencies

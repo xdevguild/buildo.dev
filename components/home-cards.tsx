@@ -119,14 +119,15 @@ export const HomeCards = () => {
               },
             },
             {
-              title: 'Deploy a custom smart contract',
-              description: 'You can deploy any custom smart contract',
-              onClick: () => {},
-              disabled: true,
-            },
-            {
               title: 'Sign a message',
               description: 'You can sign any message using your wallet',
+              onClick: () => {
+                setDialogState('general', 'signMessage');
+              },
+            },
+            {
+              title: 'Deploy a custom smart contract',
+              description: 'You can deploy any custom smart contract',
               onClick: () => {},
               disabled: true,
             },

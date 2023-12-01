@@ -1,6 +1,6 @@
 {
   "name": "buildo.dev",
-  "version": "0.9.0",
+  "version": "0.10.0",
   "author": "Julian Ćwirko <julian.io>",
   "license": "MIT",
   "homepage": "https://www.buildo.dev",
@@ -31,7 +31,7 @@
     "@radix-ui/react-separator": "1.0.3",
     "@radix-ui/react-slot": "1.0.2",
     "@radix-ui/react-tooltip": "1.0.7",
-    "@useelven/core": "0.11.0",
+    "@useelven/core": "0.12.0",
     "axios": "1.6.2",
     "bignumber.js": "9.1.2",
     "buffer": "6.0.3",
@@ -52,7 +52,7 @@
   },
   "devDependencies": {
     "@types/keccak": "3.0.4",
-    "@types/node": "20.10.0",
+    "@types/node": "20.10.1",
     "@types/qrcode": "1.5.5",
     "@types/react": "18.2.39",
     "@types/react-dom": "18.2.17",
