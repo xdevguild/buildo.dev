@@ -6,13 +6,14 @@ import {
   DialogFooter,
   DialogHeader,
   DialogTitle,
+  DialogDescription,
 } from '@/components/ui/dialog';
 import { OperationsInputField } from '@/components/operations/operations-input-field';
 import { OperationsSubmitButton } from '@/components/operations/operations-submit-button';
-import { DialogDescription } from '@radix-ui/react-dialog';
 import { useSignMessage } from '@useelven/core';
 import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
 import { AlertCircle } from 'lucide-react';
+import { usePersistStorage } from '@/hooks/use-form-storage';
 
 const formSchema = z.object({
   message: z.string().min(1, 'The field is required'),
@@ -28,8 +29,19 @@ export const SignMessage = () => {
     },
   });
 
+  const { setItem } = usePersistStorage({
+    update: (message: string) => {
+      form.setValue('message', message);
+    },
+    storageItem: 'general-signMessage-message',
+  });
+
   const onSubmit = async ({ message }: z.infer<typeof formSchema>) => {
-    signMessage({ message });
+    setItem(message);
+    signMessage({
+      message,
+      options: { callbackUrl: '/?operation=general-signMessage' },
+    });
   };
 
   return (

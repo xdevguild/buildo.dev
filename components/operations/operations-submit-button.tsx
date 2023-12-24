@@ -7,6 +7,7 @@ type OperationsSubmitButtonProps = {
   label?: string;
   isPublic?: boolean;
   pending?: boolean;
+  disabled?: boolean;
 };
 
 type ButtonComponent = {
@@ -16,7 +17,7 @@ type ButtonComponent = {
   pending?: boolean;
 };
 
-const ButtonComponent = ({
+export const ButtonComponent = ({
   label,
   formId,
   disabled,
@@ -37,6 +38,7 @@ export const OperationsSubmitButton = ({
   label = 'Submit',
   isPublic = false,
   pending = false,
+  disabled = false,
 }: OperationsSubmitButtonProps) => {
   if (isPublic)
     return <ButtonComponent formId={formId} label={label} pending={pending} />;
@@ -52,7 +54,7 @@ export const OperationsSubmitButton = ({
         </div>
       }
     >
-      <ButtonComponent formId={formId} label={label} />
+      <ButtonComponent formId={formId} label={label} disabled={disabled} />
     </Authenticated>
   );
 };

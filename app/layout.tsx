@@ -46,7 +46,7 @@ export default function RootLayout({
         <ElvenInit />
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           <MainHeader />
-          <div className="container mx-auto min-h-[calc(100vh-281px)] lg:min-h-[calc(100vh-233px)] pb-20">
+          <div className="container mx-auto min-h-[calc(100vh-281px)] lg:min-h-[calc(100vh-234px)] pb-20">
             {children}
           </div>
           <MainFooter />

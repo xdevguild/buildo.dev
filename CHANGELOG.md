@@ -1,3 +1,10 @@
+### [0.11.0](https://github.com/xdevguild/buildo.dev/releases/tag/v0.11.0) (2023-12-25)
+- add experimental inscriptions operation (the txData schema may change) read more at [MultiversX Agora](https://agora.multiversx.com/t/a-guide-for-builders-on-how-to-properly-create-and-manage-inscriptions-on-multiversx/303)
+- fix sign message when using with redirections (web wallet)
+- fix sign message using Ledger
+- add possibility to open the operation dialog with URL link
+- update dependencies
+
 ### [0.10.0](https://github.com/xdevguild/buildo.dev/releases/tag/v0.10.0) (2023-12-01)
 - add sign a message operation
 

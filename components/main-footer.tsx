@@ -3,7 +3,7 @@ import Link from 'next/link';
 
 export const MainFooter = () => {
   return (
-    <div className="flex h-[120px] items-center">
+    <div className="flex h-[114px] items-center">
       <div className="flex flex-col items-center justify-center container mx-auto text-center text-sm">
         <div className="font-bold">
           Buildo is your companion through the MultiversX (v

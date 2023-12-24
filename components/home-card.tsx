@@ -13,6 +13,7 @@ import {
 } from '@/components/ui/tooltip';
 import { Fragment } from 'react';
 import { HelpCircle } from 'lucide-react';
+import Link from 'next/link';
 
 type HomeCardProps = {
   title: string;
@@ -22,6 +23,7 @@ type HomeCardProps = {
     description: string;
     onClick?: () => void;
     disabled?: boolean;
+    path?: string;
   }[];
 };
 
@@ -34,7 +36,7 @@ export const HomeCard = ({ title, description, items }: HomeCardProps) => {
       </CardHeader>
       <CardContent>
         <div className="mb-4 grid grid-cols-[25px_1fr] items-start pb-4 last:mb-0 last:pb-0">
-          {items.map(({ title, description, onClick, disabled }) => (
+          {items.map(({ title, description, onClick, disabled, path }) => (
             <Fragment key={title}>
               <span className="flex h-2 w-2 my-2 rounded-full bg-blue-700 dark:bg-blue-200" />
               <div className="flex flex-row items-center justify-between space-y-1">
@@ -44,12 +46,12 @@ export const HomeCard = ({ title, description, items }: HomeCardProps) => {
                       ? 'cursor-default text-zinc-600 pt-1'
                       : 'cursor-pointer underline'
                   }`}
-                  {...(!disabled && { onClick })}
+                  {...(!disabled && onClick && { onClick })}
                 >
                   {disabled && (
                     <span className="mr-2 font-extrabold text-xs">[Soon!]</span>
                   )}{' '}
-                  {title}
+                  {path ? <Link href={path}>{title}</Link> : title}
                 </div>
                 <TooltipProvider>
                   <Tooltip delayDuration={0}>

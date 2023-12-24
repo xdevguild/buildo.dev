@@ -16,6 +16,7 @@ type OperationsInputFieldProps = {
   description?: string;
   placeholder?: string;
   type?: 'text' | 'number' | 'textarea';
+  rows?: number;
 };
 
 export const OperationsInputField = ({
@@ -24,6 +25,7 @@ export const OperationsInputField = ({
   type = 'text',
   placeholder = '',
   description,
+  rows = 4,
 }: OperationsInputFieldProps) => {
   const { control } = useFormContext();
 
@@ -36,7 +38,7 @@ export const OperationsInputField = ({
           <FormLabel>{label}</FormLabel>
           <FormControl>
             {type === 'textarea' ? (
-              <Textarea placeholder={placeholder} {...field} rows={3} />
+              <Textarea placeholder={placeholder} {...field} rows={rows} />
             ) : (
               <Input type={type} placeholder={placeholder} {...field} />
             )}

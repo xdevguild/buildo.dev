@@ -2,7 +2,7 @@
 
 import { HomeCard } from '@/components/home-card';
 import { OperationsDialog } from '@/components/operations/operations-dialog';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   OperationsStateDialogProvider,
   OperationsStateDialogWrapper,
@@ -18,8 +18,10 @@ import {
   getTokenIdAfterIssuingOrCreating,
 } from '@/components/operations/utils';
 import { getOperationsContentsMap } from '@/components/operations/operations-content-map';
+import { useRouter } from 'next/navigation';
 
 export const HomeCards = () => {
+  const router = useRouter();
   const { pending, triggerTx, transaction, error, txResult } = useTransaction();
   const {
     pending: transferPending,
@@ -40,13 +42,16 @@ export const HomeCards = () => {
   const [dialogContentArgs, setDialogContentArgs] =
     useState<DialogStateContentArgs>();
 
-  const closeDialog = () => {
-    setDialogOpen(false);
+  const toggleDialog = (state: boolean) => {
+    setDialogOpen(state);
+    if (!state) {
+      router.push(`/`, { scroll: false });
+    }
   };
 
   const operationsContentsMap = getOperationsContentsMap({
     triggerTx,
-    closeDialog,
+    closeDialog: () => toggleDialog(false),
     transfer,
     multiTransfer,
   });
@@ -61,8 +66,36 @@ export const HomeCards = () => {
         JSON.stringify({ section, operation })
       );
     }
+    router.push(`/?operation=${section}-${operation}`, { scroll: false });
     setDialogOpen(true);
   };
+
+  // Handle browser history
+  useEffect(() => {
+    const manageDialog = () => {
+      const url = new URL(window.location.href);
+      const params = new URLSearchParams(url.search);
+      const operationParam = params.get('operation');
+      if (!operationParam) {
+        setDialogOpen(false);
+      } else {
+        const opertationSegments = operationParam.split('-');
+        const section = opertationSegments[0];
+        const operation = opertationSegments[1];
+
+        if (section && operation) {
+          setDialogContentArgs(operationsContentsMap[section][operation]);
+          setDialogOpen(true);
+        }
+      }
+    };
+    manageDialog();
+    window.addEventListener('popstate', manageDialog);
+    return () => {
+      window.removeEventListener('popstate', manageDialog);
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return (
     <OperationsStateDialogProvider>
@@ -124,6 +157,12 @@ export const HomeCards = () => {
               onClick: () => {
                 setDialogState('general', 'signMessage');
               },
+            },
+            {
+              title: 'Create Inscription (experimental)',
+              description:
+                'Send custom data on chain. You can then use it off-chain or for NFTs. (The structure of the data may change!)',
+              path: '/inscriptions/create',
             },
             {
               title: 'Deploy a custom smart contract',
@@ -553,10 +592,11 @@ export const HomeCards = () => {
           ]}
         />
       </div>
-      <OperationsDialog open={dialogOpen} onOpenChange={setDialogOpen}>
+      <OperationsDialog open={dialogOpen} onOpenChange={toggleDialog}>
         {dialogContentArgs?.component}
       </OperationsDialog>
 
+      {/* TODO: refactor, remove state dialog, reuse the operation dialog for states */}
       <OperationsStateDialogWrapper
         txPending={
           dialogContentArgs?.tokenTransfer
