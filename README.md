@@ -27,6 +27,9 @@ Please check the [About](https://www.buildo.dev/about) section to read more abou
 
 ### Development
 
+`npx buildo-begins@latest init` - from the list, choose Buildo.dev dapp.
+
+Or you can do this manually:
 - Clone the repository
 - Copy the `.env.example` to `.env.local` (modify if needed)
 - Run `npm run dev`
