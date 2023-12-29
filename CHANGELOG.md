@@ -1,3 +1,6 @@
+### [0.11.1](https://github.com/xdevguild/buildo.dev/releases/tag/v0.11.1) (2023-12-29)
+- update dependencies (some improvements in useElven)
+
 ### [0.11.0](https://github.com/xdevguild/buildo.dev/releases/tag/v0.11.0) (2023-12-25)
 - add experimental inscriptions operation (the txData schema may change) read more at [MultiversX Agora](https://agora.multiversx.com/t/a-guide-for-builders-on-how-to-properly-create-and-manage-inscriptions-on-multiversx/303)
 - fix sign message when using with redirections (web wallet)
