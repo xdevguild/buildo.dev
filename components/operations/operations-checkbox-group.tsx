@@ -14,10 +14,12 @@ type OperationsCheckboxGroupProps = {
   name: string;
   description: string;
   label: string;
+  disabledItems?: string[];
 };
 
 export const OperationsCheckboxGroup = ({
   items,
+  disabledItems,
   name,
   description,
   label,
@@ -39,6 +41,9 @@ export const OperationsCheckboxGroup = ({
               key={property.name}
               control={control}
               name={name}
+              disabled={
+                disabledItems ? disabledItems.includes(property.name) : false
+              }
               render={({ field }) => {
                 return (
                   <FormItem key={property.name}>
@@ -46,6 +51,7 @@ export const OperationsCheckboxGroup = ({
                       <FormControl>
                         <Checkbox
                           checked={field.value?.includes(property.name)}
+                          disabled={field.disabled}
                           onCheckedChange={(checked) => {
                             return checked
                               ? field.onChange([...field.value, property.name])

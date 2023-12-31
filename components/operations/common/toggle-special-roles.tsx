@@ -7,7 +7,7 @@ import {
   ContractCallPayloadBuilder,
   ContractFunction,
 } from '@multiversx/sdk-core';
-import { useForm } from 'react-hook-form';
+import { useForm, useWatch } from 'react-hook-form';
 
 import { zodResolver } from '@hookform/resolvers/zod';
 import { Form } from '@/components/ui/form';
@@ -27,11 +27,15 @@ import {
 } from '@/components/operations/constants';
 import { OperationsInputField } from '@/components/operations/operations-input-field';
 import { OperationsCheckboxGroup } from '@/components/operations/operations-checkbox-group';
-import { OperationsSubmitButton } from '../operations-submit-button';
-import { useContext } from 'react';
+import { OperationsSubmitButton } from '@/components/operations/operations-submit-button';
+import { useContext, useEffect, useState } from 'react';
 import { OperationsStateDialogContext } from '@/components/operations/operations-status-dialog';
 import { CommonOpertationContentProps } from '@/components/operations/operations-common-types';
-import { OperationsRadioGroup } from '../operations-radio-group';
+import { OperationsRadioGroup } from '@/components/operations/operations-radio-group';
+import { useCreatorTokens } from '@/hooks/use-creator-tokens';
+import { OperationsSelectField } from '@/components/operations/operations-select-field';
+import { useAccount } from '@useelven/core';
+import { useTokenRolesByAccount } from '@/hooks/use-token-roles-by-account';
 
 const formSchema = z.object({
   tokenId: z.string().min(1, 'The field is required'),
@@ -57,19 +61,53 @@ export const ToggleSpecialRoles = ({
   close,
   tokenType,
 }: CommonOpertationContentProps) => {
+  const { address } = useAccount();
   const { setOpen: setTxStatusDialogOpen } = useContext(
     OperationsStateDialogContext
   );
+
+  const [disabledRoles, setDisabledRoles] = useState<string[]>();
+
+  const { tokens } = useCreatorTokens<{ ticker: string }>({ tokenType });
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
       tokenId: '',
-      address: '',
+      address,
       type: 'set',
-      roles: ['ESDTRoleNFTCreate', 'ESDTRoleNFTBurn'],
+      roles: [],
     },
   });
+
+  const watchTokenId = useWatch({ name: 'tokenId', control: form.control });
+  const watchAddress = useWatch({ name: 'address', control: form.control });
+  const watchType = useWatch({ name: 'type', control: form.control });
+
+  const { roles } = useTokenRolesByAccount({
+    tokenId: watchTokenId,
+    tokenType,
+    address: watchAddress,
+  });
+
+  // Handle selected roles in form
+  useEffect(() => {
+    const roleNames = rolesMap[tokenType].map((role) => role.name);
+
+    if (!watchTokenId || !watchAddress) {
+      setDisabledRoles(roleNames);
+      return;
+    }
+
+    let disabledRoles: string[] = [];
+    if (watchType === 'set') {
+      disabledRoles = roles;
+    } else {
+      disabledRoles = roleNames.filter((role) => !roles?.includes(role));
+    }
+    setDisabledRoles(disabledRoles);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [roles, watchType, watchTokenId, watchAddress]);
 
   const onSubmit = ({
     tokenId,
@@ -109,6 +147,17 @@ export const ToggleSpecialRoles = ({
     close();
   };
 
+  const rolesDescription = () => {
+    if (!watchAddress || !watchTokenId) {
+      return 'Please set tokenId and address, then you can choose roles!';
+    }
+    return `Disabled ones are ${
+      form.getValues('type') === 'set'
+        ? "set, so you can't set them"
+        : "not set, so you can't unset them"
+    }.`;
+  };
+
   return (
     <>
       <DialogHeader className="p-8 pb-0">
@@ -137,23 +186,31 @@ export const ToggleSpecialRoles = ({
                 label="Operation type"
                 description="Please choose the type of the operation. Set or Unset."
               />
-              <OperationsInputField
+              <OperationsSelectField
                 name="tokenId"
                 label="Token id"
-                placeholder="Example: MyToken-23432"
-                description="Please provide your token id"
+                description="Example: MyToken-23432"
+                options={
+                  tokens
+                    ? tokens?.map((token) => ({
+                        value: token.ticker,
+                        label: token.ticker,
+                      }))
+                    : []
+                }
               />
               <OperationsInputField
                 name="address"
                 label="Address"
                 placeholder="Example: erd1..."
-                description="Please provide the address for which the roles will be assigned"
+                description="Please provide the address for which the roles will be assigned. By default your own."
               />
               <OperationsCheckboxGroup
                 items={rolesMap[tokenType]}
+                disabledItems={disabledRoles}
                 name="roles"
                 label="Roles"
-                description="Special roles available for basic ESDT tokens."
+                description={`Special roles available for basic ESDT tokens. ${rolesDescription()}`}
               />
             </div>
           </form>

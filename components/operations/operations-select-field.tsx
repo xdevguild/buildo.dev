@@ -10,11 +10,11 @@ import { useFormContext } from 'react-hook-form';
 import {
   Select,
   SelectContent,
+  SelectGroup,
   SelectItem,
   SelectTrigger,
   SelectValue,
 } from '@/components/ui/select';
-import { ScrollArea } from '@/components/ui/scroll-area';
 
 type OperationsSelectFieldProps = {
   name: string;
@@ -47,13 +47,13 @@ export const OperationsSelectField = ({
               </SelectTrigger>
             </FormControl>
             <SelectContent>
-              <ScrollArea className="h-[230px]" type="auto">
+              <SelectGroup className="overflow-y-auto max-h-[15rem]">
                 {options.map(({ value, label }) => (
                   <SelectItem key={value} value={value}>
                     {label}
                   </SelectItem>
                 ))}
-              </ScrollArea>
+              </SelectGroup>
             </SelectContent>
           </Select>
           <FormDescription className="text-xs">{description}</FormDescription>
