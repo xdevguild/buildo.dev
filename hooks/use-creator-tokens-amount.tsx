@@ -1,4 +1,3 @@
-import { isValidAddress } from '@/lib/is-valid-address';
 import { useAccount, useApiCall } from '@useelven/core';
 
 const useAccountTokensTypes = [
@@ -10,6 +9,7 @@ const useAccountTokensTypes = [
 
 export type AccountTokens = {
   tokenType: (typeof useAccountTokensTypes)[number];
+  onlyOwner?: boolean;
 };
 
 const typesMap = {
@@ -20,23 +20,28 @@ const typesMap = {
 };
 
 /**
- * Get tokens data where the logged-in address is an owner, even when the address has 0 amount.
+ * Get tokens data where the logged-in address is an owner, and the address has more than 0  amount.
  */
-export function useCreatorTokens<T extends Record<string, unknown>>({
+export function useCreatorTokensAmount<T extends Record<string, unknown>>({
   tokenType,
+  onlyOwner = true,
 }: AccountTokens) {
   const { address } = useAccount();
   const { data, fetch } = useApiCall<T[] | undefined>({
-    url: `/accounts/${address}/roles/${
+    url: `/accounts/${address}/${
       tokenType === 'fungible'
         ? 'tokens'
         : `collections?type=${typesMap[tokenType]}`
     }`,
-    autoInit: Boolean(typesMap[tokenType]) && isValidAddress(address),
+    autoInit: Boolean(address) && Boolean(typesMap[tokenType]),
   });
 
+  const tokens = onlyOwner
+    ? data?.filter((token) => token.owner === address)
+    : data;
+
   return {
-    tokens: data,
+    tokens,
     refetch: fetch,
   };
 }

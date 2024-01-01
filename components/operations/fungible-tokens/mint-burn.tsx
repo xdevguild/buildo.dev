@@ -18,13 +18,14 @@ import {
 } from '@/components/ui/dialog';
 import { specialOpertationsGasLimit } from '@/components/operations/constants';
 import { OperationsInputField } from '@/components/operations/operations-input-field';
-import { OperationsSubmitButton } from '../operations-submit-button';
+import { OperationsSubmitButton } from '@/components/operations/operations-submit-button';
 import { useContext } from 'react';
 import { OperationsStateDialogContext } from '@/components/operations/operations-status-dialog';
 import { OperationContentProps } from '@/components/operations/operations-common-types';
-import { OperationsRadioGroup } from '../operations-radio-group';
+import { OperationsRadioGroup } from '@/components/operations/operations-radio-group';
 import BigNumber from 'bignumber.js';
 import { useAccount } from '@useelven/core';
+import { OperationsTokenIdInput } from '@/components/operations/operations-tokenid-input';
 
 const formSchema = z.object({
   tokenId: z.string().min(1, 'The field is required'),
@@ -107,12 +108,7 @@ export const MintBurn = ({ triggerTx, close }: OperationContentProps) => {
                 label="Operation type"
                 description="Please choose the type of the operation. Mint or Burn."
               />
-              <OperationsInputField
-                name="tokenId"
-                label="Token id"
-                placeholder="Example: MyToken-23432"
-                description="Please provide your token id"
-              />
+              <OperationsTokenIdInput tokenType="fungible" />
               <OperationsInputField
                 name="supply"
                 label="Supply"

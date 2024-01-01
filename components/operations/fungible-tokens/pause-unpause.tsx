@@ -19,12 +19,13 @@ import {
   builtInSC,
   commonOpertationsGasLimit,
 } from '@/components/operations/constants';
-import { OperationsInputField } from '@/components/operations/operations-input-field';
-import { OperationsSubmitButton } from '../operations-submit-button';
-import { useContext } from 'react';
+import { OperationsSubmitButton } from '@/components/operations/operations-submit-button';
+import { useContext, useMemo } from 'react';
 import { OperationsStateDialogContext } from '@/components/operations/operations-status-dialog';
 import { OperationContentProps } from '@/components/operations/operations-common-types';
-import { OperationsRadioGroup } from '../operations-radio-group';
+import { OperationsRadioGroup } from '@/components/operations/operations-radio-group';
+import { OperationsSelectField } from '@/components/operations/operations-select-field';
+import { useCreatorTokensAmount } from '@/hooks/use-creator-tokens-amount';
 
 const formSchema = z.object({
   tokenId: z.string().min(1, 'The field is required'),
@@ -38,6 +39,13 @@ export const PauseUnpause = ({ triggerTx, close }: OperationContentProps) => {
     OperationsStateDialogContext
   );
 
+  const { tokens } = useCreatorTokensAmount<{
+    ticker: string;
+    isPaused: boolean;
+  }>({
+    tokenType: 'fungible',
+  });
+
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -45,6 +53,14 @@ export const PauseUnpause = ({ triggerTx, close }: OperationContentProps) => {
       type: 'pause',
     },
   });
+
+  const getTokens = useMemo(() => {
+    if (form.getValues('type') === 'pause') {
+      return tokens?.filter((token) => !token.isPaused);
+    }
+    return tokens?.filter((token) => token.isPaused);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [tokens]);
 
   const onSubmit = ({ tokenId, type }: z.infer<typeof formSchema>) => {
     const args: TypedValue[] = [BytesValue.fromUTF8(tokenId.trim())];
@@ -93,11 +109,18 @@ export const PauseUnpause = ({ triggerTx, close }: OperationContentProps) => {
                 label="Operation type"
                 description="Please choose the type of the operation. Pause or Unpause."
               />
-              <OperationsInputField
+              <OperationsSelectField
                 name="tokenId"
                 label="Token id"
-                placeholder="Example: MyToken-23432"
                 description="Please provide your token id"
+                options={
+                  getTokens
+                    ? getTokens?.map((token) => ({
+                        value: token.ticker,
+                        label: token.ticker,
+                      }))
+                    : []
+                }
               />
             </div>
           </form>

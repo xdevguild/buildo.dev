@@ -24,7 +24,8 @@ import { OperationsInputField } from '@/components/operations/operations-input-f
 import { OperationsSubmitButton } from '@/components/operations/operations-submit-button';
 import { useContext } from 'react';
 import { OperationsStateDialogContext } from '@/components/operations/operations-status-dialog';
-import { OperationContentProps } from '@/components/operations/operations-common-types';
+import { CommonOpertationContentProps } from '@/components/operations/operations-common-types';
+import { OperationsTokenIdInput } from '../operations-tokenid-input';
 
 const formSchema = z.object({
   addressWithRole: z.string().min(1, 'The field is required'),
@@ -35,7 +36,8 @@ const formSchema = z.object({
 export const TransferCreationRole = ({
   triggerTx,
   close,
-}: OperationContentProps) => {
+  tokenType,
+}: CommonOpertationContentProps) => {
   const { setOpen: setTxStatusDialogOpen } = useContext(
     OperationsStateDialogContext
   );
@@ -95,12 +97,7 @@ export const TransferCreationRole = ({
             className="space-y-8"
           >
             <div className="flex-1 overflow-auto p-1">
-              <OperationsInputField
-                name="tokenId"
-                label="Token id"
-                placeholder="Example: MyToken-23432"
-                description="Please provide your token id"
-              />
+              <OperationsTokenIdInput tokenType={tokenType} />
               <OperationsInputField
                 name="addressWithRole"
                 label="Current address with create role"

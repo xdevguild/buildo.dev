@@ -32,10 +32,9 @@ import { useContext, useEffect, useState } from 'react';
 import { OperationsStateDialogContext } from '@/components/operations/operations-status-dialog';
 import { CommonOpertationContentProps } from '@/components/operations/operations-common-types';
 import { OperationsRadioGroup } from '@/components/operations/operations-radio-group';
-import { useCreatorTokens } from '@/hooks/use-creator-tokens';
-import { OperationsSelectField } from '@/components/operations/operations-select-field';
 import { useAccount } from '@useelven/core';
 import { useTokenRolesByAccount } from '@/hooks/use-token-roles-by-account';
+import { OperationsTokenIdInput } from '@/components/operations/operations-tokenid-input';
 
 const formSchema = z.object({
   tokenId: z.string().min(1, 'The field is required'),
@@ -67,8 +66,6 @@ export const ToggleSpecialRoles = ({
   );
 
   const [disabledRoles, setDisabledRoles] = useState<string[]>();
-
-  const { tokens } = useCreatorTokens<{ ticker: string }>({ tokenType });
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -186,19 +183,7 @@ export const ToggleSpecialRoles = ({
                 label="Operation type"
                 description="Please choose the type of the operation. Set or Unset."
               />
-              <OperationsSelectField
-                name="tokenId"
-                label="Token id"
-                description="Example: MyToken-23432"
-                options={
-                  tokens
-                    ? tokens?.map((token) => ({
-                        value: token.ticker,
-                        label: token.ticker,
-                      }))
-                    : []
-                }
-              />
+              <OperationsTokenIdInput tokenType={tokenType} />
               <OperationsInputField
                 name="address"
                 label="Address"

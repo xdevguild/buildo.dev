@@ -58,7 +58,7 @@ export const esdtTokenProperties: TokenPropertyOrRole[] = [
 export const sftNftTokenProperties: TokenPropertyOrRole[] = [
   ...esdtTokenProperties,
   {
-    name: 'canTransferNFTCreateRole',
+    name: 'canTransferNftCreateRole',
     description: 'The token manager can transfer NFT/SFT/Meta creation role',
   },
 ];

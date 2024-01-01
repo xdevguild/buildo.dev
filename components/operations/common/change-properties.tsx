@@ -5,7 +5,7 @@ import {
   ContractCallPayloadBuilder,
   ContractFunction,
 } from '@multiversx/sdk-core';
-import { useForm } from 'react-hook-form';
+import { useForm, useWatch } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { Form } from '@/components/ui/form';
 import {
@@ -21,17 +21,22 @@ import {
   builtInSC,
   TokenPropertyOrRole,
 } from '@/components/operations/constants';
-import { OperationsInputField } from '@/components/operations/operations-input-field';
 import { OperationsCheckboxGroup } from '@/components/operations/operations-checkbox-group';
 import { OperationsSubmitButton } from '@/components/operations/operations-submit-button';
-import { useContext } from 'react';
+import { useContext, useEffect } from 'react';
 import { OperationsStateDialogContext } from '@/components/operations/operations-status-dialog';
 import { CommonOpertationContentProps } from '@/components/operations/operations-common-types';
+import { OperationsSelectField } from '@/components/operations/operations-select-field';
+import { useCreatorTokens } from '@/hooks/use-creator-tokens';
 
 const formSchema = z.object({
   tokenId: z.string().min(1, 'The field is required'),
   properties: z.array(z.string()),
 });
+
+type CreatorTokens = {
+  ticker: string;
+};
 
 const propertiesMap: Record<
   CommonOpertationContentProps['tokenType'],
@@ -52,13 +57,19 @@ export const ChangeProperties = ({
     OperationsStateDialogContext
   );
 
+  const { tokens } = useCreatorTokens<CreatorTokens>({
+    tokenType,
+  });
+
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
       tokenId: '',
-      properties: propertiesMap[tokenType].map((property) => property.name),
+      properties: [],
     },
   });
+
+  const watchTokenId = useWatch({ control: form.control, name: 'tokenId' });
 
   const onSubmit = ({ tokenId, properties }: z.infer<typeof formSchema>) => {
     const args: TypedValue[] = [BytesValue.fromUTF8(tokenId.trim())];
@@ -91,6 +102,21 @@ export const ChangeProperties = ({
     close();
   };
 
+  useEffect(() => {
+    const tokenData = tokens?.find((token) => token.ticker === watchTokenId);
+    if (tokenData) {
+      const properties = propertiesMap[tokenType].filter((property) => {
+        const key = property.name as keyof typeof tokenData;
+        return tokenData[key];
+      });
+      form.setValue(
+        'properties',
+        properties.map((property) => property.name)
+      );
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [tokenType, tokens, watchTokenId]);
+
   return (
     <>
       <DialogHeader className="p-8 pb-0">
@@ -109,11 +135,18 @@ export const ChangeProperties = ({
             className="space-y-8"
           >
             <div className="flex-1 overflow-auto p-1">
-              <OperationsInputField
+              <OperationsSelectField
                 name="tokenId"
                 label="Token id"
-                placeholder="Example: MyToken-23432"
                 description="Please provide your token id"
+                options={
+                  tokens
+                    ? tokens?.map((token) => ({
+                        value: token.ticker,
+                        label: token.ticker,
+                      }))
+                    : []
+                }
               />
               <OperationsCheckboxGroup
                 items={propertiesMap[tokenType]}
