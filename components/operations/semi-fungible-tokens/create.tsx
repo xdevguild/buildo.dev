@@ -18,11 +18,12 @@ import {
 } from '@/components/ui/dialog';
 import { nftSftCreateOpertationsGasLimit } from '@/components/operations/constants';
 import { OperationsInputField } from '@/components/operations/operations-input-field';
-import { OperationsSubmitButton } from '../operations-submit-button';
+import { OperationsSubmitButton } from '@/components/operations/operations-submit-button';
 import { useContext } from 'react';
 import { OperationsStateDialogContext } from '@/components/operations/operations-status-dialog';
 import { OperationContentProps } from '@/components/operations/operations-common-types';
 import { useAccount } from '@useelven/core';
+import { OperationsTokenIdInput } from '@/components/operations/operations-tokenid-input';
 
 const formSchema = z.object({
   collectionTokenId: z.string().min(1, 'The field is required'),
@@ -132,11 +133,9 @@ export const Create = ({ triggerTx, close }: OperationContentProps) => {
             className="space-y-8"
           >
             <div className="flex-1 overflow-auto p-1">
-              <OperationsInputField
-                name="collectionTokenId"
-                label="Collection Token Id"
-                placeholder="Example: MYTOK-dsa34"
-                description="Please provide the existing collection token id"
+              <OperationsTokenIdInput
+                tokenType="semi-fungible"
+                description="Please provide the existing collection token id. Choose from the list."
               />
               <OperationsInputField
                 name="name"

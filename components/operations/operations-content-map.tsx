@@ -120,7 +120,11 @@ export const getOperationsContentsMap = ({
     },
     transferOwnership: {
       component: (
-        <TransferOwnership triggerTx={triggerTx} close={closeDialog} />
+        <TransferOwnership
+          triggerTx={triggerTx}
+          close={closeDialog}
+          tokenType="fungible"
+        />
       ),
       additionalInfo: 'You have moved the ownership of a fungible ESDT.',
     },
@@ -171,19 +175,33 @@ export const getOperationsContentsMap = ({
     },
     transferCreationRole: {
       component: (
-        <TransferCreationRole triggerTx={triggerTx} close={closeDialog} />
+        <TransferCreationRole
+          triggerTx={triggerTx}
+          close={closeDialog}
+          tokenType="non-fungible"
+        />
       ),
       additionalInfo:
         'You have transfered the creation role for a non-fungible ESDT (NFT).',
     },
     stopCreation: {
-      component: <StopCreation triggerTx={triggerTx} close={closeDialog} />,
+      component: (
+        <StopCreation
+          triggerTx={triggerTx}
+          close={closeDialog}
+          tokenType="non-fungible"
+        />
+      ),
       additionalInfo:
         'You have stopped the creation of a non-fungible ESDT (NFT).',
     },
     transferOwnership: {
       component: (
-        <TransferOwnership triggerTx={triggerTx} close={closeDialog} />
+        <TransferOwnership
+          triggerTx={triggerTx}
+          close={closeDialog}
+          tokenType="non-fungible"
+        />
       ),
       additionalInfo:
         'You have moved the ownership of a non-fungible ESDT (NFT).',
@@ -268,19 +286,33 @@ export const getOperationsContentsMap = ({
     },
     transferCreationRole: {
       component: (
-        <TransferCreationRole triggerTx={triggerTx} close={closeDialog} />
+        <TransferCreationRole
+          triggerTx={triggerTx}
+          close={closeDialog}
+          tokenType="semi-fungible"
+        />
       ),
       additionalInfo:
         'You have transfered the creation role for a semi-fungible ESDT (SFT).',
     },
     stopCreation: {
-      component: <StopCreation triggerTx={triggerTx} close={closeDialog} />,
+      component: (
+        <StopCreation
+          triggerTx={triggerTx}
+          close={closeDialog}
+          tokenType="semi-fungible"
+        />
+      ),
       additionalInfo:
         'You have stopped the creation of a semi-fungible ESDT (SFT).',
     },
     transferOwnership: {
       component: (
-        <TransferOwnership triggerTx={triggerTx} close={closeDialog} />
+        <TransferOwnership
+          triggerTx={triggerTx}
+          close={closeDialog}
+          tokenType="semi-fungible"
+        />
       ),
       additionalInfo:
         'You have moved the ownership of a semi-fungible ESDT (SFT).',
@@ -358,17 +390,31 @@ export const getOperationsContentsMap = ({
     },
     transferCreationRole: {
       component: (
-        <TransferCreationRole triggerTx={triggerTx} close={closeDialog} />
+        <TransferCreationRole
+          triggerTx={triggerTx}
+          close={closeDialog}
+          tokenType="meta"
+        />
       ),
       additionalInfo: 'You have transfered the creation role for a meta ESDT.',
     },
     stopCreation: {
-      component: <StopCreation triggerTx={triggerTx} close={closeDialog} />,
+      component: (
+        <StopCreation
+          triggerTx={triggerTx}
+          close={closeDialog}
+          tokenType="meta"
+        />
+      ),
       additionalInfo: 'You have stopped the creation of a meta ESDT.',
     },
     transferOwnership: {
       component: (
-        <TransferOwnership triggerTx={triggerTx} close={closeDialog} />
+        <TransferOwnership
+          triggerTx={triggerTx}
+          close={closeDialog}
+          tokenType="meta"
+        />
       ),
       additionalInfo: 'You have moved the ownership of a meta ESDT.',
     },

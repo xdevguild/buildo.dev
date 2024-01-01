@@ -1,3 +1,7 @@
+### [0.12.0](https://github.com/xdevguild/buildo.dev/releases/tag/v0.12.0) (2024-01-01)
+- improve roles and properties selectors to make them less confusing
+- use tokenId selectors for fungible ids and collections
+
 ### [0.11.1](https://github.com/xdevguild/buildo.dev/releases/tag/v0.11.1) (2023-12-29)
 - update dependencies (some improvements in useElven)
 

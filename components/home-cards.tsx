@@ -170,12 +170,6 @@ export const HomeCards = () => {
               onClick: () => {},
               disabled: true,
             },
-            {
-              title: 'Guardians related operations',
-              description: 'Set/unset a guardian, guard an account',
-              onClick: () => {},
-              disabled: true,
-            },
           ]}
         />
         <HomeCard
@@ -217,6 +211,12 @@ export const HomeCards = () => {
               onClick: () => {
                 setDialogState('utilities', 'verifySignature');
               },
+            },
+            {
+              title: 'Hash functions',
+              description: 'Hash data using different hash functions',
+              onClick: () => {},
+              disabled: true,
             },
             {
               title: 'Read account storage',

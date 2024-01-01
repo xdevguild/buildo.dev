@@ -18,6 +18,7 @@ import { OperationContentProps } from '@/components/operations/operations-common
 import BigNumber from 'bignumber.js';
 import { ScTokenTransferType, useConfig } from '@useelven/core';
 import { transfersOperationsGasLimit } from '@/components/operations/constants';
+import { OperationsTokenIdAmountInput } from '../operations-tokenid-amount-input';
 
 const formSchema = z.object({
   tokenId: z.string().min(1, 'The field is required'),
@@ -114,11 +115,9 @@ export const Send = ({ transfer, close }: OperationContentProps) => {
             className="space-y-8"
           >
             <div className="flex-1 overflow-auto p-1">
-              <OperationsInputField
-                name="tokenId"
-                label="Token id"
-                placeholder="Example: MyToken-23432"
-                description="Please provide your token id"
+              <OperationsTokenIdAmountInput
+                tokenType="fungible"
+                onlyOwner={false}
               />
               <OperationsInputField
                 name="address"

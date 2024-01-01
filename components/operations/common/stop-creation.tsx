@@ -18,17 +18,21 @@ import {
   commonOpertationsGasLimit,
   builtInSC,
 } from '@/components/operations/constants';
-import { OperationsInputField } from '@/components/operations/operations-input-field';
 import { OperationsSubmitButton } from '@/components/operations/operations-submit-button';
 import { useContext } from 'react';
 import { OperationsStateDialogContext } from '@/components/operations/operations-status-dialog';
-import { OperationContentProps } from '@/components/operations/operations-common-types';
+import { CommonOpertationContentProps } from '@/components/operations/operations-common-types';
+import { OperationsTokenIdInput } from '../operations-tokenid-input';
 
 const formSchema = z.object({
   tokenId: z.string().min(1, 'The field is required!'),
 });
 
-export const StopCreation = ({ triggerTx, close }: OperationContentProps) => {
+export const StopCreation = ({
+  triggerTx,
+  close,
+  tokenType,
+}: CommonOpertationContentProps) => {
   const { setOpen: setTxStatusDialogOpen } = useContext(
     OperationsStateDialogContext
   );
@@ -77,12 +81,7 @@ export const StopCreation = ({ triggerTx, close }: OperationContentProps) => {
             className="space-y-8"
           >
             <div className="flex-1 overflow-auto p-1">
-              <OperationsInputField
-                name="tokenId"
-                label="Token id"
-                placeholder="Example: MyToken-23432"
-                description="Please provide your token id"
-              />
+              <OperationsTokenIdInput tokenType={tokenType} />
             </div>
           </form>
         </Form>

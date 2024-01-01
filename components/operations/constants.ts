@@ -19,6 +19,16 @@ export interface TokenPropertyOrRole {
 
 export const esdtTokenProperties: TokenPropertyOrRole[] = [
   {
+    name: 'canAddSpecialRoles',
+    description:
+      'The token manager can assign a specific role(s). Important for token management.',
+  },
+  {
+    name: 'canUpgrade',
+    description:
+      "The token manager may change these properties. Without it you won't be able to change these properties in the future",
+  },
+  {
     name: 'canFreeze',
     description:
       'The token manager may freeze the token balance in a specific account, preventing transfers to and from that account',
@@ -37,14 +47,6 @@ export const esdtTokenProperties: TokenPropertyOrRole[] = [
     name: 'canChangeOwner',
     description: 'Token management can be transferred to a different account',
   },
-  {
-    name: 'canUpgrade',
-    description: 'The token manager may change these properties',
-  },
-  {
-    name: 'canAddSpecialRoles',
-    description: 'The token manager can assign a specific role(s)',
-  },
   // TODO: not available yet
   // {
   //   name: 'canCreateMultiShard',
@@ -56,47 +58,48 @@ export const esdtTokenProperties: TokenPropertyOrRole[] = [
 export const sftNftTokenProperties: TokenPropertyOrRole[] = [
   ...esdtTokenProperties,
   {
-    name: 'canTransferNFTCreateRole',
-    description: 'the token manager can transfer NFT/SFT/Meta creation role',
+    name: 'canTransferNftCreateRole',
+    description: 'The token manager can transfer NFT/SFT/Meta creation role',
   },
 ];
 
 const ESDTTransferRole = {
   name: 'ESDTTransferRole',
   description:
-    'this role restricts transferability of the token only to the addresses that have the role set, while these addresses can send to any address',
+    'The role restricts transferability of the token only to the addresses that have the role set, while these addresses can send to any address.',
 };
 
 const ESDTRoleNFTCreate = {
   name: 'ESDTRoleNFTCreate',
-  description: 'this role allows one to create a new NFT/SFT/Meta',
+  description: 'The role allows one to create a new NFT/SFT/Meta',
 };
 
 const ESDTRoleNFTBurn = {
   name: 'ESDTRoleNFTBurn',
   description:
-    'this role allows one to burn quantity of a specific NFT/SFT/Meta',
+    'The role allows one to burn quantity of a specific NFT/SFT/Meta',
 };
 
 export const esdtTokenSpecialRoles: TokenPropertyOrRole[] = [
   {
     name: 'ESDTRoleLocalBurn',
-    description: 'an address with this role can burn tokens',
+    description: 'An address with this role can burn tokens',
   },
   {
     name: 'ESDTRoleLocalMint',
-    description: 'an address with this role can mint new tokens',
+    description: 'An address with this role can mint new tokens',
   },
   ESDTTransferRole,
 ];
 
 export const sftTokenSpecialRoles = [
   ESDTRoleNFTCreate,
-  ESDTRoleNFTBurn,
   {
     name: 'ESDTRoleNFTAddQuantity',
-    description: 'this role allows one to add quantity of a specific SFT',
+    description:
+      'The role allows one to add quantity of a specific SFT/Meta. Also required when creating.',
   },
+  ESDTRoleNFTBurn,
   ESDTTransferRole,
 ];
 
@@ -106,11 +109,11 @@ export const nftTokenSpecialRoles = [
   {
     name: 'ESDTRoleNFTUpdateAttributes',
     description:
-      'this role allows one to change the attributes of a specific NFT',
+      'The role allows one to change the attributes of a specific NFT',
   },
   {
     name: 'ESDTRoleNFTAddURI',
-    description: 'this role allows one add URIs for a specific NFT',
+    description: 'The role allows one add URIs for a specific NFT',
   },
   ESDTTransferRole,
 ];
