@@ -13,7 +13,11 @@ export const OperationsTokenIdInput = ({
   tokenType: CommonOpertationContentProps['tokenType'];
   description?: string;
 }) => {
-  const { tokens } = useCreatorTokens<{ ticker: string; isPaused: boolean }>({
+  const { tokens } = useCreatorTokens<{
+    ticker: string;
+    identifier: string;
+    isPaused: boolean;
+  }>({
     tokenType,
   });
 
@@ -25,7 +29,7 @@ export const OperationsTokenIdInput = ({
       options={
         tokens
           ? tokens?.map((token) => ({
-              value: token.ticker,
+              value: token.identifier,
               label: token.ticker,
             }))
           : []
