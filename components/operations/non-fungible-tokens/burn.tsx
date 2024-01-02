@@ -47,29 +47,29 @@ export const BurnNft = ({ triggerTx, close }: OperationContentProps) => {
   const onSubmit = async ({ tokenId }: z.infer<typeof formSchema>) => {
     try {
       // TODO: replace with useElven useApiCall when ready to handle such cases
-      const tokenOnNetwork = await axios.get<{ nonce: number; ticker: string }>(
-        `${apiAddress}/nfts/${tokenId.trim()}`,
-        {
-          headers: {
-            'Content-Type': 'application/json',
-            Accept: 'application/json',
-          },
-        }
-      );
+      const tokenOnNetwork = await axios.get<{
+        nonce: number;
+        collection: string;
+      }>(`${apiAddress}/nfts/${tokenId.trim()}`, {
+        headers: {
+          'Content-Type': 'application/json',
+          Accept: 'application/json',
+        },
+      });
 
       const nonce = tokenOnNetwork?.data?.nonce;
-      const collectionTicker = tokenOnNetwork?.data?.ticker;
+      const collectionId = tokenOnNetwork?.data?.collection;
 
       // TODO: show the error in the transaction status modal
-      if (!nonce || !collectionTicker) {
+      if (!nonce || !collectionId) {
         console.error(
-          "Can't read the nonce or/and collection ticker of the token, using MultiversX API!"
+          "Can't read the nonce or/and collection id of the token, using MultiversX API!"
         );
         return;
       }
 
       const args: TypedValue[] = [
-        BytesValue.fromUTF8(collectionTicker.trim()),
+        BytesValue.fromUTF8(collectionId.trim()),
         new BigUIntValue(new BigNumber(nonce)),
         new BigUIntValue(new BigNumber(1)),
       ];
@@ -91,7 +91,7 @@ export const BurnNft = ({ triggerTx, close }: OperationContentProps) => {
       close();
     } catch (e) {
       console.error(
-        "Can't read the nonce or/and collection ticker of the token, using MultiversX API!",
+        "Can't read the nonce or/and collection id of the token, using MultiversX API!",
         e
       );
     }

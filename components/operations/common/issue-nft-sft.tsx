@@ -116,7 +116,7 @@ export const IssueNftSft = ({
       <DialogHeader className="p-8 pb-0">
         <DialogTitle>Issue a {tokenType} ESDT (Collection)</DialogTitle>
         <DialogDescription>
-          Every token is assigned a unique identification code(ticker) and
+          Every token is assigned a unique identification code (ticker) and
           metadata that distinguishes it from every other token.
         </DialogDescription>
       </DialogHeader>

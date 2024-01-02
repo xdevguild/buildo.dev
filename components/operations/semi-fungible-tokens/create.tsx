@@ -26,7 +26,7 @@ import { useAccount } from '@useelven/core';
 import { OperationsTokenIdInput } from '@/components/operations/operations-tokenid-input';
 
 const formSchema = z.object({
-  collectionTokenId: z.string().min(1, 'The field is required'),
+  tokenId: z.string().min(1, 'The field is required'),
   name: z.string().min(1, 'The field is required'),
   initialQuantity: z
     .string()
@@ -60,7 +60,7 @@ export const Create = ({ triggerTx, close }: OperationContentProps) => {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      collectionTokenId: '',
+      tokenId: '',
       name: '',
       initialQuantity: '',
       royalties: '',
@@ -71,7 +71,7 @@ export const Create = ({ triggerTx, close }: OperationContentProps) => {
   });
 
   const onSubmit = ({
-    collectionTokenId,
+    tokenId,
     name,
     initialQuantity,
     royalties,
@@ -80,7 +80,7 @@ export const Create = ({ triggerTx, close }: OperationContentProps) => {
     hash,
   }: z.infer<typeof formSchema>) => {
     const args: TypedValue[] = [
-      BytesValue.fromUTF8(collectionTokenId.trim()),
+      BytesValue.fromUTF8(tokenId.trim()),
       new BigUIntValue(new Bignumber(initialQuantity.trim())),
       BytesValue.fromUTF8(name.trim()),
       new BigUIntValue(new Bignumber(Number(royalties) * 100 || 0)),

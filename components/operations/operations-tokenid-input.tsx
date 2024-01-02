@@ -9,24 +9,30 @@ import { useCreatorTokens } from '@/hooks/use-creator-tokens';
 export const OperationsTokenIdInput = ({
   tokenType,
   description = 'Please provide your token id',
+  name = 'tokenId',
 }: {
   tokenType: CommonOpertationContentProps['tokenType'];
   description?: string;
+  name?: string;
 }) => {
-  const { tokens } = useCreatorTokens<{ ticker: string; isPaused: boolean }>({
+  const { tokens } = useCreatorTokens<{
+    identifier: string;
+    collection: string;
+    isPaused: boolean;
+  }>({
     tokenType,
   });
 
   return (
     <OperationsSelectField
-      name="tokenId"
+      name={name}
       label="Token id"
       description={description}
       options={
         tokens
           ? tokens?.map((token) => ({
-              value: token.ticker,
-              label: token.ticker,
+              value: token.identifier || token.collection,
+              label: token.identifier || token.collection,
             }))
           : []
       }

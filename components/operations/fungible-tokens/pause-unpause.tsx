@@ -40,7 +40,8 @@ export const PauseUnpause = ({ triggerTx, close }: OperationContentProps) => {
   );
 
   const { tokens } = useCreatorTokensAmount<{
-    ticker: string;
+    identifier: string;
+    collection: string;
     isPaused: boolean;
   }>({
     tokenType: 'fungible',
@@ -116,8 +117,8 @@ export const PauseUnpause = ({ triggerTx, close }: OperationContentProps) => {
                 options={
                   getTokens
                     ? getTokens?.map((token) => ({
-                        value: token.ticker,
-                        label: token.ticker,
+                        value: token.identifier || token.collection,
+                        label: token.identifier || token.collection,
                       }))
                     : []
                 }

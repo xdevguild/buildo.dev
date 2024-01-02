@@ -51,30 +51,30 @@ export const Send = ({ transfer, close }: OperationContentProps) => {
   }: z.infer<typeof formSchema>) => {
     try {
       // TODO: replace with useElven useApiCall when ready to handle such cases
-      const sftOnNetwork = await axios.get<{ nonce: number; ticker: string }>(
-        `${apiAddress}/nfts/${tokenId.trim()}`,
-        {
-          headers: {
-            'Content-Type': 'application/json',
-            Accept: 'application/json',
-          },
-        }
-      );
+      const sftOnNetwork = await axios.get<{
+        nonce: number;
+        collection: string;
+      }>(`${apiAddress}/nfts/${tokenId.trim()}`, {
+        headers: {
+          'Content-Type': 'application/json',
+          Accept: 'application/json',
+        },
+      });
 
       const nonce = sftOnNetwork?.data?.nonce;
-      const collectionTicker = sftOnNetwork?.data?.ticker;
+      const collectionId = sftOnNetwork?.data?.collection;
 
       // TODO: show the error in the transaction status modal
-      if (!nonce || !collectionTicker) {
+      if (!nonce || !collectionId) {
         console.error(
-          "Can't read the nonce or/and collection ticker of the token, using MultiversX API!"
+          "Can't read the nonce or/and collection id of the token, using MultiversX API!"
         );
         return;
       }
 
       transfer?.({
         type: ScTokenTransferType.ESDTNFTTransfer,
-        tokenId: collectionTicker,
+        tokenId: collectionId,
         address: address.trim(),
         amount,
         gasLimit: transfersOperationsGasLimit,
@@ -86,7 +86,7 @@ export const Send = ({ transfer, close }: OperationContentProps) => {
       close();
     } catch (e) {
       console.error(
-        "Can't read the nonce or/and collection ticker of the token, using MultiversX API!",
+        "Can't read the nonce or/and collection id of the token, using MultiversX API!",
         e
       );
     }

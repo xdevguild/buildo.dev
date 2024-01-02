@@ -35,7 +35,8 @@ const formSchema = z.object({
 });
 
 type CreatorTokens = {
-  ticker: string;
+  identifier: string;
+  collection: string;
 };
 
 const propertiesMap: Record<
@@ -103,11 +104,17 @@ export const ChangeProperties = ({
   };
 
   useEffect(() => {
-    const tokenData = tokens?.find((token) => token.ticker === watchTokenId);
+    const tokenData = tokens?.find(
+      (token) => (token.identifier || token.collection) === watchTokenId
+    );
     if (tokenData) {
       const properties = propertiesMap[tokenType].filter((property) => {
-        const key = property.name as keyof typeof tokenData;
-        return tokenData[key];
+        const key = property.name;
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        // @ts-expect-error
+        return tokenData[
+          key === 'canTransferNFTCreateRole' ? 'canTransferNftCreateRole' : key
+        ];
       });
       form.setValue(
         'properties',
@@ -142,8 +149,8 @@ export const ChangeProperties = ({
                 options={
                   tokens
                     ? tokens?.map((token) => ({
-                        value: token.ticker,
-                        label: token.ticker,
+                        value: token.identifier || token.collection,
+                        label: token.identifier || token.collection,
                       }))
                     : []
                 }

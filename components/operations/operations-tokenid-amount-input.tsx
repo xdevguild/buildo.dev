@@ -14,7 +14,8 @@ export const OperationsTokenIdAmountInput = ({
   onlyOwner?: boolean;
 }) => {
   const { tokens } = useCreatorTokensAmount<{
-    ticker: string;
+    identifier: string;
+    collection: string;
     isPaused: boolean;
   }>({
     tokenType,
@@ -29,8 +30,8 @@ export const OperationsTokenIdAmountInput = ({
       options={
         tokens
           ? tokens?.map((token) => ({
-              value: token.ticker,
-              label: token.ticker,
+              value: token.identifier || token.collection,
+              label: token.identifier || token.collection,
             }))
           : []
       }
