@@ -55,7 +55,7 @@ export const Send = ({ transfer, close }: OperationContentProps) => {
       const metaEsdtOnNetwork = await axios.get<{
         decimals: number;
         nonce: number;
-        ticker: string;
+        collection: string;
       }>(`${apiAddress}/nfts/${tokenId.trim()}`, {
         headers: {
           'Content-Type': 'application/json',
@@ -65,19 +65,19 @@ export const Send = ({ transfer, close }: OperationContentProps) => {
 
       const decimals = metaEsdtOnNetwork?.data?.decimals;
       const nonce = metaEsdtOnNetwork?.data?.nonce;
-      const collectionTicker = metaEsdtOnNetwork?.data?.ticker;
+      const collectionId = metaEsdtOnNetwork?.data?.collection;
 
       // TODO: show the error in the transaction status modal
-      if (!nonce || !collectionTicker || !decimals) {
+      if (!nonce || !collectionId || !decimals) {
         console.error(
-          "Can't read the nonce, collection ticker and number of decimals of the token, using MultiversX API!"
+          "Can't read the nonce, collection id and number of decimals of the token, using MultiversX API!"
         );
         return;
       }
 
       transfer?.({
         type: ScTokenTransferType.ESDTNFTTransfer,
-        tokenId: collectionTicker,
+        tokenId: collectionId,
         address: address.trim(),
         amount: TokenTransfer.metaEsdtFromAmount(
           tokenId.trim(),
@@ -94,7 +94,7 @@ export const Send = ({ transfer, close }: OperationContentProps) => {
       close();
     } catch (e) {
       console.error(
-        "Can't read the nonce, collection ticker and number of decimals of the token, using MultiversX API!",
+        "Can't read the nonce, collection id and number of decimals of the token, using MultiversX API!",
         e
       );
     }
