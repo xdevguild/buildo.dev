@@ -38,7 +38,7 @@ Or you can do this manually:
 
 ### Also please check these tools
 - [Elven.js](https://www.elvenjs.com) - Compact MultiversX SDK for browsers (no build steps required)
-- [Elven Tools](https://www.elven.tools) - All about NFTs and SFTs on the MutliversX blockchain
+- [Elven Tools](https://www.elven.tools) - All about NFTs and SFTs on the MultiversX blockchain
 - [useElven](https://www.useElven.com) - React hooks for MultiversX dApps
 - [xDevGuild Repositories](https://github.com/orgs/xdevguild/repositories)
 
