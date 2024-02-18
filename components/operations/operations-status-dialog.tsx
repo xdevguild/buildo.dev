@@ -60,6 +60,7 @@ export type DialogStateContentArgs = {
   showTokenId?: boolean;
   additionalInfo?: string;
   tokenTransfer?: boolean;
+  multiTokenTransfer?: boolean;
 };
 
 type OperationsStateDialogWrapperProps = {

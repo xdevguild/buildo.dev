@@ -1,6 +1,5 @@
 import * as z from 'zod';
 import { useForm } from 'react-hook-form';
-import axios from 'axios';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { Form } from '@/components/ui/form';
 import {
@@ -14,26 +13,23 @@ import { OperationsSubmitButton } from '@/components/operations/operations-submi
 import { useContext } from 'react';
 import { OperationsStateDialogContext } from '@/components/operations/operations-status-dialog';
 import { OperationContentProps } from '@/components/operations/operations-common-types';
-import { ScTokenTransferType, useConfig } from '@useelven/core';
+import { ESDTType } from '@useelven/core';
 import { transfersOperationsGasLimit } from '@/components/operations/constants';
 import BigNumber from 'bignumber.js';
 
 const formSchema = z.object({
   tokenId: z.string().min(1, 'The field is required'),
   address: z.string().min(1, 'The field is required'),
-  amount: z
-    .string()
-    .refine(
-      (value) => !new BigNumber(value).isNaN(),
-      'Please provide a number, should be a proper SFT amount for that specific token, bigger than 0.'
-    ),
+  amount: z.string().refine((value) => {
+    const num = new BigNumber(value);
+    return num.isInteger() && num.isGreaterThan(0);
+  }, 'Please provide an integer number, should be a proper SFT amount for that specific token, bigger than 0.'),
 });
 
 export const Send = ({ transfer, close }: OperationContentProps) => {
   const { setOpen: setTxStatusDialogOpen } = useContext(
     OperationsStateDialogContext
   );
-  const { apiAddress } = useConfig();
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -49,47 +45,17 @@ export const Send = ({ transfer, close }: OperationContentProps) => {
     address,
     amount,
   }: z.infer<typeof formSchema>) => {
-    try {
-      // TODO: replace with useElven useApiCall when ready to handle such cases
-      const sftOnNetwork = await axios.get<{
-        nonce: number;
-        collection: string;
-      }>(`${apiAddress}/nfts/${tokenId.trim()}`, {
-        headers: {
-          'Content-Type': 'application/json',
-          Accept: 'application/json',
-        },
-      });
+    transfer?.({
+      type: ESDTType.SemiFungibleESDT,
+      tokenId,
+      receiver: address.trim(),
+      amount,
+      gasLimit: transfersOperationsGasLimit,
+    });
 
-      const nonce = sftOnNetwork?.data?.nonce;
-      const collectionId = sftOnNetwork?.data?.collection;
-
-      // TODO: show the error in the transaction status modal
-      if (!nonce || !collectionId) {
-        console.error(
-          "Can't read the nonce or/and collection id of the token, using MultiversX API!"
-        );
-        return;
-      }
-
-      transfer?.({
-        type: ScTokenTransferType.ESDTNFTTransfer,
-        tokenId: collectionId,
-        address: address.trim(),
-        amount,
-        gasLimit: transfersOperationsGasLimit,
-        nonce,
-      });
-
-      setTxStatusDialogOpen(true);
-      form.reset();
-      close();
-    } catch (e) {
-      console.error(
-        "Can't read the nonce or/and collection id of the token, using MultiversX API!",
-        e
-      );
-    }
+    setTxStatusDialogOpen(true);
+    form.reset();
+    close();
   };
 
   return (

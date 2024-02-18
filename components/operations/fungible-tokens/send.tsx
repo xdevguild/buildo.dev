@@ -1,7 +1,5 @@
 import * as z from 'zod';
 import { useForm } from 'react-hook-form';
-import axios from 'axios';
-import { TokenTransfer } from '@multiversx/sdk-core';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { Form } from '@/components/ui/form';
 import {
@@ -16,7 +14,7 @@ import { useContext } from 'react';
 import { OperationsStateDialogContext } from '@/components/operations/operations-status-dialog';
 import { OperationContentProps } from '@/components/operations/operations-common-types';
 import BigNumber from 'bignumber.js';
-import { ScTokenTransferType, useConfig } from '@useelven/core';
+import { ESDTType } from '@useelven/core';
 import { transfersOperationsGasLimit } from '@/components/operations/constants';
 import { OperationsTokenIdAmountInput } from '../operations-tokenid-amount-input';
 
@@ -35,8 +33,6 @@ export const Send = ({ transfer, close }: OperationContentProps) => {
   const { setOpen: setTxStatusDialogOpen } = useContext(
     OperationsStateDialogContext
   );
-  const { apiAddress } = useConfig();
-
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -51,50 +47,17 @@ export const Send = ({ transfer, close }: OperationContentProps) => {
     address,
     amount,
   }: z.infer<typeof formSchema>) => {
-    try {
-      // TODO: replace with useElven useApiCall when ready to handle such cases
-      const esdtOnNetwork = await axios.get<{ decimals: number }>(
-        `${apiAddress}/tokens/${tokenId.trim()}`,
-        {
-          headers: {
-            'Content-Type': 'application/json',
-            Accept: 'application/json',
-          },
-        }
-      );
+    transfer?.({
+      type: ESDTType.FungibleESDT,
+      tokenId: tokenId.trim(),
+      receiver: address.trim(),
+      amount: amount.trim(),
+      gasLimit: transfersOperationsGasLimit,
+    });
 
-      const decimals = esdtOnNetwork?.data?.decimals;
-
-      // TODO: show the error in the transaction status modal
-      if (!decimals) {
-        console.error(
-          "Can't read the decimal numbers of the token using MultiversX API!"
-        );
-        return;
-      }
-
-      transfer?.({
-        type: ScTokenTransferType.ESDTTransfer,
-        tokenId: tokenId.trim(),
-        address: address.trim(),
-        amount: TokenTransfer.fungibleFromAmount(
-          tokenId.trim(),
-          amount.trim(),
-          decimals
-        ).toString(),
-        gasLimit: transfersOperationsGasLimit,
-        value: 0,
-      });
-
-      setTxStatusDialogOpen(true);
-      form.reset();
-      close();
-    } catch (e) {
-      console.error(
-        "Can't read the decimal numbers of the token using MultiversX API!",
-        e
-      );
-    }
+    setTxStatusDialogOpen(true);
+    form.reset();
+    close();
   };
 
   return (

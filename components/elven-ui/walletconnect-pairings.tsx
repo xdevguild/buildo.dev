@@ -27,7 +27,7 @@ export const WalletConnectPairings: FC<WalletConnectPairingsProps> = ({
 
   return (
     <div className="flex flex-row justify-center">
-      <div className="w-4/5">
+      <div className="w-full sm:w-4/5">
         {pairings?.length > 0 && (
           <div className="text-base mt-4">Existing pairings:</div>
         )}

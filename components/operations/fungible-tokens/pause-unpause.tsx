@@ -117,8 +117,8 @@ export const PauseUnpause = ({ triggerTx, close }: OperationContentProps) => {
                 options={
                   getTokens
                     ? getTokens?.map((token) => ({
-                        value: token.identifier || token.collection,
-                        label: token.identifier || token.collection,
+                        value: token.identifier,
+                        label: token.identifier,
                       }))
                     : []
                 }

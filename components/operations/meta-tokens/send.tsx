@@ -1,6 +1,5 @@
 import * as z from 'zod';
 import { useForm } from 'react-hook-form';
-import axios from 'axios';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { Form } from '@/components/ui/form';
 import {
@@ -14,10 +13,9 @@ import { OperationsSubmitButton } from '@/components/operations/operations-submi
 import { useContext } from 'react';
 import { OperationsStateDialogContext } from '@/components/operations/operations-status-dialog';
 import { OperationContentProps } from '@/components/operations/operations-common-types';
-import { ScTokenTransferType, useConfig } from '@useelven/core';
+import { ESDTType } from '@useelven/core';
 import { transfersOperationsGasLimit } from '@/components/operations/constants';
 import BigNumber from 'bignumber.js';
-import { TokenTransfer } from '@multiversx/sdk-core/out';
 
 const formSchema = z.object({
   tokenId: z.string().min(1, 'The field is required'),
@@ -34,7 +32,6 @@ export const Send = ({ transfer, close }: OperationContentProps) => {
   const { setOpen: setTxStatusDialogOpen } = useContext(
     OperationsStateDialogContext
   );
-  const { apiAddress } = useConfig();
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -50,54 +47,17 @@ export const Send = ({ transfer, close }: OperationContentProps) => {
     address,
     amount,
   }: z.infer<typeof formSchema>) => {
-    try {
-      // TODO: replace with useElven useApiCall when ready to handle such cases
-      const metaEsdtOnNetwork = await axios.get<{
-        decimals: number;
-        nonce: number;
-        collection: string;
-      }>(`${apiAddress}/nfts/${tokenId.trim()}`, {
-        headers: {
-          'Content-Type': 'application/json',
-          Accept: 'application/json',
-        },
-      });
+    transfer?.({
+      type: ESDTType.MetaESDT,
+      tokenId,
+      receiver: address.trim(),
+      amount: amount.trim(),
+      gasLimit: transfersOperationsGasLimit,
+    });
 
-      const decimals = metaEsdtOnNetwork?.data?.decimals;
-      const nonce = metaEsdtOnNetwork?.data?.nonce;
-      const collectionId = metaEsdtOnNetwork?.data?.collection;
-
-      // TODO: show the error in the transaction status modal
-      if (!nonce || !collectionId || !decimals) {
-        console.error(
-          "Can't read the nonce, collection id and number of decimals of the token, using MultiversX API!"
-        );
-        return;
-      }
-
-      transfer?.({
-        type: ScTokenTransferType.ESDTNFTTransfer,
-        tokenId: collectionId,
-        address: address.trim(),
-        amount: TokenTransfer.metaEsdtFromAmount(
-          tokenId.trim(),
-          nonce,
-          amount.trim(),
-          decimals
-        ).toString(),
-        gasLimit: transfersOperationsGasLimit,
-        nonce,
-      });
-
-      setTxStatusDialogOpen(true);
-      form.reset();
-      close();
-    } catch (e) {
-      console.error(
-        "Can't read the nonce, collection id and number of decimals of the token, using MultiversX API!",
-        e
-      );
-    }
+    setTxStatusDialogOpen(true);
+    form.reset();
+    close();
   };
 
   return (

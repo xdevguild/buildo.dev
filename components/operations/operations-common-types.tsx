@@ -15,11 +15,9 @@ export type OperationContentProps = {
   transfer?: ({
     type,
     tokenId,
-    nonce,
     gasLimit,
-    address,
+    receiver,
     amount,
-    value,
     endpointName,
     endpointArgs,
   }: ScTokenTransferArgs) => void;
