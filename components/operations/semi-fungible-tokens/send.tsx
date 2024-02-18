@@ -20,12 +20,10 @@ import BigNumber from 'bignumber.js';
 const formSchema = z.object({
   tokenId: z.string().min(1, 'The field is required'),
   address: z.string().min(1, 'The field is required'),
-  amount: z
-    .string()
-    .refine(
-      (value) => !new BigNumber(value).isNaN(),
-      'Please provide a number, should be a proper SFT amount for that specific token, bigger than 0.'
-    ),
+  amount: z.string().refine((value) => {
+    const num = new BigNumber(value);
+    return num.isInteger() && num.isGreaterThan(0);
+  }, 'Please provide an integer number, should be a proper SFT amount for that specific token, bigger than 0.'),
 });
 
 export const Send = ({ transfer, close }: OperationContentProps) => {

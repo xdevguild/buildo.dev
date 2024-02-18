@@ -51,6 +51,7 @@ export type OperationsContentMap = Record<
       additionalInfo?: string;
       showTokenId?: boolean;
       tokenTransfer?: boolean;
+      multiTokenTransfer?: boolean;
     }
   >
 >;
@@ -509,7 +510,7 @@ export const getOperationsContentsMap = ({
         <MultiTransfer multiTransfer={multiTransfer} close={closeDialog} />
       ),
       additionalInfo: 'You have sent multiple ESDTs.',
-      tokenTransfer: true,
+      multiTokenTransfer: true,
     },
     signMessage: {
       component: <SignMessage />,

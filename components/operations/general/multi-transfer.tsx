@@ -33,12 +33,10 @@ const formSchema = z
         'Please provide a number, should be a proper Non-fungible ESDT amount. 1 in case of NFTs.'
       ),
     semiFungibleTokenId: z.string(),
-    semiFungibleAmount: z
-      .string()
-      .refine(
-        (value) => value === '' || !new BigNumber(value).isNaN(),
-        'Please provide a number, should be a proper Semi-fungible ESDT amount for that specific token, bigger than 0.'
-      ),
+    semiFungibleAmount: z.string().refine((value) => {
+      const num = new BigNumber(value);
+      return num.isInteger() && num.isGreaterThan(0);
+    }, 'Please provide an integer number, should be a proper SFT amount for that specific token, bigger than 0.'),
     metaTokenId: z.string(),
     metaAmount: z
       .string()

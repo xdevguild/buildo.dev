@@ -97,6 +97,32 @@ export const HomeCards = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  const getPendingVariant = () => {
+    if (dialogContentArgs?.tokenTransfer) return transferPending;
+    if (dialogContentArgs?.multiTokenTransfer) return multiTransferPending;
+    return pending;
+  };
+
+  const getTxHashVariant = () => {
+    if (dialogContentArgs?.tokenTransfer)
+      return transferTransaction?.getHash().toString();
+    if (dialogContentArgs?.multiTokenTransfer)
+      return multiTransferTransaction?.getHash().toString();
+    return transaction?.getHash().toString();
+  };
+
+  const getTxErrorVariant = () => {
+    if (dialogContentArgs?.tokenTransfer) return transferError;
+    if (dialogContentArgs?.multiTokenTransfer) return multiTransferError;
+    return error;
+  };
+
+  const getTxResultVariant = () => {
+    if (dialogContentArgs?.tokenTransfer) return transferTxResult;
+    if (dialogContentArgs?.multiTokenTransfer) return multiTransferTxResult;
+    return txResult;
+  };
+
   return (
     <OperationsStateDialogProvider>
       <div className="flex flex-row gap-6 flex-wrap mb-6">
@@ -598,37 +624,16 @@ export const HomeCards = () => {
 
       {/* TODO: refactor, remove state dialog, reuse the operation dialog for states */}
       <OperationsStateDialogWrapper
-        txPending={
-          dialogContentArgs?.tokenTransfer
-            ? transferPending || multiTransferPending
-            : pending
-        }
-        txHash={
-          dialogContentArgs?.tokenTransfer
-            ? transferTransaction?.getHash().toString() ||
-              multiTransferTransaction?.getHash().toString()
-            : transaction?.getHash().toString()
-        }
-        txError={
-          dialogContentArgs?.tokenTransfer
-            ? transferError || multiTransferError
-            : error
-        }
-        scError={getSmartContractTxError(
-          dialogContentArgs?.tokenTransfer
-            ? transferTxResult || multiTransferTxResult
-            : txResult
-        )}
+        txPending={getPendingVariant()}
+        txHash={getTxHashVariant()}
+        txError={getTxErrorVariant()}
+        scError={getSmartContractTxError(getTxResultVariant())}
         operationsContentsMap={operationsContentsMap}
         setDialogContentArgs={setDialogContentArgs}
         additionalInfo={dialogContentArgs?.additionalInfo}
         tokenId={
           dialogContentArgs?.showTokenId &&
-          getTokenIdAfterIssuingOrCreating(
-            dialogContentArgs?.tokenTransfer
-              ? transferTxResult || multiTransferTxResult
-              : txResult
-          )
+          getTokenIdAfterIssuingOrCreating(getTxResultVariant())
         }
       />
     </OperationsStateDialogProvider>
