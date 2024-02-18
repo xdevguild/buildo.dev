@@ -28,16 +28,17 @@ import { OperationsStateDialogContext } from '@/components/operations/operations
 import { CommonOpertationContentProps } from '@/components/operations/operations-common-types';
 import { OperationsSelectField } from '@/components/operations/operations-select-field';
 import { useCreatorTokens } from '@/hooks/use-creator-tokens';
+import { getTokenIdKey } from '@/lib/get-token-id';
 
 const formSchema = z.object({
   tokenId: z.string().min(1, 'The field is required'),
   properties: z.array(z.string()),
 });
 
-type CreatorTokens = {
+interface CreatorTokens extends Record<string, string> {
   identifier: string;
   collection: string;
-};
+}
 
 const propertiesMap: Record<
   CommonOpertationContentProps['tokenType'],
@@ -105,13 +106,11 @@ export const ChangeProperties = ({
 
   useEffect(() => {
     const tokenData = tokens?.find(
-      (token) => (token.identifier || token.collection) === watchTokenId
+      (token) => token[getTokenIdKey(tokenType)] === watchTokenId
     );
     if (tokenData) {
       const properties = propertiesMap[tokenType].filter((property) => {
         const key = property.name;
-        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-        // @ts-expect-error
         return tokenData[
           key === 'canTransferNFTCreateRole' ? 'canTransferNftCreateRole' : key
         ];
@@ -149,8 +148,8 @@ export const ChangeProperties = ({
                 options={
                   tokens
                     ? tokens?.map((token) => ({
-                        value: token.identifier || token.collection,
-                        label: token.identifier || token.collection,
+                        value: token[getTokenIdKey(tokenType)],
+                        label: token[getTokenIdKey(tokenType)],
                       }))
                     : []
                 }

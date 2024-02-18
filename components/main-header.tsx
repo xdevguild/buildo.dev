@@ -12,7 +12,7 @@ export const MainHeader = () => {
     <div className="sticky top-0">
       <HeaderChainIndicator />
       <div className="container mx-auto bg-[hsl(var(--background))]/60 backdrop-blur">
-        <div className="w-full flex items-center flex-wrap gap-5 py-5 flex-col sm:flex-row">
+        <div className="w-full flex items-center flex-wrap gap-5 py-5 flex-row">
           <div className="flex flex-1 items-center justify-between gap-5">
             <Link href="/">
               <div className="cursor-pointer mb-0 text-4xl font-black text-center leading-none">
@@ -24,7 +24,7 @@ export const MainHeader = () => {
             </Link>
           </div>
           <div className="flex items-center gap-5">
-            <div className="flex items-center gap-3">
+            <div className="hidden items-center gap-3 sm:flex">
               <a
                 href="https://github.com/xdevguild/buildo.dev"
                 target="_blank"

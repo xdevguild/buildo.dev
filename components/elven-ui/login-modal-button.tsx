@@ -59,10 +59,10 @@ export const LoginModalButton: FC<LoginModalButtonProps> = ({
         </Button>
       )}
       <DialogContent className="max-w-xs sm:max-w-lg bg-white dark:bg-[hsl(var(--background))] p-0">
-        <DialogHeader className="px-6 pt-6">
-          <DialogTitle>Connect your wallet</DialogTitle>
+        <DialogHeader className="px-8 pt-10">
+          <DialogTitle className="text-center">Connect your wallet</DialogTitle>
         </DialogHeader>
-        <div className="grid gap-4 overflow-y-auto max-h-[calc(100vh-160px)] p-6 pb-8">
+        <div className="grid gap-4 overflow-y-auto max-h-[calc(100vh-160px)] px-6 pb-12 pt-6">
           <LoginComponent />
         </div>
       </DialogContent>

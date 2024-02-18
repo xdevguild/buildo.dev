@@ -1,3 +1,9 @@
+### [0.13.0](https://github.com/xdevguild/buildo.dev/releases/tag/v0.13.0) (2024-02-18)
+- improve ui
+- adjust useElven usage
+- refactor tokens Ids
+- update dependencies
+
 ### [0.12.1](https://github.com/xdevguild/buildo.dev/releases/tag/v0.12.1) (2024-01-02)
 - important bugfix - the ticker is not always the same (API) as token/collection id
 - important bugfix - fix property name

@@ -14,7 +14,7 @@ import { useContext } from 'react';
 import { OperationsStateDialogContext } from '@/components/operations/operations-status-dialog';
 import { OperationContentProps } from '@/components/operations/operations-common-types';
 import BigNumber from 'bignumber.js';
-import { MultiTransferToken, MultiTransferTokenType } from '@useelven/core';
+import { MultiTransferToken, ESDTType } from '@useelven/core';
 
 const formSchema = z
   .object({
@@ -172,7 +172,7 @@ export const MultiTransfer = ({
 
     if (fungibleTokenId && fungibleAmount) {
       tokens.push({
-        type: MultiTransferTokenType.FungibleESDT,
+        type: ESDTType.FungibleESDT,
         amount: fungibleAmount,
         tokenId: fungibleTokenId,
       });
@@ -180,7 +180,7 @@ export const MultiTransfer = ({
 
     if (nonFungibleTokenId && nonFungibleAmount) {
       tokens.push({
-        type: MultiTransferTokenType.NonFungibleESDT,
+        type: ESDTType.NonFungibleESDT,
         amount: nonFungibleAmount,
         tokenId: nonFungibleTokenId,
       });
@@ -188,7 +188,7 @@ export const MultiTransfer = ({
 
     if (semiFungibleTokenId && semiFungibleAmount) {
       tokens.push({
-        type: MultiTransferTokenType.SemiFungibleESDT,
+        type: ESDTType.SemiFungibleESDT,
         amount: semiFungibleAmount,
         tokenId: semiFungibleTokenId,
       });
@@ -196,7 +196,7 @@ export const MultiTransfer = ({
 
     if (metaTokenId && metaAmount) {
       tokens.push({
-        type: MultiTransferTokenType.MetaESDT,
+        type: ESDTType.MetaESDT,
         amount: metaAmount,
         tokenId: metaTokenId,
       });

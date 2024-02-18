@@ -1,6 +1,7 @@
 import { CommonOpertationContentProps } from '@/components/operations/operations-common-types';
 import { OperationsSelectField } from '@/components/operations/operations-select-field';
 import { useCreatorTokens } from '@/hooks/use-creator-tokens';
+import { getTokenIdKey } from '@/lib/get-token-id';
 
 /**
  * Input for tokenId where the logged-in user is a token manager, and there is 0 or more amount.
@@ -31,8 +32,8 @@ export const OperationsTokenIdInput = ({
       options={
         tokens
           ? tokens?.map((token) => ({
-              value: token.identifier || token.collection,
-              label: token.identifier || token.collection,
+              value: token[getTokenIdKey(tokenType)],
+              label: token[getTokenIdKey(tokenType)],
             }))
           : []
       }
