@@ -1,7 +1,7 @@
 import {
-  ScTokenTransferArgs,
   TransactionParams,
-  MultiTokenTransferArgs,
+  useTokenTransfer,
+  useMultiTokenTransfer,
 } from '@useelven/core';
 
 export type OperationContentProps = {
@@ -12,16 +12,8 @@ export type OperationContentProps = {
     gasLimit,
     value,
   }: TransactionParams) => Promise<void>;
-  transfer?: ({
-    type,
-    tokenId,
-    gasLimit,
-    receiver,
-    amount,
-    endpointName,
-    endpointArgs,
-  }: ScTokenTransferArgs) => void;
-  multiTransfer?: ({ tokens, receiver }: MultiTokenTransferArgs) => void;
+  transfer?: ReturnType<typeof useTokenTransfer>['transfer'];
+  multiTransfer?: ReturnType<typeof useMultiTokenTransfer>['transfer'];
 };
 
 export interface CommonOpertationContentProps extends OperationContentProps {

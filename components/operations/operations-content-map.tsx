@@ -1,8 +1,8 @@
 import { ReactElement } from 'react';
 import {
-  ScTokenTransferArgs,
   TransactionParams,
-  MultiTokenTransferArgs,
+  useTokenTransfer,
+  useMultiTokenTransfer,
 } from '@useelven/core';
 import { Issue } from '@/components/operations/fungible-tokens/issue';
 import { IssueNftSft } from '@/components/operations/common/issue-nft-sft';
@@ -64,16 +64,8 @@ type OperationsContentMapProps = {
     gasLimit,
     value,
   }: TransactionParams) => Promise<void>;
-  transfer?: ({
-    type,
-    tokenId,
-    gasLimit,
-    receiver,
-    amount,
-    endpointName,
-    endpointArgs,
-  }: ScTokenTransferArgs) => void;
-  multiTransfer?: ({ tokens, receiver }: MultiTokenTransferArgs) => void;
+  transfer?: ReturnType<typeof useTokenTransfer>['transfer'];
+  multiTransfer?: ReturnType<typeof useMultiTokenTransfer>['transfer'];
 };
 
 export const getOperationsContentsMap = ({

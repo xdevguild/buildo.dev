@@ -20,7 +20,7 @@ export const Broadcast = ({
   const { loginMethod } = useLoginInfo();
   const { explorerAddress } = useConfig();
   const { triggerTx, pending, txResult, error } = useTransaction({
-    webWalletRedirectUrl: '/inscriptions/create',
+    callbackUrl: '/inscriptions/create',
   });
 
   const { storageValue: inscription } = usePersistStorage({
