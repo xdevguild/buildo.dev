@@ -1,1 +1,21 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="78.9449" height="78.9449" viewBox="0 0 20.8875 20.8875"><g transform="translate(-41.6773 -137.8857)"><circle cx="52.121" cy="148.3295" r="10.4437" style="fill:#000;stroke-width:2.71701;stroke-linecap:round;stroke-linejoin:round"/><text xml:space="preserve" x="44.7699" y="159.9244" style="font-style:normal;font-variant:normal;font-weight:400;font-stretch:normal;font-size:16.2107px;font-family:Chilanka;-inkscape-font-specification:&quot;Chilanka, Normal&quot;;font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#fff;stroke-width:2.22949;stroke-linecap:round;stroke-linejoin:round" transform="scale(1.045274 .956687)"><tspan x="44.7699" y="159.9244" style="font-style:normal;font-variant:normal;font-weight:400;font-stretch:normal;font-size:16.2107px;font-family:Dyuthi;-inkscape-font-specification:&quot;Dyuthi, Normal&quot;;font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#fff;stroke-width:2.22947">B</tspan></text></g></svg>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   viewBox="0 0 20.887 20.887"
+   version="1.1"
+   id="svg1"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <defs
+     id="defs1" />
+  <circle
+     cx="10.443998"
+     cy="10.442995"
+     r="10.444"
+     id="circle1" />
+  <path
+     style="font-size:16.211px;font-family:Dyuthi;-inkscape-font-specification:'Dyuthi, Normal';fill:#ffffff;stroke-width:2.229;stroke-linecap:round;stroke-linejoin:round"
+     d="M 9.2673753,11.315611 H 8.768697 q -0.1266484,0 -0.2295503,0.08707 -0.1029018,0.08707 -0.1029018,0.221635 v 2.469645 q 0,0.118733 0.094986,0.197888 0.094986,0.08707 0.2453814,0.08707 0.150395,0 0.8073838,0.0079 0.6490736,0.0079 1.2348226,-0.30079 0.585749,-0.308705 0.585749,-1.234822 0,-0.926117 -0.593665,-1.226907 -0.593664,-0.308705 -1.5435277,-0.308705 z M 8.4362449,7.7694543 V 9.835407 q 0,0.1187329 0.087071,0.197888 0.087071,0.07916 0.2374658,0.08707 h 0.419523 q 0.8786235,0 1.3377245,-0.284959 0.4591,-0.2928745 0.451185,-1.0131875 -0.02375,-1.3535552 -1.5751903,-1.3614708 -0.3799453,0 -0.6649043,0.015831 -0.2928745,0.015831 -0.2928745,0.2928745 z M 12.10905,10.508227 q 0,0.197888 0.102902,0.22955 1.693922,0.514509 1.686007,2.24801 0,1.226907 -1.084427,2.026375 -1.084428,0.799468 -4.1398213,0.807384 -0.079155,0 -1.5039502,0.05541 -0.419523,0.01583 -0.7519752,-0.269128 -0.3324521,-0.292875 -0.3324521,-0.74406 V 6.954155 q 0,-0.4274385 0.3087056,-0.7123975 0.3087055,-0.284959 0.720313,-0.284959 0.8390459,0.023747 2.0501216,0.039578 2.1609386,0.023747 3.1345486,0.5382559 1.258569,0.6094956 1.258569,1.9076422 0,1.2981465 -1.361471,1.9155578 -0.08707,0.04749 -0.08707,0.150395 z"
+     id="text1"
+     transform="scale(1.0452703,0.95669031)"
+     aria-label="B" />
+</svg>

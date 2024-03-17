@@ -126,6 +126,7 @@ export const HomeCards = () => {
   return (
     <OperationsStateDialogProvider>
       <div className="flex flex-row gap-6 flex-wrap mb-6">
+        {/* TODO: replace all onClicks with paths when all pages are ready */}
         <HomeCard
           title="General operations"
           description="General operations on the chain. Like managing accounts, herotags, multi-transfers, and interaction with custom smart contracts. New ones will be added over time."
@@ -133,9 +134,7 @@ export const HomeCards = () => {
             {
               title: 'Send EGLD',
               description: 'Send EGLD native tokens',
-              onClick: () => {
-                setDialogState('general', 'sendEgld');
-              },
+              path: '/general/send-egld',
             },
             {
               title: 'Claim developer rewards',

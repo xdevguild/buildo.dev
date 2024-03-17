@@ -7,7 +7,7 @@ import { HeaderAddress } from '@/components/header-address';
 import { HeaderChainIndicator } from '@/components/header-chain-indicator';
 import Image from 'next/image';
 
-export const MainHeader = () => {
+export const Header = () => {
   return (
     <div className="sticky top-0">
       <HeaderChainIndicator />

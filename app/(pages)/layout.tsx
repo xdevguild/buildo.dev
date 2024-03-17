@@ -1,11 +1,6 @@
-import { ThemeProvider } from '@/components/theme-provider';
-import './globals.css';
-
 import type { Metadata } from 'next';
-import { Inter } from 'next/font/google';
-import { ElvenInit } from '@/components/elven-ui/elven-init';
-
-const inter = Inter({ subsets: ['latin'] });
+import { Header } from '@/components/header';
+import { Footer } from '@/components/footer';
 
 const dappHostname = process.env.NEXT_PUBLIC_DAPP_HOST;
 const globalTitle = 'Buildo is your companion through the MultiversX';
@@ -13,6 +8,7 @@ const globalDescription =
   'Buildo.dev is a MultiversX app that helps with blockchain interactions, like issuing tokens and querying smart contracts.';
 const globalImage = `${dappHostname}/og-image.png`;
 
+// TODO: cleanup all the metadata for all pages
 export const metadata: Metadata = {
   metadataBase: new URL(dappHostname!),
   title: globalTitle,
@@ -39,13 +35,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
-      <body className={inter.className}>
-        <ElvenInit />
-        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-          {children}
-        </ThemeProvider>
-      </body>
-    </html>
+    <>
+      <Header />
+      <div className="container mx-auto min-h-[calc(100vh-281px)] lg:min-h-[calc(100vh-234px)] pb-20">
+        {children}
+      </div>
+      <Footer />
+    </>
   );
 }
