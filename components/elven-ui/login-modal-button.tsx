@@ -54,9 +54,11 @@ export const LoginModalButton: FC<LoginModalButtonProps> = ({
           Logout
         </Button>
       ) : (
-        <Button variant="outline" onClick={handleOpen}>
-          {isLoggingIn ? 'Connecting...' : 'Connect'}
-        </Button>
+        !isLoggingIn && (
+          <Button variant="outline" onClick={handleOpen}>
+            Connect
+          </Button>
+        )
       )}
       <DialogContent className="max-w-xs sm:max-w-lg bg-white dark:bg-[hsl(var(--background))] p-0">
         <DialogHeader className="px-8 pt-10">
