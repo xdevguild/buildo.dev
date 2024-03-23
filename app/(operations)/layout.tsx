@@ -36,8 +36,12 @@ export default function OperationsLayout({
     <div className="flex h-screen flex-col">
       <OperationHeader />
       <div className="flex flex-1 flex-col overflow-hidden sm:flex-row">
-        <main className="flex-1 overflow-auto p-3">{children}</main>
-        <nav className="order-first border-b border-border bg-zinc-100 p-3 dark:bg-zinc-900 sm:w-64 sm:border-b-0 sm:border-r">
+        <main className="flex-1 overflow-auto bg-zinc-50 px-6 dark:bg-zinc-900 sm:py-6">
+          <div className="container rounded-sm border border-border bg-white px-12 py-8 dark:bg-zinc-950">
+            {children}
+          </div>
+        </main>
+        <nav className="order-first bg-zinc-50 px-3 dark:bg-zinc-900 sm:w-48 sm:py-6">
           Navigation
         </nav>
       </div>
