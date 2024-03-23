@@ -73,7 +73,7 @@ export const StopCreation = ({
           forever by removing the only ESDTRoleNFTCreate role available.
         </DialogDescription>
       </DialogHeader>
-      <div className="overflow-y-auto py-0 px-8">
+      <div className="overflow-y-auto px-8 py-0">
         <Form {...form}>
           <form
             id="stop-creation-form"
@@ -86,7 +86,7 @@ export const StopCreation = ({
           </form>
         </Form>
       </div>
-      <DialogFooter className="py-4 px-8">
+      <DialogFooter className="px-8 py-4">
         <OperationsSubmitButton formId="stop-creation-form" />
       </DialogFooter>
     </>

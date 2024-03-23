@@ -125,7 +125,7 @@ export const HomeCards = () => {
 
   return (
     <OperationsStateDialogProvider>
-      <div className="flex flex-row gap-6 flex-wrap mb-6">
+      <div className="mb-6 flex flex-row flex-wrap gap-6">
         {/* TODO: replace all onClicks with paths when all pages are ready */}
         <HomeCard
           title="General operations"
@@ -252,7 +252,7 @@ export const HomeCards = () => {
           ]}
         />
       </div>
-      <div className="flex flex-row gap-6 flex-wrap">
+      <div className="flex flex-row flex-wrap gap-6">
         <HomeCard
           title="Fungible tokens"
           description="Operations related to Fungible ESDTs."

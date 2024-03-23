@@ -107,7 +107,7 @@ export const BurnNft = ({ triggerTx, close }: OperationContentProps) => {
           the balance of the address for that given token.
         </DialogDescription>
       </DialogHeader>
-      <div className="overflow-y-auto py-0 px-8">
+      <div className="overflow-y-auto px-8 py-0">
         <Form {...form}>
           <form
             id="burn-nft-form"
@@ -125,7 +125,7 @@ export const BurnNft = ({ triggerTx, close }: OperationContentProps) => {
           </form>
         </Form>
       </div>
-      <DialogFooter className="py-4 px-8">
+      <DialogFooter className="px-8 py-4">
         <OperationsSubmitButton formId="burn-nft-form" />
       </DialogFooter>
     </>

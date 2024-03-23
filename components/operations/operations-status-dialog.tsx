@@ -116,7 +116,7 @@ export const OperationsStateDialogWrapper = ({
     <Dialog open={open} onOpenChange={setOpen}>
       <DialogContent
         forceMount
-        className="flex flex-col max-w-[80%] md:max-w-[70%] lg:max-w-[40%] w-full max-h-[90%] p-0 gap-2"
+        className="flex max-h-[90%] w-full max-w-[80%] flex-col gap-2 p-0 md:max-w-[70%] lg:max-w-[40%]"
       >
         <DialogHeader className="p-8 pb-0">
           <DialogTitle className="flex items-center">
@@ -143,8 +143,8 @@ export const OperationsStateDialogWrapper = ({
               'Please try again. In case of transactions, always check the transaction status on the MultiversX Explorer.'}
           </DialogDescription>
         </DialogHeader>
-        <div className="overflow-y-auto py-0 px-8">
-          <div className="flex flex-col justify-start mb-8">
+        <div className="overflow-y-auto px-8 py-0">
+          <div className="mb-8 flex flex-col justify-start">
             {txPending && (
               <div className="mb-2">
                 <span className="text-sm font-bold">
@@ -154,7 +154,7 @@ export const OperationsStateDialogWrapper = ({
             )}
             {scError && (
               <div className="mb-2">
-                <div className="font-bold text-sm">
+                <div className="text-sm font-bold">
                   There was an error on the smart contract:
                 </div>
                 <div>
@@ -164,12 +164,12 @@ export const OperationsStateDialogWrapper = ({
             )}
             {txHash && (
               <div>
-                <div className="font-bold text-sm">Check in the explorer.</div>
+                <div className="text-sm font-bold">Check in the explorer.</div>
                 <div>
                   <a
                     href={`${explorerUrl}/transactions/${txHash}`}
                     target="_blank"
-                    className="underline text-sm break-all"
+                    className="break-all text-sm underline"
                   >
                     {txHash}
                   </a>
@@ -183,16 +183,16 @@ export const OperationsStateDialogWrapper = ({
               loginMethod !== LoginMethodsEnum.wallet &&
               loginMethod !== LoginMethodsEnum.xalias &&
               !activeGuardianAddress && (
-                <span className="text-sm mt-4 font-light">
+                <span className="mt-4 text-sm font-light">
                   {additionalInfo}
                 </span>
               )}
             {!txError && !scError && !txPending && tokenId && (
               <div>
-                <div className="text-sm mt-4 font-bold">
+                <div className="mt-4 text-sm font-bold">
                   Here is your token id: {tokenId}
                 </div>
-                <div className="text-sm mt-2">
+                <div className="mt-2 text-sm">
                   Please save it for further operations. After a while, you will
                   find it on the{' '}
                   <a
@@ -208,7 +208,7 @@ export const OperationsStateDialogWrapper = ({
             )}
             {txError && (
               <div>
-                <div className="font-bold text-sm">
+                <div className="text-sm font-bold">
                   You will find the error message below:
                 </div>
                 <div>

@@ -91,7 +91,7 @@ export const MintBurn = ({ triggerTx, close }: OperationContentProps) => {
           sending to the Metachain a transaction.
         </DialogDescription>
       </DialogHeader>
-      <div className="overflow-y-auto py-0 px-8">
+      <div className="overflow-y-auto px-8 py-0">
         <Form {...form}>
           <form
             id="mint-burn-form"
@@ -121,7 +121,7 @@ export const MintBurn = ({ triggerTx, close }: OperationContentProps) => {
           </form>
         </Form>
       </div>
-      <DialogFooter className="py-4 px-8">
+      <DialogFooter className="px-8 py-4">
         <OperationsSubmitButton formId="mint-burn-form" />
       </DialogFooter>
     </>

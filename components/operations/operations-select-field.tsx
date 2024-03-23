@@ -47,7 +47,7 @@ export const OperationsSelectField = ({
               </SelectTrigger>
             </FormControl>
             <SelectContent>
-              <SelectGroup className="overflow-y-auto max-h-[15rem]">
+              <SelectGroup className="max-h-[15rem] overflow-y-auto">
                 {options.map(({ value, label }) => (
                   <SelectItem key={value} value={value}>
                     {label}

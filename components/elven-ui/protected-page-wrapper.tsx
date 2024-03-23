@@ -22,7 +22,7 @@ export const ProtectedPageWrapper: FC<
 
   if (isLoggingIn) {
     return (
-      <div className="flex-1 flex-row items-center justify-center h-screen w-screen">
+      <div className="h-screen w-screen flex-1 flex-row items-center justify-center">
         <Spinner />
       </div>
     );

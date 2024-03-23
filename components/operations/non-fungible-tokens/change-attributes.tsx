@@ -125,7 +125,7 @@ export const ChangeAttributes = ({
           to pass them along with the new ones.
         </DialogDescription>
       </DialogHeader>
-      <div className="overflow-y-auto py-0 px-8">
+      <div className="overflow-y-auto px-8 py-0">
         <Form {...form}>
           <form
             id="nft-change-attributes-form"
@@ -149,7 +149,7 @@ export const ChangeAttributes = ({
           </form>
         </Form>
       </div>
-      <DialogFooter className="py-4 px-8">
+      <DialogFooter className="px-8 py-4">
         <OperationsSubmitButton formId="nft-change-attributes-form" />
       </DialogFooter>
     </>

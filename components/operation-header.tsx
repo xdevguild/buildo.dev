@@ -9,13 +9,13 @@ import Image from 'next/image';
 
 export const OperationHeader = () => {
   return (
-    <div className="sticky top-0">
+    <div>
       <HeaderChainIndicator />
-      <div className="bg-[hsl(var(--background))]/60 backdrop-blur">
-        <div className="w-full flex items-center flex-wrap gap-5 py-2 px-3 flex-row">
+      <div>
+        <div className="flex w-full flex-row flex-wrap items-center gap-5 px-3 py-2">
           <div className="flex flex-1 items-center justify-between gap-5">
             <Link href="/">
-              <div className="cursor-pointer mb-0 text-4xl font-black text-center leading-none">
+              <div className="mb-0 cursor-pointer text-center text-4xl font-black leading-none">
                 <Image src="/logo.svg" alt={'Logo'} width={30} height={30} />
               </div>
             </Link>

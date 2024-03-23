@@ -83,18 +83,18 @@ export const Broadcast = ({
       </div>
       <div className="mb-3">
         {pending && (
-          <div className="font-bold flex items-center gap-3">
+          <div className="flex items-center gap-3 font-bold">
             <Spinner size={20} /> Transaction pending (confirmation through{' '}
             {getSigningProviderName()})...
           </div>
         )}
         {!pending && inscription && (
-          <code className="bg-slate-100 dark:bg-slate-800 dark:text-slate-50 py-4 px-6 block max-h-96 overflow-auto break-all">
+          <code className="block max-h-96 overflow-auto break-all bg-slate-100 px-6 py-4 dark:bg-slate-800 dark:text-slate-50">
             {inscription}
           </code>
         )}
       </div>
-      <div className="flex flex-col-reverse sm:flex-row sm:justify-end sm:space-x-2 py-4 px-8">
+      <div className="flex flex-col-reverse px-8 py-4 sm:flex-row sm:justify-end sm:space-x-2">
         {txResult?.isCompleted || error ? (
           <Button size="sm" onClick={() => setNextStep(false)}>
             {error ? 'Try again' : 'Sign more!'}

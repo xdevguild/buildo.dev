@@ -120,7 +120,7 @@ export const IssueNftSft = ({
           metadata that distinguishes it from every other token.
         </DialogDescription>
       </DialogHeader>
-      <div className="overflow-y-auto py-0 px-8">
+      <div className="overflow-y-auto px-8 py-0">
         <Form {...form}>
           <form
             id="sft-nft-issue-form"
@@ -152,7 +152,7 @@ export const IssueNftSft = ({
           </form>
         </Form>
       </div>
-      <DialogFooter className="py-4 px-8">
+      <DialogFooter className="px-8 py-4">
         <OperationsSubmitButton formId="sft-nft-issue-form" />
       </DialogFooter>
     </>

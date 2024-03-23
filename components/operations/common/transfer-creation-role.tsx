@@ -89,7 +89,7 @@ export const TransferCreationRole = ({
           canTransferNFTCreateRole property of the token is set to true.
         </DialogDescription>
       </DialogHeader>
-      <div className="overflow-y-auto py-0 px-8">
+      <div className="overflow-y-auto px-8 py-0">
         <Form {...form}>
           <form
             id="transfer-creation-role-form"
@@ -114,7 +114,7 @@ export const TransferCreationRole = ({
           </form>
         </Form>
       </div>
-      <DialogFooter className="py-4 px-8">
+      <DialogFooter className="px-8 py-4">
         <OperationsSubmitButton formId="transfer-creation-role-form" />
       </DialogFooter>
     </>

@@ -12,10 +12,10 @@ export const Header = () => {
     <div className="sticky top-0">
       <HeaderChainIndicator />
       <div className="container mx-auto bg-[hsl(var(--background))]/60 backdrop-blur">
-        <div className="w-full flex items-center flex-wrap gap-5 py-5 flex-row">
+        <div className="flex w-full flex-row flex-wrap items-center gap-5 py-5">
           <div className="flex flex-1 items-center justify-between gap-5">
             <Link href="/">
-              <div className="cursor-pointer mb-0 text-4xl font-black text-center leading-none">
+              <div className="mb-0 cursor-pointer text-center text-4xl font-black leading-none">
                 <Image src="/logo.svg" alt={'Logo'} width={50} height={50} />
               </div>
             </Link>

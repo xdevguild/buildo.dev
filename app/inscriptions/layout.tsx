@@ -30,8 +30,8 @@ export default function InscriptionsLayout({
   children: React.ReactNode;
 }) {
   return (
-    <div className="flex flex-col space-y-1.5 text-center sm:text-left pt-8 sm:p-8 pb-0">
-      <div className="px-0 sm:px-8 mb-3">
+    <div className="flex flex-col space-y-1.5 pb-0 pt-8 text-center sm:p-8 sm:text-left">
+      <div className="mb-3 px-0 sm:px-8">
         <h1 className="mb-3 text-lg font-semibold leading-none tracking-tight">
           Inscriptions
         </h1>

@@ -37,7 +37,7 @@ export default function RootLayout({
   return (
     <>
       <Header />
-      <div className="container mx-auto min-h-[calc(100vh-281px)] lg:min-h-[calc(100vh-234px)] pb-20">
+      <div className="container mx-auto min-h-[calc(100vh-281px)] pb-20 lg:min-h-[calc(100vh-234px)]">
         {children}
       </div>
       <Footer />

@@ -77,7 +77,7 @@ export const ChangeOwnerAddress = ({
           {"'"}s owner when a new owner is desired.
         </DialogDescription>
       </DialogHeader>
-      <div className="overflow-y-auto py-0 px-8">
+      <div className="overflow-y-auto px-8 py-0">
         <Form {...form}>
           <form
             id="change-owner-form"
@@ -101,7 +101,7 @@ export const ChangeOwnerAddress = ({
           </form>
         </Form>
       </div>
-      <DialogFooter className="py-4 px-8">
+      <DialogFooter className="px-8 py-4">
         <OperationsSubmitButton formId="change-owner-form" />
       </DialogFooter>
     </>

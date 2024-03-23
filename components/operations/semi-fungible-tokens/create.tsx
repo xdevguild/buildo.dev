@@ -125,7 +125,7 @@ export const Create = ({ triggerTx, close }: OperationContentProps) => {
           assigned (minimum 1).
         </DialogDescription>
       </DialogHeader>
-      <div className="overflow-y-auto py-0 px-8">
+      <div className="overflow-y-auto px-8 py-0">
         <Form {...form}>
           <form
             id="sft-create-form"
@@ -178,7 +178,7 @@ export const Create = ({ triggerTx, close }: OperationContentProps) => {
           </form>
         </Form>
       </div>
-      <DialogFooter className="py-4 px-8">
+      <DialogFooter className="px-8 py-4">
         <OperationsSubmitButton formId="sft-create-form" />
       </DialogFooter>
     </>

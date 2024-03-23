@@ -121,7 +121,7 @@ export const AccountStorage = ({ triggerTx, close }: OperationContentProps) => {
           use cases. A wallet owner can store key-value pairs.
         </DialogDescription>
       </DialogHeader>
-      <div className="overflow-y-auto py-0 px-8">
+      <div className="overflow-y-auto px-8 py-0">
         <Form {...form}>
           <form
             id="account-storage-form"
@@ -140,7 +140,7 @@ export const AccountStorage = ({ triggerTx, close }: OperationContentProps) => {
           </form>
         </Form>
       </div>
-      <DialogFooter className="py-4 px-8">
+      <DialogFooter className="px-8 py-4">
         <OperationsSubmitButton formId="account-storage-form" />
       </DialogFooter>
     </>

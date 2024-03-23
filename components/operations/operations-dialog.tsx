@@ -15,7 +15,7 @@ export const OperationsDialog: FC<PropsWithChildren<OperationsDialogProps>> = ({
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent
         forceMount
-        className="flex flex-col max-w-[80%] md:max-w-[70%] lg:max-w-[50%] w-full max-h-[90%] p-0"
+        className="flex max-h-[90%] w-full max-w-[80%] flex-col p-0 md:max-w-[70%] lg:max-w-[50%]"
       >
         {children}
       </DialogContent>

@@ -23,7 +23,7 @@ export const InscriptionsCreate = () => {
 
   if (pending) {
     return (
-      <div className="font-bold flex items-center gap-3 sm:px-8">
+      <div className="flex items-center gap-3 font-bold sm:px-8">
         <Spinner size={20} /> Pending, please wait...
       </div>
     );

@@ -33,12 +33,15 @@ export default function OperationsLayout({
   children: React.ReactNode;
 }) {
   return (
-    <>
+    <div className="flex h-screen flex-col">
       <OperationHeader />
-      <div className="flex flex-col space-y-1.5 text-center sm:text-left pt-8 sm:p-8 pb-0">
-        <div>{children}</div>
+      <div className="flex flex-1 flex-col overflow-hidden sm:flex-row">
+        <main className="flex-1 overflow-auto p-3">{children}</main>
+        <nav className="order-first border-b border-border bg-zinc-100 p-3 dark:bg-zinc-900 sm:w-64 sm:border-b-0 sm:border-r">
+          Navigation
+        </nav>
       </div>
       <OperationFooter />
-    </>
+    </div>
   );
 }

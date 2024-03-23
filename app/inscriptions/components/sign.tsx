@@ -107,13 +107,13 @@ export const Sign = ({
     <>
       <div className="mb-3 sm:px-8">
         {pending && (
-          <div className="font-bold flex items-center gap-3">
+          <div className="flex items-center gap-3 font-bold">
             <Spinner size={20} /> Transaction pending (confirmation through{' '}
             {getSigningProviderName()})...
           </div>
         )}
       </div>
-      <div className="overflow-y-auto py-0 px-0 sm:px-8">
+      <div className="overflow-y-auto px-0 py-0 sm:px-8">
         <Form {...form}>
           <form
             id="inscription-form"
@@ -133,7 +133,7 @@ export const Sign = ({
           </form>
         </Form>
       </div>
-      <div className="flex flex-col-reverse sm:flex-row sm:justify-end sm:space-x-2 py-4 px-8">
+      <div className="flex flex-col-reverse px-8 py-4 sm:flex-row sm:justify-end sm:space-x-2">
         <OperationsSubmitButton
           formId="inscription-form"
           label="Sign the data first!"

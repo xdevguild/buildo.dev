@@ -4,7 +4,7 @@ import Link from 'next/link';
 export const Footer = () => {
   return (
     <div className="flex h-[114px] items-center">
-      <div className="flex flex-col items-center justify-center container mx-auto text-center text-sm">
+      <div className="container mx-auto flex flex-col items-center justify-center text-center text-sm">
         <div className="font-bold">
           Buildo is your companion through the MultiversX (v
           {`${packageJson.version}`})

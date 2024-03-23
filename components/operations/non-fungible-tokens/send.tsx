@@ -56,7 +56,7 @@ export const Send = ({ transfer, close }: OperationContentProps) => {
           {"'"}s address inside the Data field, alongside other details
         </DialogDescription>
       </DialogHeader>
-      <div className="overflow-y-auto py-0 px-8">
+      <div className="overflow-y-auto px-8 py-0">
         <Form {...form}>
           <form
             id="send-form"
@@ -80,7 +80,7 @@ export const Send = ({ transfer, close }: OperationContentProps) => {
           </form>
         </Form>
       </div>
-      <DialogFooter className="py-4 px-8">
+      <DialogFooter className="px-8 py-4">
         <OperationsSubmitButton formId="send-form" />
       </DialogFooter>
     </>
