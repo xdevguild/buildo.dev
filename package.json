@@ -22,6 +22,7 @@
     "@multiversx/sdk-core": "12.19.1",
     "@multiversx/sdk-transaction-decoder": "1.0.2",
     "@multiversx/sdk-wallet": "4.4.0",
+    "@radix-ui/react-accordion": "^1.1.2",
     "@radix-ui/react-checkbox": "1.0.4",
     "@radix-ui/react-dialog": "1.0.5",
     "@radix-ui/react-dropdown-menu": "2.0.6",

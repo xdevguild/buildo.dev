@@ -50,12 +50,12 @@ export const LoginModalButton: FC<LoginModalButtonProps> = ({
   return (
     <Dialog open={isOpen} onOpenChange={onCloseComplete}>
       {isLoggedIn ? (
-        <Button variant="outline" onClick={() => logout()}>
+        <Button variant="outline" size="sm" onClick={() => logout()}>
           Logout
         </Button>
       ) : (
         !isLoggingIn && (
-          <Button variant="outline" onClick={handleOpen}>
+          <Button variant="outline" size="sm" onClick={handleOpen}>
             Connect
           </Button>
         )

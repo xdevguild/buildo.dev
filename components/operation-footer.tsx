@@ -9,7 +9,7 @@ export const OperationFooter = () => {
       <div className="flex flex-col items-center justify-between p-2 px-3 text-center text-sm sm:flex-row sm:p-4 sm:text-left">
         <div className="text-xs">
           Buildo
-          {`(v${packageJson.version})`}{' '}
+          {` (v${packageJson.version})`}{' '}
           <Link href="/about#disclaimer" className="underline">
             Disclaimer
           </Link>{' '}

@@ -15,7 +15,7 @@ export const OperationHeader = () => {
         <div className="flex w-full flex-row flex-wrap items-center gap-5 px-3 py-2">
           <div className="flex flex-1 items-center justify-between gap-5">
             <Link href="/">
-              <div className="mb-0 cursor-pointer text-center text-4xl font-black leading-none">
+              <div className="mb-0 cursor-pointer">
                 <Image src="/logo.svg" alt={'Logo'} width={30} height={30} />
               </div>
             </Link>
@@ -23,17 +23,17 @@ export const OperationHeader = () => {
               About
             </Link>
           </div>
-          <div className="flex items-center gap-5">
+          <div className="flex items-center gap-4">
             <div className="hidden items-center gap-3 sm:flex">
               <a
                 href="https://github.com/xdevguild/buildo.dev"
                 target="_blank"
                 title="GitHub"
               >
-                <Github size={30} />
+                <Github size={20} />
               </a>
               <a href="https://x.com/BuildoDev" target="_blank" title="Twitter">
-                <Twitter size={30} />
+                <Twitter size={20} />
               </a>
             </div>
             <HeaderAddress />

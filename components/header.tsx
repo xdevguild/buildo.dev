@@ -23,17 +23,17 @@ export const Header = () => {
               About
             </Link>
           </div>
-          <div className="flex items-center gap-5">
+          <div className="flex items-center gap-4">
             <div className="hidden items-center gap-3 sm:flex">
               <a
                 href="https://github.com/xdevguild/buildo.dev"
                 target="_blank"
                 title="GitHub"
               >
-                <Github size={30} />
+                <Github size={25} />
               </a>
               <a href="https://x.com/BuildoDev" target="_blank" title="Twitter">
-                <Twitter size={30} />
+                <Twitter size={25} />
               </a>
             </div>
             <HeaderAddress />

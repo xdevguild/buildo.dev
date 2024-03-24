@@ -8,7 +8,7 @@ export const HeaderChainIndicator = () => {
 
   return (
     <>
-      <div className="flex flex-row items-center justify-center gap-1 bg-zinc-200 py-1 text-center text-xs font-light dark:bg-black">
+      <div className="flex flex-row items-center justify-center gap-1 bg-[hsl(var(--background))]/60 py-1 text-center text-[9px] font-light backdrop-blur">
         <div className="flex items-center justify-center gap-1">
           <div className="mr-1 mt-[-1px] flex h-2 w-2 rounded-full bg-green-700 dark:bg-green-200" />{' '}
           <div>You are using MultiversX</div>{' '}
