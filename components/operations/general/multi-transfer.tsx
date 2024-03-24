@@ -219,7 +219,7 @@ export const MultiTransfer = ({
           non-fungible or meta tokens via a single transaction.
         </DialogDescription>
       </DialogHeader>
-      <div className="overflow-y-auto py-0 px-8">
+      <div className="overflow-y-auto px-8 py-0">
         <Form {...form}>
           <form
             id="multi-send-form"
@@ -233,8 +233,8 @@ export const MultiTransfer = ({
                 placeholder="Example: erd1..."
                 description="Please provide the address to where tokens will be send"
               />
-              <div className="text-md mt-3 mb-2 font-bold">Fungible</div>
-              <div className="flex gap-3 flex-col sm:flex-row">
+              <div className="text-md mb-2 mt-3 font-bold">Fungible</div>
+              <div className="flex flex-col gap-3 sm:flex-row">
                 <div className="flex-1">
                   <OperationsInputField
                     name="fungibleTokenId"
@@ -250,8 +250,8 @@ export const MultiTransfer = ({
                   />
                 </div>
               </div>
-              <div className="text-md mt-3 mb-2 font-bold">Non-fungible</div>
-              <div className="flex gap-3 flex-col sm:flex-row">
+              <div className="text-md mb-2 mt-3 font-bold">Non-fungible</div>
+              <div className="flex flex-col gap-3 sm:flex-row">
                 <div className="flex-1">
                   <OperationsInputField
                     name="nonFungibleTokenId"
@@ -267,8 +267,8 @@ export const MultiTransfer = ({
                   />
                 </div>
               </div>
-              <div className="text-md mt-3 mb-2 font-bold">Semi-fungible</div>
-              <div className="flex gap-3 flex-col sm:flex-row">
+              <div className="text-md mb-2 mt-3 font-bold">Semi-fungible</div>
+              <div className="flex flex-col gap-3 sm:flex-row">
                 <div className="flex-1">
                   <OperationsInputField
                     name="semiFungibleTokenId"
@@ -284,8 +284,8 @@ export const MultiTransfer = ({
                   />
                 </div>
               </div>
-              <div className="text-md mt-3 mb-2 font-bold">Meta</div>
-              <div className="flex gap-3 flex-col sm:flex-row">
+              <div className="text-md mb-2 mt-3 font-bold">Meta</div>
+              <div className="flex flex-col gap-3 sm:flex-row">
                 <div className="flex-1">
                   <OperationsInputField
                     name="metaTokenId"
@@ -305,7 +305,7 @@ export const MultiTransfer = ({
           </form>
         </Form>
       </div>
-      <DialogFooter className="py-4 px-8">
+      <DialogFooter className="px-8 py-4">
         <OperationsSubmitButton formId="multi-send-form" />
       </DialogFooter>
     </>

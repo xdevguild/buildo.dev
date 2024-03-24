@@ -29,18 +29,18 @@ export const WalletConnectPairings: FC<WalletConnectPairingsProps> = ({
     <div className="flex flex-row justify-center">
       <div className="w-full sm:w-4/5">
         {pairings?.length > 0 && (
-          <div className="text-base mt-4">Existing pairings:</div>
+          <div className="mt-4 text-base">Existing pairings:</div>
         )}
         {pairings.map((pairing) => (
           <div
-            className="bg-white dark:bg-slate-900 my-3 py-2 px-4 pr-8 rounded-md cursor-pointer select-none relative border border-solid border-zinc-300 dark:border-0"
+            className="relative my-3 cursor-pointer select-none rounded-md border border-solid border-zinc-300 bg-white px-4 py-2 pr-8 dark:border-0 dark:bg-slate-900"
             key={pairing.topic}
             onClick={handleLogin(pairing.topic)}
           >
             <Button
               variant="outline"
               size="icon"
-              className="absolute top-2 right-2 h-7 w-7"
+              className="absolute right-2 top-2 h-7 w-7"
               onClick={handleRemove(pairing.topic)}
             >
               <X size="16" />

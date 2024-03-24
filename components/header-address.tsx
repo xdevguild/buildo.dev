@@ -13,7 +13,7 @@ export const HeaderAddress = () => {
       <a
         href={`${explorerAddress}/address/${address}`}
         target="_blank"
-        className="underline hidden md:block"
+        className="hidden underline md:block"
       >
         {shortenHash(address, 6)}
       </a>

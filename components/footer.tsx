@@ -1,10 +1,10 @@
 import packageJson from '@/package.json';
 import Link from 'next/link';
 
-export const MainFooter = () => {
+export const Footer = () => {
   return (
     <div className="flex h-[114px] items-center">
-      <div className="flex flex-col items-center justify-center container mx-auto text-center text-sm">
+      <div className="container mx-auto flex flex-col items-center justify-center text-center text-sm">
         <div className="font-bold">
           Buildo is your companion through the MultiversX (v
           {`${packageJson.version}`})
@@ -32,7 +32,7 @@ export const MainFooter = () => {
             target="_blank"
             className="text-blue-800 dark:text-blue-200"
           >
-            xDevGuild Next.js dapp template
+            Next.js dApp template
           </a>{' '}
           (
           <Link

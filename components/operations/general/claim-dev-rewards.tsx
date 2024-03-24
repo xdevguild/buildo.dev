@@ -67,7 +67,7 @@ export const ClaimDevRewards = ({
           developer reward is set to 30% of the fee of each smart contract call.
         </DialogDescription>
       </DialogHeader>
-      <div className="overflow-y-auto py-0 px-8">
+      <div className="overflow-y-auto px-8 py-0">
         <Form {...form}>
           <form
             id="claim-rewards-form"
@@ -85,7 +85,7 @@ export const ClaimDevRewards = ({
           </form>
         </Form>
       </div>
-      <DialogFooter className="py-4 px-8">
+      <DialogFooter className="px-8 py-4">
         <OperationsSubmitButton formId="claim-rewards-form" />
       </DialogFooter>
     </>

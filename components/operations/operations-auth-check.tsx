@@ -10,7 +10,7 @@ export const OperationsAuthCheck = () => {
   if (address) return null;
 
   return (
-    <Alert className="max-w-[740px] m-auto mt-10 -z-10">
+    <Alert className="-z-10 m-auto mt-10 max-w-[740px]">
       <Info className="h-4 w-4" />
       <AlertTitle>Heads up!</AlertTitle>
       <AlertDescription>

@@ -132,7 +132,7 @@ export const FreezeUnfreezeSingle = ({
           token managers to comply with regulations.
         </DialogDescription>
       </DialogHeader>
-      <div className="overflow-y-auto py-0 px-8">
+      <div className="overflow-y-auto px-8 py-0">
         <Form {...form}>
           <form
             id="freeze-unfreeze-single-form"
@@ -165,7 +165,7 @@ export const FreezeUnfreezeSingle = ({
           </form>
         </Form>
       </div>
-      <DialogFooter className="py-4 px-8">
+      <DialogFooter className="px-8 py-4">
         <OperationsSubmitButton formId="freeze-unfreeze-single-form" />
       </DialogFooter>
     </>

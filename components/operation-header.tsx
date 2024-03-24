@@ -7,33 +7,33 @@ import { HeaderAddress } from '@/components/header-address';
 import { HeaderChainIndicator } from '@/components/header-chain-indicator';
 import Image from 'next/image';
 
-export const MainHeader = () => {
+export const OperationHeader = () => {
   return (
-    <div className="sticky top-0">
+    <div>
       <HeaderChainIndicator />
-      <div className="container mx-auto bg-[hsl(var(--background))]/60 backdrop-blur">
-        <div className="w-full flex items-center flex-wrap gap-5 py-5 flex-row">
+      <div>
+        <div className="flex w-full flex-row flex-wrap items-center gap-5 px-3 py-2">
           <div className="flex flex-1 items-center justify-between gap-5">
             <Link href="/">
-              <div className="cursor-pointer mb-0 text-4xl font-black text-center leading-none">
-                <Image src="/logo.svg" alt={'Logo'} width={50} height={50} />
+              <div className="mb-0 cursor-pointer">
+                <Image src="/logo.svg" alt={'Logo'} width={30} height={30} />
               </div>
             </Link>
             <Link href="/about" className="font-extrabold">
               About
             </Link>
           </div>
-          <div className="flex items-center gap-5">
+          <div className="flex items-center gap-4">
             <div className="hidden items-center gap-3 sm:flex">
               <a
                 href="https://github.com/xdevguild/buildo.dev"
                 target="_blank"
                 title="GitHub"
               >
-                <Github size={30} />
+                <Github size={20} />
               </a>
               <a href="https://x.com/BuildoDev" target="_blank" title="Twitter">
-                <Twitter size={30} />
+                <Twitter size={20} />
               </a>
             </div>
             <HeaderAddress />

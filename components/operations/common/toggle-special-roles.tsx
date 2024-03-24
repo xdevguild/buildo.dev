@@ -166,7 +166,7 @@ export const ToggleSpecialRoles = ({
           given address. Only applicable if canAddSpecialRoles property is true.
         </DialogDescription>
       </DialogHeader>
-      <div className="overflow-y-auto py-0 px-8">
+      <div className="overflow-y-auto px-8 py-0">
         <Form {...form}>
           <form
             id="toggle-special-roles-form"
@@ -201,7 +201,7 @@ export const ToggleSpecialRoles = ({
           </form>
         </Form>
       </div>
-      <DialogFooter className="py-4 px-8">
+      <DialogFooter className="px-8 py-4">
         <OperationsSubmitButton formId="toggle-special-roles-form" />
       </DialogFooter>
     </>

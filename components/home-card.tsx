@@ -29,7 +29,7 @@ type HomeCardProps = {
 
 export const HomeCard = ({ title, description, items }: HomeCardProps) => {
   return (
-    <Card className="flex-1 min-w-[250px]">
+    <Card className="min-w-[250px] flex-1">
       <CardHeader>
         <CardTitle className="font-bold">{title}</CardTitle>
         <CardDescription>{description}</CardDescription>
@@ -38,18 +38,18 @@ export const HomeCard = ({ title, description, items }: HomeCardProps) => {
         <div className="mb-4 grid grid-cols-[25px_1fr] items-start pb-4 last:mb-0 last:pb-0">
           {items.map(({ title, description, onClick, disabled, path }) => (
             <Fragment key={title}>
-              <span className="flex h-2 w-2 my-2 rounded-full bg-blue-700 dark:bg-blue-200" />
+              <span className="my-2 flex h-2 w-2 rounded-full bg-blue-700 dark:bg-blue-200" />
               <div className="flex flex-row items-center justify-between space-y-1">
                 <div
                   className={`flex items-center text-sm font-medium leading-none ${
                     disabled
-                      ? 'cursor-default text-zinc-600 pt-1'
+                      ? 'cursor-default pt-1 text-zinc-600'
                       : 'cursor-pointer underline'
                   }`}
                   {...(!disabled && onClick && { onClick })}
                 >
                   {disabled && (
-                    <span className="mr-2 font-extrabold text-xs">[Soon!]</span>
+                    <span className="mr-2 text-xs font-extrabold">[Soon!]</span>
                   )}{' '}
                   {path ? <Link href={path}>{title}</Link> : title}
                 </div>

@@ -120,7 +120,7 @@ export const Issue = ({ triggerTx, close }: OperationContentProps) => {
           manage the tokens.
         </DialogDescription>
       </DialogHeader>
-      <div className="overflow-y-auto py-0 px-8">
+      <div className="overflow-y-auto px-8 py-0">
         <Form {...form}>
           <form
             id="meta-issue-form"
@@ -160,7 +160,7 @@ export const Issue = ({ triggerTx, close }: OperationContentProps) => {
           </form>
         </Form>
       </div>
-      <DialogFooter className="py-4 px-8">
+      <DialogFooter className="px-8 py-4">
         <OperationsSubmitButton formId="meta-issue-form" />
       </DialogFooter>
     </>

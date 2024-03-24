@@ -47,7 +47,7 @@ export const OperationsSubmitButton = ({
     <Authenticated
       fallback={
         <div className="flex items-center justify-end gap-4">
-          <span className="text-xs text-destructive font-bold">
+          <span className="text-xs font-bold text-destructive">
             Please connect your wallet first!
           </span>
           <ButtonComponent formId={formId} disabled label={label} />

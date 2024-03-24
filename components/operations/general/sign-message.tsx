@@ -53,7 +53,7 @@ export const SignMessage = () => {
           also verify signed messages. Check the Utilities section.
         </DialogDescription>
       </DialogHeader>
-      <div className="overflow-y-auto py-0 px-8">
+      <div className="overflow-y-auto px-8 py-0">
         <Form {...form}>
           <form
             id="sign-message-form"
@@ -81,7 +81,7 @@ export const SignMessage = () => {
           </Alert>
         )}
       </div>
-      <DialogFooter className="py-4 px-8">
+      <DialogFooter className="px-8 py-4">
         <OperationsSubmitButton formId="sign-message-form" pending={pending} />
       </DialogFooter>
     </>

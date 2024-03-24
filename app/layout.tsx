@@ -4,8 +4,6 @@ import './globals.css';
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import { ElvenInit } from '@/components/elven-ui/elven-init';
-import { MainHeader } from '@/components/main-header';
-import { MainFooter } from '@/components/main-footer';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -45,11 +43,7 @@ export default function RootLayout({
       <body className={inter.className}>
         <ElvenInit />
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-          <MainHeader />
-          <div className="container mx-auto min-h-[calc(100vh-281px)] lg:min-h-[calc(100vh-234px)] pb-20">
-            {children}
-          </div>
-          <MainFooter />
+          {children}
         </ThemeProvider>
       </body>
     </html>

@@ -5,11 +5,11 @@ import { OperationsAuthCheck } from '@/components/operations/operations-auth-che
 const Home: NextPage = () => {
   return (
     <>
-      <div className="pt-10 md:pt-20 lg:pt-24 pb-10 lg:pb-24">
-        <h1 className="text-2xl md:text-4xl lg:text-6xl font-black text-center mb-8 max-w-2xl lg:max-w-4xl m-auto">
+      <div className="pb-10 pt-10 md:pt-20 lg:pb-24 lg:pt-24">
+        <h1 className="m-auto mb-8 max-w-2xl text-center text-2xl font-black md:text-4xl lg:max-w-4xl lg:text-6xl">
           Buildo is your companion through the MultiversX!
         </h1>
-        <h2 className="text-sm md:text-xl lg:text-2xl font-light text-center max-w-2xl lg:max-w-4xl m-auto sm:mb-8">
+        <h2 className="m-auto max-w-2xl text-center text-sm font-light sm:mb-8 md:text-xl lg:max-w-4xl lg:text-2xl">
           Buildo.dev is a{' '}
           <a
             href="https://multiversx.com"
@@ -21,7 +21,7 @@ const Home: NextPage = () => {
           app that helps with blockchain interactions, like issuing tokens and
           querying smart contracts.
         </h2>
-        <h3 className="hidden sm:block text-xs md:text-sm font-extralight m-auto max-w-2xl lg:max-w-4xl text-center">
+        <h3 className="m-auto hidden max-w-2xl text-center text-xs font-extralight sm:block md:text-sm lg:max-w-4xl">
           If you like to work with CLI tools, check the{' '}
           <a
             href="https://github.com/xdevguild/buildo-begins"

@@ -16,6 +16,15 @@ const nextConfig = {
   experimental: {
     webpackBuildWorker: true,
   },
+  async redirects() {
+    return [
+      {
+        source: '/inscriptions/:slug*',
+        destination: '/general-operations/inscriptions/:slug*',
+        permanent: true,
+      },
+    ];
+  },
 };
 
 module.exports = nextConfig;

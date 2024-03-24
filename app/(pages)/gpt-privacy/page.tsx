@@ -1,16 +1,16 @@
 import { NextPage } from 'next';
 
 const Header = ({ label }: { label: string }) => {
-  return <h1 className="text-2xl my-3 font-bold">{label}</h1>;
+  return <h1 className="my-3 text-2xl font-bold">{label}</h1>;
 };
 
 const SubHeader = ({ label }: { label: string }) => {
-  return <h2 className="text-xl my-3 font-bold">{label}</h2>;
+  return <h2 className="my-3 text-xl font-bold">{label}</h2>;
 };
 
 const GptPrivacy: NextPage = () => {
   return (
-    <div className="pt-12 max-w-4xl mx-auto">
+    <div className="mx-auto max-w-4xl pt-12">
       <Header label="Privacy Policy for Buildo Expert GPT assistant" />
       <p className="mb-3">
         <strong>Last Updated:</strong> 09 Dec 2023

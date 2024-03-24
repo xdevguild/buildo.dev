@@ -45,19 +45,19 @@ export const LoginComponent = memo(() => {
     return (
       <div className="flex flex-col">
         <div className="text-center">{error}</div>
-        <div className="text-center pt-4 font-bold">Close and try again</div>
+        <div className="pt-4 text-center font-bold">Close and try again</div>
       </div>
     );
 
   return (
     <>
       {isLoggingIn ? (
-        <div className="flex inset-0 z-50 items-center justify-center min-h-[200px]">
+        <div className="inset-0 z-50 flex min-h-[200px] items-center justify-center">
           <div>
             {ledgerOrPortalName ? (
               <div className="mb-4">
-                <div className="text-lg text-center">Confirmation required</div>
-                <div className="text-sm text-center">
+                <div className="text-center text-lg">Confirmation required</div>
+                <div className="text-center text-sm">
                   Approve on {ledgerOrPortalName}
                 </div>
               </div>
@@ -68,9 +68,9 @@ export const LoginComponent = memo(() => {
           </div>
         </div>
       ) : (
-        <div className="flex flex-col gap-3 items-center lg:px-8">
+        <div className="flex flex-col items-center gap-3 lg:px-8">
           <Button
-            className="w-full select-none h-auto py-3"
+            className="h-auto w-full select-none py-3"
             variant="outline"
             onClick={handleLogin(LoginMethodsEnum.walletconnect)}
           >
@@ -78,28 +78,28 @@ export const LoginComponent = memo(() => {
           </Button>
 
           <Button
-            className="w-full select-none h-auto py-3"
+            className="h-auto w-full select-none py-3"
             variant="outline"
             onClick={handleLogin(LoginMethodsEnum.extension)}
           >
             MultiversX Browser Extension
           </Button>
           <Button
-            className="w-full select-none h-auto py-3"
+            className="h-auto w-full select-none py-3"
             variant="outline"
             onClick={handleLogin(LoginMethodsEnum.wallet)}
           >
             MultiversX Web Wallet
           </Button>
           <Button
-            className="w-full select-none h-auto py-3"
+            className="h-auto w-full select-none py-3"
             variant="outline"
             onClick={handleLedgerAccountsList}
           >
             Ledger
           </Button>
           <Button
-            className="w-full select-none h-auto py-3"
+            className="h-auto w-full select-none py-3"
             variant="outline"
             onClick={handleLogin(LoginMethodsEnum.xalias)}
           >
