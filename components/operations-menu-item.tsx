@@ -1,30 +1,30 @@
-'use client';
-
 import Link from 'next/link';
-import { usePathname } from 'next/navigation';
 import { cn } from '@/lib/utils';
 import { CircleDot } from 'lucide-react';
 
 type OperationMenuItemProps = {
   children: string;
   href: string;
+  pathname: string;
+  onItemClick?: () => void;
 };
 
 export const OperationMenuItem = ({
   children,
   href,
+  pathname,
+  onItemClick,
 }: OperationMenuItemProps) => {
-  const pathname = usePathname();
-
   const isActive = pathname === href;
 
   return (
     <li className="flex items-center justify-between py-[2px]">
       <Link
         href={href}
+        {...(onItemClick ? { onClick: onItemClick } : {})}
         className={cn(
-          'hover:underline ',
-          isActive ? 'font-medium text-foreground' : 'text-muted-foreground'
+          'hover:underline',
+          isActive ? 'text-foreground underline' : 'text-muted-foreground'
         )}
       >
         {children}

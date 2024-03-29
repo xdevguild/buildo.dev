@@ -28,8 +28,7 @@ import {
 import { OperationsInputField } from '@/components/operations/operations-input-field';
 import { OperationsCheckboxGroup } from '@/components/operations/operations-checkbox-group';
 import { OperationsSubmitButton } from '@/components/operations/operations-submit-button';
-import { useContext, useEffect, useState } from 'react';
-import { OperationsStateDialogContext } from '@/components/operations/operations-status-dialog';
+import { useEffect, useState } from 'react';
 import { CommonOpertationContentProps } from '@/components/operations/operations-common-types';
 import { OperationsRadioGroup } from '@/components/operations/operations-radio-group';
 import { useAccount } from '@useelven/core';
@@ -61,10 +60,6 @@ export const ToggleSpecialRoles = ({
   tokenType,
 }: CommonOpertationContentProps) => {
   const { address } = useAccount();
-  const { setOpen: setTxStatusDialogOpen } = useContext(
-    OperationsStateDialogContext
-  );
-
   const [disabledRoles, setDisabledRoles] = useState<string[]>();
 
   const form = useForm<z.infer<typeof formSchema>>({
@@ -139,7 +134,6 @@ export const ToggleSpecialRoles = ({
       value: 0,
     });
 
-    setTxStatusDialogOpen(true);
     form.reset();
     close();
   };

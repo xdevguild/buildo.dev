@@ -19,7 +19,7 @@ export const OperationHeader = () => {
                 <Image src="/logo.svg" alt={'Logo'} width={30} height={30} />
               </div>
             </Link>
-            <Link href="/about" className="font-extrabold">
+            <Link href="/about" className="font-medium">
               About
             </Link>
           </div>

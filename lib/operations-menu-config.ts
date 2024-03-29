@@ -12,7 +12,7 @@ export const operationsMenuConfig: Record<
       title: 'Claim developer rewards',
       description:
         "Claim dev rewards from your smart contract. You have to use the owner's wallet address when calling it",
-      path: '/general-operations/claim-dev-rewards',
+      path: '/general-operations/claim-developer-rewards',
     },
     {
       title: 'Change owner address',
@@ -45,7 +45,7 @@ export const operationsMenuConfig: Record<
       path: '/general-operations/sign-message',
     },
     {
-      title: 'Create Inscription (experimental)',
+      title: 'Create Inscription',
       description:
         'Send custom data on chain. You can then use it off-chain or for NFTs. (The structure of the data may change!)',
       path: '/general-operations/inscriptions/create',

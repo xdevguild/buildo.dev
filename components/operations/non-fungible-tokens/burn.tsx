@@ -18,8 +18,6 @@ import {
 } from '@/components/ui/dialog';
 import { OperationsInputField } from '@/components/operations/operations-input-field';
 import { OperationsSubmitButton } from '@/components/operations/operations-submit-button';
-import { useContext } from 'react';
-import { OperationsStateDialogContext } from '@/components/operations/operations-status-dialog';
 import { OperationContentProps } from '@/components/operations/operations-common-types';
 import BigNumber from 'bignumber.js';
 import { useAccount, useConfig } from '@useelven/core';
@@ -33,9 +31,6 @@ const formSchema = z.object({
 export const BurnNft = ({ triggerTx, close }: OperationContentProps) => {
   const { address } = useAccount();
   const { apiAddress } = useConfig();
-  const { setOpen: setTxStatusDialogOpen } = useContext(
-    OperationsStateDialogContext
-  );
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -86,7 +81,6 @@ export const BurnNft = ({ triggerTx, close }: OperationContentProps) => {
         value: 0,
       });
 
-      setTxStatusDialogOpen(true);
       form.reset();
       close();
     } catch (e) {

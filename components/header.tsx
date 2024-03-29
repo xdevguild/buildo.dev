@@ -19,7 +19,7 @@ export const Header = () => {
                 <Image src="/logo.svg" alt={'Logo'} width={50} height={50} />
               </div>
             </Link>
-            <Link href="/about" className="font-extrabold">
+            <Link href="/about" className="font-medium">
               About
             </Link>
           </div>

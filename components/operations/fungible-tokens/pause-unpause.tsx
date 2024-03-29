@@ -20,8 +20,7 @@ import {
   commonOpertationsGasLimit,
 } from '@/components/operations/constants';
 import { OperationsSubmitButton } from '@/components/operations/operations-submit-button';
-import { useContext, useMemo } from 'react';
-import { OperationsStateDialogContext } from '@/components/operations/operations-status-dialog';
+import { useMemo } from 'react';
 import { OperationContentProps } from '@/components/operations/operations-common-types';
 import { OperationsRadioGroup } from '@/components/operations/operations-radio-group';
 import { OperationsSelectField } from '@/components/operations/operations-select-field';
@@ -35,10 +34,6 @@ const formSchema = z.object({
 });
 
 export const PauseUnpause = ({ triggerTx, close }: OperationContentProps) => {
-  const { setOpen: setTxStatusDialogOpen } = useContext(
-    OperationsStateDialogContext
-  );
-
   const { tokens } = useCreatorTokensAmount<{
     identifier: string;
     collection: string;
@@ -78,7 +73,6 @@ export const PauseUnpause = ({ triggerTx, close }: OperationContentProps) => {
       value: 0,
     });
 
-    setTxStatusDialogOpen(true);
     form.reset();
     close();
   };

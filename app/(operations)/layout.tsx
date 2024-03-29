@@ -37,11 +37,11 @@ export default function OperationsLayout({
     <div className="flex h-screen flex-col">
       <OperationHeader />
       <div className="flex flex-1 flex-col overflow-hidden lg:flex-row">
-        <nav className="border-r border-border bg-background px-4 lg:w-64 lg:py-8">
+        <nav className="border-r border-border bg-background px-3 lg:w-64 lg:px-6 lg:py-8">
           <OperationsMenu />
         </nav>
-        <main className="flex-1 overflow-auto bg-zinc-50 px-6 dark:bg-zinc-900 lg:py-8">
-          <div className="container rounded-2xl border border-border bg-background px-12 py-8 ">
+        <main className="flex-1 overflow-auto bg-zinc-50 px-2 dark:bg-zinc-900 lg:px-6 lg:py-8">
+          <div className="container mt-3 rounded-2xl border border-border bg-background px-12 py-8 lg:mt-auto">
             {children}
           </div>
         </main>

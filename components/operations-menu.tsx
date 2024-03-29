@@ -1,35 +1,50 @@
+'use client';
+
+import { useState } from 'react';
+import { PanelLeft } from 'lucide-react';
+import { OperationsMenuItems } from './operations-menu-items';
 import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from '@/components/ui/accordion';
-import { OperationMenuItem } from '@/components/operations-menu-item';
-import { operationsMenuConfig } from '@/lib/operations-menu-config';
+  Sheet,
+  SheetContent,
+  SheetDescription,
+  SheetTrigger,
+} from '@/components/ui/sheet';
+import Image from 'next/image';
+import { Button } from './ui/button';
 
 export const OperationsMenu = () => {
+  const [open, setOpen] = useState(false);
+
+  const closeSheet = () => setOpen(false);
+
   return (
-    <Accordion type="single" collapsible>
-      {Object.keys(operationsMenuConfig).map((item, index) => (
-        <AccordionItem
-          value={`menu-item-${index}`}
-          className="border-0"
-          key={item}
-        >
-          <AccordionTrigger className="text-md py-1 capitalize">
-            {item.replaceAll('-', ' ')}
-          </AccordionTrigger>
-          <AccordionContent className="p-1 pr-[2px]">
-            <ul>
-              {operationsMenuConfig[item].map((item, index) => (
-                <OperationMenuItem href={item.path} key={index}>
-                  {item.title}
-                </OperationMenuItem>
-              ))}
-            </ul>
-          </AccordionContent>
-        </AccordionItem>
-      ))}
-    </Accordion>
+    <>
+      <div className="hidden lg:block">
+        <OperationsMenuItems onItemClick={closeSheet} />
+      </div>
+      <Sheet open={open} onOpenChange={setOpen}>
+        <SheetTrigger className="block lg:hidden" asChild>
+          <div className="flex items-center">
+            <Button
+              variant="outline"
+              size="icon"
+              className="my-2 flex items-center justify-center"
+            >
+              <PanelLeft width={20} height={20} />
+            </Button>
+          </div>
+        </SheetTrigger>
+        <SheetContent side="left" className="w-full max-w-xs sm:max-w-xs">
+          <div>
+            <Image src="/logo.svg" alt={'Logo'} width={30} height={30} />
+          </div>
+          <SheetDescription>
+            <div className="mt-6">
+              <OperationsMenuItems onItemClick={closeSheet} />
+            </div>
+          </SheetDescription>
+        </SheetContent>
+      </Sheet>
+    </>
   );
 };

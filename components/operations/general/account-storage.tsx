@@ -10,8 +10,6 @@ import {
 } from '@/components/ui/dialog';
 import { OperationsInputField } from '@/components/operations/operations-input-field';
 import { OperationsSubmitButton } from '@/components/operations/operations-submit-button';
-import { useContext } from 'react';
-import { OperationsStateDialogContext } from '@/components/operations/operations-status-dialog';
 import { OperationContentProps } from '@/components/operations/operations-common-types';
 import {
   BytesValue,
@@ -79,10 +77,6 @@ const formSchema = z.object({
 export const AccountStorage = ({ triggerTx, close }: OperationContentProps) => {
   const { address } = useAccount();
 
-  const { setOpen: setTxStatusDialogOpen } = useContext(
-    OperationsStateDialogContext
-  );
-
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -106,7 +100,6 @@ export const AccountStorage = ({ triggerTx, close }: OperationContentProps) => {
       value: 0,
     });
 
-    setTxStatusDialogOpen(true);
     form.reset();
     close();
   };

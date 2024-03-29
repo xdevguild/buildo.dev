@@ -19,8 +19,6 @@ import {
   builtInSC,
 } from '@/components/operations/constants';
 import { OperationsSubmitButton } from '@/components/operations/operations-submit-button';
-import { useContext } from 'react';
-import { OperationsStateDialogContext } from '@/components/operations/operations-status-dialog';
 import { CommonOpertationContentProps } from '@/components/operations/operations-common-types';
 import { OperationsTokenIdInput } from '../operations-tokenid-input';
 
@@ -33,10 +31,6 @@ export const StopCreation = ({
   close,
   tokenType,
 }: CommonOpertationContentProps) => {
-  const { setOpen: setTxStatusDialogOpen } = useContext(
-    OperationsStateDialogContext
-  );
-
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -59,7 +53,6 @@ export const StopCreation = ({
       value: 0,
     });
 
-    setTxStatusDialogOpen(true);
     form.reset();
     close();
   };

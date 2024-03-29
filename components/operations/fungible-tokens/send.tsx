@@ -10,8 +10,6 @@ import {
 } from '@/components/ui/dialog';
 import { OperationsInputField } from '@/components/operations/operations-input-field';
 import { OperationsSubmitButton } from '@/components/operations/operations-submit-button';
-import { useContext } from 'react';
-import { OperationsStateDialogContext } from '@/components/operations/operations-status-dialog';
 import { OperationContentProps } from '@/components/operations/operations-common-types';
 import BigNumber from 'bignumber.js';
 import { ESDTType } from '@useelven/core';
@@ -30,9 +28,6 @@ const formSchema = z.object({
 });
 
 export const Send = ({ transfer, close }: OperationContentProps) => {
-  const { setOpen: setTxStatusDialogOpen } = useContext(
-    OperationsStateDialogContext
-  );
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -55,7 +50,6 @@ export const Send = ({ transfer, close }: OperationContentProps) => {
       gasLimit: transfersOperationsGasLimit,
     });
 
-    setTxStatusDialogOpen(true);
     form.reset();
     close();
   };

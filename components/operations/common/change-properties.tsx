@@ -23,8 +23,7 @@ import {
 } from '@/components/operations/constants';
 import { OperationsCheckboxGroup } from '@/components/operations/operations-checkbox-group';
 import { OperationsSubmitButton } from '@/components/operations/operations-submit-button';
-import { useContext, useEffect } from 'react';
-import { OperationsStateDialogContext } from '@/components/operations/operations-status-dialog';
+import { useEffect } from 'react';
 import { CommonOpertationContentProps } from '@/components/operations/operations-common-types';
 import { OperationsSelectField } from '@/components/operations/operations-select-field';
 import { useCreatorTokens } from '@/hooks/use-creator-tokens';
@@ -55,10 +54,6 @@ export const ChangeProperties = ({
   close,
   tokenType,
 }: CommonOpertationContentProps) => {
-  const { setOpen: setTxStatusDialogOpen } = useContext(
-    OperationsStateDialogContext
-  );
-
   const { tokens } = useCreatorTokens<CreatorTokens>({
     tokenType,
   });
@@ -99,7 +94,6 @@ export const ChangeProperties = ({
       value: 0,
     });
 
-    setTxStatusDialogOpen(true);
     form.reset();
     close();
   };
