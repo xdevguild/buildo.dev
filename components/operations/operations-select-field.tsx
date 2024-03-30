@@ -22,6 +22,7 @@ type OperationsSelectFieldProps = {
   description: string;
   options: { value: string; label: string }[];
   placeholder?: string;
+  disabled?: boolean;
 };
 
 export const OperationsSelectField = ({
@@ -30,6 +31,7 @@ export const OperationsSelectField = ({
   placeholder = '',
   description,
   options,
+  disabled,
 }: OperationsSelectFieldProps) => {
   const { control } = useFormContext();
 
@@ -40,7 +42,11 @@ export const OperationsSelectField = ({
       render={({ field }) => (
         <FormItem className="mb-2">
           <FormLabel>{label}</FormLabel>
-          <Select onValueChange={field.onChange} defaultValue={field.value}>
+          <Select
+            onValueChange={field.onChange}
+            defaultValue={field.value}
+            disabled={disabled}
+          >
             <FormControl>
               <SelectTrigger>
                 <SelectValue placeholder={placeholder} />

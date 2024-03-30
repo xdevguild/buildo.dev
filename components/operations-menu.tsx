@@ -3,12 +3,7 @@
 import { useState } from 'react';
 import { PanelLeft } from 'lucide-react';
 import { OperationsMenuItems } from './operations-menu-items';
-import {
-  Sheet,
-  SheetContent,
-  SheetDescription,
-  SheetTrigger,
-} from '@/components/ui/sheet';
+import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 import Image from 'next/image';
 import { Button } from './ui/button';
 
@@ -38,11 +33,9 @@ export const OperationsMenu = () => {
           <div>
             <Image src="/logo.svg" alt={'Logo'} width={30} height={30} />
           </div>
-          <SheetDescription>
-            <div className="mt-6">
-              <OperationsMenuItems onItemClick={closeSheet} />
-            </div>
-          </SheetDescription>
+          <div className="mt-6">
+            <OperationsMenuItems onItemClick={closeSheet} />
+          </div>
         </SheetContent>
       </Sheet>
     </>

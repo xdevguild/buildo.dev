@@ -164,7 +164,7 @@ export const LedgerAccountsList: FC<LedgerAccountsListProps> = ({
   if (!accounts) return null;
 
   return (
-    <div className="m-auto mt-6 w-full border border-solid border-zinc-200 px-8 py-3 dark:border-0 sm:w-3/4">
+    <div className="m-auto mt-6 w-full border border-solid border-zinc-200 px-8 py-3 dark:border-0 sm:w-[90%]">
       <div className="mb-2 text-center font-semibold">Choose address:</div>
       {accounts?.map((account: string, index: number) => (
         <div
@@ -173,9 +173,9 @@ export const LedgerAccountsList: FC<LedgerAccountsListProps> = ({
           onClick={login(index, account)}
         >
           <span className="inline-block min-w-4 text-center">
-            {index + currentPage.current * ADDRESSES_PER_PAGE}:
+            {index + currentPage.current * ADDRESSES_PER_PAGE}
           </span>
-          :
+          {': '}
           <span className="hidden flex-1 text-center md:inline-block">
             {shortenHash(account, 14)}
           </span>

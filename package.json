@@ -10,7 +10,7 @@
   },
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "next dev --turbo",
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
@@ -33,7 +33,7 @@
     "@radix-ui/react-separator": "1.0.3",
     "@radix-ui/react-slot": "1.0.2",
     "@radix-ui/react-tooltip": "1.0.7",
-    "@useelven/core": "0.17.1",
+    "@useelven/core": "0.18.0",
     "axios": "1.6.8",
     "bech32": "2.0.0",
     "bignumber.js": "9.1.2",
@@ -49,12 +49,13 @@
     "react-dom": "18.2.0",
     "react-hook-form": "7.51.2",
     "sanitize-html": "2.13.0",
+    "sonner": "1.4.41",
     "tailwind-merge": "2.2.2",
     "zod": "3.22.4"
   },
   "devDependencies": {
     "@types/keccak": "3.0.4",
-    "@types/node": "20.11.30",
+    "@types/node": "20.12.2",
     "@types/qrcode": "1.5.5",
     "@types/react": "18.2.73",
     "@types/react-dom": "18.2.23",

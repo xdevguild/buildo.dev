@@ -3,7 +3,7 @@ import { Authenticated } from '@/components/elven-ui/authenticated';
 import { Spinner } from '@/components/ui/spinner';
 
 type OperationsSubmitButtonProps = {
-  formId: string;
+  formId?: string;
   label?: string;
   isPublic?: boolean;
   pending?: boolean;
@@ -12,7 +12,7 @@ type OperationsSubmitButtonProps = {
 
 type ButtonComponent = {
   label: string;
-  formId: string;
+  formId?: string;
   disabled?: boolean;
   pending?: boolean;
 };
@@ -44,17 +44,25 @@ export const OperationsSubmitButton = ({
     return <ButtonComponent formId={formId} label={label} pending={pending} />;
 
   return (
-    <Authenticated
-      fallback={
-        <div className="flex items-center justify-end gap-4">
-          <span className="text-xs font-bold text-destructive">
-            Please connect your wallet first!
-          </span>
-          <ButtonComponent formId={formId} disabled label={label} />
-        </div>
-      }
-    >
-      <ButtonComponent formId={formId} label={label} disabled={disabled} />
-    </Authenticated>
+    <div className="flex items-center justify-end gap-4">
+      <Authenticated
+        fallback={
+          <>
+            <span className="text-xs font-bold text-destructive">
+              Please connect your wallet first!
+            </span>
+            <ButtonComponent formId={formId} disabled label={label} />
+          </>
+        }
+        spinnerCentered
+      >
+        <ButtonComponent
+          formId={formId}
+          label={label}
+          disabled={disabled}
+          pending={pending}
+        />
+      </Authenticated>
+    </div>
   );
 };
