@@ -5,7 +5,6 @@ export const HomeCards = () => {
   return (
     <>
       <div className="mb-6 flex flex-row flex-wrap gap-6">
-        {/* TODO: replace all onClicks with paths when all pages are ready */}
         <HomeCard
           title="General operations"
           description="General operations on the chain. Like managing accounts, herotags, multi-transfers, and interaction with custom smart contracts. New ones will be added over time."

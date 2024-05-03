@@ -13,7 +13,6 @@ import { OperationsSubmitButton } from '@/components/operations/operations-submi
 import { OperationContentProps } from '@/components/operations/operations-common-types';
 import BigNumber from 'bignumber.js';
 import { ESDTType } from '@useelven/core';
-import { transfersOperationsGasLimit } from '@/components/operations/constants';
 import { OperationsTokenIdAmountInput } from '../operations-tokenid-amount-input';
 
 const formSchema = z.object({
@@ -43,11 +42,14 @@ export const Send = ({ transfer, close }: OperationContentProps) => {
     amount,
   }: z.infer<typeof formSchema>) => {
     transfer?.({
-      type: ESDTType.FungibleESDT,
-      tokenId: tokenId.trim(),
+      tokens: [
+        {
+          type: ESDTType.FungibleESDT,
+          amount: amount.trim(),
+          tokenId: tokenId.trim(),
+        },
+      ],
       receiver: address.trim(),
-      amount: amount.trim(),
-      gasLimit: transfersOperationsGasLimit,
     });
 
     form.reset();

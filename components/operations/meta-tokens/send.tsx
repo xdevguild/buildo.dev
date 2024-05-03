@@ -12,7 +12,6 @@ import { OperationsInputField } from '@/components/operations/operations-input-f
 import { OperationsSubmitButton } from '@/components/operations/operations-submit-button';
 import { OperationContentProps } from '@/components/operations/operations-common-types';
 import { ESDTType } from '@useelven/core';
-import { transfersOperationsGasLimit } from '@/components/operations/constants';
 import BigNumber from 'bignumber.js';
 
 const formSchema = z.object({
@@ -42,11 +41,14 @@ export const Send = ({ transfer, close }: OperationContentProps) => {
     amount,
   }: z.infer<typeof formSchema>) => {
     transfer?.({
-      type: ESDTType.MetaESDT,
-      tokenId,
+      tokens: [
+        {
+          type: ESDTType.MetaESDT,
+          amount: amount.trim(),
+          tokenId: tokenId.trim(),
+        },
+      ],
       receiver: address.trim(),
-      amount: amount.trim(),
-      gasLimit: transfersOperationsGasLimit,
     });
 
     form.reset();

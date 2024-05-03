@@ -12,7 +12,7 @@ import { OperationsInputField } from '@/components/operations/operations-input-f
 import { OperationsSubmitButton } from '@/components/operations/operations-submit-button';
 import { OperationContentProps } from '@/components/operations/operations-common-types';
 import BigNumber from 'bignumber.js';
-import { MultiTransferToken, ESDTType } from '@useelven/core';
+import { ESDTType, MultiTransferToken } from '@useelven/core';
 
 const formSchema = z
   .object({
@@ -130,10 +130,7 @@ const formSchema = z
     }
   );
 
-export const MultiTransfer = ({
-  multiTransfer,
-  close,
-}: OperationContentProps) => {
+export const MultiTransfer = ({ transfer, close }: OperationContentProps) => {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -173,7 +170,6 @@ export const MultiTransfer = ({
     if (nonFungibleTokenId && nonFungibleAmount) {
       tokens.push({
         type: ESDTType.NonFungibleESDT,
-        amount: nonFungibleAmount,
         tokenId: nonFungibleTokenId,
       });
     }
@@ -194,8 +190,8 @@ export const MultiTransfer = ({
       });
     }
 
-    if (multiTransfer) {
-      multiTransfer({ tokens, receiver: receiverAddress });
+    if (transfer) {
+      transfer({ tokens, receiver: receiverAddress });
 
       form.reset();
       close();

@@ -1,13 +1,11 @@
 /** @type {import('next').NextConfig} */
+
+const externals = ['pino-pretty', 'lokijs', 'utf-8-validate', 'bufferutil'];
+
 const nextConfig = {
   webpack: (config) => {
     config.resolve.fallback = { fs: false };
-    config.externals.push(
-      'pino-pretty',
-      'lokijs',
-      'utf-8-validate',
-      'bufferutil'
-    );
+    config.externals.push(...externals);
     return config;
   },
   eslint: {
@@ -15,6 +13,9 @@ const nextConfig = {
   },
   experimental: {
     webpackBuildWorker: true,
+    turbo: {
+      externals,
+    },
   },
   async redirects() {
     return [

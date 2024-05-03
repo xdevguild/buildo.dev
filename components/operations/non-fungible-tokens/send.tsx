@@ -12,7 +12,6 @@ import { OperationsInputField } from '@/components/operations/operations-input-f
 import { OperationsSubmitButton } from '@/components/operations/operations-submit-button';
 import { OperationContentProps } from '@/components/operations/operations-common-types';
 import { ESDTType } from '@useelven/core';
-import { transfersOperationsGasLimit } from '@/components/operations/constants';
 
 const formSchema = z.object({
   tokenId: z.string().min(1, 'The field is required'),
@@ -30,10 +29,13 @@ export const Send = ({ transfer, close }: OperationContentProps) => {
 
   const onSubmit = async ({ tokenId, address }: z.infer<typeof formSchema>) => {
     transfer?.({
-      type: ESDTType.NonFungibleESDT,
-      tokenId,
+      tokens: [
+        {
+          type: ESDTType.NonFungibleESDT,
+          tokenId: tokenId.trim(),
+        },
+      ],
       receiver: address.trim(),
-      gasLimit: transfersOperationsGasLimit,
     });
 
     form.reset();

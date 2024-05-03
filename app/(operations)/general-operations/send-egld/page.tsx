@@ -16,7 +16,7 @@ const SendEgld: NextPage = () => {
       </div>
       <Send />
       <Separator className="my-12" />
-      <div>
+      <div className="text-xs">
         <p>
           Transferring eGold (EGLD) between wallets on MultiversX is
           straightforward and doesn&apos;t always need a smart contract. This
@@ -24,7 +24,7 @@ const SendEgld: NextPage = () => {
           the right person safely and securely. Here&apos;s a simpler breakdown
           of how it works:
         </p>
-        <h2 className="py-2 text-lg font-semibold">
+        <h2 className="py-2 text-sm font-semibold">
           Getting the Transaction Ready
         </h2>
         <p>
@@ -33,20 +33,20 @@ const SendEgld: NextPage = () => {
           need a nonce, which is just a fancy way of saying a unique number for
           each transaction you make, to keep things in order and secure.
         </p>{' '}
-        <h2 className="py-2 text-lg font-semibold">Signing the Transaction</h2>
+        <h2 className="py-2 text-sm font-semibold">Signing the Transaction</h2>
         <p>
           Next, you sign the transaction with your private key. Think of this
           like putting your digital signature on a document. It proves that you
           are really you and that you approve this transaction. This step is
           crucial for keeping your EGLD safe.
         </p>{' '}
-        <h2 className="py-2 text-lg font-semibold">Sending it Off</h2>{' '}
+        <h2 className="py-2 text-sm font-semibold">Sending it Off</h2>{' '}
         <p>
           Once signed, your transaction is ready to fly. You broadcast it,
           meaning you send it out to the MultiversX network. Now, it&apos;s in
           the hands of the network&apos;s validators.{' '}
         </p>
-        <h2 className="py-2 text-lg font-semibold">
+        <h2 className="py-2 text-sm font-semibold">
           Validators Check and Confirm
         </h2>
         <p>
@@ -56,7 +56,7 @@ const SendEgld: NextPage = () => {
           matches up. If all is good, they include your transaction in the next
           block of transactions that gets added to the blockchain.
         </p>
-        <h2 className="py-2 text-lg font-semibold">All Done!</h2>
+        <h2 className="py-2 text-sm font-semibold">All Done!</h2>
         <p>
           After your transaction is safely tucked into a block on the
           blockchain, it&apos;s considered confirmed. This means it&apos;s

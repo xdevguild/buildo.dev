@@ -46,7 +46,7 @@ export default function RootLayout({
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           {children}
         </ThemeProvider>
-        <Toaster expand={true} />
+        <Toaster expand={true} style={{ top: 85 }} />
       </body>
     </html>
   );
