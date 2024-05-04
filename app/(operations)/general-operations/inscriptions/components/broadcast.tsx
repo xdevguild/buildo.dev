@@ -19,9 +19,7 @@ export const Broadcast = ({
   const { address } = useAccount();
   const { loginMethod } = useLoginInfo();
   const { explorerAddress } = useConfig();
-  const { triggerTx, pending, txResult, error } = useTransaction({
-    callbackUrl: '/inscriptions/create',
-  });
+  const { triggerTx, pending, txResult, error } = useTransaction();
 
   const { storageValue: inscription } = usePersistStorage({
     storageItem: 'general-createInscription-inscription',
@@ -61,7 +59,7 @@ export const Broadcast = ({
   };
 
   return (
-    <div className="px-0 sm:px-8">
+    <div className="px-0">
       <div className="mb-3 font-bold">
         {txResult?.isCompleted && (
           <div>
@@ -89,7 +87,7 @@ export const Broadcast = ({
           </div>
         )}
         {!pending && inscription && (
-          <code className="block max-h-96 overflow-auto break-all bg-slate-100 px-6 py-4 dark:bg-slate-800 dark:text-slate-50">
+          <code className="block max-h-96 overflow-auto break-all rounded-sm bg-slate-100 px-6 py-4 dark:bg-slate-800 dark:text-slate-50">
             {inscription}
           </code>
         )}

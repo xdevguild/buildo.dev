@@ -18,7 +18,7 @@ export const metadata: Metadata = {
     images: [globalImage],
     description,
     type: 'website',
-    url: '/inscriptions/create',
+    url: '',
   },
   twitter: {
     title,
@@ -41,7 +41,7 @@ export default function OperationsLayout({
           <OperationsMenu />
         </nav>
         <main className="flex-1 overflow-auto bg-zinc-50 px-2 dark:bg-zinc-900 lg:px-6 lg:py-8">
-          <div className="container mt-3 rounded-2xl border border-border bg-background px-12 py-8 lg:mt-auto">
+          <div className="container mx-auto mt-3 max-w-6xl rounded-2xl border border-border bg-background px-12 py-8 lg:mt-auto">
             {children}
           </div>
         </main>

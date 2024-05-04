@@ -33,7 +33,7 @@
     "@radix-ui/react-separator": "1.0.3",
     "@radix-ui/react-slot": "1.0.2",
     "@radix-ui/react-tooltip": "1.0.7",
-    "@useelven/core": "0.19.2",
+    "@useelven/core": "0.19.3",
     "axios": "1.6.8",
     "bech32": "2.0.0",
     "bignumber.js": "9.1.2",

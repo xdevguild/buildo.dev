@@ -76,7 +76,7 @@ export const Sign = ({
 
     await signMessage({
       message: shaString,
-      options: { callbackUrl: '/inscriptions/create' },
+      options: { callbackUrl: '/general-operations/inscriptions' },
     });
 
     const payload = {
@@ -113,34 +113,28 @@ export const Sign = ({
           </div>
         )}
       </div>
-      <div className="overflow-y-auto px-0 py-0 sm:px-8">
-        <Form {...form}>
-          <form
-            id="inscription-form"
-            onSubmit={form.handleSubmit(prepareData)}
-            className="space-y-8"
-          >
-            <div className="flex-1 overflow-auto p-1">
-              <OperationsInputField
-                name="inscription"
-                label="Inscription data"
-                type="textarea"
-                rows={10}
-                placeholder='Example: { "myKey1": "myValue1", "myKey2": "myValue2" }'
-                description="You can paste JSON data that will be then encoded with base64. You will be signing a sha256 hash of your data."
-              />
-            </div>
-          </form>
-        </Form>
-      </div>
-      <div className="flex flex-col-reverse px-8 py-4 sm:flex-row sm:justify-end sm:space-x-2">
-        <OperationsSubmitButton
-          formId="inscription-form"
-          label="Sign the data first!"
-          disabled={Boolean(signature)}
-          pending={pending}
-        />
-      </div>
+      <Form {...form}>
+        <form
+          id="inscription-form"
+          onSubmit={form.handleSubmit(prepareData)}
+          className="space-y-8"
+        >
+          <div className="flex-1 overflow-auto p-1">
+            <OperationsInputField
+              name="inscription"
+              label="Inscription data"
+              type="textarea"
+              rows={10}
+              placeholder='Example: { "myKey1": "myValue1", "myKey2": "myValue2" }'
+              description="You can paste JSON data that will be then encoded with base64. You will be signing a sha256 hash of your data."
+            />
+          </div>
+          <OperationsSubmitButton
+            label="Sign the data first!"
+            disabled={Boolean(signature)}
+          />
+        </form>
+      </Form>
     </>
   );
 };

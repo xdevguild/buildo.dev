@@ -23,16 +23,18 @@ export const OperationInfoBox = ({
       <AlertTitle className="mb-2">Transaction status</AlertTitle>
       <AlertDescription>
         <div>{error || message}</div>
-        <div>
-          Check in the explorer:
-          <a
-            href={`${explorerAddress}/transactions/${txHash}`}
-            target="_blank"
-            className="ml-2 break-all font-semibold underline"
-          >
-            {txHash}
-          </a>
-        </div>
+        {txHash && (
+          <div>
+            Check in the explorer:
+            <a
+              href={`${explorerAddress}/transactions/${txHash}`}
+              target="_blank"
+              className="ml-2 break-all font-semibold underline"
+            >
+              {txHash}
+            </a>
+          </div>
+        )}
       </AlertDescription>
     </Alert>
   );

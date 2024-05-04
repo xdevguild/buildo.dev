@@ -2,7 +2,7 @@ import type { NextPage } from 'next';
 import { Send } from './components/send';
 import { Separator } from '@/components/ui/separator';
 
-const SendEgld: NextPage = () => {
+const SendEgldPage: NextPage = () => {
   return (
     <div>
       <div className="mb-6 flex flex-col">
@@ -73,4 +73,4 @@ const SendEgld: NextPage = () => {
   );
 };
 
-export default SendEgld;
+export default SendEgldPage;

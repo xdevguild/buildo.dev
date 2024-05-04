@@ -48,7 +48,7 @@ export const operationsMenuConfig: Record<
       title: 'Create Inscription',
       description:
         'Send custom data on chain. You can then use it off-chain or for NFTs. (The structure of the data may change!)',
-      path: '/general-operations/inscriptions/create',
+      path: '/general-operations/inscriptions',
     },
   ],
   utilities: [

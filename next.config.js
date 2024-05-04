@@ -20,8 +20,8 @@ const nextConfig = {
   async redirects() {
     return [
       {
-        source: '/inscriptions/:slug*',
-        destination: '/general-operations/inscriptions/:slug*',
+        source: '/inscriptions/create',
+        destination: '/general-operations/inscriptions',
         permanent: true,
       },
     ];

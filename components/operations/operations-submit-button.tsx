@@ -44,7 +44,7 @@ export const OperationsSubmitButton = ({
     return <ButtonComponent formId={formId} label={label} pending={pending} />;
 
   return (
-    <div className="flex items-center justify-end gap-4">
+    <div className="flex min-h-10 items-center justify-end gap-4">
       <Authenticated
         fallback={
           <>

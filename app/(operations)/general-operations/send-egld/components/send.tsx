@@ -64,7 +64,7 @@ export const Send = () => {
 
   return (
     <>
-      <OperationInfoBox error={error} message={''} txHash={txResult?.hash} />
+      <OperationInfoBox error={error} txHash={txResult?.hash} />
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
           <div className="flex-1 overflow-auto p-1">
@@ -85,7 +85,7 @@ export const Send = () => {
               description="Please provide the amount of ESDT to send (ex. 22.5 is 22.5 amount of an ESDT token. Don't worry about the decimal places here)."
             />
           </div>
-          <OperationsSubmitButton pending={pending} />
+          <OperationsSubmitButton />
         </form>
       </Form>
     </>

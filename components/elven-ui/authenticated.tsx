@@ -23,7 +23,10 @@ export const Authenticated: FC<PropsWithChildren<AuthenticatedProps>> = ({
   if (pending)
     return noSpinner ? null : (
       <div
-        className={cn(['flex flex-row', { 'justify-center': spinnerCentered }])}
+        className={cn([
+          'flex flex-row overflow-hidden',
+          { 'justify-center': spinnerCentered },
+        ])}
         {...props}
       >
         <Spinner />
