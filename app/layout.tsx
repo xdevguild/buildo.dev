@@ -46,7 +46,11 @@ export default function RootLayout({
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           {children}
         </ThemeProvider>
-        <Toaster expand={true} style={{ top: 85 }} />
+        <Toaster
+          expand={true}
+          style={{ top: 85, position: 'fixed' }}
+          position="top-right"
+        />
       </body>
     </html>
   );

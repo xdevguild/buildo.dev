@@ -41,7 +41,11 @@ export const OperationsSubmitButton = ({
   disabled = false,
 }: OperationsSubmitButtonProps) => {
   if (isPublic)
-    return <ButtonComponent formId={formId} label={label} pending={pending} />;
+    return (
+      <div className="flex min-h-10 items-center justify-end gap-4">
+        <ButtonComponent formId={formId} label={label} pending={pending} />
+      </div>
+    );
 
   return (
     <div className="flex min-h-10 items-center justify-end gap-4">

@@ -13,9 +13,6 @@ const nextConfig = {
   },
   experimental: {
     webpackBuildWorker: true,
-    turbo: {
-      externals,
-    },
   },
   async redirects() {
     return [

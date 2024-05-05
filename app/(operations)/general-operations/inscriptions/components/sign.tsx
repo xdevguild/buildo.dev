@@ -76,7 +76,6 @@ export const Sign = ({
 
     await signMessage({
       message: shaString,
-      options: { callbackUrl: '/general-operations/inscriptions' },
     });
 
     const payload = {

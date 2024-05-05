@@ -1,13 +1,9 @@
+'use client';
+
 import * as z from 'zod';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { Form } from '@/components/ui/form';
-import {
-  DialogDescription,
-  DialogFooter,
-  DialogHeader,
-  DialogTitle,
-} from '@/components/ui/dialog';
 import { OperationsInputField } from '@/components/operations/operations-input-field';
 import { OperationsSubmitButton } from '@/components/operations/operations-submit-button';
 import { useState } from 'react';
@@ -20,7 +16,7 @@ const formSchema = z.object({
   addressOrHerotag: z.string().min(1, 'The field is required'),
 });
 
-export const CheckAddressData = () => {
+export const AddressData = () => {
   const [result, setResult] = useState<string>();
   const [pending, setPending] = useState(false);
   const { apiAddress } = useConfig();
@@ -60,50 +56,34 @@ export const CheckAddressData = () => {
 
   return (
     <>
-      <DialogHeader className="p-8 pb-0">
-        <DialogTitle>Check address data</DialogTitle>
-        <DialogDescription>
-          Check basic address data (also using a herotag). It can also be a
-          smart contract address. Useful because Explorer API has agressive
-          cache in some cases.
-        </DialogDescription>
-      </DialogHeader>
-      <div className="overflow-y-auto px-8 py-0">
-        <Form {...form}>
-          <form
-            id="check-address-data-form"
-            onSubmit={form.handleSubmit(onSubmit)}
-            className="space-y-8"
-          >
-            <div className="flex-1 overflow-auto p-1">
-              <OperationsInputField
-                name="addressOrHerotag"
-                label="Wallet address or herotag"
-                placeholder="Example: erd1.... or <herotag_name>"
-                description="Please provide a wallet address to check. You can also use a herotag or you can check a smart contract address."
-              />
-            </div>
-          </form>
-        </Form>
-        {result && (
-          <Alert className="w-full overflow-y-auto">
-            <AlertCircle className="h-4 w-4" />
-            <AlertTitle>The address data:</AlertTitle>
-            <AlertDescription className="mt-3 w-full">
-              <pre>
-                <code>{result}</code>
-              </pre>
-            </AlertDescription>
-          </Alert>
-        )}
-      </div>
-      <DialogFooter className="px-8 py-4">
-        <OperationsSubmitButton
-          formId="check-address-data-form"
-          pending={pending}
-          isPublic
-        />
-      </DialogFooter>
+      <Form {...form}>
+        <form
+          id="check-address-data-form"
+          onSubmit={form.handleSubmit(onSubmit)}
+          className="space-y-8"
+        >
+          <div className="flex-1 overflow-auto p-1">
+            <OperationsInputField
+              name="addressOrHerotag"
+              label="Wallet address or herotag"
+              placeholder="Example: erd1.... or <herotag_name>"
+              description="Please provide a wallet address to check. You can also use a herotag or you can check a smart contract address."
+            />
+          </div>
+          <OperationsSubmitButton pending={pending} isPublic />
+        </form>
+      </Form>
+      {result && (
+        <Alert className="mt-6 w-full overflow-y-auto">
+          <AlertCircle className="h-4 w-4" />
+          <AlertTitle>The address data:</AlertTitle>
+          <AlertDescription className="mt-3 w-full">
+            <pre>
+              <code>{result}</code>
+            </pre>
+          </AlertDescription>
+        </Alert>
+      )}
     </>
   );
 };

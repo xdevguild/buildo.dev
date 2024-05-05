@@ -1,13 +1,9 @@
+'use client';
+
 import * as z from 'zod';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { Form } from '@/components/ui/form';
-import {
-  DialogDescription,
-  DialogFooter,
-  DialogHeader,
-  DialogTitle,
-} from '@/components/ui/dialog';
 import { OperationsInputField } from '@/components/operations/operations-input-field';
 import { OperationsSubmitButton } from '@/components/operations/operations-submit-button';
 import { useState } from 'react';
@@ -43,7 +39,7 @@ const formSchema = z.object({
   }),
 });
 
-export const CheckTokenData = () => {
+export const TokenData = () => {
   const [result, setResult] = useState<string>();
   const [pending, setPending] = useState(false);
   const { apiAddress } = useConfig();
@@ -91,56 +87,40 @@ export const CheckTokenData = () => {
 
   return (
     <>
-      <DialogHeader className="p-8 pb-0">
-        <DialogTitle>Check token data</DialogTitle>
-        <DialogDescription>
-          Check basic token data. It can be a standard fungible token or
-          collection id for NFT/SFT/Meta tokens. Useful because Explorer API has
-          agressive cache in some cases.
-        </DialogDescription>
-      </DialogHeader>
-      <div className="overflow-y-auto px-8 py-0">
-        <Form {...form}>
-          <form
-            id="check-token-data-form"
-            onSubmit={form.handleSubmit(onSubmit)}
-            className="space-y-8"
-          >
-            <div className="flex-1 overflow-auto p-1">
-              <OperationsRadioGroup
-                items={tokenTypes}
-                name="tokenType"
-                label="Token type"
-                description="Please choose the type of the token to check."
-              />
-              <OperationsInputField
-                name="tokenId"
-                label="Token id"
-                placeholder="Example: MyToken-23432"
-                description="Please provide your token id. Fungible or collection id."
-              />
-            </div>
-          </form>
-        </Form>
-        {result && (
-          <Alert className="w-full overflow-y-auto">
-            <AlertCircle className="h-4 w-4" />
-            <AlertTitle>The token data:</AlertTitle>
-            <AlertDescription className="mt-3 w-full">
-              <pre>
-                <code>{result}</code>
-              </pre>
-            </AlertDescription>
-          </Alert>
-        )}
-      </div>
-      <DialogFooter className="px-8 py-4">
-        <OperationsSubmitButton
-          formId="check-token-data-form"
-          pending={pending}
-          isPublic
-        />
-      </DialogFooter>
+      <Form {...form}>
+        <form
+          id="check-token-data-form"
+          onSubmit={form.handleSubmit(onSubmit)}
+          className="space-y-8"
+        >
+          <div className="flex-1 overflow-auto p-1">
+            <OperationsRadioGroup
+              items={tokenTypes}
+              name="tokenType"
+              label="Token type"
+              description="Please choose the type of the token to check."
+            />
+            <OperationsInputField
+              name="tokenId"
+              label="Token id"
+              placeholder="Example: MyToken-23432"
+              description="Please provide your token id. Fungible or collection id."
+            />
+          </div>
+          <OperationsSubmitButton pending={pending} isPublic />
+        </form>
+      </Form>
+      {result && (
+        <Alert className="mt-6 w-full overflow-y-auto">
+          <AlertCircle className="h-4 w-4" />
+          <AlertTitle>The token data:</AlertTitle>
+          <AlertDescription className="mt-3 w-full">
+            <pre>
+              <code>{result}</code>
+            </pre>
+          </AlertDescription>
+        </Alert>
+      )}
     </>
   );
 };

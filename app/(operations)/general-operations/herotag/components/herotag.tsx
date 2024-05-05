@@ -1,3 +1,5 @@
+'use client';
+
 import keccak from 'keccak';
 import {
   SmartContract,
@@ -11,26 +13,26 @@ import * as z from 'zod';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { Form } from '@/components/ui/form';
-import {
-  DialogDescription,
-  DialogFooter,
-  DialogHeader,
-  DialogTitle,
-} from '@/components/ui/dialog';
 import { OperationsInputField } from '@/components/operations/operations-input-field';
 import { OperationsSubmitButton } from '@/components/operations/operations-submit-button';
-import { OperationContentProps } from '@/components/operations/operations-common-types';
+import { useTxStatus } from '@/hooks/use-tx-status';
+import { OperationInfoBox } from '@/components/operation-info-box';
+import { useTransaction } from '@useelven/core';
 
 const dnsScAddressForHerotag = (herotag: string) => {
   const hashedHerotag = keccak('keccak256').update(herotag).digest();
 
   const initialAddress = Buffer.from(Array(32).fill(1));
-  const initialAddressSlice = initialAddress.slice(0, 30);
-  const scId = hashedHerotag.slice(31);
+  const initialAddressSlice = Uint8Array.prototype.slice.call(
+    initialAddress,
+    0,
+    30
+  );
+  const scId = Uint8Array.prototype.slice.call(hashedHerotag, 31);
 
   const deployer_pubkey = Buffer.concat([
     initialAddressSlice,
-    Buffer.from([0, scId.readUIntBE(0, 1)]),
+    Buffer.from([0, Buffer.from(scId).readUIntBE(0, 1)]),
   ]);
 
   const scAddress = SmartContract.computeAddress(
@@ -52,7 +54,9 @@ const formSchema = z.object({
   }, 'Length between 3 and 25 characters and Lowercase alphanumeric characters only.'),
 });
 
-export const Herotag = ({ triggerTx, close }: OperationContentProps) => {
+export const Herotag = () => {
+  const { triggerTx, error, txResult, transaction, pending } = useTransaction();
+
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -60,15 +64,21 @@ export const Herotag = ({ triggerTx, close }: OperationContentProps) => {
     },
   });
 
+  useTxStatus({
+    successHash: txResult?.hash,
+    pendingHash: transaction?.getHash()?.toString(),
+    error,
+    pending,
+  });
+
   const onSubmit = async ({ herotag }: z.infer<typeof formSchema>) => {
-    const dnsScAddress = dnsScAddressForHerotag(`${herotag.trim()}.elrond`);
+    const dnsScAddress = dnsScAddressForHerotag(`${herotag.trim()}`);
 
-    const args: TypedValue[] = [
-      BytesValue.fromUTF8(`${herotag.trim()}.elrond`),
-    ];
+    const args: TypedValue[] = [BytesValue.fromUTF8(`${herotag.trim()}`)];
 
+    // TODO: use modern tools for contract calls
     const data = new ContractCallPayloadBuilder()
-      .setFunction(new ContractFunction('register'))
+      .setFunction(new ContractFunction('SetUserName'))
       .setArgs(args)
       .build();
 
@@ -85,35 +95,24 @@ export const Herotag = ({ triggerTx, close }: OperationContentProps) => {
 
   return (
     <>
-      <DialogHeader className="p-8 pb-0">
-        <DialogTitle>Assign a herotag to your wallet address</DialogTitle>
-        <DialogDescription>
-          The herotag is a unique username you can assign to your wallet
-          address. Just to let you know, in this case, transaction fees will be
-          applied.
-        </DialogDescription>
-      </DialogHeader>
-      <div className="overflow-y-auto px-8 py-0">
-        <Form {...form}>
-          <form
-            id="herotag-form"
-            onSubmit={form.handleSubmit(onSubmit)}
-            className="space-y-8"
-          >
-            <div className="flex-1 overflow-auto p-1">
-              <OperationsInputField
-                name="herotag"
-                label="Herotag username"
-                placeholder="Example: mycoolusername"
-                description="Please provide the herotag name"
-              />
-            </div>
-          </form>
-        </Form>
-      </div>
-      <DialogFooter className="px-8 py-4">
-        <OperationsSubmitButton formId="herotag-form" />
-      </DialogFooter>
+      <OperationInfoBox error={error} txHash={txResult?.hash} />
+      <Form {...form}>
+        <form
+          id="herotag-form"
+          onSubmit={form.handleSubmit(onSubmit)}
+          className="space-y-8"
+        >
+          <div className="flex-1 overflow-auto p-1">
+            <OperationsInputField
+              name="herotag"
+              label="Herotag username"
+              placeholder="Example: mycoolusername"
+              description="Please provide the herotag name"
+            />
+          </div>
+          <OperationsSubmitButton />
+        </form>
+      </Form>
     </>
   );
 };

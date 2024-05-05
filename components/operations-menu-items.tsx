@@ -30,16 +30,18 @@ export const OperationsMenuItems = ({
           </AccordionTrigger>
           <AccordionContent className="p-1 pr-[2px]">
             <ul>
-              {operationsMenuConfig[item].map((item, index) => (
-                <OperationMenuItem
-                  href={item.path}
-                  key={index}
-                  pathname={pathname}
-                  onItemClick={onItemClick}
-                >
-                  {item.title}
-                </OperationMenuItem>
-              ))}
+              {operationsMenuConfig[item]
+                .filter((item) => !item.disabled)
+                .map((item, index) => (
+                  <OperationMenuItem
+                    href={item.path}
+                    key={index}
+                    pathname={pathname}
+                    onItemClick={onItemClick}
+                  >
+                    {item.title}
+                  </OperationMenuItem>
+                ))}
             </ul>
           </AccordionContent>
         </AccordionItem>

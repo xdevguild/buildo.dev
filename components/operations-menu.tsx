@@ -18,8 +18,8 @@ export const OperationsMenu = () => {
         <OperationsMenuItems onItemClick={closeSheet} />
       </div>
       <Sheet open={open} onOpenChange={setOpen}>
-        <SheetTrigger className="block lg:hidden" asChild>
-          <div className="flex items-center">
+        <div className="flex items-center">
+          <SheetTrigger className="block lg:hidden" asChild>
             <Button
               variant="outline"
               size="icon"
@@ -27,8 +27,8 @@ export const OperationsMenu = () => {
             >
               <PanelLeft width={20} height={20} />
             </Button>
-          </div>
-        </SheetTrigger>
+          </SheetTrigger>
+        </div>
         <SheetContent side="left" className="w-full max-w-xs sm:max-w-xs">
           <div>
             <Image src="/logo.svg" alt={'Logo'} width={30} height={30} />

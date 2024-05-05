@@ -1,13 +1,9 @@
+'use client';
+
 import * as z from 'zod';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { Form } from '@/components/ui/form';
-import {
-  DialogDescription,
-  DialogFooter,
-  DialogHeader,
-  DialogTitle,
-} from '@/components/ui/dialog';
 import { OperationsInputField } from '@/components/operations/operations-input-field';
 import { OperationsSubmitButton } from '@/components/operations/operations-submit-button';
 import { OperationsSelectField } from '@/components/operations/operations-select-field';
@@ -248,48 +244,37 @@ export const DataConverters = () => {
 
   return (
     <>
-      <DialogHeader className="p-8 pb-0">
-        <DialogTitle>Covert data</DialogTitle>
-        <DialogDescription>
-          You can convert the data - for example, string to hex string, etc.
-          Choose the conversion type from the selector.
-        </DialogDescription>
-      </DialogHeader>
-      <div className="overflow-y-auto px-8 py-0">
-        <Form {...form}>
-          <form
-            id="send-form"
-            onSubmit={form.handleSubmit(onSubmit)}
-            className="space-y-8"
-          >
-            <div className="flex-1 overflow-auto p-1">
-              <OperationsSelectField
-                name="converter"
-                label="Converter type"
-                description="Choose the conversion type"
-                options={converters}
-              />
-              <OperationsInputField
-                name="input"
-                label="Data input"
-                placeholder="Example: <some hex string>"
-                description="Please provide the data to convert"
-                type="textarea"
-              />
-            </div>
-          </form>
-        </Form>
-        {result && (
-          <Alert className="break-words">
-            <AlertCircle className="h-4 w-4" />
-            <AlertTitle>The result of the data conversion:</AlertTitle>
-            <AlertDescription className="mt-3">{result}</AlertDescription>
-          </Alert>
-        )}
-      </div>
-      <DialogFooter className="px-8 py-4">
-        <OperationsSubmitButton formId="send-form" isPublic />
-      </DialogFooter>
+      <Form {...form}>
+        <form
+          id="send-form"
+          onSubmit={form.handleSubmit(onSubmit)}
+          className="space-y-8"
+        >
+          <div className="flex-1 overflow-auto p-1">
+            <OperationsSelectField
+              name="converter"
+              label="Converter type"
+              description="Choose the conversion type"
+              options={converters}
+            />
+            <OperationsInputField
+              name="input"
+              label="Data input"
+              placeholder="Example: <some hex string>"
+              description="Please provide the data to convert"
+              type="textarea"
+            />
+          </div>
+          <OperationsSubmitButton isPublic />
+        </form>
+      </Form>
+      {result && (
+        <Alert className="mt-6 break-words">
+          <AlertCircle className="h-4 w-4" />
+          <AlertTitle>The result of the data conversion:</AlertTitle>
+          <AlertDescription className="mt-3">{result}</AlertDescription>
+        </Alert>
+      )}
     </>
   );
 };
