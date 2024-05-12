@@ -110,10 +110,18 @@ export const PauseUnpause = ({ triggerTx, close }: OperationContentProps) => {
                 description="Please provide your token id"
                 options={
                   getTokens
-                    ? getTokens?.map((token) => ({
-                        value: token.identifier,
-                        label: token.identifier,
-                      }))
+                    ? getTokens
+                        ?.sort((a, b) => {
+                          const aTokenId = a.identifier;
+                          const bTokenId = b.identifier;
+                          if (aTokenId < bTokenId) return -1;
+                          if (aTokenId > bTokenId) return 1;
+                          return 0;
+                        })
+                        .map((token) => ({
+                          value: token.identifier,
+                          label: token.identifier,
+                        }))
                     : []
                 }
               />

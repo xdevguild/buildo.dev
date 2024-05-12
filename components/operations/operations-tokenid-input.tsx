@@ -31,10 +31,18 @@ export const OperationsTokenIdInput = ({
       description={description}
       options={
         tokens
-          ? tokens?.map((token) => ({
-              value: token[getTokenIdKey(tokenType)],
-              label: token[getTokenIdKey(tokenType)],
-            }))
+          ? tokens
+              ?.sort((a, b) => {
+                const aTokenId = a[getTokenIdKey(tokenType)];
+                const bTokenId = b[getTokenIdKey(tokenType)];
+                if (aTokenId < bTokenId) return -1;
+                if (aTokenId > bTokenId) return 1;
+                return 0;
+              })
+              .map((token) => ({
+                value: token[getTokenIdKey(tokenType)],
+                label: token[getTokenIdKey(tokenType)],
+              }))
           : []
       }
     />

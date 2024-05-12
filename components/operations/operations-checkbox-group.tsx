@@ -41,17 +41,21 @@ export const OperationsCheckboxGroup = ({
               key={property.name}
               control={control}
               name={name}
-              disabled={
-                disabledItems ? disabledItems.includes(property.name) : false
-              }
               render={({ field }) => {
                 return (
                   <FormItem key={property.name}>
                     <div className="flex flex-row items-start space-x-3 space-y-0">
                       <FormControl>
                         <Checkbox
-                          checked={field.value?.includes(property.name)}
-                          disabled={field.disabled}
+                          checked={
+                            !disabledItems?.includes(property.name) &&
+                            field.value?.includes(property.name)
+                          }
+                          disabled={
+                            disabledItems
+                              ? disabledItems.includes(property.name)
+                              : false
+                          }
                           onCheckedChange={(checked) => {
                             return checked
                               ? field.onChange([...field.value, property.name])

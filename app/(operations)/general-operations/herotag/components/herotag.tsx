@@ -90,7 +90,6 @@ export const Herotag = () => {
     });
 
     form.reset();
-    close();
   };
 
   return (

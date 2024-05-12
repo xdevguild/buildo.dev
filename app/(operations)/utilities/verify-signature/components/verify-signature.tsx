@@ -1,8 +1,6 @@
 'use client';
 
-import { Address, SignableMessage } from '@multiversx/sdk-core';
-import { UserVerifier } from '@multiversx/sdk-wallet';
-import * as z from 'zod';
+import { z } from 'zod';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { Form } from '@/components/ui/form';
@@ -36,6 +34,9 @@ export const VerifySignature = () => {
     signature,
   }: z.infer<typeof formSchema>) => {
     try {
+      const { Address, SignableMessage } = await import('@multiversx/sdk-core');
+      const { UserVerifier } = await import('@multiversx/sdk-wallet');
+
       const verifier = UserVerifier.fromAddress(new Address(address));
       // TODO: replace signable message
       const signableMessage = new SignableMessage({

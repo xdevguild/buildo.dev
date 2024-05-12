@@ -1,23 +1,10 @@
+'use client';
+
 import * as z from 'zod';
-import {
-  TokenTransfer,
-  BytesValue,
-  TypedValue,
-  BigUIntValue,
-  U32Value,
-  ContractCallPayloadBuilder,
-  ContractFunction,
-} from '@multiversx/sdk-core';
 import Bignumber from 'bignumber.js';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { Form } from '@/components/ui/form';
-import {
-  DialogDescription,
-  DialogFooter,
-  DialogHeader,
-  DialogTitle,
-} from '@/components/ui/dialog';
 import {
   esdtTokenProperties,
   issueTokenPayment,
@@ -26,8 +13,10 @@ import {
 } from '@/components/operations/constants';
 import { OperationsInputField } from '@/components/operations/operations-input-field';
 import { OperationsCheckboxGroup } from '@/components/operations/operations-checkbox-group';
-import { OperationsSubmitButton } from '../operations-submit-button';
-import { OperationContentProps } from '@/components/operations/operations-common-types';
+import { OperationsSubmitButton } from '@/components/operations/operations-submit-button';
+import { OperationInfoBox } from '@/components/operation-info-box';
+import { useTxStatus } from '@/hooks/use-tx-status';
+import { useTransaction } from '@useelven/core';
 
 const formSchema = z.object({
   name: z
@@ -58,7 +47,9 @@ const formSchema = z.object({
   properties: z.array(z.string()),
 });
 
-export const Issue = ({ triggerTx, close }: OperationContentProps) => {
+export const Issue = () => {
+  const { triggerTx, error, txResult, transaction, pending } = useTransaction();
+
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -70,16 +61,32 @@ export const Issue = ({ triggerTx, close }: OperationContentProps) => {
     },
   });
 
-  const onSubmit = ({
+  useTxStatus({
+    successHash: txResult?.hash,
+    pendingHash: transaction?.getHash()?.toString(),
+    error,
+    pending,
+  });
+
+  const onSubmit = async ({
     name,
     ticker,
     initialSupply,
     numOfDecimals,
     properties,
   }: z.infer<typeof formSchema>) => {
+    const {
+      TokenTransfer,
+      BytesValue,
+      BigUIntValue,
+      U32Value,
+      ContractCallPayloadBuilder,
+      ContractFunction,
+    } = await import('@multiversx/sdk-core');
+
     const payment = TokenTransfer.egldFromAmount(issueTokenPayment);
 
-    const args: TypedValue[] = [
+    const args = [
       BytesValue.fromUTF8(name.trim()),
       BytesValue.fromUTF8(ticker.trim()),
       new BigUIntValue(new Bignumber(initialSupply.trim())),
@@ -97,6 +104,7 @@ export const Issue = ({ triggerTx, close }: OperationContentProps) => {
       args.push(BytesValue.fromUTF8(propertyEnabled.toString()));
     }
 
+    // TODO: replace ContractCallPayloadBuilder
     const data = new ContractCallPayloadBuilder()
       .setFunction(new ContractFunction('issue'))
       .setArgs(args)
@@ -110,72 +118,58 @@ export const Issue = ({ triggerTx, close }: OperationContentProps) => {
     });
 
     form.reset();
-    close();
   };
 
   return (
     <>
-      <DialogHeader className="p-8 pb-0">
-        <DialogTitle>Issue a fungible ESDT</DialogTitle>
-        <DialogDescription>
-          ESDT tokens are issued via a request to the Metachain, which is a
-          transaction submitted by the Account which will manage the tokens.
-          When issuing a token, one must provide a token name, a ticker, the
-          initial supply, the number of decimals for display purpose and
-          optionally additional properties.
-        </DialogDescription>
-      </DialogHeader>
-      <div className="overflow-y-auto px-8 py-0">
-        <Form {...form}>
-          <form
-            id="issue-form"
-            onSubmit={form.handleSubmit(onSubmit)}
-            className="space-y-8"
-          >
-            <div className="flex-1 overflow-auto p-1">
-              <OperationsInputField
-                name="name"
-                label="Name"
-                placeholder="Example: MyToken"
-                description="Please provide the token name (3-20 characters, alphanumeric)"
-              />
-              <OperationsInputField
-                name="ticker"
-                label="Ticker"
-                placeholder="Example: MYTOK"
-                description="Please provide the token ticker (3-10 characters,
+      <OperationInfoBox error={error} txHash={txResult?.hash} />
+      <Form {...form}>
+        <form
+          id="issue-form"
+          onSubmit={form.handleSubmit(onSubmit)}
+          className="space-y-8"
+        >
+          <div className="flex-1 overflow-auto p-1">
+            <OperationsInputField
+              name="name"
+              label="Name"
+              placeholder="Example: MyToken"
+              description="Please provide the token name (3-20 characters, alphanumeric)"
+            />
+            <OperationsInputField
+              name="ticker"
+              label="Ticker"
+              placeholder="Example: MYTOK"
+              description="Please provide the token ticker (3-10 characters,
                   alphanumeric, uppercase)"
-              />
-              <OperationsInputField
-                name="numOfDecimals"
-                label="Number of decimals"
-                type="number"
-                placeholder="Example: 18"
-                description="Please provide the number of decimals (for example native
+            />
+            <OperationsInputField
+              name="numOfDecimals"
+              label="Number of decimals"
+              type="number"
+              placeholder="Example: 18"
+              description="Please provide the number of decimals (for example native
                   EGLD has 18)."
-              />
-              <OperationsInputField
-                name="initialSupply"
-                label="Initial supply"
-                placeholder="Example: 10000"
-                description="Please provide the initial supply (remember to take into
+            />
+            <OperationsInputField
+              name="initialSupply"
+              label="Initial supply"
+              placeholder="Example: 10000"
+              description="Please provide the initial supply (remember to take into
                   consideration the number of decimals for example 100 with
                   2 decimal places will be 10000)."
-              />
-              <OperationsCheckboxGroup
-                items={esdtTokenProperties}
-                name="properties"
-                label="Token properties"
-                description="Every ESDT token has a set of properties which control
+            />
+            <OperationsCheckboxGroup
+              items={esdtTokenProperties}
+              name="properties"
+              label="Token properties"
+              description="Every ESDT token has a set of properties which control
                 what operations are possible with it."
-              />
-            </div>
-          </form>
-        </Form>
-      </div>
-      <DialogFooter className="px-8 py-4">
-        <OperationsSubmitButton formId="issue-form" />
-      </DialogFooter>
+            />
+          </div>
+          <OperationsSubmitButton formId="issue-form" />
+        </form>
+      </Form>
     </>
   );
 };
