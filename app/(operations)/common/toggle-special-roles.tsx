@@ -46,7 +46,7 @@ const rolesMap: Record<
 export const ToggleSpecialRoles = ({
   tokenType,
 }: {
-  tokenType: CommonOpertationContentProps['tokenType'];
+  tokenType: CommonOpertationContentProps['tokenType']; // TODO: update types, replace this one
 }) => {
   const { triggerTx, error, txResult, transaction, pending } = useTransaction();
 
@@ -124,6 +124,7 @@ export const ToggleSpecialRoles = ({
       }
     }
 
+    // TODO: replace ContractCallPayloadBuilder
     const data = new ContractCallPayloadBuilder()
       .setFunction(
         new ContractFunction(
@@ -139,8 +140,6 @@ export const ToggleSpecialRoles = ({
       data,
       value: 0,
     });
-
-    form.reset();
   };
 
   const rolesDescription = () => {

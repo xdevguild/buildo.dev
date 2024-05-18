@@ -2,7 +2,7 @@ import type { NextPage } from 'next';
 import { MintBurn } from './components/mint-burn';
 import { Separator } from '@/components/ui/separator';
 
-const FungibleTokensSupplyManagementPage: NextPage = () => {
+const SupplyManagementPage: NextPage = () => {
   return (
     <div>
       <div className="mb-6 flex flex-col">
@@ -37,4 +37,4 @@ const FungibleTokensSupplyManagementPage: NextPage = () => {
   );
 };
 
-export default FungibleTokensSupplyManagementPage;
+export default SupplyManagementPage;

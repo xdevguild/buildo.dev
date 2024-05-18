@@ -34,7 +34,7 @@ export default function OperationsLayout({
   children: React.ReactNode;
 }) {
   return (
-    <div className="flex h-screen flex-col">
+    <div className="flex h-screen flex-col w-full fixed">
       <OperationHeader />
       <div className="flex flex-1 flex-col overflow-hidden lg:flex-row">
         <nav className="border-r border-border bg-background px-3 lg:w-64 lg:px-6 lg:py-8">

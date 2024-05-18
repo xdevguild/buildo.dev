@@ -2,7 +2,7 @@ import type { NextPage } from 'next';
 import { ToggleSpecialRoles } from '../../common/toggle-special-roles';
 import { Separator } from '@/components/ui/separator';
 
-const FungibleTokensRolesManagementPage: NextPage = () => {
+const RolesManagementPage: NextPage = () => {
   return (
     <div>
       <div className="mb-6 flex flex-col">
@@ -36,4 +36,4 @@ const FungibleTokensRolesManagementPage: NextPage = () => {
   );
 };
 
-export default FungibleTokensRolesManagementPage;
+export default RolesManagementPage;

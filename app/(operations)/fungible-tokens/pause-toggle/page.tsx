@@ -2,7 +2,7 @@ import type { NextPage } from 'next';
 import { PauseUnpause } from './components/pause-unpause';
 import { Separator } from '@/components/ui/separator';
 
-const FungibleTokensPauseTogglePage: NextPage = () => {
+const PauseTogglePage: NextPage = () => {
   return (
     <div>
       <div className="mb-6 flex flex-col">
@@ -19,27 +19,26 @@ const FungibleTokensPauseTogglePage: NextPage = () => {
       <Separator className="my-12" />
       <div className="text-xs">
         <p className="mb-3">
-          The manager of an ESDT (Elrond Standard Digital Token) on the
-          MultiversX blockchain has the capability to control and regulate
-          transactions of the token to ensure security and compliance.
-          Specifically, the manager can suspend almost all types of
-          transactions, with the exception of several key operations: minting,
-          freezing/unfreezing, and wiping of the tokens. This selective
-          suspension is enabled by setting the canPause option to true within
-          the token&apos;s configuration settings. This feature is particularly
-          useful for token administrators who need to quickly respond to
-          security issues or comply with regulatory requirements. By allowing
-          the minting, freezing, and unfreezing operations to continue, the
-          token&apos;s functionality and liquidity can be maintained even while
-          other transactions are halted. It&apos;s important for users and
-          developers interacting with ESDT tokens on the MultiversX blockchain
-          to understand these management features, as they are crucial for
-          maintaining the integrity and utility of digital assets within this
-          ecosystem.
+          The manager of an ESDT (eStandard Digital Token) on the MultiversX
+          blockchain has the capability to control and regulate transactions of
+          the token to ensure security and compliance. Specifically, the manager
+          can suspend almost all types of transactions, with the exception of
+          several key operations: minting, freezing/unfreezing, and wiping of
+          the tokens. This selective suspension is enabled by setting the
+          canPause option to true within the token&apos;s configuration
+          settings. This feature is particularly useful for token administrators
+          who need to quickly respond to security issues or comply with
+          regulatory requirements. By allowing the minting, freezing, and
+          unfreezing operations to continue, the token&apos;s functionality and
+          liquidity can be maintained even while other transactions are halted.
+          It&apos;s important for users and developers interacting with ESDT
+          tokens on the MultiversX blockchain to understand these management
+          features, as they are crucial for maintaining the integrity and
+          utility of digital assets within this ecosystem.
         </p>
       </div>
     </div>
   );
 };
 
-export default FungibleTokensPauseTogglePage;
+export default PauseTogglePage;
