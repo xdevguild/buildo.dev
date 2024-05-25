@@ -200,7 +200,7 @@ export const operationsMenuConfig: Record<
       title: 'Freeze/Unfreeze',
       description:
         'The manager of an ESDT token may freeze the NFT held by a specific Account. As a consequence, no NFT can be transferred to or from the frozen Account',
-      path: '/non-fungible-tokens/freeze-togle',
+      path: '/non-fungible-tokens/freeze-toggle',
     },
     {
       title: 'Wipe',

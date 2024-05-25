@@ -1,3 +1,5 @@
+'use client';
+
 import * as z from 'zod';
 import {
   BigUIntValue,
@@ -10,24 +12,20 @@ import Bignumber from 'bignumber.js';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { Form } from '@/components/ui/form';
-import {
-  DialogDescription,
-  DialogFooter,
-  DialogHeader,
-  DialogTitle,
-} from '@/components/ui/dialog';
 import { OperationsInputField } from '@/components/operations/operations-input-field';
-import { OperationsSubmitButton } from '../operations-submit-button';
-import { OperationContentProps } from '@/components/operations/operations-common-types';
-import { useAccount, useConfig } from '@useelven/core';
+import { OperationsSubmitButton } from '@/components/operations/operations-submit-button';
+import { useAccount, useConfig, useTransaction } from '@useelven/core';
 import axios from 'axios';
+import { useTxStatus } from '@/hooks/use-tx-status';
+import { OperationInfoBox } from '@/components/operation-info-box';
 
 const formSchema = z.object({
   tokenId: z.string().min(1, 'The field is required'),
   uris: z.string().min(1, 'The field is required'),
 });
 
-export const AddNftUris = ({ triggerTx, close }: OperationContentProps) => {
+export const AddNftUris = () => {
+  const { triggerTx, error, txResult, transaction, pending } = useTransaction();
   const { address } = useAccount();
   const { apiAddress } = useConfig();
 
@@ -37,6 +35,13 @@ export const AddNftUris = ({ triggerTx, close }: OperationContentProps) => {
       tokenId: '',
       uris: '',
     },
+  });
+
+  useTxStatus({
+    successHash: txResult?.hash,
+    pendingHash: transaction?.getHash()?.toString(),
+    error,
+    pending,
   });
 
   const onSubmit = async ({ tokenId, uris }: z.infer<typeof formSchema>) => {
@@ -85,7 +90,6 @@ export const AddNftUris = ({ triggerTx, close }: OperationContentProps) => {
       });
 
       form.reset();
-      close();
     } catch (e) {
       console.error(
         "Can't read the nonce or/and collection id of the token, using MultiversX API!",
@@ -96,42 +100,31 @@ export const AddNftUris = ({ triggerTx, close }: OperationContentProps) => {
 
   return (
     <>
-      <DialogHeader className="p-8 pb-0">
-        <DialogTitle>Add URIs (assets)</DialogTitle>
-        <DialogDescription>
-          An user that has the ESDTRoleNFTAddURI role set for a given ESDT, can
-          add uris to a given NFT. This is done by performing a transaction like
-          this.
-        </DialogDescription>
-      </DialogHeader>
-      <div className="overflow-y-auto px-8 py-0">
-        <Form {...form}>
-          <form
-            id="nft-add-uris-form"
-            onSubmit={form.handleSubmit(onSubmit)}
-            className="space-y-8"
-          >
-            <div className="flex-1 overflow-auto p-1">
-              <OperationsInputField
-                name="tokenId"
-                label="Token id"
-                placeholder="Example: MyToken-23432-01"
-                description="Please provide your token id"
-              />
-              <OperationsInputField
-                name="uris"
-                label="Assets (URLs)"
-                type="textarea"
-                placeholder="Example: https://ipfs.io/ipfs/{IPFS_CID_HERE}/1.png"
-                description="Please provide URLs to a supported media file ending with the file extension. Each link is a new line in the field."
-              />
-            </div>
-          </form>
-        </Form>
-      </div>
-      <DialogFooter className="px-8 py-4">
-        <OperationsSubmitButton formId="nft-add-uris-form" />
-      </DialogFooter>
+      <OperationInfoBox error={error} txHash={txResult?.hash} />
+      <Form {...form}>
+        <form
+          id="nft-add-uris-form"
+          onSubmit={form.handleSubmit(onSubmit)}
+          className="space-y-8"
+        >
+          <div className="flex-1 overflow-auto p-1">
+            <OperationsInputField
+              name="tokenId"
+              label="Token id"
+              placeholder="Example: MyToken-23432-01"
+              description="Please provide your token id"
+            />
+            <OperationsInputField
+              name="uris"
+              label="Assets (URLs)"
+              type="textarea"
+              placeholder="Example: https://ipfs.io/ipfs/{IPFS_CID_HERE}/1.png"
+              description="Please provide URLs to a supported media file ending with the file extension. Each link is a new line in the field."
+            />
+          </div>
+          <OperationsSubmitButton formId="nft-add-uris-form" />
+        </form>
+      </Form>
     </>
   );
 };

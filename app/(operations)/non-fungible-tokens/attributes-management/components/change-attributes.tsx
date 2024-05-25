@@ -1,3 +1,5 @@
+'use client';
+
 import * as z from 'zod';
 import {
   BigUIntValue,
@@ -10,18 +12,13 @@ import Bignumber from 'bignumber.js';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { Form } from '@/components/ui/form';
-import {
-  DialogDescription,
-  DialogFooter,
-  DialogHeader,
-  DialogTitle,
-} from '@/components/ui/dialog';
 import { OperationsInputField } from '@/components/operations/operations-input-field';
-import { OperationsSubmitButton } from '../operations-submit-button';
-import { OperationContentProps } from '@/components/operations/operations-common-types';
-import { useAccount, useConfig } from '@useelven/core';
+import { OperationsSubmitButton } from '@/components/operations/operations-submit-button';
+import { useAccount, useConfig, useTransaction } from '@useelven/core';
 import axios from 'axios';
-import { specialOpertationsGasLimit } from '../constants';
+import { specialOpertationsGasLimit } from '@/components/operations/constants';
+import { useTxStatus } from '@/hooks/use-tx-status';
+import { OperationInfoBox } from '@/components/operation-info-box';
 
 const formSchema = z.object({
   tokenId: z.string().min(1, 'The field is required'),
@@ -33,10 +30,8 @@ const formSchema = z.object({
     ),
 });
 
-export const ChangeAttributes = ({
-  triggerTx,
-  close,
-}: OperationContentProps) => {
+export const ChangeAttributes = () => {
+  const { triggerTx, error, txResult, transaction, pending } = useTransaction();
   const { address } = useAccount();
   const { apiAddress } = useConfig();
 
@@ -46,6 +41,13 @@ export const ChangeAttributes = ({
       tokenId: '',
       attributes: '',
     },
+  });
+
+  useTxStatus({
+    successHash: txResult?.hash,
+    pendingHash: transaction?.getHash()?.toString(),
+    error,
+    pending,
   });
 
   const onSubmit = async ({
@@ -81,6 +83,7 @@ export const ChangeAttributes = ({
         BytesValue.fromUTF8(attributes.trim()),
       ];
 
+      // TODO: replace ContractCallPayloadBuilder
       const data = new ContractCallPayloadBuilder()
         .setFunction(new ContractFunction('ESDTNFTUpdateAttributes'))
         .setArgs(args)
@@ -97,7 +100,6 @@ export const ChangeAttributes = ({
       });
 
       form.reset();
-      close();
     } catch (e) {
       console.error(
         "Can't read the nonce or/and collection id of the token, using MultiversX API!",
@@ -108,43 +110,30 @@ export const ChangeAttributes = ({
 
   return (
     <>
-      <DialogHeader className="p-8 pb-0">
-        <DialogTitle>Change attributes</DialogTitle>
-        <DialogDescription>
-          An user that has the ESDTRoleNFTUpdateAttributes role set for a given
-          ESDT, can change the attributes of a given NFT.
-          ESDTNFTUpdateAttributes will remove the old attributes and add the new
-          ones. Therefore, if you want to keep the old attributes you will have
-          to pass them along with the new ones.
-        </DialogDescription>
-      </DialogHeader>
-      <div className="overflow-y-auto px-8 py-0">
-        <Form {...form}>
-          <form
-            id="nft-change-attributes-form"
-            onSubmit={form.handleSubmit(onSubmit)}
-            className="space-y-8"
-          >
-            <div className="flex-1 overflow-auto p-1">
-              <OperationsInputField
-                name="tokenId"
-                label="Token id"
-                placeholder="Example: MyToken-23432-01"
-                description="Please provide your token id"
-              />
-              <OperationsInputField
-                name="attributes"
-                label="Attributes"
-                placeholder="Example: metadata:{ipfsCID_here}/metadata.json;tags:tag1,tag2,tag3"
-                description="Provide attributes. In most cases you'll need the metadata attribute which points to JSON file on IPFS. Separate with ';'"
-              />
-            </div>
-          </form>
-        </Form>
-      </div>
-      <DialogFooter className="px-8 py-4">
-        <OperationsSubmitButton formId="nft-change-attributes-form" />
-      </DialogFooter>
+      <OperationInfoBox error={error} txHash={txResult?.hash} />
+      <Form {...form}>
+        <form
+          id="nft-change-attributes-form"
+          onSubmit={form.handleSubmit(onSubmit)}
+          className="space-y-8"
+        >
+          <div className="flex-1 overflow-auto p-1">
+            <OperationsInputField
+              name="tokenId"
+              label="Token id"
+              placeholder="Example: MyToken-23432-01"
+              description="Please provide your token id"
+            />
+            <OperationsInputField
+              name="attributes"
+              label="Attributes"
+              placeholder="Example: metadata:{ipfsCID_here}/metadata.json;tags:tag1,tag2,tag3"
+              description="Provide attributes. In most cases you'll need the metadata attribute which points to JSON file on IPFS. Separate with ';'"
+            />
+          </div>
+          <OperationsSubmitButton formId="nft-change-attributes-form" />
+        </form>
+      </Form>
     </>
   );
 };

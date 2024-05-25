@@ -1,3 +1,5 @@
+'use client';
+
 import * as z from 'zod';
 import {
   BytesValue,
@@ -5,41 +7,54 @@ import {
   ContractCallPayloadBuilder,
   ContractFunction,
   BigUIntValue,
+  AddressValue,
+  Address,
 } from '@multiversx/sdk-core';
 import { useForm } from 'react-hook-form';
-
 import { zodResolver } from '@hookform/resolvers/zod';
 import { Form } from '@/components/ui/form';
-import {
-  DialogDescription,
-  DialogFooter,
-  DialogHeader,
-  DialogTitle,
-} from '@/components/ui/dialog';
 import { OperationsInputField } from '@/components/operations/operations-input-field';
 import { OperationsSubmitButton } from '@/components/operations/operations-submit-button';
-import { OperationContentProps } from '@/components/operations/operations-common-types';
+import { CommonOpertationContentProps } from '@/components/operations/operations-common-types';
 import BigNumber from 'bignumber.js';
-import { useAccount, useConfig } from '@useelven/core';
+import { useConfig, useTransaction } from '@useelven/core';
 import axios from 'axios';
-import { specialOpertationsGasLimit } from '@/components/operations/constants';
+import {
+  builtInSC,
+  commonOpertationsGasLimit,
+} from '@/components/operations/constants';
+import { OperationInfoBox } from '@/components/operation-info-box';
+import { useTxStatus } from '@/hooks/use-tx-status';
 
 const formSchema = z.object({
   tokenId: z.string().min(1, 'The field is required'),
+  account: z.string().min(1, 'The field is required'),
 });
 
-export const BurnNft = ({ triggerTx, close }: OperationContentProps) => {
-  const { address } = useAccount();
-  const { apiAddress } = useConfig();
+export const WipeSingle = ({
+  tokenType,
+}: {
+  tokenType: CommonOpertationContentProps['tokenType'];
+}) => {
+  const { triggerTx, error, txResult, transaction, pending } = useTransaction();
 
+  const { apiAddress } = useConfig();
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
       tokenId: '',
+      account: '',
     },
   });
 
-  const onSubmit = async ({ tokenId }: z.infer<typeof formSchema>) => {
+  useTxStatus({
+    successHash: txResult?.hash,
+    pendingHash: transaction?.getHash()?.toString(),
+    error,
+    pending,
+  });
+
+  const onSubmit = async ({ tokenId, account }: z.infer<typeof formSchema>) => {
     try {
       // TODO: replace with useElven useApiCall when ready to handle such cases
       const tokenOnNetwork = await axios.get<{
@@ -66,23 +81,23 @@ export const BurnNft = ({ triggerTx, close }: OperationContentProps) => {
       const args: TypedValue[] = [
         BytesValue.fromUTF8(collectionId.trim()),
         new BigUIntValue(new BigNumber(nonce)),
-        new BigUIntValue(new BigNumber(1)),
+        new AddressValue(new Address(account.trim())),
       ];
 
+      // TODO: replace ContractCallPayloadBuilder
       const data = new ContractCallPayloadBuilder()
-        .setFunction(new ContractFunction('ESDTNFTBurn'))
+        .setFunction(new ContractFunction('wipeSingleNFT'))
         .setArgs(args)
         .build();
 
       triggerTx?.({
-        address,
-        gasLimit: specialOpertationsGasLimit,
+        address: builtInSC,
+        gasLimit: commonOpertationsGasLimit,
         data,
         value: 0,
       });
 
       form.reset();
-      close();
     } catch (e) {
       console.error(
         "Can't read the nonce or/and collection id of the token, using MultiversX API!",
@@ -93,35 +108,30 @@ export const BurnNft = ({ triggerTx, close }: OperationContentProps) => {
 
   return (
     <>
-      <DialogHeader className="p-8 pb-0">
-        <DialogTitle>Burn an Non-fungible ESDT</DialogTitle>
-        <DialogDescription>
-          A user that has the ESDTRoleNFTBurn role set, or an owner for a given
-          Non-fungible token, can burn it. If successful, it will disapear from
-          the balance of the address for that given token.
-        </DialogDescription>
-      </DialogHeader>
-      <div className="overflow-y-auto px-8 py-0">
-        <Form {...form}>
-          <form
-            id="burn-nft-form"
-            onSubmit={form.handleSubmit(onSubmit)}
-            className="space-y-8"
-          >
-            <div className="flex-1 overflow-auto p-1">
-              <OperationsInputField
-                name="tokenId"
-                label="Token id"
-                placeholder="Example: MyToken-23432-01"
-                description="Please provide your token id"
-              />
-            </div>
-          </form>
-        </Form>
-      </div>
-      <DialogFooter className="px-8 py-4">
-        <OperationsSubmitButton formId="burn-nft-form" />
-      </DialogFooter>
+      <OperationInfoBox error={error} txHash={txResult?.hash} />
+      <Form {...form}>
+        <form
+          id="wipe-form"
+          onSubmit={form.handleSubmit(onSubmit)}
+          className="space-y-8"
+        >
+          <div className="flex-1 overflow-auto p-1">
+            <OperationsInputField
+              name="tokenId"
+              label="Token id"
+              placeholder="Example: MyToken-23432-01"
+              description="Please provide your token id"
+            />
+            <OperationsInputField
+              name="account"
+              label="Account"
+              placeholder="Example: erd1..."
+              description={`Please provide the account that holds the ${tokenType} ESDT to wipe.`}
+            />
+          </div>
+          <OperationsSubmitButton formId="wipe-form" />
+        </form>
+      </Form>
     </>
   );
 };

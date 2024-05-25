@@ -13,6 +13,11 @@ const ChangePropertiesPage: NextPage = () => {
           The manager of an ESDT token may individually change any of the
           properties of the token, or multiple properties at once. The token
           should have the canUpgrade property set to true.
+          <br />
+          <br />
+          <strong>
+            Due to API caching, changes may not take effect immediately.
+          </strong>
         </p>
       </div>
       <ChangeProperties tokenType="fungible" />
