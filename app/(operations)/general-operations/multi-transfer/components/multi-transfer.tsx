@@ -201,8 +201,6 @@ export const MultiTransfer = () => {
 
     if (transfer) {
       transfer({ tokens, receiver: receiverAddress });
-
-      form.reset();
     }
   };
 

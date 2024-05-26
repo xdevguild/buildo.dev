@@ -15,6 +15,11 @@ const NonFungibleTransferOwnershipPage: NextPage = () => {
           any subsequent management operations will only be permitted to the new
           Account. This operation requires that the option canChangeOwner is set
           to true.
+          <br />
+          <br />
+          <strong>
+            Due to API caching, changes may not be visible immediately.
+          </strong>
         </p>
       </div>
       <TransferOwnership tokenType="non-fungible" />

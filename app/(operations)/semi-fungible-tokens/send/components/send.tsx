@@ -1,42 +1,35 @@
 'use client';
 
 import * as z from 'zod';
-import {
-  BytesValue,
-  TypedValue,
-  ContractCallPayloadBuilder,
-  ContractFunction,
-  Address,
-  AddressValue,
-} from '@multiversx/sdk-core';
 import { useForm } from 'react-hook-form';
-
 import { zodResolver } from '@hookform/resolvers/zod';
 import { Form } from '@/components/ui/form';
-import {
-  builtInSC,
-  commonOpertationsGasLimit,
-} from '@/components/operations/constants';
 import { OperationsInputField } from '@/components/operations/operations-input-field';
 import { OperationsSubmitButton } from '@/components/operations/operations-submit-button';
-import { OperationsTokenIdInput } from '@/components/operations/operations-tokenid-input';
+import { ESDTType, useTokenTransfer } from '@useelven/core';
+import BigNumber from 'bignumber.js';
 import { useTxStatus } from '@/hooks/use-tx-status';
-import { useTransaction } from '@useelven/core';
 import { OperationInfoBox } from '@/components/operation-info-box';
 
 const formSchema = z.object({
   tokenId: z.string().min(1, 'The field is required'),
   address: z.string().min(1, 'The field is required'),
+  amount: z.string().refine((value) => {
+    const num = new BigNumber(value);
+    return num.isInteger() && num.isGreaterThan(0);
+  }, 'Please provide an integer number, should be a proper SFT amount for that specific token, bigger than 0.'),
 });
 
-export const Wipe = () => {
-  const { triggerTx, error, txResult, transaction, pending } = useTransaction();
+export const Send = () => {
+  const { transfer, error, txResult, transaction, pending } =
+    useTokenTransfer();
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
       tokenId: '',
       address: '',
+      amount: '',
     },
   });
 
@@ -47,23 +40,20 @@ export const Wipe = () => {
     pending,
   });
 
-  const onSubmit = ({ tokenId, address }: z.infer<typeof formSchema>) => {
-    const args: TypedValue[] = [
-      BytesValue.fromUTF8(tokenId.trim()),
-      new AddressValue(new Address(address.trim())),
-    ];
-
-    // TODO: replace ContractCallPayloadBuilder
-    const data = new ContractCallPayloadBuilder()
-      .setFunction(new ContractFunction('wipe'))
-      .setArgs(args)
-      .build();
-
-    triggerTx?.({
-      address: builtInSC,
-      gasLimit: commonOpertationsGasLimit,
-      data,
-      value: 0,
+  const onSubmit = async ({
+    tokenId,
+    address,
+    amount,
+  }: z.infer<typeof formSchema>) => {
+    transfer?.({
+      tokens: [
+        {
+          type: ESDTType.SemiFungibleESDT,
+          amount: amount.trim(),
+          tokenId: tokenId.trim(),
+        },
+      ],
+      receiver: address.trim(),
     });
   };
 
@@ -72,20 +62,31 @@ export const Wipe = () => {
       <OperationInfoBox error={error} txHash={txResult?.hash} />
       <Form {...form}>
         <form
-          id="wipe-form"
+          id="send-form"
           onSubmit={form.handleSubmit(onSubmit)}
           className="space-y-8"
         >
           <div className="flex-1 overflow-auto p-1">
-            <OperationsTokenIdInput tokenType="fungible" />
+            <OperationsInputField
+              name="tokenId"
+              label="Token id"
+              placeholder="Example: MyToken-23432-01"
+              description="Please provide your token id"
+            />
             <OperationsInputField
               name="address"
               label="Address"
               placeholder="Example: erd1..."
-              description="Please provide the address for which the the balance will be wiped out"
+              description="Please provide the address to where the token will be send"
+            />
+            <OperationsInputField
+              name="amount"
+              label="Amount"
+              placeholder="Example: 10"
+              description="Please provide the amount of the SFT to send."
             />
           </div>
-          <OperationsSubmitButton formId="wipe-form" />
+          <OperationsSubmitButton formId="send-form" />
         </form>
       </Form>
     </>

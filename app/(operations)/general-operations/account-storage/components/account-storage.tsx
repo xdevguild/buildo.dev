@@ -106,8 +106,6 @@ export const AccountStorage = () => {
       data,
       value: 0,
     });
-
-    form.reset();
   };
 
   return (

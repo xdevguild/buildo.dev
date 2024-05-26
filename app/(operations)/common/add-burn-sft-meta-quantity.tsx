@@ -2,29 +2,44 @@
 
 import * as z from 'zod';
 import {
-  BigUIntValue,
   BytesValue,
   TypedValue,
   ContractCallPayloadBuilder,
   ContractFunction,
+  BigUIntValue,
 } from '@multiversx/sdk-core';
-import Bignumber from 'bignumber.js';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { Form } from '@/components/ui/form';
 import { OperationsInputField } from '@/components/operations/operations-input-field';
 import { OperationsSubmitButton } from '@/components/operations/operations-submit-button';
+import { CommonOpertationContentProps } from '@/components/operations/operations-common-types';
+import { OperationsRadioGroup } from '@/components/operations/operations-radio-group';
+import BigNumber from 'bignumber.js';
 import { useAccount, useConfig, useTransaction } from '@useelven/core';
 import axios from 'axios';
+import { specialOpertationsGasLimit } from '@/components/operations/constants';
 import { useTxStatus } from '@/hooks/use-tx-status';
 import { OperationInfoBox } from '@/components/operation-info-box';
 
 const formSchema = z.object({
   tokenId: z.string().min(1, 'The field is required'),
-  uris: z.string().min(1, 'The field is required'),
+  quantity: z
+    .string()
+    .refine(
+      (value) => !new BigNumber(value).isNaN(),
+      'Required BigNumber string.'
+    ),
+  type: z.enum(['add', 'burn'], {
+    required_error: 'Please choose the type of the operation (add/burn)',
+  }),
 });
 
-export const AddNftUris = () => {
+export const AddBurnQuantity = ({
+  tokenType,
+}: {
+  tokenType: CommonOpertationContentProps['tokenType'];
+}) => {
   const { triggerTx, error, txResult, transaction, pending } = useTransaction();
   const { address } = useAccount();
   const { apiAddress } = useConfig();
@@ -33,7 +48,8 @@ export const AddNftUris = () => {
     resolver: zodResolver(formSchema),
     defaultValues: {
       tokenId: '',
-      uris: '',
+      quantity: '',
+      type: 'add',
     },
   });
 
@@ -44,7 +60,11 @@ export const AddNftUris = () => {
     pending,
   });
 
-  const onSubmit = async ({ tokenId, uris }: z.infer<typeof formSchema>) => {
+  const onSubmit = async ({
+    tokenId,
+    quantity,
+    type,
+  }: z.infer<typeof formSchema>) => {
     try {
       // TODO: replace with useElven useApiCall when ready to handle such cases
       const tokenOnNetwork = await axios.get<{
@@ -70,21 +90,23 @@ export const AddNftUris = () => {
 
       const args: TypedValue[] = [
         BytesValue.fromUTF8(collectionId.trim()),
-        new BigUIntValue(new Bignumber(nonce)),
+        new BigUIntValue(new BigNumber(nonce)),
+        new BigUIntValue(new BigNumber(quantity.trim())),
       ];
 
-      for (const uri of uris.split(/\n/)) {
-        args.push(BytesValue.fromUTF8(uri));
-      }
-
+      // TODO: replace ContractCallPayloadBuilder
       const data = new ContractCallPayloadBuilder()
-        .setFunction(new ContractFunction('ESDTNFTAddURI'))
+        .setFunction(
+          new ContractFunction(
+            type === 'add' ? 'ESDTNFTAddQuantity' : 'ESDTNFTBurn'
+          )
+        )
         .setArgs(args)
         .build();
 
       triggerTx?.({
         address,
-        gasLimit: 10000000,
+        gasLimit: specialOpertationsGasLimit,
         data,
         value: 0,
       });
@@ -101,11 +123,20 @@ export const AddNftUris = () => {
       <OperationInfoBox error={error} txHash={txResult?.hash} />
       <Form {...form}>
         <form
-          id="nft-add-uris-form"
+          id="add-burn-form"
           onSubmit={form.handleSubmit(onSubmit)}
           className="space-y-8"
         >
           <div className="flex-1 overflow-auto p-1">
+            <OperationsRadioGroup
+              items={[
+                { name: 'add', description: 'Add the quantity' },
+                { name: 'burn', description: 'Reduce the quantity' },
+              ]}
+              name="type"
+              label="Operation type"
+              description="Please choose the type of the operation. Add or Burn."
+            />
             <OperationsInputField
               name="tokenId"
               label="Token id"
@@ -113,14 +144,17 @@ export const AddNftUris = () => {
               description="Please provide your token id"
             />
             <OperationsInputField
-              name="uris"
-              label="Assets (URLs)"
-              type="textarea"
-              placeholder="Example: https://ipfs.io/ipfs/{IPFS_CID_HERE}/1.png"
-              description="Please provide URLs to a supported media file ending with the file extension. Each link is a new line in the field."
+              name="quantity"
+              label="Quantity"
+              placeholder="Example: 10000"
+              description={
+                tokenType === 'semi-fungible'
+                  ? 'Please provide the quantity.'
+                  : 'Please provide the supply (remember to take into consideration the number of decimals. For example 100.5 with 2 decimal places will be 10050).'
+              }
             />
           </div>
-          <OperationsSubmitButton formId="nft-add-uris-form" />
+          <OperationsSubmitButton formId="add-burn-form" />
         </form>
       </Form>
     </>

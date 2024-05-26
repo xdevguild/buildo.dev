@@ -16,7 +16,7 @@ const ChangePropertiesPage: NextPage = () => {
           <br />
           <br />
           <strong>
-            Due to API caching, changes may not take effect immediately.
+            Due to API caching, changes may not be visible immediately.
           </strong>
         </p>
       </div>

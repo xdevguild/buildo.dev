@@ -80,8 +80,6 @@ export const MintBurn = () => {
       data,
       value: 0,
     });
-
-    form.reset();
   };
 
   return (

@@ -109,8 +109,6 @@ export const FreezeUnfreezeSingle = ({
         data,
         value: 0,
       });
-
-      form.reset();
     } catch (e) {
       console.error(
         "Can't read the nonce or/and collection id of the token, using MultiversX API!",

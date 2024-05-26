@@ -77,8 +77,6 @@ export const PauseUnpause = () => {
       data,
       value: 0,
     });
-
-    form.reset();
   };
 
   return (

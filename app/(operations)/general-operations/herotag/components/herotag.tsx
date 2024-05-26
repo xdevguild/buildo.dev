@@ -88,8 +88,6 @@ export const Herotag = () => {
       data,
       value: 0,
     });
-
-    form.reset();
   };
 
   return (

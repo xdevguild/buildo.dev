@@ -107,8 +107,6 @@ export const IssueNftSft = ({
       data,
       value: payment,
     });
-
-    form.reset();
   };
 
   return (

@@ -71,8 +71,6 @@ export const FreezeUnfreeze = () => {
       data,
       value: 0,
     });
-
-    form.reset();
   };
 
   return (

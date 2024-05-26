@@ -58,8 +58,6 @@ export const Send = () => {
       ],
       receiver: address.trim(),
     });
-
-    form.reset();
   };
 
   return (

@@ -50,8 +50,6 @@ export const ClaimDevRewards = () => {
       data,
       value: 0,
     });
-
-    form.reset();
   };
 
   return (

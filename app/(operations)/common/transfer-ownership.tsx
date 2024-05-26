@@ -70,8 +70,6 @@ export const TransferOwnership = ({
       data,
       value: 0,
     });
-
-    form.reset();
   };
 
   return (

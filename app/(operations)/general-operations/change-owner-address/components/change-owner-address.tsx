@@ -61,8 +61,6 @@ export const ChangeOwnerAddress = () => {
       data,
       value: 0,
     });
-
-    form.reset();
   };
 
   return (

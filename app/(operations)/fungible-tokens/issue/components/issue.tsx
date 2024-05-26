@@ -116,8 +116,6 @@ export const Issue = () => {
       data,
       value: payment,
     });
-
-    form.reset();
   };
 
   return (

@@ -23,6 +23,12 @@ import { useTxStatus } from '@/hooks/use-tx-status';
 const formSchema = z.object({
   tokenId: z.string().min(1, 'The field is required'),
   name: z.string().min(1, 'The field is required'),
+  initialQuantity: z
+    .string()
+    .refine(
+      (value) => !new Bignumber(value).isNaN(),
+      'Required BigNumber string.'
+    ),
   royalties: z
     .string()
     .refine(
@@ -48,6 +54,7 @@ export const Create = () => {
     defaultValues: {
       tokenId: '',
       name: '',
+      initialQuantity: '',
       royalties: '',
       uris: '',
       attributes: '',
@@ -65,6 +72,7 @@ export const Create = () => {
   const onSubmit = ({
     tokenId,
     name,
+    initialQuantity,
     royalties,
     uris,
     attributes,
@@ -72,7 +80,7 @@ export const Create = () => {
   }: z.infer<typeof formSchema>) => {
     const args: TypedValue[] = [
       BytesValue.fromUTF8(tokenId.trim()),
-      new BigUIntValue(new Bignumber(1)),
+      new BigUIntValue(new Bignumber(initialQuantity.trim())),
       BytesValue.fromUTF8(name.trim()),
       new BigUIntValue(new Bignumber(Number(royalties) * 100 || 0)),
       BytesValue.fromUTF8(hash ? hash.trim() : ''),
@@ -82,6 +90,7 @@ export const Create = () => {
     for (const uri of uris.split(/\n/)) {
       args.push(BytesValue.fromUTF8(uri));
     }
+
     // TODO: replace ContractCallPayloadBuilder
     const data = new ContractCallPayloadBuilder()
       .setFunction(new ContractFunction('ESDTNFTCreate'))
@@ -104,20 +113,26 @@ export const Create = () => {
       <OperationInfoBox error={error} txHash={txResult?.hash} />
       <Form {...form}>
         <form
-          id="nft-create-form"
+          id="sft-create-form"
           onSubmit={form.handleSubmit(onSubmit)}
           className="space-y-8"
         >
           <div className="flex-1 overflow-auto p-1">
             <OperationsTokenIdInput
-              tokenType="non-fungible"
+              tokenType="semi-fungible"
               description="Please provide the existing collection token id. Choose from the list."
             />
             <OperationsInputField
               name="name"
               label="Name"
               placeholder="Example: MyToken"
-              description="Please provide the NFT token name"
+              description="Please provide the SFT token name"
+            />
+            <OperationsInputField
+              name="initialQuantity"
+              label="Initial quantity"
+              placeholder="Example: 10000"
+              description="Please provide the initial quantity."
             />
             <OperationsInputField
               name="royalties"
@@ -145,7 +160,7 @@ export const Create = () => {
               description="Optionally you can provide a hash (of your image, attributes, etc)"
             />
           </div>
-          <OperationsSubmitButton formId="nft-create-form" />
+          <OperationsSubmitButton formId="sft-create-form" />
         </form>
       </Form>
     </>

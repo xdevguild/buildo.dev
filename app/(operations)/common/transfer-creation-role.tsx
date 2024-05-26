@@ -76,8 +76,6 @@ export const TransferCreationRole = ({
       data,
       value: 0,
     });
-
-    form.reset();
   };
 
   return (

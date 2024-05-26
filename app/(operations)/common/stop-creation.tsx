@@ -61,8 +61,6 @@ export const StopCreation = ({
       data,
       value: 0,
     });
-
-    form.reset();
   };
 
   return (
