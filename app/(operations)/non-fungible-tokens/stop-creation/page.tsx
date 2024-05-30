@@ -1,6 +1,14 @@
-import type { NextPage } from 'next';
+import type { Metadata, NextPage } from 'next';
 import { StopCreation } from '../../components/stop-creation';
 import { Separator } from '@/components/ui/separator';
+import { getMetadata } from '@/lib/get-metadata';
+
+export const metadata: Metadata = getMetadata({
+  title: 'Buildo.dev - MultiversX: Stop creation (NFT)',
+  description:
+    'The ESDT manager can stop the creation of the token for the given ESDT forever by removing the only ESDTRoleNFTCreate role available.',
+  pagePath: '/non-fungible-tokens/stop-creation',
+});
 
 const NonFungibleStopCreationPage: NextPage = () => {
   return (

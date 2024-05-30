@@ -1,6 +1,14 @@
-import type { NextPage } from 'next';
+import type { Metadata, NextPage } from 'next';
 import { AccountStorage } from './components/account-storage';
 import { Separator } from '@/components/ui/separator';
+import { getMetadata } from '@/lib/get-metadata';
+
+export const metadata: Metadata = getMetadata({
+  title: 'Buildo.dev - MultiversX: Account storage',
+  description:
+    'The MultiversX protocol offers the possibility of storing additional data under an account as key-value pairs.',
+  pagePath: '/general-operations/account-storage',
+});
 
 const AccountStoragePage: NextPage = () => {
   return (

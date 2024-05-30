@@ -1,6 +1,14 @@
-import type { NextPage } from 'next';
+import type { Metadata, NextPage } from 'next';
 import { Issue } from './components/issue';
 import { Separator } from '@/components/ui/separator';
+import { getMetadata } from '@/lib/get-metadata';
+
+export const metadata: Metadata = getMetadata({
+  title: 'Buildo.dev - MultiversX: Issue a fungible ESDT',
+  description:
+    'ESDT tokens are issued via a request to the Metachain, which is a transaction submitted by the Account which will manage the tokens.',
+  pagePath: '/fungible-tokens/issue',
+});
 
 const FungibleTokensIssuePage: NextPage = () => {
   return (

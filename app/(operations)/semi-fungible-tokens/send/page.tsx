@@ -1,6 +1,14 @@
-import type { NextPage } from 'next';
+import type { Metadata, NextPage } from 'next';
 import { Send } from './components/send';
 import { Separator } from '@/components/ui/separator';
+import { getMetadata } from '@/lib/get-metadata';
+
+export const metadata: Metadata = getMetadata({
+  title: 'Buildo.dev - MultiversX: Transfer an amount of semi-fungible ESDT',
+  description:
+    'Performing an ESDT SFT amount transfer is done by specifying the receiver&apos;s address inside the Data field, alongside other details.',
+  pagePath: '/semi-fungible-tokens/send',
+});
 
 const SemiFungibleStopCreationPage: NextPage = () => {
   return (
@@ -11,7 +19,8 @@ const SemiFungibleStopCreationPage: NextPage = () => {
         </h1>
         <p className="text-sm text-muted-foreground">
           Performing an ESDT SFT amount transfer is done by specifying the
-          receiver&apos;s address inside the Data field, alongside other details
+          receiver&apos;s address inside the Data field, alongside other
+          details.
         </p>
       </div>
       <Send />

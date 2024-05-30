@@ -26,13 +26,12 @@ export const operationsMenuConfig: Record<
         'A wallet owner can store key-value pairs by using the built-in function SaveKeyValue which receives any number of key-value pairs.',
       path: '/general-operations/account-storage',
     },
-    // TODO: fix it, it stopped working
-    // {
-    //   title: 'Set a herotag',
-    //   description:
-    //     'Create a herotag and assign it to your address (transaction fees applied)',
-    //   path: '/general-operations/herotag',
-    // },
+    {
+      title: 'Set a herotag',
+      description:
+        'Create a herotag and assign it to your address (transaction fees applied)',
+      path: '/general-operations/herotag',
+    },
     {
       title: 'Multi transfer',
       description:

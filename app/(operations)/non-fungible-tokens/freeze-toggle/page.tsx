@@ -1,6 +1,14 @@
-import type { NextPage } from 'next';
+import type { Metadata, NextPage } from 'next';
 import { FreezeUnfreezeSingle } from '../../components/freeze-unfreeze-single';
 import { Separator } from '@/components/ui/separator';
+import { getMetadata } from '@/lib/get-metadata';
+
+export const metadata: Metadata = getMetadata({
+  title: 'Buildo.dev - MultiversX: Freeze/Unfreeze a single non-fungible ESDT',
+  description:
+    'The manager of an ESDT token may freeze the non-fungible ESDT held by a specific Account. As a consequence, no non-fungible ESDT can be transferred to or from the frozen Account.',
+  pagePath: '/non-fungible-tokens/freeze-toggle',
+});
 
 const NonFungibleFreezeTogglePage: NextPage = () => {
   return (

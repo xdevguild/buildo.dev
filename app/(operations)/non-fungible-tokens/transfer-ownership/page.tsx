@@ -1,6 +1,15 @@
-import type { NextPage } from 'next';
+import type { Metadata, NextPage } from 'next';
 import { TransferOwnership } from '../../components/transfer-ownership';
 import { Separator } from '@/components/ui/separator';
+import { getMetadata } from '@/lib/get-metadata';
+
+export const metadata: Metadata = getMetadata({
+  title:
+    'Buildo.dev - MultiversX: Transfer ownersip and management rights for the ESDT',
+  description:
+    'The manager of an ESDT token may transfer the management rights to another Account.',
+  pagePath: '/non-fungible-tokens/transfer-ownership',
+});
 
 const NonFungibleTransferOwnershipPage: NextPage = () => {
   return (

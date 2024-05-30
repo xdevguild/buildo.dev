@@ -1,6 +1,14 @@
-import type { NextPage } from 'next';
+import type { Metadata, NextPage } from 'next';
 import { ChangeProperties } from '../../components/change-properties';
 import { Separator } from '@/components/ui/separator';
+import { getMetadata } from '@/lib/get-metadata';
+
+export const metadata: Metadata = getMetadata({
+  title: 'Buildo.dev - MultiversX: Change properties of a semi-fungible ESDT',
+  description:
+    'The manager of an semi-fungible ESDT token may individually change any of the properties of the token, or multiple properties at once.',
+  pagePath: '/semi-fungible-tokens/properties-management',
+});
 
 const SemiFungibleChangePropertiesPage: NextPage = () => {
   return (

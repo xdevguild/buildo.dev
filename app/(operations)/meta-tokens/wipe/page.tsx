@@ -1,6 +1,14 @@
-import type { NextPage } from 'next';
+import type { Metadata, NextPage } from 'next';
 import { WipeSingle } from '../../components/wipe-single';
 import { Separator } from '@/components/ui/separator';
+import { getMetadata } from '@/lib/get-metadata';
+
+export const metadata: Metadata = getMetadata({
+  title: 'Buildo.dev - MultiversX: Wiping a single meta ESDT',
+  description:
+    'The manager of an ESDT token may wipe out a single meta ESDT held by a frozen Account.',
+  pagePath: '/meta-tokens/wipe',
+});
 
 const MetaWipePage: NextPage = () => {
   return (

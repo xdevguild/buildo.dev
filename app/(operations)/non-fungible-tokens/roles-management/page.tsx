@@ -1,6 +1,15 @@
-import type { NextPage } from 'next';
+import type { Metadata, NextPage } from 'next';
 import { ToggleSpecialRoles } from '../../components/toggle-special-roles';
 import { Separator } from '@/components/ui/separator';
+import { getMetadata } from '@/lib/get-metadata';
+
+export const metadata: Metadata = getMetadata({
+  title:
+    'Buildo.dev - MultiversX: Set/unset special roles for a non-fungible ESDT',
+  description:
+    'The manager of an ESDT token can set and unset special roles for a given address. Only applicable if canAddSpecialRoles property is true.',
+  pagePath: '/non-fungible-tokens/roles-management',
+});
 
 const NonFungibleRolesManagementPage: NextPage = () => {
   return (

@@ -1,6 +1,14 @@
-import type { NextPage } from 'next';
+import type { Metadata, NextPage } from 'next';
 import { BurnNft } from './components/burn';
 import { Separator } from '@/components/ui/separator';
+import { getMetadata } from '@/lib/get-metadata';
+
+export const metadata: Metadata = getMetadata({
+  title: 'Buildo.dev - MultiversX: Burn an Non-fungible ESDT',
+  description:
+    'A user that has the ESDTRoleNFTBurn role set, or an owner for a given Non-fungible token, can burn it.',
+  pagePath: '/non-fungible-tokens/burn',
+});
 
 const NonFungibleBurnPage: NextPage = () => {
   return (

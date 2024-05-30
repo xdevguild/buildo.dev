@@ -1,6 +1,14 @@
-import type { NextPage } from 'next';
+import type { Metadata, NextPage } from 'next';
 import { VerifySignature } from './components/verify-signature';
 import { Separator } from '@/components/ui/separator';
+import { getMetadata } from '@/lib/get-metadata';
+
+export const metadata: Metadata = getMetadata({
+  title: 'Buildo.dev - MultiversX: Verify signature',
+  description:
+    'Verify the signature of a previously signed message. You need to provide the message, signature, and address with which you signed the message.',
+  pagePath: '/utilities/verify-signature',
+});
 
 const VerifySignaturePage: NextPage = () => {
   return (

@@ -1,7 +1,15 @@
-import { NextPage } from 'next';
+import { Metadata, NextPage } from 'next';
 import { InscriptionsCreate } from './components/inscription-create';
 import { Suspense } from 'react';
 import { Separator } from '@/components/ui/separator';
+import { getMetadata } from '@/lib/get-metadata';
+
+export const metadata: Metadata = getMetadata({
+  title: 'Buildo.dev - MultiversX: Experimental Inscriptions',
+  description:
+    'Save custom immutable data on chain. You can then use it off-chain or for NFTs.',
+  pagePath: '/general-operations/inscriptions',
+});
 
 const InscriptionsCreatePage: NextPage = () => {
   return (

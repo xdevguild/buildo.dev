@@ -1,6 +1,14 @@
-import type { NextPage } from 'next';
+import type { Metadata, NextPage } from 'next';
 import { Herotag } from './components/herotag';
 import { Separator } from '@/components/ui/separator';
+import { getMetadata } from '@/lib/get-metadata';
+
+export const metadata: Metadata = getMetadata({
+  title: 'Buildo.dev - MultiversX: Assign a herotag to your wallet address',
+  description:
+    'The herotag is a unique username you can assign to your wallet address. Just to let you know, in this case, transaction fees will be applied.',
+  pagePath: '/general-operations/herotag',
+});
 
 const HerotagPage: NextPage = () => {
   return (

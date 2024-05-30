@@ -1,6 +1,14 @@
-import type { NextPage } from 'next';
+import type { Metadata, NextPage } from 'next';
 import { Create } from './components/create';
 import { Separator } from '@/components/ui/separator';
+import { getMetadata } from '@/lib/get-metadata';
+
+export const metadata: Metadata = getMetadata({
+  title: 'Buildo.dev - MultiversX: Create a Meta ESDT',
+  description:
+    'A single address can own the role of creating an Meta ESDT. This role can be transferred by using the ESDTNFTCreateRoleTransfer function.',
+  pagePath: '/meta-tokens/create',
+});
 
 const MetaTokensIssuePage: NextPage = () => {
   return (

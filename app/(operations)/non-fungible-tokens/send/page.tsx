@@ -1,6 +1,14 @@
-import type { NextPage } from 'next';
+import type { Metadata, NextPage } from 'next';
 import { Send } from './components/send';
 import { Separator } from '@/components/ui/separator';
+import { getMetadata } from '@/lib/get-metadata';
+
+export const metadata: Metadata = getMetadata({
+  title: 'Buildo.dev - MultiversX: Transfer a non-fungible ESDT',
+  description:
+    "Performing an ESDT NFT transfer is done by specifying the receiver's address inside the Data field, alongside other details.",
+  pagePath: '/non-fungible-tokens/send',
+});
 
 const NonFungibleSendPage: NextPage = () => {
   return (

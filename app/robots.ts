@@ -4,7 +4,7 @@ export default function robots(): MetadataRoute.Robots {
   // disallow devnet.buildo.dev indexing
   const rules = process.env.NEXT_PUBLIC_DAPP_HOST?.includes('devnet')
     ? { disallow: '/' }
-    : { allow: '/' };
+    : { allow: '/', disallow: '/gpt-privacy' };
 
   return {
     rules: {

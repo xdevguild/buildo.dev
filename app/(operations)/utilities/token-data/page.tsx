@@ -1,6 +1,14 @@
-import type { NextPage } from 'next';
+import type { Metadata, NextPage } from 'next';
 import { TokenData } from './components/token-data';
 import { Separator } from '@/components/ui/separator';
+import { getMetadata } from '@/lib/get-metadata';
+
+export const metadata: Metadata = getMetadata({
+  title: 'Buildo.dev - MultiversX: Check token data',
+  description:
+    'Check basic token data. It can be a standard fungible token or collection id for NFT/SFT/Meta tokens.',
+  pagePath: '/utilities/token-data',
+});
 
 const TokenDataPage: NextPage = () => {
   return (

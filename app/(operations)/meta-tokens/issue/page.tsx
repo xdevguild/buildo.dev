@@ -1,6 +1,14 @@
-import type { NextPage } from 'next';
+import type { Metadata, NextPage } from 'next';
 import { Issue } from './components/issue';
 import { Separator } from '@/components/ui/separator';
+import { getMetadata } from '@/lib/get-metadata';
+
+export const metadata: Metadata = getMetadata({
+  title: 'Buildo.dev - MultiversX: Issue a Meta ESDT (Collection)',
+  description:
+    'One has to perform an issuance transaction in order to register a Meta-ESDT token.',
+  pagePath: '/meta-tokens/issue',
+});
 
 const MetaTokensIssuePage: NextPage = () => {
   return (

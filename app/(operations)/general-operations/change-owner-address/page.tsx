@@ -1,6 +1,14 @@
-import type { NextPage } from 'next';
+import type { Metadata, NextPage } from 'next';
 import { ChangeOwnerAddress } from './components/change-owner-address';
 import { Separator } from '@/components/ui/separator';
+import { getMetadata } from '@/lib/get-metadata';
+
+export const metadata: Metadata = getMetadata({
+  title: 'Buildo.dev - MultiversX: Change owner address',
+  description:
+    'Change owner address is an operation to be made by a Smart Contract&apos;s owner when a new owner is desired.',
+  pagePath: '/general-operations/change-owner-address',
+});
 
 const ChangeOwnerAddressPage: NextPage = () => {
   return (

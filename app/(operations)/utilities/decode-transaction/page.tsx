@@ -1,6 +1,14 @@
-import type { NextPage } from 'next';
+import type { Metadata, NextPage } from 'next';
 import { DecodeTransaction } from './components/decode-transaction';
 import { Separator } from '@/components/ui/separator';
+import { getMetadata } from '@/lib/get-metadata';
+
+export const metadata: Metadata = getMetadata({
+  title: 'Buildo.dev - MultiversX: Decode transaction',
+  description:
+    'Transaction processor. You can decode the transaction data string encoded with base64 or string.',
+  pagePath: '/utilities/decode-transaction',
+});
 
 const DecodeTransactionPage: NextPage = () => {
   return (

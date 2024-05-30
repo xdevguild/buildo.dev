@@ -1,6 +1,14 @@
-import type { NextPage } from 'next';
+import type { Metadata, NextPage } from 'next';
 import { Send } from './components/send';
 import { Separator } from '@/components/ui/separator';
+import { getMetadata } from '@/lib/get-metadata';
+
+export const metadata: Metadata = getMetadata({
+  title: 'Buildo.dev - MultiversX: Transfer an amount of Meta ESDT',
+  description:
+    'Performing an Meta ESDT amount transfer is done by specifying the receiver&apos;s address inside the Data field, alongside other details.',
+  pagePath: '/meta-tokens/send',
+});
 
 const MetaSendPage: NextPage = () => {
   return (
@@ -11,7 +19,8 @@ const MetaSendPage: NextPage = () => {
         </h1>
         <p className="text-sm text-muted-foreground">
           Performing an Meta ESDT amount transfer is done by specifying the
-          receiver&apos;s address inside the Data field, alongside other details
+          receiver&apos;s address inside the Data field, alongside other
+          details.
         </p>
       </div>
       <Send />

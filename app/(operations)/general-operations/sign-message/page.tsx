@@ -1,6 +1,14 @@
-import type { NextPage } from 'next';
+import type { Metadata, NextPage } from 'next';
 import { SignMessage } from './components/sign-message';
 import { Separator } from '@/components/ui/separator';
+import { getMetadata } from '@/lib/get-metadata';
+
+export const metadata: Metadata = getMetadata({
+  title: 'Buildo.dev - MultiversX: Sign a message',
+  description:
+    'You can sign any message using your wallet address as a key. You can also verify signed messages. Check the Utilities section.',
+  pagePath: '/general-operations/sign-message',
+});
 
 const SignMessagePage: NextPage = () => {
   return (

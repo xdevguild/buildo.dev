@@ -1,6 +1,14 @@
-import type { NextPage } from 'next';
+import type { Metadata, NextPage } from 'next';
 import { IssueNftSft } from '../../components/issue-nft-sft';
 import { Separator } from '@/components/ui/separator';
+import { getMetadata } from '@/lib/get-metadata';
+
+export const metadata: Metadata = getMetadata({
+  title: 'Buildo.dev - MultiversX: Issue a non-fungible ESDT (Collection)',
+  description:
+    'To create NFTs, start by setting up an ESDT collection token. Each NFT in this collection will have a unique nonce and its own attributes and assets.',
+  pagePath: '/non-fungible-tokens/issue',
+});
 
 const NonFungibleTokensIssuePage: NextPage = () => {
   return (

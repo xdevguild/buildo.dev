@@ -1,6 +1,14 @@
-import type { NextPage } from 'next';
+import type { Metadata, NextPage } from 'next';
 import { TransferCreationRole } from '../../components/transfer-creation-role';
 import { Separator } from '@/components/ui/separator';
+import { getMetadata } from '@/lib/get-metadata';
+
+export const metadata: Metadata = getMetadata({
+  title: 'Buildo.dev - MultiversX: Transfer creation role',
+  description:
+    'The token manager can transfer the creation role from one address to another.',
+  pagePath: '/semi-fungible-tokens/transfer-creation-role',
+});
 
 const SemiFungibleTransferCreationRolePage: NextPage = () => {
   return (

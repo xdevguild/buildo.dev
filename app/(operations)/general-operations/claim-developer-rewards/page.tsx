@@ -1,6 +1,14 @@
-import type { NextPage } from 'next';
+import type { Metadata, NextPage } from 'next';
 import { ClaimDevRewards } from './components/claim-dev-rewards';
 import { Separator } from '@/components/ui/separator';
+import { getMetadata } from '@/lib/get-metadata';
+
+export const metadata: Metadata = getMetadata({
+  title: 'Buildo.dev - MultiversX: Claim developer rewards',
+  description:
+    'This function is to be used by Smart Contract owners in order to claim the fees accumulated during smart contract calls.',
+  pagePath: '/general-operations/claim-developer-rewards',
+});
 
 const ClaimDevRewardsPage: NextPage = () => {
   return (
