@@ -1,3 +1,5 @@
+'use client';
+
 import * as z from 'zod';
 import {
   TokenTransfer,
@@ -11,12 +13,6 @@ import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { Form } from '@/components/ui/form';
 import {
-  DialogDescription,
-  DialogFooter,
-  DialogHeader,
-  DialogTitle,
-} from '@/components/ui/dialog';
-import {
   sftNftTokenProperties,
   issueTokenPayment,
   commonOpertationsGasLimit,
@@ -24,8 +20,10 @@ import {
 } from '@/components/operations/constants';
 import { OperationsInputField } from '@/components/operations/operations-input-field';
 import { OperationsCheckboxGroup } from '@/components/operations/operations-checkbox-group';
-import { OperationsSubmitButton } from '../operations-submit-button';
-import { OperationContentProps } from '@/components/operations/operations-common-types';
+import { OperationInfoBox } from '@/components/operation-info-box';
+import { OperationsSubmitButton } from '@/components/operations/operations-submit-button';
+import { useTransaction } from '@useelven/core';
+import { useTxStatus } from '@/hooks/use-tx-status';
 
 const formSchema = z.object({
   name: z
@@ -50,7 +48,9 @@ const formSchema = z.object({
   properties: z.array(z.string()),
 });
 
-export const Issue = ({ triggerTx, close }: OperationContentProps) => {
+export const Issue = () => {
+  const { triggerTx, error, txResult, transaction, pending } = useTransaction();
+
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -59,6 +59,13 @@ export const Issue = ({ triggerTx, close }: OperationContentProps) => {
       numOfDecimals: '',
       properties: sftNftTokenProperties.map((property) => property.name),
     },
+  });
+
+  useTxStatus({
+    successHash: txResult?.hash,
+    pendingHash: transaction?.getHash()?.toString(),
+    error,
+    pending,
   });
 
   const onSubmit = ({
@@ -86,6 +93,7 @@ export const Issue = ({ triggerTx, close }: OperationContentProps) => {
       args.push(BytesValue.fromUTF8(propertyEnabled.toString()));
     }
 
+    // TODO: replace ContractCallPayloadBuilder
     const data = new ContractCallPayloadBuilder()
       .setFunction(new ContractFunction('registerMetaESDT'))
       .setArgs(args)
@@ -97,65 +105,50 @@ export const Issue = ({ triggerTx, close }: OperationContentProps) => {
       data,
       value: payment,
     });
-
-    form.reset();
-    close();
   };
 
   return (
     <>
-      <DialogHeader className="p-8 pb-0">
-        <DialogTitle>Issue a Meta ESDT (Collection)</DialogTitle>
-        <DialogDescription>
-          One has to perform an issuance transaction in order to register a
-          Meta-ESDT token. Meta-ESDT Tokens are issued via a request to the
-          Metachain, which is a transaction submitted by the Account which will
-          manage the tokens.
-        </DialogDescription>
-      </DialogHeader>
-      <div className="overflow-y-auto px-8 py-0">
-        <Form {...form}>
-          <form
-            id="meta-issue-form"
-            onSubmit={form.handleSubmit(onSubmit)}
-            className="space-y-8"
-          >
-            <div className="flex-1 overflow-auto p-1">
-              <OperationsInputField
-                name="name"
-                label="Name"
-                placeholder="Example: MyToken"
-                description="Please provide the token name (3-20 characters, alphanumeric)"
-              />
-              <OperationsInputField
-                name="ticker"
-                label="Ticker"
-                placeholder="Example: MYTOK"
-                description="Please provide the token ticker (3-10 characters,
+      <OperationInfoBox error={error} txHash={txResult?.hash} />
+      <Form {...form}>
+        <form
+          id="meta-issue-form"
+          onSubmit={form.handleSubmit(onSubmit)}
+          className="space-y-8"
+        >
+          <div className="flex-1 overflow-auto p-1">
+            <OperationsInputField
+              name="name"
+              label="Name"
+              placeholder="Example: MyToken"
+              description="Please provide the token name (3-20 characters, alphanumeric)"
+            />
+            <OperationsInputField
+              name="ticker"
+              label="Ticker"
+              placeholder="Example: MYTOK"
+              description="Please provide the token ticker (3-10 characters,
                   alphanumeric, uppercase)"
-              />
-              <OperationsInputField
-                name="numOfDecimals"
-                label="Number of decimals"
-                type="number"
-                placeholder="Example: 18"
-                description="Please provide the number of decimals (for example native
+            />
+            <OperationsInputField
+              name="numOfDecimals"
+              label="Number of decimals"
+              type="number"
+              placeholder="Example: 18"
+              description="Please provide the number of decimals (for example native
                   EGLD has 18)."
-              />
-              <OperationsCheckboxGroup
-                items={sftNftTokenProperties}
-                name="properties"
-                label="Token properties"
-                description="Every ESDT has a set of properties which control
+            />
+            <OperationsCheckboxGroup
+              items={sftNftTokenProperties}
+              name="properties"
+              label="Token properties"
+              description="Every ESDT has a set of properties which control
                 what operations are possible with it."
-              />
-            </div>
-          </form>
-        </Form>
-      </div>
-      <DialogFooter className="px-8 py-4">
-        <OperationsSubmitButton formId="meta-issue-form" />
-      </DialogFooter>
+            />
+          </div>
+          <OperationsSubmitButton formId="meta-issue-form" />
+        </form>
+      </Form>
     </>
   );
 };

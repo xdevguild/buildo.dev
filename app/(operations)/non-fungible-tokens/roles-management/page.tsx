@@ -1,5 +1,5 @@
 import type { NextPage } from 'next';
-import { ToggleSpecialRoles } from '../../common/toggle-special-roles';
+import { ToggleSpecialRoles } from '../../components/toggle-special-roles';
 import { Separator } from '@/components/ui/separator';
 
 const NonFungibleRolesManagementPage: NextPage = () => {

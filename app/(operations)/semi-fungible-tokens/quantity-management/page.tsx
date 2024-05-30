@@ -1,5 +1,5 @@
 import type { NextPage } from 'next';
-import { AddBurnQuantity } from '../../common/add-burn-sft-meta-quantity';
+import { AddBurnQuantity } from '../../components/add-burn-sft-meta-quantity';
 import { Separator } from '@/components/ui/separator';
 
 const SemiFungibleQuantityManagementPage: NextPage = () => {

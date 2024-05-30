@@ -1,5 +1,5 @@
 import type { NextPage } from 'next';
-import { StopCreation } from '../../common/stop-creation';
+import { StopCreation } from '../../components/stop-creation';
 import { Separator } from '@/components/ui/separator';
 
 const SemiFungibleStopCreationPage: NextPage = () => {

@@ -1,5 +1,5 @@
 import type { NextPage } from 'next';
-import { WipeSingle } from '../../common/wipe-single';
+import { WipeSingle } from '../../components/wipe-single';
 import { Separator } from '@/components/ui/separator';
 
 const SemiFungibleWipePage: NextPage = () => {

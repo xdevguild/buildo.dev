@@ -1,5 +1,5 @@
 import type { NextPage } from 'next';
-import { FreezeUnfreezeSingle } from '../../common/freeze-unfreeze-single';
+import { FreezeUnfreezeSingle } from '../../components/freeze-unfreeze-single';
 import { Separator } from '@/components/ui/separator';
 
 const SemiFungibleFreezeTogglePage: NextPage = () => {

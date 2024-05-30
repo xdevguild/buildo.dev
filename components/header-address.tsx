@@ -22,12 +22,8 @@ export const HeaderAddress = () => {
 
   return (
     <Authenticated>
-      <div className="flex items-center gap-2">
-        <a
-          href={`${explorerAddress}/address/${address}`}
-          target="_blank"
-          className="hidden underline md:block"
-        >
+      <div className="hidden items-center gap-2 underline md:flex">
+        <a href={`${explorerAddress}/address/${address}`} target="_blank">
           {shortenHash(address, 6)}
         </a>
         {copied ? (

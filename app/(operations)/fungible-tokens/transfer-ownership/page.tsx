@@ -1,5 +1,5 @@
 import type { NextPage } from 'next';
-import { TransferOwnership } from '../../common/transfer-ownership';
+import { TransferOwnership } from '../../components/transfer-ownership';
 import { Separator } from '@/components/ui/separator';
 
 const TransferOwnershipPage: NextPage = () => {

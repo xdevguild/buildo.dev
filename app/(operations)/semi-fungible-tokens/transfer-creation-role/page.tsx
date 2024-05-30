@@ -1,5 +1,5 @@
 import type { NextPage } from 'next';
-import { TransferCreationRole } from '../../common/transfer-creation-role';
+import { TransferCreationRole } from '../../components/transfer-creation-role';
 import { Separator } from '@/components/ui/separator';
 
 const SemiFungibleTransferCreationRolePage: NextPage = () => {

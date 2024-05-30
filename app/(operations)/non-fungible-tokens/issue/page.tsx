@@ -1,5 +1,5 @@
 import type { NextPage } from 'next';
-import { IssueNftSft } from '../../common/issue-nft-sft';
+import { IssueNftSft } from '../../components/issue-nft-sft';
 import { Separator } from '@/components/ui/separator';
 
 const NonFungibleTokensIssuePage: NextPage = () => {

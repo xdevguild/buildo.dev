@@ -1,5 +1,5 @@
 import type { NextPage } from 'next';
-import { ChangeProperties } from '../../common/change-properties';
+import { ChangeProperties } from '../../components/change-properties';
 import { Separator } from '@/components/ui/separator';
 
 const ChangePropertiesPage: NextPage = () => {
