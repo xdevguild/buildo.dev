@@ -155,7 +155,7 @@ export const ToggleSpecialRoles = ({
 
   return (
     <>
-      <OperationInfoBox error={error} txHash={txResult?.hash} />
+      <OperationInfoBox error={error} txResult={txResult} />
       <Form {...form}>
         <form
           id="toggle-special-roles-form"

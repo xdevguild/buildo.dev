@@ -101,7 +101,7 @@ export const Create = () => {
 
   return (
     <>
-      <OperationInfoBox error={error} txHash={txResult?.hash} />
+      <OperationInfoBox error={error} txResult={txResult} type="create" />
       <Form {...form}>
         <form
           id="nft-create-form"

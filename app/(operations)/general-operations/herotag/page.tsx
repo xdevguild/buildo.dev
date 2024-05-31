@@ -21,6 +21,13 @@ const HerotagPage: NextPage = () => {
           The herotag is a unique username you can assign to your wallet
           address. Just to let you know, in this case, transaction fees will be
           applied.
+          {process.env.NEXT_PUBLIC_MULTIVERSX_CHAIN === 'devnet' ? (
+            <>
+              <br />
+              <br />
+              <strong>It my not work on the devnet at the moment.</strong>
+            </>
+          ) : null}
         </p>
       </div>
       <Herotag />

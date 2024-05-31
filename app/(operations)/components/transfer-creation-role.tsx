@@ -80,7 +80,7 @@ export const TransferCreationRole = ({
 
   return (
     <>
-      <OperationInfoBox error={error} txHash={txResult?.hash} />
+      <OperationInfoBox error={error} txResult={txResult} />
       <Form {...form}>
         <form
           id="transfer-creation-role-form"

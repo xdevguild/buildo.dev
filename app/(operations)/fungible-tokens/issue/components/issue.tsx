@@ -120,7 +120,7 @@ export const Issue = () => {
 
   return (
     <>
-      <OperationInfoBox error={error} txHash={txResult?.hash} />
+      <OperationInfoBox error={error} txResult={txResult} type="issue" />
       <Form {...form}>
         <form
           id="issue-form"

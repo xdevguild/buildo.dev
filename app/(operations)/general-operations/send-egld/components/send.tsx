@@ -62,7 +62,7 @@ export const Send = () => {
 
   return (
     <>
-      <OperationInfoBox error={error} txHash={txResult?.hash} />
+      <OperationInfoBox error={error} txResult={txResult} />
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
           <div className="flex-1 overflow-auto p-1">

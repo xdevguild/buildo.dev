@@ -65,7 +65,7 @@ export const ChangeOwnerAddress = () => {
 
   return (
     <>
-      <OperationInfoBox error={error} txHash={txResult?.hash} />
+      <OperationInfoBox error={error} txResult={txResult} />
       <Form {...form}>
         <form
           id="change-owner-form"

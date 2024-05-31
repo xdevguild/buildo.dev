@@ -10,7 +10,6 @@ type TxStatusProps = {
   pendingHash?: string;
 };
 
-// TODO: it could return parsed SC results, to reuse in other components, errors etc.
 export const useTxStatus = ({
   successHash,
   pendingHash,

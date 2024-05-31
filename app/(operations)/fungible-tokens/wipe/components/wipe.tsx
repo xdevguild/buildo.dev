@@ -69,7 +69,7 @@ export const Wipe = () => {
 
   return (
     <>
-      <OperationInfoBox error={error} txHash={txResult?.hash} />
+      <OperationInfoBox error={error} txResult={txResult} />
       <Form {...form}>
         <form
           id="wipe-form"
