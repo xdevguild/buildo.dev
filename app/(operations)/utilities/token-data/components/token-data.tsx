@@ -4,12 +4,12 @@ import * as z from 'zod';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { Form } from '@/components/ui/form';
-import { OperationsInputField } from '@/components/operations/operations-input-field';
-import { OperationsSubmitButton } from '@/components/operations/operations-submit-button';
+import { OperationsInputField } from '@/app/(operations)/components/operations-ui/operations-input-field';
+import { OperationsSubmitButton } from '@/app/(operations)/components/operations-ui/operations-submit-button';
 import { useState } from 'react';
 import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
 import { AlertCircle } from 'lucide-react';
-import { OperationsRadioGroup } from '@/components/operations/operations-radio-group';
+import { OperationsRadioGroup } from '@/app/(operations)/components/operations-ui/operations-radio-group';
 import axios, { AxiosError } from 'axios';
 import { useConfig } from '@useelven/core';
 

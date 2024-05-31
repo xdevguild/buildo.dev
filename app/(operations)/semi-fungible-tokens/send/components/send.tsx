@@ -4,12 +4,12 @@ import * as z from 'zod';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { Form } from '@/components/ui/form';
-import { OperationsInputField } from '@/components/operations/operations-input-field';
-import { OperationsSubmitButton } from '@/components/operations/operations-submit-button';
+import { OperationsInputField } from '@/app/(operations)/components/operations-ui/operations-input-field';
+import { OperationsSubmitButton } from '@/app/(operations)/components/operations-ui/operations-submit-button';
 import { ESDTType, useTokenTransfer } from '@useelven/core';
 import BigNumber from 'bignumber.js';
 import { useTxStatus } from '@/hooks/use-tx-status';
-import { OperationInfoBox } from '@/components/operation-info-box';
+import { OperationInfoBox } from '@/app/(operations)/components/operations-ui/operation-info-box';
 
 const formSchema = z.object({
   tokenId: z.string().min(1, 'The field is required'),

@@ -1,5 +1,5 @@
-import { CommonOpertationContentProps } from '@/components/operations/operations-common-types';
-import { OperationsSelectField } from '@/components/operations/operations-select-field';
+import { CommonOpertationContentProps } from '@/app/(operations)/components/operations-ui/operations-common-types';
+import { OperationsSelectField } from '@/app/(operations)/components/operations-ui/operations-select-field';
 import { useCreatorTokens } from '@/hooks/use-creator-tokens';
 import { getTokenIdKey } from '@/lib/get-token-id';
 

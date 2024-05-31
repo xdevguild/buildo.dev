@@ -16,14 +16,14 @@ import {
   issueTokenPayment,
   commonOpertationsGasLimit,
   builtInSC,
-} from '@/components/operations/constants';
-import { OperationsInputField } from '@/components/operations/operations-input-field';
-import { OperationsCheckboxGroup } from '@/components/operations/operations-checkbox-group';
-import { OperationsSubmitButton } from '@/components/operations/operations-submit-button';
-import { CommonOpertationContentProps } from '@/components/operations/operations-common-types';
+} from '@/app/(operations)/components/operations-ui/constants';
+import { OperationsInputField } from '@/app/(operations)/components/operations-ui/operations-input-field';
+import { OperationsCheckboxGroup } from '@/app/(operations)/components/operations-ui/operations-checkbox-group';
+import { OperationsSubmitButton } from '@/app/(operations)/components/operations-ui/operations-submit-button';
+import { CommonOpertationContentProps } from '@/app/(operations)/components/operations-ui/operations-common-types';
 import { useTransaction } from '@useelven/core';
 import { useTxStatus } from '@/hooks/use-tx-status';
-import { OperationInfoBox } from '@/components/operation-info-box';
+import { OperationInfoBox } from './operations-ui/operation-info-box';
 
 const formSchema = z.object({
   name: z

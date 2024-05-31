@@ -4,14 +4,14 @@ import * as z from 'zod';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { Form } from '@/components/ui/form';
-import { specialOpertationsGasLimit } from '@/components/operations/constants';
-import { OperationsInputField } from '@/components/operations/operations-input-field';
-import { OperationsSubmitButton } from '@/components/operations/operations-submit-button';
-import { OperationsRadioGroup } from '@/components/operations/operations-radio-group';
+import { specialOpertationsGasLimit } from '@/app/(operations)/components/operations-ui/constants';
+import { OperationsInputField } from '@/app/(operations)/components/operations-ui/operations-input-field';
+import { OperationsSubmitButton } from '@/app/(operations)/components/operations-ui/operations-submit-button';
+import { OperationsRadioGroup } from '@/app/(operations)/components/operations-ui/operations-radio-group';
 import BigNumber from 'bignumber.js';
 import { useAccount, useTransaction } from '@useelven/core';
-import { OperationsTokenIdInput } from '@/components/operations/operations-tokenid-input';
-import { OperationInfoBox } from '@/components/operation-info-box';
+import { OperationsTokenIdInput } from '@/app/(operations)/components/operations-ui/operations-tokenid-input';
+import { OperationInfoBox } from '@/app/(operations)/components/operations-ui/operation-info-box';
 import { useTxStatus } from '@/hooks/use-tx-status';
 
 const formSchema = z.object({

@@ -4,8 +4,8 @@ import * as z from 'zod';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { Form } from '@/components/ui/form';
-import { OperationsInputField } from '@/components/operations/operations-input-field';
-import { OperationsSubmitButton } from '@/components/operations/operations-submit-button';
+import { OperationsInputField } from '@/app/(operations)/components/operations-ui/operations-input-field';
+import { OperationsSubmitButton } from '@/app/(operations)/components/operations-ui/operations-submit-button';
 import {
   BytesValue,
   ContractCallPayloadBuilder,
@@ -15,7 +15,7 @@ import {
 } from '@multiversx/sdk-core';
 import { useAccount, useTransaction } from '@useelven/core';
 import { useTxStatus } from '@/hooks/use-tx-status';
-import { OperationInfoBox } from '@/components/operation-info-box';
+import { OperationInfoBox } from '@/app/(operations)/components/operations-ui/operation-info-box';
 
 const getKeyValuesForTx = (keyValuesArr: string[]) => {
   return keyValuesArr

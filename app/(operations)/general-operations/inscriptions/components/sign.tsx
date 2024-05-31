@@ -8,8 +8,8 @@ import { useAccount, useLoginInfo, useSignMessage } from '@useelven/core';
 import { useForm } from 'react-hook-form';
 import { z } from 'zod';
 import { Form } from '@/components/ui/form';
-import { OperationsInputField } from '@/components/operations/operations-input-field';
-import { OperationsSubmitButton } from '@/components/operations/operations-submit-button';
+import { OperationsInputField } from '@/app/(operations)/components/operations-ui/operations-input-field';
+import { OperationsSubmitButton } from '@/app/(operations)/components/operations-ui/operations-submit-button';
 import { useEffect } from 'react';
 import { Spinner } from '@/components/ui/spinner';
 

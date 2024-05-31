@@ -13,19 +13,19 @@ import {
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { Form } from '@/components/ui/form';
-import { OperationsInputField } from '@/components/operations/operations-input-field';
-import { OperationsSubmitButton } from '@/components/operations/operations-submit-button';
-import { CommonOpertationContentProps } from '@/components/operations/operations-common-types';
-import { OperationsRadioGroup } from '@/components/operations/operations-radio-group';
+import { OperationsInputField } from '@/app/(operations)/components/operations-ui/operations-input-field';
+import { OperationsSubmitButton } from '@/app/(operations)/components/operations-ui/operations-submit-button';
+import { CommonOpertationContentProps } from '@/app/(operations)/components/operations-ui/operations-common-types';
+import { OperationsRadioGroup } from '@/app/(operations)/components/operations-ui/operations-radio-group';
 import BigNumber from 'bignumber.js';
 import { useConfig, useTransaction } from '@useelven/core';
 import axios from 'axios';
 import {
   builtInSC,
   commonOpertationsGasLimit,
-} from '@/components/operations/constants';
+} from '@/app/(operations)/components/operations-ui/constants';
 import { useTxStatus } from '@/hooks/use-tx-status';
-import { OperationInfoBox } from '@/components/operation-info-box';
+import { OperationInfoBox } from './operations-ui/operation-info-box';
 
 const formSchema = z.object({
   tokenId: z.string().min(1, 'The field is required'),

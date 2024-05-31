@@ -16,12 +16,12 @@ import { Form } from '@/components/ui/form';
 import {
   builtInSC,
   commonOpertationsGasLimit,
-} from '@/components/operations/constants';
-import { OperationsInputField } from '@/components/operations/operations-input-field';
-import { OperationsSubmitButton } from '@/components/operations/operations-submit-button';
-import { OperationsRadioGroup } from '@/components/operations/operations-radio-group';
-import { OperationsTokenIdInput } from '@/components/operations/operations-tokenid-input';
-import { OperationInfoBox } from '@/components/operation-info-box';
+} from '@/app/(operations)/components/operations-ui/constants';
+import { OperationsInputField } from '@/app/(operations)/components/operations-ui/operations-input-field';
+import { OperationsSubmitButton } from '@/app/(operations)/components/operations-ui/operations-submit-button';
+import { OperationsRadioGroup } from '@/app/(operations)/components/operations-ui/operations-radio-group';
+import { OperationsTokenIdInput } from '@/app/(operations)/components/operations-ui/operations-tokenid-input';
+import { OperationInfoBox } from '@/app/(operations)/components/operations-ui/operation-info-box';
 import { useTransaction } from '@useelven/core';
 import { useTxStatus } from '@/hooks/use-tx-status';
 

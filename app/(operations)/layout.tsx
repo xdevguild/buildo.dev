@@ -1,7 +1,7 @@
 import { Metadata } from 'next';
-import { OperationHeader } from '@/components/operation-header';
-import { OperationFooter } from '@/components/operation-footer';
-import { OperationsMenu } from '@/components/operations-menu';
+import { OperationHeader } from '@/app/(operations)/components/operations-ui/operation-header';
+import { OperationFooter } from '@/app/(operations)/components/operations-ui/operation-footer';
+import { OperationsMenu } from '@/app/(operations)/components/operations-ui/operations-menu';
 
 // TODO: manage meta for all pages
 const dappHostname = process.env.NEXT_PUBLIC_DAPP_HOST;

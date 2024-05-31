@@ -7,13 +7,13 @@ import { Form } from '@/components/ui/form';
 import {
   builtInSC,
   commonOpertationsGasLimit,
-} from '@/components/operations/constants';
-import { OperationsSubmitButton } from '@/components/operations/operations-submit-button';
+} from '@/app/(operations)/components/operations-ui/constants';
+import { OperationsSubmitButton } from '@/app/(operations)/components/operations-ui/operations-submit-button';
 import { useMemo } from 'react';
-import { OperationsRadioGroup } from '@/components/operations/operations-radio-group';
-import { OperationsSelectField } from '@/components/operations/operations-select-field';
+import { OperationsRadioGroup } from '@/app/(operations)/components/operations-ui/operations-radio-group';
+import { OperationsSelectField } from '@/app/(operations)/components/operations-ui/operations-select-field';
 import { useCreatorTokensAmount } from '@/hooks/use-creator-tokens-amount';
-import { OperationInfoBox } from '@/components/operation-info-box';
+import { OperationInfoBox } from '@/app/(operations)/components/operations-ui/operation-info-box';
 import { useTxStatus } from '@/hooks/use-tx-status';
 import { useTransaction } from '@useelven/core';
 

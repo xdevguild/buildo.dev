@@ -16,14 +16,14 @@ import { Form } from '@/components/ui/form';
 import {
   builtInSC,
   commonOpertationsGasLimit,
-} from '@/components/operations/constants';
-import { OperationsInputField } from '@/components/operations/operations-input-field';
-import { OperationsSubmitButton } from '@/components/operations/operations-submit-button';
-import { CommonOpertationContentProps } from '@/components/operations/operations-common-types';
-import { OperationsTokenIdInput } from '@/components/operations/operations-tokenid-input';
+} from '@/app/(operations)/components/operations-ui/constants';
+import { OperationsInputField } from '@/app/(operations)/components/operations-ui/operations-input-field';
+import { OperationsSubmitButton } from '@/app/(operations)/components/operations-ui/operations-submit-button';
+import { CommonOpertationContentProps } from '@/app/(operations)/components/operations-ui/operations-common-types';
+import { OperationsTokenIdInput } from '@/app/(operations)/components/operations-ui/operations-tokenid-input';
 import { useTxStatus } from '@/hooks/use-tx-status';
 import { useTransaction } from '@useelven/core';
-import { OperationInfoBox } from '@/components/operation-info-box';
+import { OperationInfoBox } from './operations-ui/operation-info-box';
 
 const formSchema = z.object({
   tokenId: z.string().min(1, 'The field is required'),

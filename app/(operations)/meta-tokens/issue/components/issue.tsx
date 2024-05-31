@@ -17,11 +17,11 @@ import {
   issueTokenPayment,
   commonOpertationsGasLimit,
   builtInSC,
-} from '@/components/operations/constants';
-import { OperationsInputField } from '@/components/operations/operations-input-field';
-import { OperationsCheckboxGroup } from '@/components/operations/operations-checkbox-group';
-import { OperationInfoBox } from '@/components/operation-info-box';
-import { OperationsSubmitButton } from '@/components/operations/operations-submit-button';
+} from '@/app/(operations)/components/operations-ui/constants';
+import { OperationsInputField } from '@/app/(operations)/components/operations-ui/operations-input-field';
+import { OperationsCheckboxGroup } from '@/app/(operations)/components/operations-ui/operations-checkbox-group';
+import { OperationInfoBox } from '@/app/(operations)/components/operations-ui/operation-info-box';
+import { OperationsSubmitButton } from '@/app/(operations)/components/operations-ui/operations-submit-button';
 import { useTransaction } from '@useelven/core';
 import { useTxStatus } from '@/hooks/use-tx-status';
 

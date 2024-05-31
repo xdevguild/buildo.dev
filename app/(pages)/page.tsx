@@ -1,6 +1,6 @@
 import type { NextPage } from 'next';
 import { HomeCards } from '@/components/home-cards';
-import { OperationsAuthCheck } from '@/components/operations/operations-auth-check';
+import { OperationsAuthCheck } from '@/app/(operations)/components/operations-ui/operations-auth-check';
 
 const Home: NextPage = () => {
   return (

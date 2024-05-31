@@ -11,6 +11,7 @@ import {
 import { Button } from '@/components/ui/button';
 import { LoginComponent } from './login-component';
 import { useEffectOnlyOnUpdate } from '@/hooks/use-effect-only-on-update';
+import Link from 'next/link';
 
 interface LoginModalButtonProps {
   onClose?: () => void;
@@ -47,6 +48,11 @@ export const LoginModalButton: FC<LoginModalButtonProps> = ({
     onOpen?.();
   };
 
+  const handleClose = () => {
+    setIsOpen(false);
+    onClose?.();
+  };
+
   return (
     <Dialog open={isOpen} onOpenChange={onCloseComplete}>
       {isLoggedIn ? (
@@ -62,9 +68,23 @@ export const LoginModalButton: FC<LoginModalButtonProps> = ({
       )}
       <DialogContent className="max-w-xs bg-white p-0 dark:bg-[hsl(var(--background))] sm:max-w-lg">
         <DialogHeader className="px-8 pt-10">
-          <DialogTitle className="text-center">Connect your wallet</DialogTitle>
+          <DialogTitle className="text-center">
+            <div className="mb-3">Connect your wallet</div>
+            <div className="mx-auto max-w-[80%] text-xs font-extralight">
+              By connecting your crypto wallet, you acknowledge that you have
+              read and agree to our{' '}
+              <Link
+                href="/about#disclaimer"
+                onClick={handleClose}
+                className="underline"
+              >
+                terms
+              </Link>
+              .
+            </div>
+          </DialogTitle>
         </DialogHeader>
-        <div className="grid max-h-[calc(100vh-160px)] gap-4 overflow-y-auto px-6 pb-12 pt-6">
+        <div className="grid max-h-[calc(100vh-160px)] gap-4 overflow-y-auto px-6 pb-12 pt-3">
           <LoginComponent />
         </div>
       </DialogContent>

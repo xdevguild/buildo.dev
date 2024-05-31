@@ -1,6 +1,6 @@
 import { useCreatorTokensAmount } from '@/hooks/use-creator-tokens-amount';
-import { CommonOpertationContentProps } from '@/components/operations/operations-common-types';
-import { OperationsSelectField } from '@/components/operations/operations-select-field';
+import { CommonOpertationContentProps } from '@/app/(operations)/components/operations-ui/operations-common-types';
+import { OperationsSelectField } from '@/app/(operations)/components/operations-ui/operations-select-field';
 import { getTokenIdKey } from '@/lib/get-token-id';
 
 /**

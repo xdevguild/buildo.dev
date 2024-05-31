@@ -11,17 +11,17 @@ import {
   commonOpertationsGasLimit,
   builtInSC,
   TokenPropertyOrRole,
-} from '@/components/operations/constants';
-import { OperationsInputField } from '@/components/operations/operations-input-field';
-import { OperationsCheckboxGroup } from '@/components/operations/operations-checkbox-group';
-import { OperationsSubmitButton } from '@/components/operations/operations-submit-button';
+} from '@/app/(operations)/components/operations-ui/constants';
+import { OperationsInputField } from '@/app/(operations)/components/operations-ui/operations-input-field';
+import { OperationsCheckboxGroup } from '@/app/(operations)/components/operations-ui/operations-checkbox-group';
+import { OperationsSubmitButton } from '@/app/(operations)/components/operations-ui/operations-submit-button';
 import { useEffect, useState } from 'react';
-import { CommonOpertationContentProps } from '@/components/operations/operations-common-types';
-import { OperationsRadioGroup } from '@/components/operations/operations-radio-group';
+import { CommonOpertationContentProps } from '@/app/(operations)/components/operations-ui/operations-common-types';
+import { OperationsRadioGroup } from '@/app/(operations)/components/operations-ui/operations-radio-group';
 import { useAccount, useTransaction } from '@useelven/core';
 import { useTokenRolesByAccount } from '@/hooks/use-token-roles-by-account';
-import { OperationsTokenIdInput } from '@/components/operations/operations-tokenid-input';
-import { OperationInfoBox } from '@/components/operation-info-box';
+import { OperationsTokenIdInput } from '@/app/(operations)/components/operations-ui/operations-tokenid-input';
+import { OperationInfoBox } from './operations-ui/operation-info-box';
 import { useTxStatus } from '@/hooks/use-tx-status';
 
 const formSchema = z.object({

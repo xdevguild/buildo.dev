@@ -4,12 +4,12 @@ import * as z from 'zod';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { Form } from '@/components/ui/form';
-import { OperationsInputField } from '@/components/operations/operations-input-field';
-import { OperationsSubmitButton } from '@/components/operations/operations-submit-button';
+import { OperationsInputField } from '@/app/(operations)/components/operations-ui/operations-input-field';
+import { OperationsSubmitButton } from '@/app/(operations)/components/operations-ui/operations-submit-button';
 import BigNumber from 'bignumber.js';
 import { ESDTType, useTokenTransfer } from '@useelven/core';
-import { OperationsTokenIdAmountInput } from '@/components/operations/operations-tokenid-amount-input';
-import { OperationInfoBox } from '@/components/operation-info-box';
+import { OperationsTokenIdAmountInput } from '@/app/(operations)/components/operations-ui/operations-tokenid-amount-input';
+import { OperationInfoBox } from '@/app/(operations)/components/operations-ui/operation-info-box';
 import { useTxStatus } from '@/hooks/use-tx-status';
 
 const formSchema = z.object({

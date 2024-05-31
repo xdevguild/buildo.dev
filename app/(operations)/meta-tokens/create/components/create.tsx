@@ -12,13 +12,13 @@ import Bignumber from 'bignumber.js';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { Form } from '@/components/ui/form';
-import { nftSftCreateOpertationsGasLimit } from '@/components/operations/constants';
-import { OperationsInputField } from '@/components/operations/operations-input-field';
-import { OperationsSubmitButton } from '@/components/operations/operations-submit-button';
+import { nftSftCreateOpertationsGasLimit } from '@/app/(operations)/components/operations-ui/constants';
+import { OperationsInputField } from '@/app/(operations)/components/operations-ui/operations-input-field';
+import { OperationsSubmitButton } from '@/app/(operations)/components/operations-ui/operations-submit-button';
 import { useAccount, useTransaction } from '@useelven/core';
-import { OperationsTokenIdInput } from '@/components/operations/operations-tokenid-input';
+import { OperationsTokenIdInput } from '@/app/(operations)/components/operations-ui/operations-tokenid-input';
 import { useTxStatus } from '@/hooks/use-tx-status';
-import { OperationInfoBox } from '@/components/operation-info-box';
+import { OperationInfoBox } from '@/app/(operations)/components/operations-ui/operation-info-box';
 
 const formSchema = z.object({
   tokenId: z.string().min(1, 'The field is required'),

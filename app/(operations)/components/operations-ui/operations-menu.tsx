@@ -5,7 +5,7 @@ import { PanelLeft } from 'lucide-react';
 import { OperationsMenuItems } from './operations-menu-items';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 import Image from 'next/image';
-import { Button } from './ui/button';
+import { Button } from '@/components/ui/button';
 
 export const OperationsMenu = () => {
   const [open, setOpen] = useState(false);

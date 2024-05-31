@@ -4,14 +4,14 @@ import * as z from 'zod';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { Form } from '@/components/ui/form';
-import { OperationsInputField } from '@/components/operations/operations-input-field';
-import { OperationsSubmitButton } from '@/components/operations/operations-submit-button';
-import { commonBuiltInOpertationsGasLimit } from '@/components/operations/constants';
+import { OperationsInputField } from '@/app/(operations)/components/operations-ui/operations-input-field';
+import { OperationsSubmitButton } from '@/app/(operations)/components/operations-ui/operations-submit-button';
+import { commonBuiltInOpertationsGasLimit } from '@/app/(operations)/components/operations-ui/constants';
 import {
   ContractCallPayloadBuilder,
   ContractFunction,
 } from '@multiversx/sdk-core';
-import { OperationInfoBox } from '@/components/operation-info-box';
+import { OperationInfoBox } from '@/app/(operations)/components/operations-ui/operation-info-box';
 import { useTransaction } from '@useelven/core';
 import { useTxStatus } from '@/hooks/use-tx-status';
 

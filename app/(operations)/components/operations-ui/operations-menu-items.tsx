@@ -6,7 +6,7 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from '@/components/ui/accordion';
-import { OperationMenuItem } from '@/components/operations-menu-item';
+import { OperationMenuItem } from './operations-menu-item';
 import { operationsMenuConfig } from '@/lib/operations-menu-config';
 import { usePathname } from 'next/navigation';
 

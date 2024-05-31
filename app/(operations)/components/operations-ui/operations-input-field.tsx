@@ -8,7 +8,7 @@ import {
   FormMessage,
 } from '@/components/ui/form';
 import { useFormContext } from 'react-hook-form';
-import { Textarea } from '../ui/textarea';
+import { Textarea } from '../../../../components/ui/textarea';
 
 type OperationsInputFieldProps = {
   name: string;

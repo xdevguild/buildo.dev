@@ -16,16 +16,16 @@ import {
   commonOpertationsGasLimit,
   builtInSC,
   TokenPropertyOrRole,
-} from '@/components/operations/constants';
-import { OperationsCheckboxGroup } from '@/components/operations/operations-checkbox-group';
-import { OperationsSubmitButton } from '@/components/operations/operations-submit-button';
+} from '@/app/(operations)/components/operations-ui/constants';
+import { OperationsCheckboxGroup } from '@/app/(operations)/components/operations-ui/operations-checkbox-group';
+import { OperationsSubmitButton } from '@/app/(operations)/components/operations-ui/operations-submit-button';
 import { useEffect } from 'react';
-import { CommonOpertationContentProps } from '@/components/operations/operations-common-types';
-import { OperationsSelectField } from '@/components/operations/operations-select-field';
+import { CommonOpertationContentProps } from '@/app/(operations)/components/operations-ui/operations-common-types';
+import { OperationsSelectField } from '@/app/(operations)/components/operations-ui/operations-select-field';
 import { useCreatorTokens } from '@/hooks/use-creator-tokens';
 import { getTokenIdKey } from '@/lib/get-token-id';
 import { useTransaction } from '@useelven/core';
-import { OperationInfoBox } from '@/components/operation-info-box';
+import { OperationInfoBox } from './operations-ui/operation-info-box';
 import { useTxStatus } from '@/hooks/use-tx-status';
 
 const formSchema = z.object({
