@@ -9,8 +9,6 @@ export const commonOpertationsGasLimit = 60_000_000;
 export const commonBuiltInOpertationsGasLimit = 6_000_000;
 export const nftSftCreateOpertationsGasLimit = 3_000_000;
 export const specialOpertationsGasLimit = 300_000;
-// TODO: this should come from TransferTransactionsFactory and GasEstimator, waits for useElven changes
-export const transfersOperationsGasLimit = 600_000;
 
 export interface TokenPropertyOrRole {
   name: string;

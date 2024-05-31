@@ -17,7 +17,7 @@ type ButtonComponent = {
   pending?: boolean;
 };
 
-export const ButtonComponent = ({
+const ButtonComponent = ({
   label,
   formId,
   disabled,
