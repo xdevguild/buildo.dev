@@ -1,5 +1,6 @@
 import { isValidAddress } from '@/lib/is-valid-address';
 import { useAccount, useApiCall } from '@useelven/core';
+import { useEffect } from 'react';
 
 const useAccountTokensTypes = [
   'fungible',
@@ -8,8 +9,9 @@ const useAccountTokensTypes = [
   'meta',
 ] as const;
 
-export type AccountTokens = {
+type AccountTokens = {
   tokenType: (typeof useAccountTokensTypes)[number];
+  txFinalized?: boolean;
 };
 
 const typesMap = {
@@ -24,6 +26,7 @@ const typesMap = {
  */
 export function useCreatorTokens<T extends Record<string, unknown>>({
   tokenType,
+  txFinalized,
 }: AccountTokens) {
   const { address } = useAccount();
   const { data, fetch } = useApiCall<T[] | undefined>({
@@ -34,6 +37,13 @@ export function useCreatorTokens<T extends Record<string, unknown>>({
     }`,
     autoInit: Boolean(typesMap[tokenType]) && isValidAddress(address),
   });
+
+  // Refetch after transaction hash is available = tx finalized
+  useEffect(() => {
+    if (txFinalized) {
+      fetch();
+    }
+  }, [fetch, txFinalized]);
 
   return {
     tokens: data,

@@ -8,7 +8,7 @@ const useAccountTokensTypes = [
   'meta',
 ] as const;
 
-export type AccountTokens = {
+type AccountTokens = {
   tokenType: (typeof useAccountTokensTypes)[number];
   tokenId: string;
   address: string;

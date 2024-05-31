@@ -1,4 +1,5 @@
 import { useAccount, useApiCall } from '@useelven/core';
+import { useEffect } from 'react';
 
 const useAccountTokensTypes = [
   'fungible',
@@ -7,9 +8,10 @@ const useAccountTokensTypes = [
   'meta',
 ] as const;
 
-export type AccountTokens = {
+type AccountTokens = {
   tokenType: (typeof useAccountTokensTypes)[number];
   onlyOwner?: boolean;
+  txFinalized?: boolean;
 };
 
 const typesMap = {
@@ -25,6 +27,7 @@ const typesMap = {
 export function useCreatorTokensAmount<T extends Record<string, unknown>>({
   tokenType,
   onlyOwner = true,
+  txFinalized,
 }: AccountTokens) {
   const { address } = useAccount();
   const { data, fetch } = useApiCall<T[] | undefined>({
@@ -39,6 +42,13 @@ export function useCreatorTokensAmount<T extends Record<string, unknown>>({
   const tokens = onlyOwner
     ? data?.filter((token) => token.owner === address)
     : data;
+
+  // Refetch after transaction hash is available = tx finalized
+  useEffect(() => {
+    if (txFinalized) {
+      fetch();
+    }
+  }, [fetch, txFinalized]);
 
   return {
     tokens,

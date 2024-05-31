@@ -125,7 +125,7 @@ export const LedgerAccountsList: FC<LedgerAccountsListProps> = ({
 
   if (listPending) {
     return (
-      <div className="flex flex-col justify-center items-center mt-6">
+      <div className="mt-6 flex flex-col items-center justify-center">
         <Spinner />
         <div className="mt-3">Loading addresses, please wait...</div>
       </div>
@@ -134,7 +134,7 @@ export const LedgerAccountsList: FC<LedgerAccountsListProps> = ({
 
   if (error) {
     return (
-      <div className="text-center m-auto mt-6">
+      <div className="m-auto mt-6 text-center">
         <div>{error}</div>
         <Button className="mt-4" onClick={handleRefresh}>
           Refresh
@@ -145,7 +145,7 @@ export const LedgerAccountsList: FC<LedgerAccountsListProps> = ({
 
   if (chosenAddress) {
     return (
-      <div className="flex flex-col justify-center items-center mt-6 break-all w-full sm:w-3/4 m-auto border border-solid border-zinc-200 dark:border-0 px-8 py-3">
+      <div className="m-auto mt-6 flex w-full flex-col items-center justify-center break-all border border-solid border-zinc-200 px-8 py-3 dark:border-0 sm:w-3/4">
         <Spinner />
         <div className="mt-3">Confirm on the Ledger device:</div>
         <div className="mt-3 break-words text-center">
@@ -153,7 +153,7 @@ export const LedgerAccountsList: FC<LedgerAccountsListProps> = ({
         </div>
         {loginToken && (
           <div className="mt-3">
-            <div className="font-bold text-center">Login token:</div>
+            <div className="text-center font-bold">Login token:</div>
             <div className="break-words text-center">{loginToken}</div>
           </div>
         )}
@@ -164,27 +164,27 @@ export const LedgerAccountsList: FC<LedgerAccountsListProps> = ({
   if (!accounts) return null;
 
   return (
-    <div className="m-auto mt-6 w-full sm:w-3/4 border border-solid border-zinc-200 dark:border-0 px-8 py-3">
-      <div className="font-semibold text-center mb-2">Choose address:</div>
+    <div className="m-auto mt-6 w-full border border-solid border-zinc-200 px-8 py-3 dark:border-0 sm:w-[90%]">
+      <div className="mb-2 text-center font-semibold">Choose address:</div>
       {accounts?.map((account: string, index: number) => (
         <div
           key={account}
-          className="mb-0.5 p-2 cursor-pointer border border-solid rounded-md hover:border-dotted hover:bg-accent transition duration-200"
+          className="mb-0.5 cursor-pointer rounded-md border border-solid p-2 transition duration-200 hover:border-dotted hover:bg-accent"
           onClick={login(index, account)}
         >
-          <span className="inline-block text-center min-w-4">
-            {index + currentPage.current * ADDRESSES_PER_PAGE}:
+          <span className="inline-block min-w-4 text-center">
+            {index + currentPage.current * ADDRESSES_PER_PAGE}
           </span>
-          :
-          <span className="hidden md:inline-block text-center flex-1">
+          {': '}
+          <span className="hidden flex-1 text-center md:inline-block">
             {shortenHash(account, 14)}
           </span>
-          <span className="inline-block md:hidden text-center flex-1">
+          <span className="inline-block flex-1 text-center md:hidden">
             {shortenHash(account, 10)}
           </span>
         </div>
       ))}
-      <div className="flex justify-between mt-6">
+      <div className="mt-6 flex justify-between">
         <span
           onClick={handlePrev}
           className={

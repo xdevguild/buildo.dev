@@ -34,7 +34,7 @@ export const WalletConnectQRCode: FunctionComponent<
   return (
     <div>
       {mobile ? (
-        <div className="flex justify-center w-full mb-6">
+        <div className="mb-6 flex w-full justify-center">
           <Button asChild>
             <a
               href={`${walletConnectDeepLink}?wallet-connect=${encodeURIComponent(
@@ -49,7 +49,7 @@ export const WalletConnectQRCode: FunctionComponent<
         </div>
       ) : null}
       <div
-        className="[&>svg]:rounded-xl [&>svg]:max-w-xs [&>svg]:mx-auto [&>svg]:border [&>svg]:border-solid [&>svg]:border-zinc-300 dark:[&>svg]:border-0"
+        className="[&>svg]:mx-auto [&>svg]:max-w-xs [&>svg]:rounded-xl [&>svg]:border [&>svg]:border-solid [&>svg]:border-zinc-300 dark:[&>svg]:border-0"
         {...(qrCodeSvg
           ? { dangerouslySetInnerHTML: { __html: qrCodeSvg } }
           : {})}
