@@ -4,7 +4,7 @@ import { Separator } from '@/components/ui/separator';
 import { getMetadata } from '@/lib/get-metadata';
 
 export const metadata: Metadata = getMetadata({
-  title: 'Buildo.dev - MultiversX: Transfer multiple types of ESDT',
+  title: 'MultiversX: Transfer multiple types of ESDT',
   description:
     'Perform multiple tokens transfers in a single bulk. This way, one can send (to a single receiver) multiple fungible, semi-fungible, non-fungible or meta tokens via a single transaction.',
   pagePath: '/general-operations/multi-transfer',

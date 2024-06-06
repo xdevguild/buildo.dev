@@ -4,7 +4,7 @@ import { Separator } from '@/components/ui/separator';
 import { getMetadata } from '@/lib/get-metadata';
 
 export const metadata: Metadata = getMetadata({
-  title: 'Buildo.dev - MultiversX: Transfer an amount of Meta ESDT',
+  title: 'MultiversX: Transfer an amount of Meta ESDT',
   description:
     'Performing an Meta ESDT amount transfer is done by specifying the receiver&apos;s address inside the Data field, alongside other details.',
   pagePath: '/meta-tokens/send',

@@ -4,7 +4,7 @@ import { Separator } from '@/components/ui/separator';
 import { getMetadata } from '@/lib/get-metadata';
 
 export const metadata: Metadata = getMetadata({
-  title: 'Buildo.dev - MultiversX: Add/Burn the quantity of a meta ESDT',
+  title: 'MultiversX: Add/Burn the quantity of a meta ESDT',
   description:
     'A user that has the ESDTRoleNFTAddQuantity role set for a given Token, can increase its quantity (you need to have some amount on your address to do that).',
   pagePath: '/meta-tokens/quantity-management',

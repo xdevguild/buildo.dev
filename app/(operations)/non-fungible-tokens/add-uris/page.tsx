@@ -4,7 +4,7 @@ import { Separator } from '@/components/ui/separator';
 import { getMetadata } from '@/lib/get-metadata';
 
 export const metadata: Metadata = getMetadata({
-  title: 'Buildo.dev - MultiversX: Add URIs (assets)',
+  title: 'MultiversX: Add URIs (assets)',
   description:
     'An user that has the ESDTRoleNFTAddURI role set for a given ESDT, can add URIs to a given NFT.',
   pagePath: '/non-fungible-tokens/add-uris',

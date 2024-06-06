@@ -1,3 +1,7 @@
+### [0.14.1](https://github.com/xdevguild/buildo.dev/releases/tag/v0.14.1) (2024-06-06)
+- remove domain name from title
+- update dependencies
+
 ### [0.14.0](https://github.com/xdevguild/buildo.dev/releases/tag/v0.14.0) (2024-05-31)
 - rebuild the UI. Each operation has a separate page now
 - some refactor

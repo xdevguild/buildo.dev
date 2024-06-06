@@ -4,7 +4,7 @@ import { Separator } from '@/components/ui/separator';
 import { getMetadata } from '@/lib/get-metadata';
 
 export const metadata: Metadata = getMetadata({
-  title: 'Buildo.dev - MultiversX: Freeze/Unfreeze a single semi-fungible ESDT',
+  title: 'MultiversX: Freeze/Unfreeze a single semi-fungible ESDT',
   description:
     'The manager of an ESDT token may freeze the semi-fungible ESDT held by a specific Account.',
   pagePath: '/semi-fungible-tokens/freeze-toggle',

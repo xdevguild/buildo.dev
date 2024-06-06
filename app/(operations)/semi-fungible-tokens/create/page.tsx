@@ -4,7 +4,7 @@ import { Separator } from '@/components/ui/separator';
 import { getMetadata } from '@/lib/get-metadata';
 
 export const metadata: Metadata = getMetadata({
-  title: 'Buildo.dev - MultiversX: Create a semi-fungible ESDT (SFT)',
+  title: 'MultiversX: Create a semi-fungible ESDT (SFT)',
   description:
     'A single address can own the role of creating an SFT for an ESDT token. This role can be transferred by using the ESDTNFTCreateRoleTransfer function.',
   pagePath: '/semi-fungible-tokens/create',

@@ -4,8 +4,7 @@ import { Separator } from '@/components/ui/separator';
 import { getMetadata } from '@/lib/get-metadata';
 
 export const metadata: Metadata = getMetadata({
-  title:
-    'Buildo.dev - MultiversX: Wipe out all the fungible ESDTs held by a frozen Account',
+  title: 'MultiversX: Wipe out all the fungible ESDTs held by a frozen Account',
   description:
     'The manager of an ESDT token may wipe out all the tokens held by a frozen Account. This operation is similar to burning the tokens, but the Account must have been frozen beforehand',
   pagePath: '/fungible-tokens/wipe',

@@ -2,7 +2,7 @@ import { getMetadata } from '@/lib/get-metadata';
 import { Metadata, NextPage } from 'next';
 
 export const metadata: Metadata = getMetadata({
-  title: 'Buildo.dev - About',
+  title: 'About',
   description:
     'The website provides tools that help issue and manage tokens on the MultiversX blockchain. It also provides tools that can help with interaction with custom smart contracts and APIs.',
   pagePath: '/about',

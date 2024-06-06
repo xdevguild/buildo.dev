@@ -30,6 +30,17 @@ const responseParser = ({
         .join('');
 };
 
+const parseOutcome = (txResult: ITransactionOnNetwork | null | undefined) => {
+  if (!txResult) return;
+
+  const converter = new TransactionsConverter();
+  const parser = new SmartContractTransactionsOutcomeParser();
+
+  const transactionOutcome = converter.transactionOnNetworkToOutcome(txResult!);
+
+  return parser.parseExecute({ transactionOutcome });
+};
+
 export const OperationInfoBox = memo(
   ({ type, txResult, error, message }: OperationInfoBoxProps) => {
     const { explorerAddress } = useConfig();
@@ -38,20 +49,14 @@ export const OperationInfoBox = memo(
       return null;
     }
 
-    const converter = new TransactionsConverter();
-    const parser = new SmartContractTransactionsOutcomeParser();
-
-    const transactionOutcome = converter.transactionOnNetworkToOutcome(
-      txResult!
-    );
-    const parsedOutcome = parser.parseExecute({ transactionOutcome });
+    const parsedOutcome = parseOutcome(txResult);
 
     return (
       <Alert variant={error ? 'destructive' : 'default'} className="mb-3">
         <AlertTitle className="mb-2">Transaction status:</AlertTitle>
         <AlertDescription>
           <div>{error || message}</div>
-          {txResult?.hash && (
+          {parsedOutcome && (
             <>
               <div className="text-md mb-1">
                 Response message:{' '}
@@ -69,17 +74,19 @@ export const OperationInfoBox = memo(
                   ))}
                 </div>
               ) : null}
-              <div>
-                Check in the explorer:
-                <a
-                  href={`${explorerAddress}/transactions/${txResult.hash}`}
-                  target="_blank"
-                  className="ml-2 break-all font-semibold underline"
-                >
-                  {txResult.hash}
-                </a>
-              </div>
             </>
+          )}
+          {txResult?.hash && (
+            <div>
+              Check in the explorer:
+              <a
+                href={`${explorerAddress}/transactions/${txResult.hash}`}
+                target="_blank"
+                className="ml-2 break-all font-semibold underline"
+              >
+                {txResult.hash}
+              </a>
+            </div>
           )}
         </AlertDescription>
       </Alert>

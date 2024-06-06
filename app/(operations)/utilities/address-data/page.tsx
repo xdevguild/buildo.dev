@@ -4,7 +4,7 @@ import { Separator } from '@/components/ui/separator';
 import { getMetadata } from '@/lib/get-metadata';
 
 export const metadata: Metadata = getMetadata({
-  title: 'Buildo.dev - MultiversX: Check address data',
+  title: 'MultiversX: Check address data',
   description:
     'Check basic address data (also using a herotag). It can also be a smart contract address.',
   pagePath: '/utilities/wipe',

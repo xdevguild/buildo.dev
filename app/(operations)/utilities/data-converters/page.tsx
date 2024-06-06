@@ -4,7 +4,7 @@ import { Separator } from '@/components/ui/separator';
 import { getMetadata } from '@/lib/get-metadata';
 
 export const metadata: Metadata = getMetadata({
-  title: 'Buildo.dev - MultiversX: Covert data',
+  title: 'MultiversX: Covert data',
   description:
     'You can convert the data - for example, string to hex string, etc. Choose the conversion type from the selector.',
   pagePath: '/utilities/data-converters',

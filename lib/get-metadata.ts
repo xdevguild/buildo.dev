@@ -1,5 +1,6 @@
 const dappHostname = process.env.NEXT_PUBLIC_DAPP_HOST;
-const globalTitle = 'Buildo.dev - MultiversX companion';
+const globalTitle =
+  'MultiversX companion that helps with blockchain interactions';
 const globalDescription =
   'Buildo.dev is a MultiversX app that helps with blockchain interactions, like issuing tokens and querying smart contracts.';
 const globalImage = `${dappHostname}/og-image.png`;

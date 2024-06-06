@@ -4,7 +4,7 @@ import { Separator } from '@/components/ui/separator';
 import { getMetadata } from '@/lib/get-metadata';
 
 export const metadata: Metadata = getMetadata({
-  title: 'Buildo.dev - MultiversX: Create a non-fungible ESDT (NFT)',
+  title: 'MultiversX: Create a non-fungible ESDT (NFT)',
   description:
     'A single address can own the role of creating an NFT for an ESDT token. This role can be transferred by using the ESDTNFTCreateRoleTransfer function.',
   pagePath: '/non-fungible-tokens/create',

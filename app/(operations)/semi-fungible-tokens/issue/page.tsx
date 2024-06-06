@@ -4,7 +4,7 @@ import { Separator } from '@/components/ui/separator';
 import { getMetadata } from '@/lib/get-metadata';
 
 export const metadata: Metadata = getMetadata({
-  title: 'Buildo.dev - MultiversX: Issue a semi-fungible ESDT (Collection)',
+  title: 'MultiversX: Issue a semi-fungible ESDT (Collection)',
   description:
     'To create SFTs, start by setting up an ESDT collection token. Each SFT in this collection will have a unique nonce and its own attributes and assets.',
   pagePath: '/semi-fungible-tokens/issue',

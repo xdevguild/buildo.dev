@@ -4,7 +4,7 @@ import { Separator } from '@/components/ui/separator';
 import { getMetadata } from '@/lib/get-metadata';
 
 export const metadata: Metadata = getMetadata({
-  title: 'Buildo.dev - MultiversX: Change properties of a fungible ESDT',
+  title: 'MultiversX: Change properties of a fungible ESDT',
   description:
     'The manager of an ESDT token may individually change any of the properties of the token, or multiple properties at once. The token should have the canUpgrade property set to true.',
   pagePath: '/fungible-tokens/change-properties',

@@ -4,7 +4,7 @@ import { Separator } from '@/components/ui/separator';
 import { getMetadata } from '@/lib/get-metadata';
 
 export const metadata: Metadata = getMetadata({
-  title: 'Buildo.dev - MultiversX: Set/unset special roles for a fungible ESDT',
+  title: 'MultiversX: Set/unset special roles for a fungible ESDT',
   description:
     'The manager of an ESDT token can set and unset special roles for a given address. Only applicable if canAddSpecialRoles property is true.',
   pagePath: '/fungible-tokens/roles-management',

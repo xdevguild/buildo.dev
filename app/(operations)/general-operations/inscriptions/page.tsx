@@ -5,7 +5,7 @@ import { Separator } from '@/components/ui/separator';
 import { getMetadata } from '@/lib/get-metadata';
 
 export const metadata: Metadata = getMetadata({
-  title: 'Buildo.dev - MultiversX: Experimental Inscriptions',
+  title: 'MultiversX: Experimental Inscriptions',
   description:
     'Save custom immutable data on chain. You can then use it off-chain or for NFTs.',
   pagePath: '/general-operations/inscriptions',

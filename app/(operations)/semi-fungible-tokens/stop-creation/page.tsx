@@ -4,7 +4,7 @@ import { Separator } from '@/components/ui/separator';
 import { getMetadata } from '@/lib/get-metadata';
 
 export const metadata: Metadata = getMetadata({
-  title: 'Buildo.dev - MultiversX: Stop creation (SFT)',
+  title: 'MultiversX: Stop creation (SFT)',
   description:
     'The ESDT manager can stop the creation of the token for the given ESDT forever by removing the only ESDTRoleNFTCreate role available.',
   pagePath: '/semi-fungible-tokens/stop-creation',

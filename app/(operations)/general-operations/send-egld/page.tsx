@@ -4,7 +4,7 @@ import { Separator } from '@/components/ui/separator';
 import { getMetadata } from '@/lib/get-metadata';
 
 export const metadata: Metadata = getMetadata({
-  title: 'Buildo.dev - MultiversX: Transfer an amount of the native EGLD token',
+  title: 'MultiversX: Transfer an amount of the native EGLD token',
   description:
     'Performing an EGLD transfer is done by sending a transaction directly to the desired receiver Account.',
   pagePath: '/general-operations/send-egld',

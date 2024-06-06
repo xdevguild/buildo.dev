@@ -4,7 +4,7 @@ import { Separator } from '@/components/ui/separator';
 import { getMetadata } from '@/lib/get-metadata';
 
 export const metadata: Metadata = getMetadata({
-  title: 'Buildo.dev - MultiversX: Transfer an amount of your fungible ESDT',
+  title: 'MultiversX: Transfer an amount of your fungible ESDT',
   description:
     'Performing an ESDT transfer is done by sending a transaction directly to the desired receiver Account, but specifying some extra pieces of information in its Data field.',
   pagePath: '/fungible-tokens/send',

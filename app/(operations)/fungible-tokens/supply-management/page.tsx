@@ -4,7 +4,7 @@ import { Separator } from '@/components/ui/separator';
 import { getMetadata } from '@/lib/get-metadata';
 
 export const metadata: Metadata = getMetadata({
-  title: 'Buildo.dev - MultiversX: Mint/Burn the supply of a fungible ESDT',
+  title: 'MultiversX: Mint/Burn the supply of a fungible ESDT',
   description:
     'The manager of an ESDT token can increase/decrease the total supply by sending to the Metachain a transaction.',
   pagePath: '/fungible-tokens/supply-management',

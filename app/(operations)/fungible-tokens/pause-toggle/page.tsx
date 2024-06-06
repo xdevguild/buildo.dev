@@ -4,8 +4,7 @@ import { Separator } from '@/components/ui/separator';
 import { getMetadata } from '@/lib/get-metadata';
 
 export const metadata: Metadata = getMetadata({
-  title:
-    'Buildo.dev - MultiversX: Pause/Unpause transactions of a fungible ESDT',
+  title: 'MultiversX: Pause/Unpause transactions of a fungible ESDT',
   description:
     'The manager of an ESDT token may choose to suspend all transactions of the token, except minting, freezing/unfreezing and wiping.',
   pagePath: '/fungible-tokens/pause-toggle',

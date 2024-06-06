@@ -5,7 +5,7 @@ import { getMetadata } from '@/lib/get-metadata';
 
 export const metadata: Metadata = getMetadata({
   title:
-    'Buildo.dev - MultiversX: Transfer ownersip and management rights for the semi-fungible ESDT',
+    'MultiversX: Transfer ownersip and management rights for the semi-fungible ESDT',
   description:
     'The manager of a semi-fungible ESDT token may transfer the management rights to another Account.',
   pagePath: '/semi-fungible-tokens/transfer-ownership',
