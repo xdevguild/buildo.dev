@@ -7,7 +7,7 @@ const Home: NextPage = () => {
     <>
       <div className="pb-10 pt-10 md:pt-20 lg:pb-24 lg:pt-24">
         <h1 className="m-auto mb-8 max-w-2xl text-center text-2xl font-black md:text-4xl lg:max-w-4xl lg:text-6xl">
-          Buildo is your companion through the MultiversX!
+          Your MultiversX companion. Saving you time!
         </h1>
         <h2 className="m-auto max-w-2xl text-center text-sm font-light sm:mb-8 md:text-xl lg:max-w-4xl lg:text-2xl">
           Buildo.dev is a{' '}
@@ -15,14 +15,15 @@ const Home: NextPage = () => {
             href="https://multiversx.com"
             target="_blank"
             className="underline"
+            rel="nofollow"
           >
             MultiversX
           </a>{' '}
-          app that helps with blockchain interactions, like issuing tokens and
-          querying smart contracts.
+          app that simplifies blockchain interactions, like issuing tokens and
+          preparing and broadcasting transactions.
         </h2>
         <h3 className="m-auto hidden max-w-2xl text-center text-xs font-extralight sm:block md:text-sm lg:max-w-4xl">
-          If you like to work with CLI tools, check the{' '}
+          If you prefer working with CLI tools, check out the{' '}
           <a
             href="https://github.com/xdevguild/buildo-begins"
             target="_blank"
@@ -30,7 +31,7 @@ const Home: NextPage = () => {
           >
             Buildo Begins
           </a>{' '}
-          CLI! Check the{' '}
+          CLI! Also check out the{' '}
           <a
             href="https://chat.openai.com/g/g-GN0Zq0iZP-buildo-expert"
             target="_blank"
@@ -39,15 +40,15 @@ const Home: NextPage = () => {
             Buildo Expert GPT Assistant
           </a>
           <br />
-          Remember that there are different{' '}
+          Remember that different{' '}
           <a
             className="underline"
             href="https://github.com/multiversx/mx-api-service/blob/main/src/utils/cache.info.ts"
             target="_blank"
           >
-            cache strategies for API
+            cache strategies for APIs
           </a>
-          , so not all changes will be visible immediately.
+          , mean not all changes will be visible immediately.
         </h3>
         <OperationsAuthCheck />
       </div>
