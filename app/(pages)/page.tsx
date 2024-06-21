@@ -23,23 +23,6 @@ const Home: NextPage = () => {
           preparing and broadcasting transactions.
         </h2>
         <h3 className="m-auto hidden max-w-2xl text-center text-xs font-extralight sm:block md:text-sm lg:max-w-4xl">
-          If you prefer working with CLI tools, check out the{' '}
-          <a
-            href="https://github.com/xdevguild/buildo-begins"
-            target="_blank"
-            className="underline"
-          >
-            Buildo Begins
-          </a>{' '}
-          CLI! Also check out the{' '}
-          <a
-            href="https://chat.openai.com/g/g-GN0Zq0iZP-buildo-expert"
-            target="_blank"
-            className="underline"
-          >
-            Buildo Expert GPT Assistant
-          </a>
-          <br />
           Remember that different{' '}
           <a
             className="underline"
@@ -49,6 +32,16 @@ const Home: NextPage = () => {
             cache strategies for APIs
           </a>
           , mean not all changes will be visible immediately.
+          <br />
+          Submit bug reports or feature requests directly through the{' '}
+          <a
+            href="https://github.com/xdevguild/buildo.dev/issues"
+            target="_blank"
+            className="underline"
+          >
+            GitHub repository
+          </a>
+          .
         </h3>
         <OperationsAuthCheck />
       </div>

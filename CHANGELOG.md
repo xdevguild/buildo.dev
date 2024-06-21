@@ -1,3 +1,7 @@
+### [0.14.2](https://github.com/xdevguild/buildo.dev/releases/tag/v0.14.2) (2024-06-21)
+- update useElven to support MultiversX Web wallet hub
+- update dependencies
+
 ### [0.14.1](https://github.com/xdevguild/buildo.dev/releases/tag/v0.14.1) (2024-06-06)
 - remove domain name from title
 - update dependencies
