@@ -1,3 +1,7 @@
+### [0.14.3](https://github.com/xdevguild/buildo.dev/releases/tag/v0.14.3) (2024-07-06)
+- improve transaction status UI
+- update dependencies
+
 ### [0.14.2](https://github.com/xdevguild/buildo.dev/releases/tag/v0.14.2) (2024-06-21)
 - update useElven to support MultiversX Web wallet hub
 - update dependencies

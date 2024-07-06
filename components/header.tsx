@@ -1,10 +1,11 @@
-import { Github, Twitter } from 'lucide-react';
 import { LoginModalButton } from '@/components/elven-ui/login-modal-button';
 import { ModeToggle } from '@/components/mode-toggle';
 import Link from 'next/link';
 import { Separator } from '@/components/ui/separator';
 import { HeaderAddress } from '@/components/header-address';
 import { HeaderChainIndicator } from '@/components/header-chain-indicator';
+import GitHubIcon from '/public/github.svg';
+import XIcon from '/public/x.svg';
 import Image from 'next/image';
 
 export const Header = () => {
@@ -30,10 +31,21 @@ export const Header = () => {
                 target="_blank"
                 title="GitHub"
               >
-                <Github size={25} />
+                <Image
+                  src={GitHubIcon}
+                  width={20}
+                  height={20}
+                  alt="Buildo GitHub"
+                />
               </a>
               <a href="https://x.com/BuildoDev" target="_blank" title="Twitter">
-                <Twitter size={25} />
+                <Image
+                  src={XIcon}
+                  width={18}
+                  height={18}
+                  alt="Buildo X.com"
+                  className="mt-[2px]"
+                />
               </a>
             </div>
             <HeaderAddress />
