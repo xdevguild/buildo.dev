@@ -1,3 +1,6 @@
+### [0.14.4](https://github.com/xdevguild/buildo.dev/releases/tag/v0.14.4) (2024-10-13)
+- fix Herotags (DNS) - works only on the mainnet
+
 ### [0.14.3](https://github.com/xdevguild/buildo.dev/releases/tag/v0.14.3) (2024-07-06)
 - improve transaction status UI
 - update dependencies

@@ -1,6 +1,6 @@
 'use client';
 
-import keccak from 'keccak';
+import { keccak256 } from 'js-sha3';
 import {
   SmartContract,
   Address,
@@ -20,26 +20,19 @@ import { OperationInfoBox } from '@/app/(operations)/components/operations-ui/op
 import { useTransaction } from '@useelven/core';
 
 const dnsScAddressForHerotag = (herotag: string) => {
-  const hashedHerotag = keccak('keccak256').update(herotag).digest();
-
-  const initialAddress = Buffer.from(Array(32).fill(1));
-  const initialAddressSlice = Uint8Array.prototype.slice.call(
-    initialAddress,
-    0,
-    30
-  );
-  const scId = Uint8Array.prototype.slice.call(hashedHerotag, 31);
-
-  const deployer_pubkey = Buffer.concat([
-    initialAddressSlice,
-    Buffer.from([0, Buffer.from(scId).readUIntBE(0, 1)]),
-  ]);
-
+  const hashedHerotagBuffer = keccak256.arrayBuffer(herotag);
+  const hashedHerotag = new Uint8Array(hashedHerotagBuffer);
+  const initialAddress = new Uint8Array(32).fill(1);
+  const initialAddressSlice = initialAddress.slice(0, 30);
+  const scIdByte = hashedHerotag[31];
+  const deployer_pubkey = new Uint8Array(32);
+  deployer_pubkey.set(initialAddressSlice, 0);
+  deployer_pubkey[30] = 0;
+  deployer_pubkey[31] = scIdByte;
   const scAddress = SmartContract.computeAddress(
     new Address(deployer_pubkey),
     0
   );
-
   return scAddress;
 };
 
@@ -72,13 +65,15 @@ export const Herotag = () => {
   });
 
   const onSubmit = async ({ herotag }: z.infer<typeof formSchema>) => {
-    const dnsScAddress = dnsScAddressForHerotag(`${herotag.trim()}`);
+    // TODO: the suffix will probably change in the future dns sc releases
+    const fullHerotag = `${herotag.trim()}.elrond`;
+    const dnsScAddress = dnsScAddressForHerotag(fullHerotag);
 
-    const args: TypedValue[] = [BytesValue.fromUTF8(`${herotag.trim()}`)];
+    const args: TypedValue[] = [BytesValue.fromUTF8(fullHerotag)];
 
     // TODO: use modern tools for contract calls
     const data = new ContractCallPayloadBuilder()
-      .setFunction(new ContractFunction('SetUserName'))
+      .setFunction(new ContractFunction('register'))
       .setArgs(args)
       .build();
 

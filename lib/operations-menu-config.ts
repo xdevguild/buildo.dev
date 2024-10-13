@@ -27,9 +27,9 @@ export const operationsMenuConfig: Record<
       path: '/general-operations/account-storage',
     },
     {
-      title: 'Set a herotag',
+      title: 'Set a herotag (DNS) [Mainnet only]',
       description:
-        'Create a herotag and assign it to your address (transaction fees applied)',
+        'Create a herotag (DNS name for your address) and assign it to your address (transaction fees applied). Works only on the Mainnet.',
       path: '/general-operations/herotag',
     },
     {
