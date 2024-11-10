@@ -1,3 +1,8 @@
+### [0.15.0](https://github.com/xdevguild/buildo.dev/releases/tag/v0.15.0) (2024-11-10)
+- update useElven
+- update Next
+- updae other dependenecies
+
 ### [0.14.4](https://github.com/xdevguild/buildo.dev/releases/tag/v0.14.4) (2024-10-13)
 - fix Herotags (DNS) - works only on the mainnet
 

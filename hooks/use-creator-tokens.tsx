@@ -2,23 +2,18 @@ import { isValidAddress } from '@/lib/is-valid-address';
 import { useAccount, useApiCall } from '@useelven/core';
 import { useEffect } from 'react';
 
-const useAccountTokensTypes = [
-  'fungible',
-  'non-fungible',
-  'semi-fungible',
-  'meta',
-] as const;
-
-type AccountTokens = {
-  tokenType: (typeof useAccountTokensTypes)[number];
-  txFinalized?: boolean;
-};
-
 const typesMap = {
   fungible: 'FungibleESDT',
   'non-fungible': 'NonFungibleESDT',
   'semi-fungible': 'SemiFungibleESDT',
   meta: 'MetaESDT',
+};
+
+type TokenType = keyof typeof typesMap;
+
+type AccountTokens = {
+  tokenType: TokenType;
+  txFinalized?: boolean;
 };
 
 /**
