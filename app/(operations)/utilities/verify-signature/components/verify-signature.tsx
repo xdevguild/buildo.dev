@@ -34,15 +34,17 @@ export const VerifySignature = () => {
     signature,
   }: z.infer<typeof formSchema>) => {
     try {
-      const { Address, SignableMessage } = await import('@multiversx/sdk-core');
-      const { UserVerifier } = await import('@multiversx/sdk-wallet');
+      const { Address, Message, MessageComputer, UserVerifier } = await import(
+        '@multiversx/sdk-core'
+      );
 
       const verifier = UserVerifier.fromAddress(new Address(address));
-      // TODO: replace signable message
-      const signableMessage = new SignableMessage({
-        message: Buffer.from(message),
+      const messageToVerify = new Message({
+        data: Buffer.from(message),
       });
-      const serializedMessage = signableMessage.serializeForSigning();
+      const messageComputer = new MessageComputer();
+      const serializedMessage =
+        messageComputer.computeBytesForVerifying(messageToVerify);
       const messageSignature = Buffer.from(signature, 'hex');
 
       const verified = verifier.verify(serializedMessage, messageSignature);

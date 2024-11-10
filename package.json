@@ -1,6 +1,6 @@
 {
   "name": "buildo.dev",
-  "version": "0.15.0",
+  "version": "0.15.1",
   "author": "Julian Ćwirko <julian.io>",
   "license": "MIT",
   "homepage": "https://www.buildo.dev",
@@ -21,7 +21,6 @@
     "@hookform/resolvers": "3.9.1",
     "@multiversx/sdk-core": "13.14.1",
     "@multiversx/sdk-transaction-decoder": "2.0.0",
-    "@multiversx/sdk-wallet": "4.6.0",
     "@radix-ui/react-accordion": "1.2.1",
     "@radix-ui/react-checkbox": "1.1.2",
     "@radix-ui/react-dialog": "1.1.2",

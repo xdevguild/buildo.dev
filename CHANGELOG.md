@@ -1,3 +1,7 @@
+### [0.15.1](https://github.com/xdevguild/buildo.dev/releases/tag/v0.15.1) (2024-11-10)
+- remove `@multiversx/sdk-wallet`
+- replace `SignableMessage` with `Message`
+
 ### [0.15.0](https://github.com/xdevguild/buildo.dev/releases/tag/v0.15.0) (2024-11-10)
 - update useElven
 - update Next

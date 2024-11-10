@@ -16,7 +16,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
+    // suppressHydrationWarning:
+    // https://github.com/pacocoursey/next-themes?tab=readme-ov-file#with-app
+    <html lang="en" suppressHydrationWarning>
       <body className={inter.className}>
         <ElvenInit />
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
