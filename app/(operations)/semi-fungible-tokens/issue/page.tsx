@@ -14,10 +14,10 @@ const SemiFungibleTokensIssuePage: NextPage = () => {
   return (
     <div>
       <div className="mb-6 flex flex-col">
-        <h1 className="mb-3 scroll-m-20 text-2xl font-semibold leading-none tracking-tight">
+        <h1 className="mb-3 scroll-m-20 text-2xl leading-none font-semibold tracking-tight">
           Issue a semi-fungible ESDT (Collection)
         </h1>
-        <p className="text-sm text-muted-foreground">
+        <p className="text-muted-foreground text-sm">
           To create SFTs, start by setting up an ESDT collection token. Each SFT
           in this collection will have a unique nonce and its own attributes and
           assets.

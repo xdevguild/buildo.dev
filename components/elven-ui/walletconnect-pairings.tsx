@@ -33,14 +33,14 @@ export const WalletConnectPairings: FC<WalletConnectPairingsProps> = ({
         )}
         {pairings.map((pairing) => (
           <div
-            className="relative my-3 cursor-pointer select-none rounded-md border border-solid border-zinc-300 bg-white px-4 py-2 pr-8 dark:border-0 dark:bg-slate-900"
+            className="relative my-3 cursor-pointer rounded-md border border-solid border-zinc-300 bg-white px-4 py-2 pr-8 select-none dark:border-0 dark:bg-slate-900"
             key={pairing.topic}
             onClick={handleLogin(pairing.topic)}
           >
             <Button
               variant="outline"
               size="icon"
-              className="absolute right-2 top-2 h-7 w-7"
+              className="absolute top-2 right-2 h-7 w-7"
               onClick={handleRemove(pairing.topic)}
             >
               <X size="16" />

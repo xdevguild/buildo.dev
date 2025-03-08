@@ -14,10 +14,10 @@ const SemiFungibleQuantityManagementPage: NextPage = () => {
   return (
     <div>
       <div className="mb-6 flex flex-col">
-        <h1 className="mb-3 scroll-m-20 text-2xl font-semibold leading-none tracking-tight">
+        <h1 className="mb-3 scroll-m-20 text-2xl leading-none font-semibold tracking-tight">
           Add/Burn the quantity of a semi-fungible ESDT
         </h1>
-        <p className="text-sm text-muted-foreground">
+        <p className="text-muted-foreground text-sm">
           A user that has the ESDTRoleNFTAddQuantity role set for a given Token,
           can increase its quantity (you need to have some amount on your
           address to do that). If successful, the balance of the address for the

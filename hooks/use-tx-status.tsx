@@ -21,7 +21,7 @@ export const useTxStatus = ({
   const { loginMethod } = useLoginInfo();
   const { loggedIn } = useLoggingIn();
 
-  const toastId = useRef<string | number>();
+  const toastId = useRef<string | number | undefined>(undefined);
 
   useEffect(() => {
     if (!loggedIn) return;

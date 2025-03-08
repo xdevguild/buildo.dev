@@ -27,6 +27,8 @@ Please check the [About](https://www.buildo.dev/about) section to read more abou
 
 ### Development
 
+It will run with self signed SSL. It enables encrypted HTTPS connections but is not inherently trusted by browsers or systems, requiring manual trust configuration. Some MultiversX signing providers require HTTPS even for localhost.
+
 `npx buildo-begins@latest init` - from the list, choose Buildo.dev dapp.
 
 Or you can do this manually:

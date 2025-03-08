@@ -66,7 +66,7 @@ export const LoginModalButton: FC<LoginModalButtonProps> = ({
           </Button>
         )
       )}
-      <DialogContent className="max-w-xs bg-white p-0 dark:bg-[hsl(var(--background))] sm:max-w-lg">
+      <DialogContent className="max-w-xs bg-white p-0 sm:max-w-lg dark:bg-[hsl(var(--background))]">
         <DialogHeader className="px-8 pt-10">
           <DialogTitle className="text-center">
             <div className="mb-3">Connect your wallet</div>
@@ -84,7 +84,7 @@ export const LoginModalButton: FC<LoginModalButtonProps> = ({
             </div>
           </DialogTitle>
         </DialogHeader>
-        <div className="grid max-h-[calc(100vh-160px)] gap-4 overflow-y-auto px-6 pb-12 pt-3">
+        <div className="grid max-h-[calc(100vh-160px)] gap-4 overflow-y-auto px-6 pt-3 pb-12">
           <LoginComponent />
         </div>
       </DialogContent>

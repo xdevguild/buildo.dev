@@ -5,7 +5,7 @@ import { OperationsAuthCheck } from '@/app/(operations)/components/operations-ui
 const Home: NextPage = () => {
   return (
     <>
-      <div className="pb-10 pt-10 md:pt-20 lg:pb-24 lg:pt-24">
+      <div className="pt-10 pb-10 md:pt-20 lg:pt-24 lg:pb-24">
         <h1 className="m-auto mb-8 max-w-2xl text-center text-2xl font-black md:text-4xl lg:max-w-4xl lg:text-6xl">
           Your MultiversX companion. Saving you time!
         </h1>

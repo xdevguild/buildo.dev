@@ -14,10 +14,10 @@ const WipePage: NextPage = () => {
   return (
     <div>
       <div className="mb-6 flex flex-col">
-        <h1 className="mb-3 scroll-m-20 text-2xl font-semibold leading-none tracking-tight">
+        <h1 className="mb-3 scroll-m-20 text-2xl leading-none font-semibold tracking-tight">
           Wipe out all the fungible ESDTs held by a frozen Account
         </h1>
-        <p className="text-sm text-muted-foreground">
+        <p className="text-muted-foreground text-sm">
           The manager of an ESDT token may wipe out all the tokens held by a
           frozen Account. This operation is similar to burning the tokens, but
           the Account must have been frozen beforehand, and it must be done by

@@ -87,7 +87,7 @@ export const Broadcast = ({
           </div>
         )}
         {!pending && inscription && (
-          <code className="block max-h-96 overflow-auto break-all rounded-sm bg-slate-100 px-6 py-4 dark:bg-slate-800 dark:text-slate-50">
+          <code className="block max-h-96 overflow-auto rounded-sm bg-slate-100 px-6 py-4 break-all dark:bg-slate-800 dark:text-slate-50">
             {inscription}
           </code>
         )}

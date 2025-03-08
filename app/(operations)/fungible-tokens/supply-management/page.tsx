@@ -14,10 +14,10 @@ const SupplyManagementPage: NextPage = () => {
   return (
     <div>
       <div className="mb-6 flex flex-col">
-        <h1 className="mb-3 scroll-m-20 text-2xl font-semibold leading-none tracking-tight">
+        <h1 className="mb-3 scroll-m-20 text-2xl leading-none font-semibold tracking-tight">
           Mint/Burn the supply of a fungible ESDT
         </h1>
-        <p className="text-sm text-muted-foreground">
+        <p className="text-muted-foreground text-sm">
           The manager of an ESDT token can increase/decrease the total supply by
           sending to the Metachain a transaction.
         </p>

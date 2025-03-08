@@ -25,7 +25,7 @@ export const OperationsMenuItems = ({
     >
       {Object.keys(operationsMenuConfig).map((item) => (
         <AccordionItem value={item} className="border-0" key={item}>
-          <AccordionTrigger className="py-1 text-sm capitalize text-foreground">
+          <AccordionTrigger className="text-foreground py-1 text-sm capitalize">
             {item.replaceAll('-', ' ')}
           </AccordionTrigger>
           <AccordionContent className="p-1 pr-[2px]">

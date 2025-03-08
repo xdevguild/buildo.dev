@@ -14,10 +14,10 @@ const SemiFungibleChangePropertiesPage: NextPage = () => {
   return (
     <div>
       <div className="mb-6 flex flex-col">
-        <h1 className="mb-3 scroll-m-20 text-2xl font-semibold leading-none tracking-tight">
+        <h1 className="mb-3 scroll-m-20 text-2xl leading-none font-semibold tracking-tight">
           Change properties of a semi-fungible ESDT
         </h1>
-        <p className="text-sm text-muted-foreground">
+        <p className="text-muted-foreground text-sm">
           The manager of an semi-fungible ESDT token may individually change any
           of the properties of the token, or multiple properties at once. The
           token should have the canUpgrade property set to true. <br />

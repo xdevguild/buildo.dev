@@ -14,10 +14,10 @@ const NonFungibleChangeAttributesPage: NextPage = () => {
   return (
     <div>
       <div className="mb-6 flex flex-col">
-        <h1 className="mb-3 scroll-m-20 text-2xl font-semibold leading-none tracking-tight">
+        <h1 className="mb-3 scroll-m-20 text-2xl leading-none font-semibold tracking-tight">
           Change attributes
         </h1>
-        <p className="text-sm text-muted-foreground">
+        <p className="text-muted-foreground text-sm">
           An user that has the ESDTRoleNFTUpdateAttributes role set for a given
           ESDT, can change the attributes of a given NFT.
           ESDTNFTUpdateAttributes will remove the old attributes and add the new

@@ -39,9 +39,9 @@ export const HomeCard = ({ title, description, items }: HomeCardProps) => {
           {items.map(({ title, description, onClick, disabled, path }) => (
             <Fragment key={title}>
               <span className="my-2 flex h-2 w-2 rounded-full bg-blue-700 dark:bg-blue-200" />
-              <div className="flex flex-row items-center justify-between space-y-1">
+              <div className="flex flex-row items-center">
                 <div
-                  className={`flex items-center text-sm font-medium leading-none ${
+                  className={`flex flex-1 items-center text-sm leading-none font-medium ${
                     disabled
                       ? 'cursor-default pt-1 text-zinc-600'
                       : 'cursor-pointer underline'
@@ -55,11 +55,14 @@ export const HomeCard = ({ title, description, items }: HomeCardProps) => {
                 </div>
                 <TooltipProvider>
                   <Tooltip delayDuration={0}>
-                    <TooltipTrigger title="Help tooltip">
+                    <TooltipTrigger
+                      className="ml-2 flex-shrink-0"
+                      title="Help tooltip"
+                    >
                       <HelpCircle size="18" />
                     </TooltipTrigger>
                     <TooltipContent className="max-w-xs" sideOffset={10}>
-                      <p className="text-sm text-muted-foreground">
+                      <p className="text-muted-foreground text-sm">
                         {description}
                       </p>
                     </TooltipContent>

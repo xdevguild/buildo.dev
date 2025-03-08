@@ -14,10 +14,10 @@ const MetaTokensIssuePage: NextPage = () => {
   return (
     <div>
       <div className="mb-6 flex flex-col">
-        <h1 className="mb-3 scroll-m-20 text-2xl font-semibold leading-none tracking-tight">
+        <h1 className="mb-3 scroll-m-20 text-2xl leading-none font-semibold tracking-tight">
           Issue a Meta ESDT (Collection)
         </h1>
-        <p className="text-sm text-muted-foreground">
+        <p className="text-muted-foreground text-sm">
           One has to perform an issuance transaction in order to register a
           Meta-ESDT token. Meta-ESDT Tokens are issued via a request to the
           Metachain, which is a transaction submitted by the Account which will

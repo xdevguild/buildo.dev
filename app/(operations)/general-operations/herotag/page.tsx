@@ -14,10 +14,10 @@ const HerotagPage: NextPage = () => {
   return (
     <div>
       <div className="mb-6 flex flex-col">
-        <h1 className="mb-3 scroll-m-20 text-2xl font-semibold leading-none tracking-tight">
+        <h1 className="mb-3 scroll-m-20 text-2xl leading-none font-semibold tracking-tight">
           Assign a herotag to your wallet address
         </h1>
-        <p className="text-sm text-muted-foreground">
+        <p className="text-muted-foreground text-sm">
           The herotag is a unique username you can assign to your wallet
           address. Just to let you know, in this case, transaction fees will be
           applied.

@@ -14,10 +14,10 @@ const MetaSendPage: NextPage = () => {
   return (
     <div>
       <div className="mb-6 flex flex-col">
-        <h1 className="mb-3 scroll-m-20 text-2xl font-semibold leading-none tracking-tight">
+        <h1 className="mb-3 scroll-m-20 text-2xl leading-none font-semibold tracking-tight">
           Transfer an amount of Meta ESDT
         </h1>
-        <p className="text-sm text-muted-foreground">
+        <p className="text-muted-foreground text-sm">
           Performing an Meta ESDT amount transfer is done by specifying the
           receiver&apos;s address inside the Data field, alongside other
           details.

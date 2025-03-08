@@ -14,10 +14,10 @@ const MetaTransferOwnershipPage: NextPage = () => {
   return (
     <div>
       <div className="mb-6 flex flex-col">
-        <h1 className="mb-3 scroll-m-20 text-2xl font-semibold leading-none tracking-tight">
+        <h1 className="mb-3 scroll-m-20 text-2xl leading-none font-semibold tracking-tight">
           Transfer ownersip and management rights for the ESDT
         </h1>
-        <p className="text-sm text-muted-foreground">
+        <p className="text-muted-foreground text-sm">
           The manager of an ESDT token may transfer the management rights to
           another Account. After this transaction is processed by the Metachain,
           any subsequent management operations will only be permitted to the new

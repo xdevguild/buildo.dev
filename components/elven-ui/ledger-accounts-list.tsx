@@ -143,10 +143,10 @@ export const LedgerAccountsList: FC<LedgerAccountsListProps> = ({
 
   if (chosenAddress) {
     return (
-      <div className="m-auto mt-6 flex w-full flex-col items-center justify-center break-all border border-solid border-zinc-200 px-8 py-3 dark:border-0 sm:w-3/4">
+      <div className="m-auto mt-6 flex w-full flex-col items-center justify-center border border-solid border-zinc-200 px-8 py-3 break-all sm:w-3/4 dark:border-0">
         <Spinner />
         <div className="mt-3">Confirm on the Ledger device:</div>
-        <div className="mt-3 break-words text-center">
+        <div className="mt-3 text-center break-words">
           <div className="font-bold">Address:</div> {chosenAddress}
         </div>
       </div>
@@ -156,12 +156,12 @@ export const LedgerAccountsList: FC<LedgerAccountsListProps> = ({
   if (!accounts) return null;
 
   return (
-    <div className="m-auto mt-6 w-full border border-solid border-zinc-200 px-8 py-3 dark:border-0 sm:w-[90%]">
+    <div className="m-auto mt-6 w-full border border-solid border-zinc-200 px-8 py-3 sm:w-[90%] dark:border-0">
       <div className="mb-2 text-center font-semibold">Choose address:</div>
       {accounts?.map((account: string, index: number) => (
         <div
           key={account}
-          className="mb-0.5 cursor-pointer rounded-md border border-solid p-2 transition duration-200 hover:border-dotted hover:bg-accent"
+          className="hover:bg-accent mb-0.5 cursor-pointer rounded-md border border-solid p-2 transition duration-200 hover:border-dotted"
           onClick={login(index, account)}
         >
           <span className="inline-block min-w-4 text-center">

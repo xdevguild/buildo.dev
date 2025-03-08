@@ -82,7 +82,7 @@ export const OperationInfoBox = memo(
               <a
                 href={`${explorerAddress}/transactions/${txResult.hash}`}
                 target="_blank"
-                className="ml-2 break-all font-semibold underline"
+                className="ml-2 font-semibold break-all underline"
               >
                 {txResult.hash}
               </a>

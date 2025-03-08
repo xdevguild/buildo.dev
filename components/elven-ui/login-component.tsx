@@ -70,7 +70,7 @@ export const LoginComponent = memo(() => {
       ) : (
         <div className="flex flex-col items-center gap-3 lg:px-8">
           <Button
-            className="h-auto w-full select-none py-3"
+            className="h-auto w-full py-3 select-none"
             variant="outline"
             onClick={handleLogin(LoginMethodsEnum.walletconnect)}
           >
@@ -78,28 +78,28 @@ export const LoginComponent = memo(() => {
           </Button>
 
           <Button
-            className="h-auto w-full select-none py-3"
+            className="h-auto w-full py-3 select-none"
             variant="outline"
             onClick={handleLogin(LoginMethodsEnum.extension)}
           >
             MultiversX Browser Extension
           </Button>
           <Button
-            className="h-auto w-full select-none py-3"
+            className="h-auto w-full py-3 select-none"
             variant="outline"
             onClick={handleLogin(LoginMethodsEnum.wallet)}
           >
             MultiversX Web Wallet
           </Button>
           <Button
-            className="h-auto w-full select-none py-3"
+            className="h-auto w-full py-3 select-none"
             variant="outline"
             onClick={handleLedgerAccountsList}
           >
             Ledger
           </Button>
           <Button
-            className="h-auto w-full select-none py-3"
+            className="h-auto w-full py-3 select-none"
             variant="outline"
             onClick={handleLogin(LoginMethodsEnum.xalias)}
           >

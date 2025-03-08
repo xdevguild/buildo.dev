@@ -14,10 +14,10 @@ const MetaTokensIssuePage: NextPage = () => {
   return (
     <div>
       <div className="mb-6 flex flex-col">
-        <h1 className="mb-3 scroll-m-20 text-2xl font-semibold leading-none tracking-tight">
+        <h1 className="mb-3 scroll-m-20 text-2xl leading-none font-semibold tracking-tight">
           Create a Meta ESDT
         </h1>
-        <p className="text-sm text-muted-foreground">
+        <p className="text-muted-foreground text-sm">
           A single address can own the role of creating an Meta ESDT. This role
           can be transferred by using the ESDTNFTCreateRoleTransfer function. An
           Meta ESDT can be created on top of an existing ESDT by sending a

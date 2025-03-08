@@ -42,7 +42,7 @@ export const OperationsRadioGroup = ({
             >
               {items.map((role) => (
                 <FormItem key={role.name}>
-                  <div className="flex flex-row items-start space-x-3 space-y-0">
+                  <div className="flex flex-row items-start space-y-0 space-x-3">
                     <FormControl>
                       <RadioGroupItem value={role.name} />
                     </FormControl>

@@ -14,10 +14,10 @@ const ChangeOwnerAddressPage: NextPage = () => {
   return (
     <div>
       <div className="mb-6 flex flex-col">
-        <h1 className="mb-3 scroll-m-20 text-2xl font-semibold leading-none tracking-tight">
+        <h1 className="mb-3 scroll-m-20 text-2xl leading-none font-semibold tracking-tight">
           Change owner address
         </h1>
-        <p className="text-sm text-muted-foreground">
+        <p className="text-muted-foreground text-sm">
           Change owner address is an operation to be made by a Smart
           Contract&apos;s owner when a new owner is desired.
         </p>

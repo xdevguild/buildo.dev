@@ -220,7 +220,7 @@ export const MultiTransfer = () => {
               placeholder="Example: erd1..."
               description="Please provide the address to where tokens will be send"
             />
-            <div className="text-md mb-2 mt-3 font-bold">Fungible</div>
+            <div className="text-md mt-3 mb-2 font-bold">Fungible</div>
             <div className="flex flex-col gap-3 sm:flex-row">
               <div className="flex-1">
                 <OperationsInputField
@@ -237,7 +237,7 @@ export const MultiTransfer = () => {
                 />
               </div>
             </div>
-            <div className="text-md mb-2 mt-3 font-bold">Non-fungible</div>
+            <div className="text-md mt-3 mb-2 font-bold">Non-fungible</div>
             <div className="flex flex-col gap-3 sm:flex-row">
               <div className="flex-1">
                 <OperationsInputField
@@ -254,7 +254,7 @@ export const MultiTransfer = () => {
                 />
               </div>
             </div>
-            <div className="text-md mb-2 mt-3 font-bold">Semi-fungible</div>
+            <div className="text-md mt-3 mb-2 font-bold">Semi-fungible</div>
             <div className="flex flex-col gap-3 sm:flex-row">
               <div className="flex-1">
                 <OperationsInputField
@@ -271,7 +271,7 @@ export const MultiTransfer = () => {
                 />
               </div>
             </div>
-            <div className="text-md mb-2 mt-3 font-bold">Meta</div>
+            <div className="text-md mt-3 mb-2 font-bold">Meta</div>
             <div className="flex flex-col gap-3 sm:flex-row">
               <div className="flex-1">
                 <OperationsInputField

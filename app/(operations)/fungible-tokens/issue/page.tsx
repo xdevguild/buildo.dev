@@ -14,10 +14,10 @@ const FungibleTokensIssuePage: NextPage = () => {
   return (
     <div>
       <div className="mb-6 flex flex-col">
-        <h1 className="mb-3 scroll-m-20 text-2xl font-semibold leading-none tracking-tight">
+        <h1 className="mb-3 scroll-m-20 text-2xl leading-none font-semibold tracking-tight">
           Issue a fungible ESDT
         </h1>
-        <p className="text-sm text-muted-foreground">
+        <p className="text-muted-foreground text-sm">
           ESDT tokens are issued via a request to the Metachain, which is a
           transaction submitted by the Account which will manage the tokens.
           When issuing a token, one must provide a token name, a ticker, the

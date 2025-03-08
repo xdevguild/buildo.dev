@@ -38,7 +38,7 @@ const AlertTitle = React.forwardRef<
 >(({ className, ...props }, ref) => (
   <div
     ref={ref}
-    className={cn('mb-1 font-medium leading-none tracking-tight', className)}
+    className={cn('mb-1 leading-none font-medium tracking-tight', className)}
     {...props}
   />
 ));
