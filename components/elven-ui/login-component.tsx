@@ -24,10 +24,16 @@ export const LoginComponent = memo(() => {
   const [loginMethod, setLoginMethod] = useState<LoginMethodsEnum>();
 
   const handleLogin = useCallback(
-    (type: LoginMethodsEnum, ledgerAccountsIndex?: number) => () => {
-      setLoginMethod(type);
-      login(type, ledgerAccountsIndex);
-    },
+    (
+      type: LoginMethodsEnum,
+      ledgerAccountsIndex?: number,
+      page?: number,
+      pageSize?: number
+    ) =>
+      () => {
+        setLoginMethod(type);
+        login(type, ledgerAccountsIndex, page, pageSize);
+      },
     [login]
   );
 

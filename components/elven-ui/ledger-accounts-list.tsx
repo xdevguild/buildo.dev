@@ -11,7 +11,9 @@ interface LedgerAccountsListProps {
   resetLoginMethod: () => void;
   handleLogin: (
     type: LoginMethodsEnum,
-    ledgerAccountsIndex?: number
+    ledgerAccountsIndex?: number,
+    page?: number,
+    pageSize?: number
   ) => () => void;
 }
 
@@ -108,9 +110,9 @@ export const LedgerAccountsList: FC<LedgerAccountsListProps> = ({
   }, [router]);
 
   const login = useCallback(
-    (index: number, address: string) => () => {
+    (index: number, address: string, page: number, pageSize: number) => () => {
       setAddress(address);
-      handleLogin(LoginMethodsEnum.ledger, index)();
+      handleLogin(LoginMethodsEnum.ledger, index, page, pageSize)();
     },
     [handleLogin]
   );
@@ -162,7 +164,12 @@ export const LedgerAccountsList: FC<LedgerAccountsListProps> = ({
         <div
           key={account}
           className="hover:bg-accent mb-0.5 cursor-pointer rounded-md border border-solid p-2 transition duration-200 hover:border-dotted"
-          onClick={login(index, account)}
+          onClick={login(
+            index,
+            account,
+            currentPage.current,
+            ADDRESSES_PER_PAGE
+          )}
         >
           <span className="inline-block min-w-4 text-center">
             {index + currentPage.current * ADDRESSES_PER_PAGE}

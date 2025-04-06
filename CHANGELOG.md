@@ -1,3 +1,6 @@
+### [0.16.1](https://github.com/xdevguild/buildo.dev/releases/tag/v0.16.1) (2025-04-06)
+- fix Ledger address choosing
+
 ### [0.16.0](https://github.com/xdevguild/buildo.dev/releases/tag/v0.16.0) (2025-03-08)
 - update dependencies
 - adjust code
