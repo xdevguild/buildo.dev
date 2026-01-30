@@ -1,7 +1,7 @@
 ### Buildo.dev
 
 - [Mainnet - www.buildo.dev](https://www.buildo.dev)
-- [Devnet - www.devnet.buildo.dev](https://www.devnet.buildo.dev)
+- [Devnet - devnet.buildo.dev](https://devnet.buildo.dev)
 
 Follow on X: [x.com/BuildoDev](https://x.com/BuildoDev)
 

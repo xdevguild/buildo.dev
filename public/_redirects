@@ -1,5 +1,5 @@
 # Netlify redirects 
 
-https://buildo-dev-devnet.netlify.app/* https://www.devnet.buildo.dev/:splat 301!
+https://buildo-dev-devnet.netlify.app/* https://devnet.buildo.dev/:splat 301!
 https://buildo-dev-mainnet.netlify.app/* https://www.buildo.dev/:splat 301!
 https://www.devnet.buildo.dev/* https://devnet.buildo.dev/:splat 301!

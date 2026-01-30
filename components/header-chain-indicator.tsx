@@ -19,7 +19,7 @@ export const HeaderChainIndicator = () => {
           <a
             href={
               chainType === 'mainnet'
-                ? 'https://www.devnet.buildo.dev'
+                ? 'https://devnet.buildo.dev'
                 : 'https://www.buildo.dev'
             }
             target="_blank"
