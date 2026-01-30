@@ -9,7 +9,7 @@ import { getTokenIdKey } from '@/lib/get-token-id';
  */
 export const OperationsTokenIdInput = ({
   tokenType,
-  description = 'Please provide your token id',
+  description = 'Please provide your token id. Tokens will appear here shortly after creation or issuing.',
   name = 'tokenId',
 }: {
   tokenType: CommonOpertationContentProps['tokenType'];

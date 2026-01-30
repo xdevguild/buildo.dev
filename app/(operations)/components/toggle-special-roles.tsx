@@ -29,7 +29,7 @@ const formSchema = z.object({
   address: z.string().min(1, 'The field is required'),
   roles: z.array(z.string()),
   type: z.enum(['set', 'unset'], {
-    required_error: 'Please choose the type of the operation (set/unset)',
+    message: 'Please choose the type of the operation (set/unset)',
   }),
 });
 

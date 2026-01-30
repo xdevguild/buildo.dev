@@ -136,7 +136,7 @@ export const ChangeProperties = ({
             <OperationsSelectField
               name="tokenId"
               label="Token id"
-              description="Please provide your token id"
+              description="Please provide your token id. Tokens will appear here shortly after creation or issuing."
               options={
                 tokens
                   ? tokens

@@ -31,7 +31,7 @@ const formSchema = z.object({
       'Required BigNumber string.'
     ),
   type: z.enum(['add', 'burn'], {
-    required_error: 'Please choose the type of the operation (add/burn)',
+    message: 'Please choose the type of the operation (add/burn)',
   }),
 });
 
@@ -141,7 +141,7 @@ export const AddBurnQuantity = ({
               name="tokenId"
               label="Token id"
               placeholder="Example: MyToken-23432-01"
-              description="Please provide your token id"
+              description="Please provide your token id. Tokens will appear here shortly after creation or issuing."
             />
             <OperationsInputField
               name="quantity"
