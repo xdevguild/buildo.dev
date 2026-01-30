@@ -34,9 +34,8 @@ export const VerifySignature = () => {
     signature,
   }: z.infer<typeof formSchema>) => {
     try {
-      const { Address, Message, MessageComputer, UserVerifier } = await import(
-        '@multiversx/sdk-core'
-      );
+      const { Address, Message, MessageComputer, UserVerifier } =
+        await import('@multiversx/sdk-core');
 
       const verifier = UserVerifier.fromAddress(new Address(address));
       const messageToVerify = new Message({
