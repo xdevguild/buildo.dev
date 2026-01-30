@@ -120,7 +120,7 @@ export const ChangeAttributes = () => {
               name="tokenId"
               label="Token id"
               placeholder="Example: MyToken-23432-01"
-              description="Please provide your token id"
+              description="Please provide your token id. Tokens will appear here shortly after creation or issuing."
             />
             <OperationsInputField
               name="attributes"

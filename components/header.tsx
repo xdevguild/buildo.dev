@@ -4,8 +4,6 @@ import Link from 'next/link';
 import { Separator } from '@/components/ui/separator';
 import { HeaderAddress } from '@/components/header-address';
 import { HeaderChainIndicator } from '@/components/header-chain-indicator';
-import GitHubIcon from '/public/github.svg';
-import XIcon from '/public/x.svg';
 import Image from 'next/image';
 
 export const Header = () => {
@@ -32,7 +30,7 @@ export const Header = () => {
                 title="GitHub"
               >
                 <Image
-                  src={GitHubIcon}
+                  src="/github.svg"
                   width={20}
                   height={20}
                   alt="Buildo GitHub"
@@ -40,7 +38,7 @@ export const Header = () => {
               </a>
               <a href="https://x.com/BuildoDev" target="_blank" title="Twitter">
                 <Image
-                  src={XIcon}
+                  src="/x.svg"
                   width={18}
                   height={18}
                   alt="Buildo X.com"

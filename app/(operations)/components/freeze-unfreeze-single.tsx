@@ -30,7 +30,7 @@ import { OperationInfoBox } from './operations-ui/operation-info-box';
 const formSchema = z.object({
   tokenId: z.string().min(1, 'The field is required'),
   type: z.enum(['freeze', 'unfreeze'], {
-    required_error: 'Please choose the type of the operation (freeze/unfreeze)',
+    message: 'Please choose the type of the operation (freeze/unfreeze)',
   }),
   accountAddressToFreeze: z.string().min(1, 'The field is required'),
 });
@@ -140,7 +140,7 @@ export const FreezeUnfreezeSingle = ({
               name="tokenId"
               label="Token id"
               placeholder="Example: MyToken-23432-01"
-              description="Please provide your token id"
+              description="Please provide your token id. Tokens will appear here shortly after creation or issuing."
             />
             <OperationsInputField
               name="accountAddressToFreeze"

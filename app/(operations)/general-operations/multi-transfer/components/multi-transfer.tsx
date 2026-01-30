@@ -133,7 +133,7 @@ export const MultiTransfer = () => {
   const { transfer, error, txResult, transaction, pending } =
     useTokenTransfer();
 
-  const form = useForm<z.infer<typeof formSchema>>({
+  const form = useForm<z.input<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
       fungibleTokenId: '',
@@ -165,7 +165,7 @@ export const MultiTransfer = () => {
     metaTokenId,
     metaAmount,
     receiverAddress,
-  }: z.infer<typeof formSchema>) => {
+  }: z.input<typeof formSchema>) => {
     const tokens: MultiTransferToken[] = [];
 
     if (fungibleTokenId && fungibleAmount) {

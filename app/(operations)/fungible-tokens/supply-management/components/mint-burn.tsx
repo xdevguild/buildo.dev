@@ -23,7 +23,7 @@ const formSchema = z.object({
       'Required BigNumber string.'
     ),
   type: z.enum(['mint', 'burn'], {
-    required_error: 'Please choose the type of the operation (mint/burn)',
+    message: 'Please choose the type of the operation (mint/burn)',
   }),
 });
 

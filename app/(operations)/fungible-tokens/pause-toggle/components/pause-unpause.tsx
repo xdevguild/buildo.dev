@@ -20,7 +20,7 @@ import { useTransaction } from '@useelven/core';
 const formSchema = z.object({
   tokenId: z.string().min(1, 'The field is required'),
   type: z.enum(['pause', 'unPause'], {
-    required_error: 'Please choose the type of the operation (pause/unPause)',
+    message: 'Please choose the type of the operation (pause/unPause)',
   }),
 });
 
@@ -101,7 +101,7 @@ export const PauseUnpause = () => {
             <OperationsSelectField
               name="tokenId"
               label="Token id"
-              description="Please provide your token id"
+              description="Please provide your token id. Tokens will appear here shortly after creation or issuing."
               options={
                 getTokens
                   ? getTokens

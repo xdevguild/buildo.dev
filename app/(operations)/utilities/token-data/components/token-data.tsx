@@ -35,7 +35,7 @@ const tokenTypes: { name: string; description: string }[] = [
 const formSchema = z.object({
   tokenId: z.string().min(1, 'The field is required'),
   tokenType: z.enum(['fungible', 'non-fungible', 'semi-fungible', 'meta'], {
-    required_error: 'Please choose the type of the token',
+    message: 'Please choose the type of the token',
   }),
 });
 
@@ -104,7 +104,7 @@ export const TokenData = () => {
               name="tokenId"
               label="Token id"
               placeholder="Example: MyToken-23432"
-              description="Please provide your token id. Fungible or collection id."
+              description="Please provide your token id. Tokens will appear here shortly after creation or issuing. Fungible or collection id."
             />
           </div>
           <OperationsSubmitButton pending={pending} isPublic />

@@ -29,7 +29,7 @@ const formSchema = z.object({
   tokenId: z.string().min(1, 'The field is required'),
   address: z.string().min(1, 'The field is required'),
   type: z.enum(['freeze', 'unFreeze'], {
-    required_error:
+    message:
       'Please choose the type of the operation (freeze/unFreeze token balance in a specific account)',
   }),
 });
